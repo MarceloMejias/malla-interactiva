@@ -46,21 +46,19 @@ export const useGraduationPlan = (
     const currentIndex = semesterLevels.indexOf(currentLevel);
     const subjectIndex = semesterLevels.indexOf(subjectSemester);
     
-    // Puede tomar materias de su semestre actual
-    if (subjectIndex === currentIndex) return true;
-    
-    // Puede tomar materias del siguiente semestre solo si:
-    // 1. Es exactamente el siguiente semestre
-    // 2. Tiene prerrequisitos completos
-    if (subjectIndex === currentIndex + 1) {
-      return true; // Los prerrequisitos ya se verifican en isSubjectAvailable
+    // Estudiantes de primer semestre solo pueden tomar materias de s1
+    if (currentLevel === 's1') {
+      return subjectIndex === 0; // Solo s1
     }
     
-    // Puede tomar materias de semestres anteriores si las perdió
-    if (subjectIndex < currentIndex) return true;
+    // Estudiantes de segundo semestre pueden tomar s1 y s2
+    if (currentLevel === 's2') {
+      return subjectIndex <= 1; // s1 o s2
+    }
     
-    // No puede adelantar más de un semestre
-    return false;
+    // Estudiantes de tercer semestre en adelante pueden tomar cualquier materia
+    // siempre que cumplan los prerrequisitos (verificado en isSubjectAvailable)
+    return true;
   };
 
   const calculateGraduationPlan = useCallback(() => {
@@ -86,7 +84,6 @@ export const useGraduationPlan = (
     const remainingSubjects = [...pendingSubjects];
     let currentSemester = 1;
     const maxCreditsPerSemester = 30; // Límite de créditos por semestre en UTFSM
-    const maxCreditsFirstYear = 25; // Límite de créditos para estudiantes de primer año
     const currentYear = new Date().getFullYear(); // Año actual
 
     const getSemesterName = (semesterNumber: number): string => {
@@ -124,11 +121,6 @@ export const useGraduationPlan = (
       return `${finalYear}-${finalSemester}`;
     };
 
-    const getMaxCreditsForLevel = (academicLevel: string): number => {
-      // Estudiantes de primer año (s1 y s2) tienen límite menor
-      return (academicLevel === 's1' || academicLevel === 's2') ? maxCreditsFirstYear : maxCreditsPerSemester;
-    };
-
     while (remainingSubjects.length > 0 && currentSemester <= 20) { // Máximo 20 semestres
       // Determinar el nivel académico actual del estudiante
       const currentAcademicLevel = getCurrentAcademicLevel(completedSubjects);
@@ -164,7 +156,7 @@ export const useGraduationPlan = (
       // Seleccionar materias para este semestre
       const semesterSubjects: Subject[] = [];
       let semesterCredits = 0;
-      const maxCreditsThisSemester = getMaxCreditsForLevel(currentAcademicLevel);
+      const maxCreditsThisSemester = maxCreditsPerSemester; // Sin límite especial para primer año
 
       for (const subject of availableSubjects) {
         if (semesterCredits + subject.sctCredits <= maxCreditsThisSemester) {

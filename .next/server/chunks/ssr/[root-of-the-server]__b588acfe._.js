@@ -813,36 +813,51 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 ;
-const STORAGE_KEY = 'curriculum-progress-inginf';
-function useCalculator(subjects) {
+const STORAGE_KEY_PREFIX = 'curriculum-progress';
+function useCalculator(subjects, careerKey) {
     const [subjectStates, setSubjectStates] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
     const [isLoaded, setIsLoaded] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Cargar el progreso guardado al inicializar
+    // Generar clave única para cada carrera
+    const getStorageKey = (career)=>`${STORAGE_KEY_PREFIX}-${career}`;
+    // Cargar el progreso guardado al inicializar o cambiar de carrera
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (!careerKey) {
+            setIsLoaded(true);
+            return;
+        }
         try {
-            const savedProgress = localStorage.getItem(STORAGE_KEY);
+            const storageKey = getStorageKey(careerKey);
+            const savedProgress = localStorage.getItem(storageKey);
             if (savedProgress) {
                 const parsedProgress = JSON.parse(savedProgress);
                 setSubjectStates(parsedProgress);
+            } else {
+                // Si no hay progreso guardado para esta carrera, inicializar vacío
+                setSubjectStates({});
             }
         } catch (error) {
             console.error('Error loading saved progress:', error);
+            setSubjectStates({});
         } finally{
             setIsLoaded(true);
         }
-    }, []);
+    }, [
+        careerKey
+    ]);
     // Guardar el progreso cada vez que cambie el estado
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (isLoaded && Object.keys(subjectStates).length > 0) {
+        if (isLoaded && careerKey && Object.keys(subjectStates).length >= 0) {
             try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(subjectStates));
+                const storageKey = getStorageKey(careerKey);
+                localStorage.setItem(storageKey, JSON.stringify(subjectStates));
             } catch (error) {
                 console.error('Error saving progress:', error);
             }
         }
     }, [
         subjectStates,
-        isLoaded
+        isLoaded,
+        careerKey
     ]);
     const updateSubjectState = (code, state)=>{
         setSubjectStates((prev)=>({
@@ -852,10 +867,13 @@ function useCalculator(subjects) {
     };
     const resetCalculator = ()=>{
         setSubjectStates({});
-        try {
-            localStorage.removeItem(STORAGE_KEY);
-        } catch (error) {
-            console.error('Error clearing saved progress:', error);
+        if (careerKey) {
+            try {
+                const storageKey = getStorageKey(careerKey);
+                localStorage.removeItem(storageKey);
+            } catch (error) {
+                console.error('Error clearing saved progress:', error);
+            }
         }
     };
     const calculateCredits = ()=>{
@@ -967,18 +985,17 @@ const useGraduationPlan = (subjects, subjectStates)=>{
         ];
         const currentIndex = semesterLevels.indexOf(currentLevel);
         const subjectIndex = semesterLevels.indexOf(subjectSemester);
-        // Puede tomar materias de su semestre actual
-        if (subjectIndex === currentIndex) return true;
-        // Puede tomar materias del siguiente semestre solo si:
-        // 1. Es exactamente el siguiente semestre
-        // 2. Tiene prerrequisitos completos
-        if (subjectIndex === currentIndex + 1) {
-            return true; // Los prerrequisitos ya se verifican en isSubjectAvailable
+        // Estudiantes de primer semestre solo pueden tomar materias de s1
+        if (currentLevel === 's1') {
+            return subjectIndex === 0; // Solo s1
         }
-        // Puede tomar materias de semestres anteriores si las perdió
-        if (subjectIndex < currentIndex) return true;
-        // No puede adelantar más de un semestre
-        return false;
+        // Estudiantes de segundo semestre pueden tomar s1 y s2
+        if (currentLevel === 's2') {
+            return subjectIndex <= 1; // s1 o s2
+        }
+        // Estudiantes de tercer semestre en adelante pueden tomar cualquier materia
+        // siempre que cumplan los prerrequisitos (verificado en isSubjectAvailable)
+        return true;
     };
     const calculateGraduationPlan = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])(()=>{
         // Obtener materias no aprobadas
@@ -995,7 +1012,6 @@ const useGraduationPlan = (subjects, subjectStates)=>{
         ];
         let currentSemester = 1;
         const maxCreditsPerSemester = 30; // Límite de créditos por semestre en UTFSM
-        const maxCreditsFirstYear = 25; // Límite de créditos para estudiantes de primer año
         const currentYear = new Date().getFullYear(); // Año actual
         const getSemesterName = (semesterNumber)=>{
             const currentDate = new Date();
@@ -1025,10 +1041,6 @@ const useGraduationPlan = (subjects, subjectStates)=>{
             }
             return `${finalYear}-${finalSemester}`;
         };
-        const getMaxCreditsForLevel = (academicLevel)=>{
-            // Estudiantes de primer año (s1 y s2) tienen límite menor
-            return academicLevel === 's1' || academicLevel === 's2' ? maxCreditsFirstYear : maxCreditsPerSemester;
-        };
         while(remainingSubjects.length > 0 && currentSemester <= 20){
             // Determinar el nivel académico actual del estudiante
             const currentAcademicLevel = getCurrentAcademicLevel(completedSubjects);
@@ -1053,7 +1065,7 @@ const useGraduationPlan = (subjects, subjectStates)=>{
             // Seleccionar materias para este semestre
             const semesterSubjects = [];
             let semesterCredits = 0;
-            const maxCreditsThisSemester = getMaxCreditsForLevel(currentAcademicLevel);
+            const maxCreditsThisSemester = maxCreditsPerSemester; // Sin límite especial para primer año
             for (const subject of availableSubjects){
                 if (semesterCredits + subject.sctCredits <= maxCreditsThisSemester) {
                     semesterSubjects.push(subject);
@@ -1142,11 +1154,12 @@ function CurriculumGrid() {
     const [careerColor, setCareerColor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(undefined);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showCategoriesPopup, setShowCategoriesPopup] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [showCareerSelector, setShowCareerSelector] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [showCareerSelector, setShowCareerSelector] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [selectedCareer, setSelectedCareer] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
     const [casaCentralCareers, setCasaCentralCareers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [vinaConcepcionCareers, setVinaConcepcionCareers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [darkMode, setDarkMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isInitialized, setIsInitialized] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const subjectRefs = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])({});
     // Detectar modo oscuro del sistema
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
@@ -1163,7 +1176,7 @@ function CurriculumGrid() {
             mediaQuery.removeEventListener('change', checkDarkMode);
         };
     }, []);
-    // Cargar carreras disponibles al iniciar
+    // Cargar carreras disponibles y última carrera seleccionada al iniciar
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const loadCareers = async ()=>{
             try {
@@ -1173,13 +1186,36 @@ function CurriculumGrid() {
                 const vinaConcepcionData = vinaConcepcionModule.default;
                 setCasaCentralCareers(casaCentralData);
                 setVinaConcepcionCareers(vinaConcepcionData);
+                // Cargar la última carrera seleccionada
+                const lastSelectedCareer = localStorage.getItem('last-selected-career');
+                if (lastSelectedCareer) {
+                    // Verificar que la carrera existe en los datos
+                    const allCareers = [
+                        ...casaCentralData,
+                        ...vinaConcepcionData
+                    ];
+                    const careerExists = allCareers.some((career)=>career.Link === lastSelectedCareer);
+                    if (careerExists) {
+                        setSelectedCareer(lastSelectedCareer);
+                        setShowCareerSelector(false);
+                    } else {
+                        // Si la carrera guardada no existe, mostrar selector
+                        setShowCareerSelector(true);
+                    }
+                } else {
+                    // Primera vez, mostrar selector
+                    setShowCareerSelector(true);
+                }
+                setIsInitialized(true);
             } catch (error) {
                 console.error('Error cargando carreras:', error);
+                setShowCareerSelector(true);
+                setIsInitialized(true);
             }
         };
         loadCareers();
     }, []);
-    const { subjectStates, updateSubjectState, resetCalculator, calculateCredits, isLoaded } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useCalculator$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCalculator"])(subjects);
+    const { subjectStates, updateSubjectState, resetCalculator, calculateCredits, isLoaded } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useCalculator$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCalculator"])(subjects, selectedCareer);
     const { checkAndTriggerConfetti } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useConfetti$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useConfetti"])();
     const { showGraduationPlan, graduationPlan, isAnimating, playGraduationAnimation, closeGraduationPlan } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useGraduationPlan$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useGraduationPlan"])(subjects, subjectStates);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
@@ -1430,6 +1466,19 @@ function CurriculumGrid() {
     // Función para seleccionar carrera
     const handleCareerSelection = (careerLink)=>{
         setSelectedCareer(careerLink);
+        // Guardar la carrera seleccionada en localStorage
+        localStorage.setItem('last-selected-career', careerLink);
+    };
+    // Función para volver al selector de carreras
+    const handleBackToCareerSelector = ()=>{
+        setShowCareerSelector(true);
+    // No limpiamos selectedCareer aquí para mantener la referencia
+    // setSelectedCareer('');
+    // setCareerName('');
+    // setCareerColor(undefined);
+    // setSubjects([]);
+    // setColors({});
+    // Nota: No necesitamos resetear el progreso aquí ya que se guarda por carrera
     };
     const stats = calculateCredits();
     // Verificar si se alcanzó el 100% para lanzar confetti
@@ -1474,7 +1523,7 @@ function CurriculumGrid() {
     const findSubjectByCode = (code)=>{
         return subjects.find((subject)=>subject.code === code);
     };
-    if (loading && selectedCareer || !isLoaded && subjects.length > 0) {
+    if (!isInitialized || loading && selectedCareer || !isLoaded && subjects.length > 0) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: `flex items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`,
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1484,26 +1533,26 @@ function CurriculumGrid() {
                         className: `animate-spin rounded-full h-32 w-32 border-b-2 ${darkMode ? 'border-blue-400' : 'border-blue-600'}`
                     }, void 0, false, {
                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                        lineNumber: 189,
+                        lineNumber: 227,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: `text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`,
-                        children: loading ? 'Cargando malla curricular...' : 'Restaurando progreso...'
+                        children: !isInitialized ? 'Iniciando aplicación...' : loading ? 'Cargando malla curricular...' : 'Restaurando progreso...'
                     }, void 0, false, {
                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                        lineNumber: 190,
+                        lineNumber: 228,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                lineNumber: 188,
+                lineNumber: 226,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/CurriculumGrid.tsx",
-            lineNumber: 187,
+            lineNumber: 225,
             columnNumber: 7
         }, this);
     }
@@ -1517,15 +1566,58 @@ function CurriculumGrid() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "p-4",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                                    className: "text-xl font-bold mb-6 text-center",
-                                    style: careerColor ? {
-                                        color: careerColor
-                                    } : {},
-                                    children: careerName
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center justify-center mb-6 gap-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: handleBackToCareerSelector,
+                                            className: `flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105 ${darkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-200 border border-gray-600' : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-sm'}`,
+                                            title: "Cambiar carrera",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$react$2d$fontawesome$2f$index$2e$es$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FontAwesomeIcon"], {
+                                                    icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$free$2d$solid$2d$svg$2d$icons$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["faArrowLeft"],
+                                                    className: "text-sm"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                    lineNumber: 255,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-sm font-medium",
+                                                    children: "Cambiar carrera"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                    lineNumber: 256,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                            lineNumber: 246,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                            className: "text-xl font-bold text-center flex-1",
+                                            style: careerColor ? {
+                                                color: careerColor
+                                            } : {},
+                                            children: careerName
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                            lineNumber: 259,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-32"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                            lineNumber: 267,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 245,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1548,7 +1640,7 @@ function CurriculumGrid() {
                                                             children: getSemesterTitle(semester)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                            lineNumber: 229,
+                                                            lineNumber: 286,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1559,7 +1651,7 @@ function CurriculumGrid() {
                                                                     children: approvedCredits
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                    lineNumber: 237,
+                                                                    lineNumber: 294,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1567,7 +1659,7 @@ function CurriculumGrid() {
                                                                     children: "/"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                    lineNumber: 238,
+                                                                    lineNumber: 295,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1577,13 +1669,13 @@ function CurriculumGrid() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                    lineNumber: 239,
+                                                                    lineNumber: 296,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                            lineNumber: 234,
+                                                            lineNumber: 291,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1595,18 +1687,18 @@ function CurriculumGrid() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                lineNumber: 244,
+                                                                lineNumber: 301,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                            lineNumber: 241,
+                                                            lineNumber: 298,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 226,
+                                                    lineNumber: 283,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1629,35 +1721,35 @@ function CurriculumGrid() {
                                                                 darkMode: darkMode
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                lineNumber: 261,
+                                                                lineNumber: 318,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, subject.code, false, {
                                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                            lineNumber: 254,
+                                                            lineNumber: 311,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 252,
+                                                    lineNumber: 309,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, semester, true, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 222,
+                                            lineNumber: 279,
                                             columnNumber: 17
                                         }, this);
                                     })
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 270,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                            lineNumber: 205,
+                            lineNumber: 243,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1667,27 +1759,27 @@ function CurriculumGrid() {
                                     children: "Universidad Técnica Federico Santa María"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 286,
+                                    lineNumber: 343,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: careerName
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 287,
+                                    lineNumber: 344,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                            lineNumber: 283,
+                            lineNumber: 340,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                lineNumber: 200,
+                lineNumber: 238,
                 columnNumber: 7
             }, this),
             selectedCareer && !showCareerSelector && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$StatsBar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1698,7 +1790,7 @@ function CurriculumGrid() {
                 darkMode: darkMode
             }, void 0, false, {
                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                lineNumber: 295,
+                lineNumber: 352,
                 columnNumber: 9
             }, this),
             showCategoriesPopup && selectedCareer && !showCareerSelector && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1719,12 +1811,12 @@ function CurriculumGrid() {
                                                 className: "text-white"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                lineNumber: 318,
+                                                lineNumber: 375,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 372,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1734,7 +1826,7 @@ function CurriculumGrid() {
                                                     children: "Categorías de Asignaturas"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 321,
+                                                    lineNumber: 378,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1742,19 +1834,19 @@ function CurriculumGrid() {
                                                     children: "Colores utilizados para organizar las materias por área"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 322,
+                                                    lineNumber: 379,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 320,
+                                            lineNumber: 377,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 371,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1764,18 +1856,18 @@ function CurriculumGrid() {
                                         icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$free$2d$solid$2d$svg$2d$icons$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["faTimes"]
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                        lineNumber: 333,
+                                        lineNumber: 390,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 327,
+                                    lineNumber: 384,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                            lineNumber: 311,
+                            lineNumber: 368,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1794,7 +1886,7 @@ function CurriculumGrid() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 350,
+                                                    lineNumber: 407,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1804,44 +1896,44 @@ function CurriculumGrid() {
                                                         children: colorArray[1]
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                        lineNumber: 355,
+                                                        lineNumber: 412,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 354,
+                                                    lineNumber: 411,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 349,
+                                            lineNumber: 406,
                                             columnNumber: 21
                                         }, this)
                                     }, key, false, {
                                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 398,
                                         columnNumber: 19
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                lineNumber: 339,
+                                lineNumber: 396,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                            lineNumber: 338,
+                            lineNumber: 395,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                    lineNumber: 307,
+                    lineNumber: 364,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                lineNumber: 306,
+                lineNumber: 363,
                 columnNumber: 9
             }, this),
             showCareerSelector && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1860,7 +1952,7 @@ function CurriculumGrid() {
                                             children: "Selecciona tu Carrera"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 380,
+                                            lineNumber: 437,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1868,23 +1960,23 @@ function CurriculumGrid() {
                                             children: "Elige la carrera para ver su malla curricular interactiva"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 383,
+                                            lineNumber: 440,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 379,
+                                    lineNumber: 436,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                lineNumber: 378,
+                                lineNumber: 435,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                            lineNumber: 375,
+                            lineNumber: 432,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1895,89 +1987,10 @@ function CurriculumGrid() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                             className: `text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`,
-                                            children: "Casa Central / San Joaquín"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 394,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
-                                            children: casaCentralCareers.map((career)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>handleCareerSelection(career.Link),
-                                                    className: `backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${darkMode ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40' : 'bg-white/40 border-white/50 hover:bg-white/60'}`,
-                                                    style: {
-                                                        borderColor: career.Color ? `${career.Color}40` : undefined,
-                                                        backgroundColor: career.Color ? `${career.Color}10` : undefined
-                                                    },
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex items-center gap-3",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "w-4 h-4 rounded-full flex-shrink-0",
-                                                                style: {
-                                                                    backgroundColor: career.Color || '#6B7280'
-                                                                }
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                lineNumber: 413,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "flex-1",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                        className: `text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-800'}`,
-                                                                        children: career.Nombre
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                        lineNumber: 418,
-                                                                        columnNumber: 27
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        className: `text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`,
-                                                                        children: career.Link
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                        lineNumber: 423,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                lineNumber: 417,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                        lineNumber: 412,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, career.Link, false, {
-                                                    fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 399,
-                                                    columnNumber: 21
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 397,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 393,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: `text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`,
                                             children: "Viña del Mar / Concepción"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 437,
+                                            lineNumber: 451,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1999,7 +2012,7 @@ function CurriculumGrid() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                lineNumber: 456,
+                                                                lineNumber: 470,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2010,7 +2023,7 @@ function CurriculumGrid() {
                                                                         children: career.Nombre
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                        lineNumber: 461,
+                                                                        lineNumber: 475,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2018,52 +2031,131 @@ function CurriculumGrid() {
                                                                         children: career.Link
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                        lineNumber: 466,
+                                                                        lineNumber: 480,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                                lineNumber: 460,
+                                                                lineNumber: 474,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                        lineNumber: 455,
+                                                        lineNumber: 469,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, career.Link, false, {
                                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                                    lineNumber: 442,
+                                                    lineNumber: 456,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                            lineNumber: 440,
+                                            lineNumber: 454,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                                    lineNumber: 436,
+                                    lineNumber: 450,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            className: `text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`,
+                                            children: "Casa Central / San Joaquín"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                            lineNumber: 494,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+                                            children: casaCentralCareers.map((career)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>handleCareerSelection(career.Link),
+                                                    className: `backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${darkMode ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40' : 'bg-white/40 border-white/50 hover:bg-white/60'}`,
+                                                    style: {
+                                                        borderColor: career.Color ? `${career.Color}40` : undefined,
+                                                        backgroundColor: career.Color ? `${career.Color}10` : undefined
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex items-center gap-3",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-4 h-4 rounded-full flex-shrink-0",
+                                                                style: {
+                                                                    backgroundColor: career.Color || '#6B7280'
+                                                                }
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                                lineNumber: 513,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex-1",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: `text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-800'}`,
+                                                                        children: career.Nombre
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                                        lineNumber: 518,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: `text-xs mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`,
+                                                                        children: career.Link
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                                        lineNumber: 523,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                                lineNumber: 517,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                        lineNumber: 512,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, career.Link, false, {
+                                                    fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                                    lineNumber: 499,
+                                                    columnNumber: 21
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                            lineNumber: 497,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CurriculumGrid.tsx",
+                                    lineNumber: 493,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CurriculumGrid.tsx",
-                            lineNumber: 391,
+                            lineNumber: 448,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CurriculumGrid.tsx",
-                    lineNumber: 371,
+                    lineNumber: 428,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                lineNumber: 370,
+                lineNumber: 427,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$GraduationPlanModal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -2074,13 +2166,13 @@ function CurriculumGrid() {
                 colors: colors
             }, void 0, false, {
                 fileName: "[project]/src/components/CurriculumGrid.tsx",
-                lineNumber: 483,
+                lineNumber: 540,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/CurriculumGrid.tsx",
-        lineNumber: 199,
+        lineNumber: 237,
         columnNumber: 5
     }, this);
 }

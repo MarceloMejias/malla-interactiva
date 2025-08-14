@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faTimes, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import SubjectCard from './SubjectCard';
 import StatsBar from './StatsBar';
 import GraduationPlanModal from './GraduationPlanModal';
@@ -18,11 +18,12 @@ export default function CurriculumGrid() {
   const [careerColor, setCareerColor] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(false);
   const [showCategoriesPopup, setShowCategoriesPopup] = useState(false);
-  const [showCareerSelector, setShowCareerSelector] = useState(true);
+  const [showCareerSelector, setShowCareerSelector] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<string>('');
   const [casaCentralCareers, setCasaCentralCareers] = useState<Array<{Nombre: string, Link: string, Color?: string}>>([]);
   const [vinaConcepcionCareers, setVinaConcepcionCareers] = useState<Array<{Nombre: string, Link: string, Color?: string}>>([]);
   const [darkMode, setDarkMode] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
   const subjectRefs = useRef<Record<string, HTMLDivElement | null>>({});
   
   // Detectar modo oscuro del sistema
@@ -44,7 +45,7 @@ export default function CurriculumGrid() {
     };
   }, []);
   
-  // Cargar carreras disponibles al iniciar
+  // Cargar carreras disponibles y última carrera seleccionada al iniciar
   useEffect(() => {
     const loadCareers = async () => {
       try {
@@ -56,15 +57,38 @@ export default function CurriculumGrid() {
         
         setCasaCentralCareers(casaCentralData);
         setVinaConcepcionCareers(vinaConcepcionData);
+
+        // Cargar la última carrera seleccionada
+        const lastSelectedCareer = localStorage.getItem('last-selected-career');
+        if (lastSelectedCareer) {
+          // Verificar que la carrera existe en los datos
+          const allCareers = [...casaCentralData, ...vinaConcepcionData];
+          const careerExists = allCareers.some(career => career.Link === lastSelectedCareer);
+          
+          if (careerExists) {
+            setSelectedCareer(lastSelectedCareer);
+            setShowCareerSelector(false);
+          } else {
+            // Si la carrera guardada no existe, mostrar selector
+            setShowCareerSelector(true);
+          }
+        } else {
+          // Primera vez, mostrar selector
+          setShowCareerSelector(true);
+        }
+        
+        setIsInitialized(true);
       } catch (error) {
         console.error('Error cargando carreras:', error);
+        setShowCareerSelector(true);
+        setIsInitialized(true);
       }
     };
     
     loadCareers();
   }, []);
   
-  const { subjectStates, updateSubjectState, resetCalculator, calculateCredits, isLoaded } = useCalculator(subjects);
+  const { subjectStates, updateSubjectState, resetCalculator, calculateCredits, isLoaded } = useCalculator(subjects, selectedCareer);
   const { checkAndTriggerConfetti } = useConfetti();
   const { 
     showGraduationPlan, 
@@ -132,6 +156,20 @@ export default function CurriculumGrid() {
   // Función para seleccionar carrera
   const handleCareerSelection = (careerLink: string) => {
     setSelectedCareer(careerLink);
+    // Guardar la carrera seleccionada en localStorage
+    localStorage.setItem('last-selected-career', careerLink);
+  };
+
+  // Función para volver al selector de carreras
+  const handleBackToCareerSelector = () => {
+    setShowCareerSelector(true);
+    // No limpiamos selectedCareer aquí para mantener la referencia
+    // setSelectedCareer('');
+    // setCareerName('');
+    // setCareerColor(undefined);
+    // setSubjects([]);
+    // setColors({});
+    // Nota: No necesitamos resetear el progreso aquí ya que se guarda por carrera
   };
 
   const stats = calculateCredits();
@@ -182,13 +220,13 @@ export default function CurriculumGrid() {
     return subjects.find(subject => subject.code === code);
   };
 
-  if ((loading && selectedCareer) || (!isLoaded && subjects.length > 0)) {
+  if (!isInitialized || (loading && selectedCareer) || (!isLoaded && subjects.length > 0)) {
     return (
       <div className={`flex items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="flex flex-col items-center gap-4">
           <div className={`animate-spin rounded-full h-32 w-32 border-b-2 ${darkMode ? 'border-blue-400' : 'border-blue-600'}`}></div>
           <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            {loading ? 'Cargando malla curricular...' : 'Restaurando progreso...'}
+            {!isInitialized ? 'Iniciando aplicación...' : loading ? 'Cargando malla curricular...' : 'Restaurando progreso...'}
           </p>
         </div>
       </div>
@@ -203,12 +241,31 @@ export default function CurriculumGrid() {
           <>
             {/* Malla por semestres - Vista en columnas */}
             <div className="p-4">
-              <h2
-                className="text-xl font-bold mb-6 text-center"
-                style={careerColor ? { color: careerColor } : {}}
-              >
-                {careerName}
-              </h2>
+              {/* Header con título y botón de cambiar carrera */}
+              <div className="flex items-center justify-center mb-6 gap-4">
+                <button
+                  onClick={handleBackToCareerSelector}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 hover:scale-105 ${
+                    darkMode 
+                      ? 'bg-gray-700 hover:bg-gray-600 text-gray-200 border border-gray-600' 
+                      : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-sm'
+                  }`}
+                  title="Cambiar carrera"
+                >
+                  <FontAwesomeIcon icon={faArrowLeft} className="text-sm" />
+                  <span className="text-sm font-medium">Cambiar carrera</span>
+                </button>
+                
+                <h2
+                  className="text-xl font-bold text-center flex-1"
+                  style={careerColor ? { color: careerColor } : {}}
+                >
+                  {careerName}
+                </h2>
+                
+                {/* Espacio para mantener el título centrado */}
+                <div className="w-32"></div>
+              </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-2">
             {Array.from({ length: 8 }, (_, i) => `s${i + 1}`).map((semester) => {
@@ -389,13 +446,13 @@ export default function CurriculumGrid() {
             
             {/* Contenido del popup */}
             <div className="p-6 overflow-y-auto max-h-[60vh]">
-              {/* Sección Casa Central / San Joaquín */}
+              {/* Sección Viña del Mar / Concepción */}
               <div className="mb-8">
                 <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                  Casa Central / San Joaquín
+                  Viña del Mar / Concepción
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {casaCentralCareers.map((career) => (
+                  {vinaConcepcionCareers.map((career) => (
                     <button
                       key={career.Link}
                       onClick={() => handleCareerSelection(career.Link)}
@@ -432,13 +489,13 @@ export default function CurriculumGrid() {
                 </div>
               </div>
 
-              {/* Sección Viña del Mar / Concepción */}
+              {/* Sección Casa Central / San Joaquín */}
               <div>
                 <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                  Viña del Mar / Concepción
+                  Casa Central / San Joaquín
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {vinaConcepcionCareers.map((career) => (
+                  {casaCentralCareers.map((career) => (
                     <button
                       key={career.Link}
                       onClick={() => handleCareerSelection(career.Link)}

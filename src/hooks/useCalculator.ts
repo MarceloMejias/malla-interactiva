@@ -2,37 +2,51 @@
 import { useState, useEffect } from 'react';
 import type { Subject, SubjectState, CalculatorState } from '@/types/curriculum';
 
-const STORAGE_KEY = 'curriculum-progress-inginf';
+const STORAGE_KEY_PREFIX = 'curriculum-progress';
 
-export function useCalculator(subjects?: Subject[]) {
+export function useCalculator(subjects?: Subject[], careerKey?: string) {
   const [subjectStates, setSubjectStates] = useState<CalculatorState>({});
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Cargar el progreso guardado al inicializar
+  // Generar clave única para cada carrera
+  const getStorageKey = (career: string) => `${STORAGE_KEY_PREFIX}-${career}`;
+
+  // Cargar el progreso guardado al inicializar o cambiar de carrera
   useEffect(() => {
+    if (!careerKey) {
+      setIsLoaded(true);
+      return;
+    }
+
     try {
-      const savedProgress = localStorage.getItem(STORAGE_KEY);
+      const storageKey = getStorageKey(careerKey);
+      const savedProgress = localStorage.getItem(storageKey);
       if (savedProgress) {
         const parsedProgress = JSON.parse(savedProgress) as CalculatorState;
         setSubjectStates(parsedProgress);
+      } else {
+        // Si no hay progreso guardado para esta carrera, inicializar vacío
+        setSubjectStates({});
       }
     } catch (error) {
       console.error('Error loading saved progress:', error);
+      setSubjectStates({});
     } finally {
       setIsLoaded(true);
     }
-  }, []);
+  }, [careerKey]);
 
   // Guardar el progreso cada vez que cambie el estado
   useEffect(() => {
-    if (isLoaded && Object.keys(subjectStates).length > 0) {
+    if (isLoaded && careerKey && Object.keys(subjectStates).length >= 0) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(subjectStates));
+        const storageKey = getStorageKey(careerKey);
+        localStorage.setItem(storageKey, JSON.stringify(subjectStates));
       } catch (error) {
         console.error('Error saving progress:', error);
       }
     }
-  }, [subjectStates, isLoaded]);
+  }, [subjectStates, isLoaded, careerKey]);
 
   const updateSubjectState = (code: string, state: SubjectState) => {
     setSubjectStates((prev) => ({ ...prev, [code]: state }));
@@ -40,10 +54,13 @@ export function useCalculator(subjects?: Subject[]) {
 
   const resetCalculator = () => {
     setSubjectStates({});
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-    } catch (error) {
-      console.error('Error clearing saved progress:', error);
+    if (careerKey) {
+      try {
+        const storageKey = getStorageKey(careerKey);
+        localStorage.removeItem(storageKey);
+      } catch (error) {
+        console.error('Error clearing saved progress:', error);
+      }
     }
   };
 
