@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faTimes, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faTimes, faArrowLeft, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import SubjectCard from './SubjectCard';
 import StatsBar from './StatsBar';
 import GraduationPlanModal from './GraduationPlanModal';
@@ -220,6 +221,21 @@ export default function CurriculumGrid() {
     return subjects.find(subject => subject.code === code);
   };
 
+  // Calcular el número máximo de semestres dinámicamente
+  const getMaxSemesters = () => {
+    if (subjects.length === 0) return 8;
+    
+    const semesterNumbers = subjects
+      .map(subject => subject.semester)
+      .filter((semester): semester is string => semester !== undefined && semester.startsWith('s'))
+      .map(semester => parseInt(semester.replace('s', '')))
+      .filter(num => !isNaN(num));
+    
+    return semesterNumbers.length > 0 ? Math.max(...semesterNumbers) : 8;
+  };
+
+  const maxSemesters = getMaxSemesters();
+
   if (!isInitialized || (loading && selectedCareer) || (!isLoaded && subjects.length > 0)) {
     return (
       <div className={`flex items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -257,7 +273,7 @@ export default function CurriculumGrid() {
                 </button>
                 
                 <h2
-                  className="text-xl font-bold text-center flex-1"
+                  className="text-3xl font-black text-center flex-1"
                   style={careerColor ? { color: careerColor } : {}}
                 >
                   {careerName}
@@ -267,18 +283,43 @@ export default function CurriculumGrid() {
                 <div className="w-32"></div>
               </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-2">
-            {Array.from({ length: 8 }, (_, i) => `s${i + 1}`).map((semester) => {
-              const semesterSubjects = getSemesterSubjects(semester);
-              const semesterCredits = getSemesterCredits(semester);
-              const approvedCredits = getSemesterApprovedCredits(semester);
-              
-              if (semesterSubjects.length === 0) return null;
+          {/* Container con scroll horizontal para semestres */}
+          <div className="overflow-x-auto pb-4">
+            {/* Indicador de scroll en móviles */}
+            {maxSemesters > 4 && (
+              <div className={`text-xs text-center mb-2 ${
+                darkMode ? 'text-gray-400' : 'text-gray-600'
+              } md:hidden`}>
+                ← Desliza para ver todos los semestres →
+              </div>
+            )}
+            
+            <div 
+              className="flex gap-2 min-w-max"
+              style={{
+                minWidth: maxSemesters <= 8 ? '100%' : `${maxSemesters * 200}px`
+              }}
+            >
+              {Array.from({ length: maxSemesters }, (_, i) => `s${i + 1}`).map((semester) => {
+                const semesterSubjects = getSemesterSubjects(semester);
+                const semesterCredits = getSemesterCredits(semester);
+                const approvedCredits = getSemesterApprovedCredits(semester);
+                
+                if (semesterSubjects.length === 0) return null;
 
-              return (
-                <div key={semester} className={`flex flex-col w-full rounded-2xl shadow-md border ${
-                  darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'
-                }`}>
+                return (
+                  <div 
+                    key={semester} 
+                    className={`flex flex-col rounded-2xl shadow-md border flex-shrink-0 ${
+                      darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'
+                    }`}
+                    style={{
+                      width: maxSemesters <= 4 ? 'calc((100% - 0.75rem) / 4)' :
+                             maxSemesters <= 6 ? 'calc((100% - 1.25rem) / 6)' :
+                             maxSemesters <= 8 ? 'calc((100% - 1.75rem) / 8)' : '200px',
+                      minWidth: maxSemesters <= 8 ? '150px' : '180px'
+                    }}
+                  >
                   {/* Header del semestre */}
                   <div className={`rounded-t-2xl p-3 text-center border-b ${
                     darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-200 border-gray-300'
@@ -333,15 +374,32 @@ export default function CurriculumGrid() {
                 </div>
               );
             })}
+            </div>
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer simplificado */}
         <div className={`mt-12 text-center text-sm ${
           darkMode ? 'text-gray-400' : 'text-gray-500'
         }`}>
-          <p>Universidad Técnica Federico Santa María</p>
-          <p>{careerName}</p>
+          <div className="flex items-center justify-center gap-6">
+            <span>Actualizado: Agosto 2025</span>
+            
+            <a
+              href="https://github.com/MarceloMejias/malla-interactiva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 transition-colors duration-300 ${
+                darkMode 
+                  ? 'text-gray-400 hover:text-white' 
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <FontAwesomeIcon icon={faGithub} className="text-sm" />
+              <span>GitHub</span>
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
+            </a>
+          </div>
         </div>
         </>
         )}
