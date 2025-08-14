@@ -12,7 +12,7 @@
   {
     "Nombre": "Diseño de productos",
     "Link": "IDP",
-    "Color": "#FF69B4"
+    "Color": "#FF0000"
   },
   {
     "Nombre": "Ing. Civil",
@@ -112,7 +112,7 @@
   {
     "Nombre": "Ingeniería en Informática",
     "Link": "INGINF",
-    "Color": "#00FF7F"
+    "Color": "#5B3CC4"
   },
   {
     "Nombre": "Ingeniería en Biotecnología",
