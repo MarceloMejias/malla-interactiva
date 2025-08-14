@@ -1,9 +1,9 @@
 {
-	"CH": ["#c2b774", "Comunicación y Humanidades"],
-	"CSSE": ["#728c50", "Ciencias Sociales y Económicas"],
-	"CB": ["#7d403c", "Ciencias Básicas"],
-	"CSI": ["#f79400", "Ciencias de la Ingeniería"],
-	"ESP": ["#324773", "Especialidad"],
-	"ELEC": ["#3f009e", "Electivos"],
-	"CTS": ["#482354", "Competencias Transversales Sello"]
+	"CH": ["#84CC16", "Comunicación y Humanidades"],
+	"CSSE": ["#06B6D4", "Ciencias Sociales y Económicas"],
+	"CB": ["#8B5CF6", "Ciencias Básicas"],
+	"CSI": ["#F59E0B", "Ciencias de la Ingeniería"],
+	"ESP": ["#3B82F6", "Especialidad"],
+	"ELEC": ["#A855F7", "Electivos"],
+	"CTS": ["#EC4899", "Competencias Transversales Sello"]
 }

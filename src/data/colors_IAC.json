@@ -1,8 +1,8 @@
 {
-  "PC": ["#C4C4C4", "Plan Común"],
-  "HUM": ["#FFF9A3", "Humanista"],
-  "IND": ["#FFAE57", "Industrias"],
-  "FIS": ["#A2D696", "Física"],
-  "MAT": ["#46B7D4", "Matemática"],
-  "ACA": ["#00A0A6", "Ciencias Aeronáuticas"]
+  "PC": ["#8B5CF6", "Plan Común"],
+  "HUM": ["#84CC16", "Humanista"],
+  "IND": ["#0EA5E9", "Industrias"],
+  "FIS": ["#3B82F6", "Física"],
+  "MAT": ["#F59E0B", "Matemática"],
+  "ACA": ["#06B6D4", "Ciencias Aeronáuticas"]
 }

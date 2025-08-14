@@ -1,14 +1,14 @@
 {
-	"MATE": ["#CC6600", "Matemática"],
-	"TLLR": ["#FF0040", "Talleres, Creación, Seminario"],
-	"HUM": ["#66CC33", "Estudios Humanísticos"],
-	"EFI": ["#3366CC", "Defider"],
-	"INFO": ["#660099", "Informática"],
-	"ECON": ["#4D0629", "Economías"],
-	"ADMI": ["#336600", "Administración"],
-	"FINZ": ["#577170", "Finanzas"],
-	"ENGL": ["#6699FF", "Inglés"],
-	"ELEC": ["#F6546A", "Electivos"],
-	"MKTG": ["#3399FF", "Marketing y Gestión"],
-	"OPER": ["#C5ADE6", "Operaciones"]
+	"MATE": ["#EA580C", "Matemática"],
+	"TLLR": ["#EC4899", "Talleres, Creación, Seminario"],
+	"HUM": ["#FB7185", "Estudios Humanísticos"],
+	"EFI": ["#3B82F6", "Defider"],
+	"INFO": ["#8B5CF6", "Informática"],
+	"ECON": ["#7C2D12", "Economías"],
+	"ADMI": ["#06B6D4", "Administración"],
+	"FINZ": ["#0F766E", "Finanzas"],
+	"ENGL": ["#60A5FA", "Inglés"],
+	"ELEC": ["#F43F5E", "Electivos"],
+	"MKTG": ["#0EA5E9", "Marketing y Gestión"],
+	"OPER": ["#A855F7", "Operaciones"]
 }

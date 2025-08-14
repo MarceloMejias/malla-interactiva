@@ -1,8 +1,8 @@
 {
-	"PC": ["#00838F", "Plan Común"],
-	"HUM": ["#B0B91D", "Humanistas, libres"],
-	"IND": ["#6BA8D1", "Industrias"],
-	"ELEC": ["#F47C23", "Departamento Electrica"],
-	"MEC": ["#00AD5D", "Departamento Mecanica"],
-	"DEF": ["#991B1E", "DEFIDER"]
+	"PC": ["#8B5CF6", "Plan Común"],
+	"HUM": ["#84CC16", "Humanistas, libres"],
+	"IND": ["#0EA5E9", "Industrias"],
+	"ELEC": ["#F97316", "Departamento Electrica"],
+	"MEC": ["#8B5CF6", "Departamento Mecanica"],
+	"DEF": ["#DC2626", "DEFIDER"]
 }

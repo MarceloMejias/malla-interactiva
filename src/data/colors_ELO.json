@@ -1,12 +1,12 @@
 {
-	"CEL": ["#00838F", "Matemáticas"],
-	"FI": ["#2E58A7", "Físicas"],
-	"HUM": ["#B0B91D", "Humanistas y Deportes"],
-	"ROS": ["#C54B73", "Plan Común"],
-	"RO": ["#991B1E", "Laboratorios"],
-	"IND": ["#6BA8D1", "Industrias"],
-	"AMA": ["#FDDE15", "Asignaturas de mención"],
-	"MO": ["#6D57A5", "Asignaturas complementarias"],
-	 "VER": ["#00AD5D", "Electrónica"],
-	 "NARA": ["#F78E1E", "Titulación"]
+	"CEL": ["#F59E0B", "Matemáticas"],
+	"FI": ["#3B82F6", "Físicas"],
+	"HUM": ["#84CC16", "Humanistas y Deportes"],
+	"ROS": ["#8B5CF6", "Plan Común"],
+	"RO": ["#DC2626", "Laboratorios"],
+	"IND": ["#0EA5E9", "Industrias"],
+	"AMA": ["#FACC15", "Asignaturas de mención"],
+	"MO": ["#8B5CF6", "Asignaturas complementarias"],
+	 "VER": ["#06B6D4", "Electrónica"],
+	 "NARA": ["#F97316", "Titulación"]
 }

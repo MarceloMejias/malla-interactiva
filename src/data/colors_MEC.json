@@ -1,8 +1,8 @@
 {
-	"CB": ["#FFFF54", "Ciencias Básicas"],
-	"FG": ["#9FCBDA", "Formación General"],
-	"CDI": ["#F5C242", "Ciencias de la Ingeniería"],
-	"IA": ["#4FAD5B", "Ingeniería Aplicada"],
-	"GA": ["#AEA1C4", "Gestión y Administración"],
-	"EFP": ["#D09996", "Electivos de Formación Profesional"]
+	"CB": ["#8B5CF6", "Ciencias Básicas"],
+	"FG": ["#84CC16", "Formación General"],
+	"CDI": ["#F59E0B", "Ciencias de la Ingeniería"],
+	"IA": ["#06B6D4", "Ingeniería Aplicada"],
+	"GA": ["#A855F7", "Gestión y Administración"],
+	"EFP": ["#F97316", "Electivos de Formación Profesional"]
 }

@@ -1,11 +1,11 @@
 {
-	"MAT": ["#00838F", "Matemáticas"],
-	"FI": ["#2E58A7", "Físicas"],
-	"HUM": ["#B0B91D", "Humanistas y Deportes"],
-	"ROS": ["#C54B73", "Plan Común"],
-	"ELO": ["#991B1E", "Electrónica"],
-	"IND": ["#6BA8D1", "Industrias"],
-	"ELI": ["#FDDE15", "Eléctrica"],
-	"MEC": ["#00AD5D", "Mecánica"],
-	 "PRAC": ["#F18E41", "Práctica"]
+	"MAT": ["#F59E0B", "Matemáticas"],
+	"FI": ["#3B82F6", "Físicas"],
+	"HUM": ["#84CC16", "Humanistas y Deportes"],
+	"ROS": ["#8B5CF6", "Plan Común"],
+	"ELO": ["#DC2626", "Electrónica"],
+	"IND": ["#0EA5E9", "Industrias"],
+	"ELI": ["#FACC15", "Eléctrica"],
+	"MEC": ["#8B5CF6", "Mecánica"],
+	 "PRAC": ["#F97316", "Práctica"]
 }

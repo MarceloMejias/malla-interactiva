@@ -10,9 +10,9 @@
     "Color": "#D2691E"
   },
   {
-    "Nombre": "Diseño de productos",
+    "Nombre": "Diseño de Productos",
     "Link": "IDP",
-    "Color": "#FF0000"
+    "Color": "#FF69B4"
   },
   {
     "Nombre": "Ing. Civil",
@@ -108,15 +108,5 @@
     "Nombre": "Ing. Civil Telemática",
     "Link": "TEL",
     "Color": "#9932CC"
-  },
-  {
-    "Nombre": "Ingeniería en Informática",
-    "Link": "INGINF",
-    "Color": "#5B3CC4"
-  },
-  {
-    "Nombre": "Ingeniería en Biotecnología",
-    "Link": "IBT",
-    "Color": "#FF1493"
   }
 ]

@@ -1,14 +1,14 @@
 {
-	"CSC":["#92D050","Ciencias Básicas"],
-	"SW":["#813FA0","Software"],
-	"FIS":["#00838F","Física"],
-	"TIN":["#C54B73","Transversal e Integración"],
-	"FG":["#1B57C9","Formación General"],
-	"DEW":["#BFBFBF","Deportes"],
-	"REDES":["#FF7B7B","Redes"],
-	"ENG":["#00B0F0","Inglés"],
-	"ELO":["#AEA3C2","Electrónica"],
-	"TELECO":["#D6D600","Telecomunicaciones"],
-	"IND":["#6BA8D1","Industrias"],
-	"COMPL":["#F0DF82","Complementarios"]
+	"CSC":["#8B5CF6","Ciencias Básicas"],
+	"SW":["#A855F7","Software"],
+	"FIS":["#3B82F6","Física"],
+	"TIN":["#F43F5E","Transversal e Integración"],
+	"FG":["#84CC16","Formación General"],
+	"DEW":["#DC2626","Deportes"],
+	"REDES":["#EF4444","Redes"],
+	"ENG":["#06B6D4","Inglés"],
+	"ELO":["#C084FC","Electrónica"],
+	"TELECO":["#FACC15","Telecomunicaciones"],
+	"IND":["#0EA5E9","Industrias"],
+	"COMPL":["#F59E0B","Complementarios"]
 }

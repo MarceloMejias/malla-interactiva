@@ -1,8 +1,8 @@
 {
-	"EI":["#ffd1d1","Electronica e informatica"],
-	"C":["#e2ffe0","Ciencias"],
-	"QMD":["#ccfeff","Química y medio ambiente"],
-	"DGD":["#cedafd","Dirección general de docencia "],
-	"IC":["#fffbd1","Ingeniería comercial"],
-	"EH":["#ffd1ee","Estudios Humanisticos"]
+	"EI":["#F87171","Electronica e informatica"],
+	"C":["#60A5FA","Ciencias"],
+	"QMD":["#22D3EE","Química y medio ambiente"],
+	"DGD":["#818CF8","Dirección general de docencia "],
+	"IC":["#FDE047","Ingeniería comercial"],
+	"EH":["#F472B6","Estudios Humanisticos"]
 }

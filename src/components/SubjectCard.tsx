@@ -14,6 +14,7 @@ interface SubjectCardProps {
   findSubjectByCode: (code: string) => Subject | undefined;
   subjectStates: CalculatorState;
   colors: SubjectColors;
+  darkMode?: boolean;
 }
 
 export default function SubjectCard({ 
@@ -25,7 +26,8 @@ export default function SubjectCard({
   onPrerequisiteClick,
   findSubjectByCode,
   subjectStates,
-  colors
+  colors,
+  darkMode = false
 }: SubjectCardProps) {
 
   const canTakeSubject = () => {
@@ -63,10 +65,10 @@ export default function SubjectCard({
 
   // El fondo ahora usa el color de la categoría
   const getBackgroundColor = () => {
-    if (isBlocked) return '#6b7280'; // gray-500 (gris menos oscuro)
-    if (state?.status === 'approved') return '#10b981'; // green-500 (verde más legible)
+    if (isBlocked) return darkMode ? '#4b5563' : '#6b7280'; // gray-600 (dark) / gray-500 (light)
+    if (state?.status === 'approved') return '#10b981'; // green-500 (same for both modes)
     // color de la categoría del JSON
-    return color || '#fff';
+    return color || (darkMode ? '#374151' : '#fff'); // gray-700 (dark) / white (light)
   };
 
   const handleClick = () => {
@@ -111,9 +113,9 @@ export default function SubjectCard({
   };
 
   return (
-    <div className="relative group">
+    <div className="relative group w-full">
       <div
-        className={`relative rounded-xl border ${getStatusColor()} cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[100px] flex flex-col`}
+        className={`relative rounded-xl border ${getStatusColor()} cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[100px] flex flex-col w-full`}
         style={{ backgroundColor: getBackgroundColor() }}
         onClick={handleClick}
         title={
@@ -123,14 +125,14 @@ export default function SubjectCard({
         }
       >
         {/* Código como carátula en esquina superior izquierda */}
-        <div className="absolute top-0 left-0 bg-white/85 rounded-br-lg px-2 py-0.5">
+        <div className={`absolute top-0 left-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-br-lg px-2 py-0.5`}>
           <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
             {subject.code}
           </span>
         </div>
         
         {/* Créditos como carátula en esquina superior derecha */}
-        <div className="absolute top-0 right-0 bg-white/85 rounded-bl-lg px-2 py-0.5">
+        <div className={`absolute top-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-bl-lg px-2 py-0.5`}>
           <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
             {subject.sctCredits}
           </span>
@@ -138,7 +140,7 @@ export default function SubjectCard({
         
         {/* Icono de bloqueo como carátula en esquina inferior derecha */}
         {isBlocked && (
-          <div className="absolute bottom-0 right-0 bg-white/85 rounded-tl-lg px-2 py-0.5">
+          <div className={`absolute bottom-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-tl-lg px-2 py-0.5`}>
             <FontAwesomeIcon icon={faLock} className="text-xs" style={{ color: getBackgroundColor() }} />
           </div>
         )}

@@ -1,12 +1,12 @@
 {
-	"MAT": ["#00838F", "Matemáticas"],
-	"FIS": ["#2E58A7", "Físicas"],
-	"HUM": ["#B0B91D", "Humanistas y Deportes"],
-	"PC": ["#C54B73", "Plan Común"],
-	"IND": ["#6BA8D1", "Industrias"],
-	"MET": ["#FF8000", "Metalurgia"],
-	"QUI": ["#991B1E", "Química"],
-	 "ICQ": ["#00AD5D", "Ingeniería Quimica"],
-	"EL": ["#F7FE2E", "Electivos"],
-	 "TIT": ["#F78E1E", "Temas de Integración y Talleres"]
+	"MAT": ["#F59E0B", "Matemáticas"],
+	"FIS": ["#3B82F6", "Físicas"],
+	"HUM": ["#84CC16", "Humanistas y Deportes"],
+	"PC": ["#8B5CF6", "Plan Común"],
+	"IND": ["#0EA5E9", "Industrias"],
+	"MET": ["#F97316", "Metalurgia"],
+	"QUI": ["#DC2626", "Química"],
+	 "ICQ": ["#06B6D4", "Ingeniería Quimica"],
+	"EL": ["#A855F7", "Electivos"],
+	 "TIT": ["#EC4899", "Temas de Integración y Talleres"]
 }

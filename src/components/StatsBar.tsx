@@ -16,16 +16,17 @@ interface StatsBarProps {
   onShowCategories: () => void;
   onReset: () => void;
   onPlayGraduationPlan: () => void;
+  darkMode?: boolean;
 }
 
-export default function StatsBar({ stats, onShowCategories, onReset, onPlayGraduationPlan }: StatsBarProps) {
+export default function StatsBar({ stats, onShowCategories, onReset, onPlayGraduationPlan, darkMode = false }: StatsBarProps) {
   const handleReset = () => {
     onReset();
   };
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-50">
-      <div className="bg-white/80 rounded-xl shadow-lg border border-gray-200 p-4 mx-auto max-w-3xl">
+      <div className={`${darkMode ? 'bg-gray-800/90 border-gray-600' : 'bg-white/80 border-gray-200'} rounded-xl shadow-lg border p-4 mx-auto max-w-3xl`}>
         <div className="flex items-center justify-between gap-6">
           {/* Stats */}
           <div className="flex items-center gap-6">
@@ -33,15 +34,15 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
               <div className="text-lg font-bold text-green-600">
                 {stats.approvedCredits}
               </div>
-              <div className="text-sm text-gray-700">Créditos</div>
-              <div className="text-sm text-gray-500">de {stats.totalCredits}</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Créditos</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>de {stats.totalCredits}</div>
             </div>
             <div className="text-center">
               <div className="text-lg font-bold text-blue-600">
                 {stats.approvedSubjects}
               </div>
-              <div className="text-sm text-gray-700">Asignaturas</div>
-              <div className="text-sm text-gray-500">de {stats.totalSubjects}</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Asignaturas</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>de {stats.totalSubjects}</div>
             </div>
           </div>
 
@@ -51,10 +52,10 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
               <div className="text-lg font-bold text-purple-600">
                 {stats.percentage.toFixed(1)}%
               </div>
-              <div className="text-sm text-gray-700">Progreso</div>
+              <div className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Progreso</div>
             </div>
             <div className="flex-1 max-w-xs">
-              <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+              <div className={`w-full ${darkMode ? 'bg-gray-600' : 'bg-gray-200'} rounded-full h-2 overflow-hidden`}>
                 <div 
                   className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-500"
                   style={{ width: `${stats.percentage}%` }}

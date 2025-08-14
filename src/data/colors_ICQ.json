@@ -1,11 +1,11 @@
 {
-    "MAT":["#00838F","Matemáticas"],
-    "FIS":["#2E58A7","Físicas"],
-    "HUM":["#B0B91D","Humanistas y Deportes"],
-    "PC":["#C54B73","Plan Común"],
-    "IND":["#6BA8D1","Industrias"],
-    "QUI":["#daa520","Química"],
-    "OPU":["#991B1E","Operaciones Unitarias"],
-    "ICQ":["#00AD5D","Ingeniería Quimica"],
-    "EL":["#6D57A5","Electivos"]
+    "MAT":["#F59E0B","Matemáticas"],
+    "FIS":["#3B82F6","Físicas"],
+    "HUM":["#84CC16","Humanistas y Deportes"],
+    "PC":["#8B5CF6","Plan Común"],
+    "IND":["#0EA5E9","Industrias"],
+    "QUI":["#F59E0B","Química"],
+    "OPU":["#DC2626","Operaciones Unitarias"],
+    "ICQ":["#06B6D4","Ingeniería Quimica"],
+    "EL":["#8B5CF6","Electivos"]
 }

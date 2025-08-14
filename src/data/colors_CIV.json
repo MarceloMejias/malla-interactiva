@@ -1,12 +1,12 @@
 {
-	"PC": ["#BABABA", "Ciencias Básicas"],
-	"HUM": ["#C9F396", "Humanistas, libres y deportes"],
-	"FT": ["#C54B73", "Formación Transversal"],
-	"FI": ["#EbC333", "Fundamentos de Ingeniería Civil"],
-	"ES": ["#F54232", "Estructuras"],
-	"AG": ["#6BA8D1", "Aguas"],
-	"SU": ["#A96E08", "Suelos"],
-	"VI": ["#4F4F4F", "Vialidad"],
-	"GE": ["#14834C", "Gestión"],
-	"OP": ["#AD7FA9", "Optativos, Proyecto y Titulación"]
+	"PC": ["#8B5CF6", "Ciencias Básicas"],
+	"HUM": ["#84CC16", "Humanistas, libres y deportes"],
+	"FT": ["#F43F5E", "Formación Transversal"],
+	"FI": ["#FBBF24", "Fundamentos de Ingeniería Civil"],
+	"ES": ["#EF4444", "Estructuras"],
+	"AG": ["#3B82F6", "Aguas"],
+	"SU": ["#D97706", "Suelos"],
+	"VI": ["#6B7280", "Vialidad"],
+	"GE": ["#06B6D4", "Gestión"],
+	"OP": ["#A855F7", "Optativos, Proyecto y Titulación"]
 }

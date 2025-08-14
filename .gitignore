@@ -1,6 +1,10 @@
 # MacOS and IDE related files
 */*.DS_Store
 .idea/
+.next/
+.github/
+.vscode/
+
 # npm modules
 **/node_modules/
 # Assets while developing / building

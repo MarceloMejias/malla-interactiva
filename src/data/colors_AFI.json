@@ -1,7 +1,7 @@
 {
-    "PC":["#65381a","Plan común, humanistas y deportes"],
-    "MAT":["#b8ad14","Matemáticas"],
-    "FIS":["#1e9dc8","Física"],
-    "AFI":["#080e59","Astrofísica"],
-    "ENG":["#0e865e","Inglés"]
+    "PC":["#8B5CF6","Plan común, humanistas y deportes"],
+    "MAT":["#F59E0B","Matemáticas"],
+    "FIS":["#3B82F6","Física"],
+    "AFI":["#6366F1","Astrofísica"],
+    "ENG":["#06B6D4","Inglés"]
 }

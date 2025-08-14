@@ -1,0 +1,12 @@
+[
+  {
+    "Nombre": "Ingeniería en Informática",
+    "Link": "INGINF",
+    "Color": "#6366F1"
+  },
+  {
+    "Nombre": "Ingeniería en Biotecnología",
+    "Link": "IBT",
+    "Color": "#FF1493"
+  }
+]
