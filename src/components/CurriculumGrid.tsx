@@ -256,7 +256,7 @@ export default function CurriculumGrid() {
         {selectedCareer && !showCareerSelector && (
           <>
             {/* Malla por semestres - Vista en columnas */}
-            <div className="p-4">
+            <div className="p-2 md:p-4">
               {/* Header con título y botón de cambiar carrera */}
               <div className="flex items-center justify-center mb-6 gap-4">
                 <button
@@ -283,7 +283,7 @@ export default function CurriculumGrid() {
                 <div className="w-32"></div>
               </div>
           
-          {/* Container para semestres - vertical en móvil, horizontal en desktop */}
+          {/* Container para semestres - 2 columnas en móvil, scroll horizontal en desktop */}
           <div className="md:overflow-x-auto md:pb-4">
             {/* Indicador de scroll solo en desktop para carreras largas */}
             {maxSemesters > 4 && (
@@ -295,9 +295,11 @@ export default function CurriculumGrid() {
             )}
             
             <div 
-              className="flex flex-col md:flex-row gap-4 md:gap-2 md:min-w-max"
+              className="grid grid-cols-2 gap-1 justify-start md:flex md:flex-row md:gap-2 md:min-w-max md:justify-center"
               style={{
-                minWidth: maxSemesters <= 8 ? '100%' : `${maxSemesters * 200}px`
+                gridTemplateColumns: 'repeat(2, minmax(0, 180px))',
+                width: '100%',
+                minWidth: `${maxSemesters * 168}px`
               }}
             >
               {Array.from({ length: maxSemesters }, (_, i) => `s${i + 1}`).map((semester) => {
@@ -312,22 +314,15 @@ export default function CurriculumGrid() {
                     key={semester} 
                     className={`
                       flex flex-col rounded-2xl shadow-md border 
-                      w-full md:flex-shrink-0
+                      max-w-[180px] md:w-40 md:flex-shrink-0
                       ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'}
                     `}
-                    style={{
-                      ...(maxSemesters <= 4 ? { width: 'calc((100% - 0.75rem) / 4)' } :
-                          maxSemesters <= 6 ? { width: 'calc((100% - 1.25rem) / 6)' } :
-                          maxSemesters <= 8 ? { width: 'calc((100% - 1.75rem) / 8)' } : 
-                          { width: '200px' }),
-                      minWidth: maxSemesters <= 8 ? '150px' : '180px'
-                    }}
                   >
                   {/* Header del semestre */}
-                  <div className={`rounded-t-2xl p-3 text-center border-b md:border-b ${
+                  <div className={`rounded-t-2xl p-2 md:p-3 text-center border-b ${
                     darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-200 border-gray-300'
                   }`}>
-                    <h3 className={`font-bold text-sm md:text-sm ${
+                    <h3 className={`font-bold text-xs md:text-sm ${
                       darkMode ? 'text-gray-100' : 'text-gray-800'
                     }`}>
                       {getSemesterTitle(semester)}
@@ -350,7 +345,7 @@ export default function CurriculumGrid() {
                   </div>
                   
                   {/* Asignaturas del semestre */}
-                  <div className="flex flex-col gap-3 p-3 rounded-b-2xl md:rounded-b-2xl">
+                  <div className="flex flex-col gap-2 md:gap-3 p-2 md:p-3 rounded-b-2xl">
                     {semesterSubjects.map((subject) => (
                       <div
                         key={subject.code}

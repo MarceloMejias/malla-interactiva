@@ -113,9 +113,9 @@ export default function SubjectCard({
   };
 
   return (
-    <div className="relative group w-full">
+    <div className="relative group">
       <div
-        className={`relative rounded-xl border ${getStatusColor()} cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[100px] flex flex-col w-full`}
+        className={`relative rounded-xl border ${getStatusColor()} cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[90px] md:min-h-[100px] flex flex-col`}
         style={{ backgroundColor: getBackgroundColor() }}
         onClick={handleClick}
         title={
@@ -146,7 +146,7 @@ export default function SubjectCard({
         )}
         
         {/* Contenido principal */}
-        <div className="flex-1 px-3 pt-10 pb-2">
+        <div className="flex-1 px-2 md:px-3 pt-8 md:pt-10 pb-1 md:pb-2">
           <h3 className="font-bold text-xs leading-tight text-white mb-1 flex items-center gap-1">
             {subject.name}
           </h3>
