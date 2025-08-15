@@ -307,21 +307,21 @@ export default function CurriculumGrid() {
                 
                 if (semesterSubjects.length === 0) return null;
 
-                const getSemesterClass = () => {
-                  if (maxSemesters <= 4) return 'semester-4-cols';
-                  if (maxSemesters <= 6) return 'semester-6-cols';
-                  if (maxSemesters <= 8) return 'semester-8-cols';
-                  return 'semester-flexible';
-                };
-
                 return (
                   <div 
                     key={semester} 
                     className={`
                       flex flex-col rounded-2xl shadow-md border 
-                      semester-card ${getSemesterClass()} md:flex-shrink-0
+                      w-full md:flex-shrink-0
                       ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'}
                     `}
+                    style={{
+                      ...(maxSemesters <= 4 ? { width: 'calc((100% - 0.75rem) / 4)' } :
+                          maxSemesters <= 6 ? { width: 'calc((100% - 1.25rem) / 6)' } :
+                          maxSemesters <= 8 ? { width: 'calc((100% - 1.75rem) / 8)' } : 
+                          { width: '200px' }),
+                      minWidth: maxSemesters <= 8 ? '150px' : '180px'
+                    }}
                   >
                   {/* Header del semestre */}
                   <div className={`rounded-t-2xl p-3 text-center border-b md:border-b ${
