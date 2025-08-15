@@ -1,0 +1,64 @@
+{
+    "name": "Malla Interactiva UTFSM",
+    "short_name": "Malla UTFSM",
+    "description": "Calculadora de progreso académico para carreras UTFSM",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#f9fafb",
+    "background_color": "#f9fafb",
+    "categories": ["education", "productivity", "utilities"],
+    "lang": "es-CL",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Calculadora",
+            "short_name": "Calc",
+            "description": "Ir directo a la calculadora de progreso",
+            "url": "/",
+            "icons": [
+                {
+                    "src": "/android-chrome-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshot-wide.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Vista escritorio de la malla interactiva"
+        },
+        {
+            "src": "/screenshot-tablet.png",
+            "sizes": "768x1024",
+            "type": "image/png",
+            "form_factor": "tablet",
+            "label": "Vista tablet de la malla interactiva"
+        },
+        {
+            "src": "/screenshot-narrow.png", 
+            "sizes": "375x667",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Vista móvil de la calculadora"
+        }
+    ]
+}

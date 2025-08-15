@@ -47,7 +47,7 @@ export default function CareerSelector({
           {/* Sección Viña del Mar / Concepción */}
           <div className="mb-8">
             <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Viña del Mar / Concepción
+              Viña del Mar / Concepción / Vitacura
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {vinaConcepcionCareers.map((career) => (

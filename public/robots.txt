@@ -1,0 +1,17 @@
+# robots.txt para Malla Interactiva UTFSM
+# Permite indexación completa por buscadores
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://marcelomejias.github.io/malla-interactiva/sitemap.xml
+
+# Archivos específicos que no necesitan indexación
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Crawl delay (opcional - reduce carga del servidor)
+Crawl-delay: 1
