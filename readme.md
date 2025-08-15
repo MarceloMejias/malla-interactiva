@@ -14,7 +14,7 @@ Una aplicación web interactiva para visualizar y calcular el progreso académic
 - **Búsqueda de Prerrequisitos**: Click en prerrequisitos para encontrar la materia
 - **Validación Académica**: Límites de créditos y validación de prerrequisitos
 
-## 🎓 Carreras Disponibles
+## Carreras Disponibles
 
 ### Casa Central (Valparaíso)
 - Arquitectura
@@ -44,7 +44,7 @@ Una aplicación web interactiva para visualizar y calcular el progreso académic
 - Ingeniería en Biotecnología
 - Ingeniería en Informática
 
-## 🚀 Tecnologías
+## Tecnologías
 
 - **Frontend**: Next.js 15, React 18, TypeScript
 - **Estilos**: Tailwind CSS
@@ -52,7 +52,7 @@ Una aplicación web interactiva para visualizar y calcular el progreso académic
 - **Estado**: React Hooks (useState, useEffect, useRef)
 - **Persistencia**: LocalStorage para configuraciones
 
-## 🛠️ Instalación y Desarrollo
+## Instalación y Desarrollo
 
 ```bash
 # Clonar el repositorio
@@ -72,7 +72,7 @@ npm run build
 npm start
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 src/
@@ -101,7 +101,7 @@ src/
     └── colors_*.json      # Colores por carrera
 ```
 
-## 🎨 Personalización
+## Personalización
 
 ### Agregar Nueva Carrera
 
@@ -127,14 +127,14 @@ src/
 }
 ```
 
-## 📱 Características Móviles
+## Características Móviles
 
 - **Touch Gestures**: Soporte completo para drag & drop táctil
 - **Responsive Grid**: Layout adaptable a diferentes tamaños de pantalla
 - **Safari Integration**: Meta tags optimizados para iOS
 - **PWA Ready**: Configuración para Progressive Web App
 
-## 🎯 Funcionalidades Avanzadas
+## Funcionalidades Avanzadas
 
 ### Calculadora de Progreso
 - Validación de prerrequisitos en tiempo real
@@ -154,7 +154,7 @@ src/
 - Confetti al completar la carrera
 - Modo oscuro automático
 
-## 🤝 Contribuir
+## Contribuir
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
@@ -162,7 +162,7 @@ src/
 4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 ### Contribuidores con Datos de Mallas Originales
 
@@ -184,10 +184,10 @@ Este proyecto no habría sido posible sin la colaboración de estudiantes y ex-e
 - 🆕 **Agregar carreras**: Nuevas carreras o sedes que falten en el sistema
 
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
-## 🏫 Universidad Técnica Federico Santa María
+## Universidad Técnica Federico Santa María
 
 Desarrollado con ❤️ para la comunidad estudiantil de la UTFSM.
