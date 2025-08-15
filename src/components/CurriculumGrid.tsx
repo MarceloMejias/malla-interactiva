@@ -283,19 +283,19 @@ export default function CurriculumGrid() {
                 <div className="w-32"></div>
               </div>
           
-          {/* Container con scroll horizontal para semestres */}
-          <div className="overflow-x-auto pb-4">
-            {/* Indicador de scroll en móviles */}
+          {/* Container para semestres - vertical en móvil, horizontal en desktop */}
+          <div className="md:overflow-x-auto md:pb-4">
+            {/* Indicador de scroll solo en desktop para carreras largas */}
             {maxSemesters > 4 && (
               <div className={`text-xs text-center mb-2 ${
                 darkMode ? 'text-gray-400' : 'text-gray-600'
-              } md:hidden`}>
+              } hidden md:block`}>
                 ← Desliza para ver todos los semestres →
               </div>
             )}
             
             <div 
-              className="flex gap-2 min-w-max"
+              className="flex flex-col md:flex-row gap-4 md:gap-2 md:min-w-max"
               style={{
                 minWidth: maxSemesters <= 8 ? '100%' : `${maxSemesters * 200}px`
               }}
@@ -310,21 +310,24 @@ export default function CurriculumGrid() {
                 return (
                   <div 
                     key={semester} 
-                    className={`flex flex-col rounded-2xl shadow-md border flex-shrink-0 ${
-                      darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'
-                    }`}
+                    className={`
+                      flex flex-col rounded-2xl shadow-md border 
+                      w-full md:flex-shrink-0
+                      ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'}
+                    `}
                     style={{
-                      width: maxSemesters <= 4 ? 'calc((100% - 0.75rem) / 4)' :
-                             maxSemesters <= 6 ? 'calc((100% - 1.25rem) / 6)' :
-                             maxSemesters <= 8 ? 'calc((100% - 1.75rem) / 8)' : '200px',
+                      ...(maxSemesters <= 4 ? { width: 'calc((100% - 0.75rem) / 4)' } :
+                          maxSemesters <= 6 ? { width: 'calc((100% - 1.25rem) / 6)' } :
+                          maxSemesters <= 8 ? { width: 'calc((100% - 1.75rem) / 8)' } : 
+                          { width: '200px' }),
                       minWidth: maxSemesters <= 8 ? '150px' : '180px'
                     }}
                   >
                   {/* Header del semestre */}
-                  <div className={`rounded-t-2xl p-3 text-center border-b ${
+                  <div className={`rounded-t-2xl p-3 text-center border-b md:border-b ${
                     darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-200 border-gray-300'
                   }`}>
-                    <h3 className={`font-bold text-sm ${
+                    <h3 className={`font-bold text-sm md:text-sm ${
                       darkMode ? 'text-gray-100' : 'text-gray-800'
                     }`}>
                       {getSemesterTitle(semester)}
@@ -347,7 +350,7 @@ export default function CurriculumGrid() {
                   </div>
                   
                   {/* Asignaturas del semestre */}
-                  <div className="flex flex-col gap-3 p-3 rounded-b-2xl">
+                  <div className="flex flex-col gap-3 p-3 rounded-b-2xl md:rounded-b-2xl">
                     {semesterSubjects.map((subject) => (
                       <div
                         key={subject.code}
