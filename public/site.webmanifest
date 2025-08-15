@@ -24,41 +24,83 @@
             "purpose": "maskable any"
         }
     ],
-    "shortcuts": [
-        {
-            "name": "Calculadora",
-            "short_name": "Calc",
-            "description": "Ir directo a la calculadora de progreso",
-            "url": "/",
-            "icons": [
-                {
-                    "src": "/android-chrome-192x192.png",
-                    "sizes": "192x192"
-                }
-            ]
-        }
-    ],
     "screenshots": [
         {
-            "src": "/screenshot-wide.png",
-            "sizes": "1280x720",
+            "src": "/screenshots/mac/view1.png",
+            "sizes": "2880x1800",
             "type": "image/png",
             "form_factor": "wide",
-            "label": "Vista escritorio de la malla interactiva"
+            "label": "Vista completa de la malla curricular en desktop"
         },
         {
-            "src": "/screenshot-tablet.png",
-            "sizes": "768x1024",
+            "src": "/screenshots/mac/view2.png",
+            "sizes": "2880x1800",
             "type": "image/png",
-            "form_factor": "tablet",
-            "label": "Vista tablet de la malla interactiva"
+            "form_factor": "wide",
+            "label": "Interfaz principal con estadísticas en tiempo real"
         },
         {
-            "src": "/screenshot-narrow.png", 
-            "sizes": "375x667",
+            "src": "/screenshots/mac/calculator1.png",
+            "sizes": "2880x1800",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Calculadora de progreso con plan de graduación"
+        },
+        {
+            "src": "/screenshots/mac/calculator2.png",
+            "sizes": "2880x1800",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Planificación de semestres con drag & drop"
+        },
+        {
+            "src": "/screenshots/mac/calculator3.png",
+            "sizes": "2880x1800",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Organización avanzada de materias"
+        },
+        {
+            "src": "/screenshots/mac/category.png",
+            "sizes": "2880x1800",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Categorías y colores de asignaturas"
+        },
+        {
+            "src": "/screenshots/iphone/view.PNG",
+            "sizes": "1179x2556",
             "type": "image/png",
             "form_factor": "narrow",
-            "label": "Vista móvil de la calculadora"
+            "label": "Vista principal de la malla interactiva"
+        },
+        {
+            "src": "/screenshots/iphone/calculator1.PNG",
+            "sizes": "1179x2556",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Reorganiza tu progreso académico"
+        },
+        {
+            "src": "/screenshots/iphone/calculator2.PNG",
+            "sizes": "1179x2556",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Plan de graduación interactivo"
+        },
+        {
+            "src": "/screenshots/iphone/selector.PNG",
+            "sizes": "1179x2556",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Selector de carreras UTFSM"
+        },
+        {
+            "src": "/screenshots/iphone/category.PNG",
+            "sizes": "1179x2556",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Categorías de asignaturas"
         }
     ]
 }
