@@ -169,8 +169,8 @@ src/
 Este proyecto no habría sido posible sin la colaboración de estudiantes y ex-estudiantes de la UTFSM que contribuyeron con los datos originales de las mallas curriculares:
 
 #### Creadores Originales
-- **[Sebastián Aedo](https://github.com/etra0)** - Creador original de la malla interactiva. [📖 Malla Original](https://github.com/etra0/ramos)
-- **[César Paulangelo](https://github.com/booterman98)** - Mantenedor del fork de la malla interactiva original. [🌐 Fork de la Malla](https://booterman98.github.io/malla-interactiva/)
+- **[Sebastián Aedo](https://github.com/etra0)** - Creador original de la malla interactiva. [Malla Original](https://github.com/etra0/ramos)
+- **[César Paulangelo](https://github.com/booterman98)** - Mantenedor del fork de la malla interactiva original. [Fork de la Malla](https://booterman98.github.io/malla-interactiva/)
 
 #### Contribuidores de Datos Curriculares
 *Agradecemos a todos los estudiantes y ex-estudiantes que han contribuido con datos de mallas curriculares, validación de prerrequisitos, y correcciones a lo largo de los años. Sin su colaboración, mantener actualizadas las 20+ carreras sería imposible.*

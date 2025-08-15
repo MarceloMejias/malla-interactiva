@@ -33,10 +33,11 @@ export const metadata: Metadata = {
     siteName: 'Malla Interactiva UTFSM',
     images: [
       {
-        url: 'https://marcelomejias.github.io/malla-interactiva/og-image.svg',
+        url: 'https://marcelomejias.github.io/malla-interactiva/thumbnail.png',
         width: 1200,
         height: 630,
-        alt: 'Malla Interactiva UTFSM - Calculadora de progreso académico'
+        alt: 'Malla Interactiva UTFSM - Calculadora de progreso académico',
+        type: 'image/png'
       }
     ]
   },
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Malla Interactiva UTFSM',
     description: 'Calculadora de progreso académico para carreras UTFSM. Drag & drop, plan de graduación y más de 20 carreras.',
-    images: ['https://marcelomejias.github.io/malla-interactiva/og-image.svg'],
+    images: ['https://marcelomejias.github.io/malla-interactiva/thumbnail.png'],
     creator: '@marcelomejias'
   },
   
@@ -67,6 +68,12 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-status-bar-style': 'default',
     'msapplication-navbutton-color': '#f9fafb',
     'msapplication-TileColor': '#f9fafb',
+    // Meta tags adicionales para compatibilidad
+    'og:image': 'https://marcelomejias.github.io/malla-interactiva/thumbnail.png',
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:image:type': 'image/png',
+    'twitter:image': 'https://marcelomejias.github.io/malla-interactiva/thumbnail.png',
   }
 };
 
