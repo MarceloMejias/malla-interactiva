@@ -98,7 +98,7 @@ export default function SubjectCard({
           e.stopPropagation();
           onPrerequisiteClick(prereqCode);
         }}
-        className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded font-bold text-white hover:brightness-110 transition-all`}
+        className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded font-bold text-white hover:brightness-110 transition-all border border-white`}
         style={{ backgroundColor: prereqColor }}
         title={`${prereqSubject.name} (${prereqCode}) - Click para ir al ramo`}
       >
@@ -115,8 +115,10 @@ export default function SubjectCard({
   return (
     <div className="relative group">
       <div
-        className={`relative rounded-xl border ${getStatusColor()} cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[90px] md:min-h-[100px] flex flex-col`}
-        style={{ backgroundColor: getBackgroundColor() }}
+        className={`relative rounded-xl cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[90px] md:min-h-[100px] flex flex-col`}
+        style={{ 
+          backgroundColor: getBackgroundColor()
+        }}
         onClick={handleClick}
         title={
           isBlocked

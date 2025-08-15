@@ -5,8 +5,8 @@
         "QUI": ["#EC4899", "Química"],
         "MAT": ["#F59E0B", "Matemática"],
         "INF": ["#06B6D4", "Informática"],
-        "HUM": ["#84CC16", "Estudios Humanísticos"],
-        "MEC": ["#10B981", " Mecánica"],
+        "HUM": ["#8B5CF6", "Estudios Humanísticos"],
+        "MEC": ["#F97316", " Mecánica"],
         "IND": ["#0EA5E9", "Industrias"],
         "MET": ["#DC2626", " Metalúrgica y Materiales"]
 }

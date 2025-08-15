@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1770],{1770:s=>{s.exports=JSON.parse('{"PC":["#8B5CF6","Plan com\xfan, humanistas y deportes"],"MAT":["#F59E0B","Matem\xe1ticas"],"FIS":["#3B82F6","F\xedsica"],"AFI":["#6366F1","Astrof\xedsica"],"ENG":["#06B6D4","Ingl\xe9s"]}')}}]);

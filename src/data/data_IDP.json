@@ -14,12 +14,12 @@
     ["Educación Física II","DEW-101",1,2,"DEFI",["DEW-100"],""]
   ],
   "s3": [
-    ["Matemáticas III","MAT-013",4,0,"MAT",["MAT-012"],""],
-    ["Física Básica II","FIS-119",3,0,"FIS",["MAT-012","FIS-109"],""],
-    ["Taller de Productos I","IDP-111",3,0,"IDP",["FIS-100","IWG-101"],""],
-    ["Diseño en Ingeniería","IDP-102",3,0,"IDP",["FIS-109"],""],
-    ["Visión Inmanente del Quehacer Humano","HRW-102",2,0,"HUM",[],""],
-    ["Inglés para Ingeniería I","HIW-310",2,0,"HUM",[],""]
+    ["Matemáticas III","MAT-013",4,7,"MAT",["MAT-012"],""],
+    ["Física Básica II","FIS-119",3,5,"FIS",["MAT-012","FIS-109"],""],
+    ["Taller de Productos I","IDP-111",3,5,"IDP",["FIS-100","IWG-101"],""],
+    ["Diseño en Ingeniería","IDP-102",3,5,"IDP",["FIS-109"],""],
+    ["Visión Inmanente del Quehacer Humano","HRW-102",2,3,"HUM",[],""],
+    ["Inglés para Ingeniería I","HIW-310",2,3,"HUM",[],""]
   ],
   "s4": [
     ["Matemática IV","MAT-014",4,7,"MAT",["MAT-013"],""],
