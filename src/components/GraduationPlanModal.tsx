@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from '@/types/curriculum';
 
 interface SemesterPlan {
@@ -34,11 +34,30 @@ export default function GraduationPlanModal({
   const [localPlan, setLocalPlan] = useState<SemesterPlan[]>([]);
   const [draggedSubject, setDraggedSubject] = useState<{subject: Subject, fromSemester: string} | null>(null);
   const [dragOverSemester, setDragOverSemester] = useState<string | null>(null);
+  const [touchStartPos, setTouchStartPos] = useState<{x: number, y: number} | null>(null);
+  const [isDraggingTouch, setIsDraggingTouch] = useState(false);
+  const [touchPosition, setTouchPosition] = useState<{x: number, y: number} | null>(null);
 
   // Sincronizar con el plan externo
   useEffect(() => {
     setLocalPlan(graduationPlan);
   }, [graduationPlan]);
+
+  // Prevenir scroll durante touch drag
+  useEffect(() => {
+    if (isDraggingTouch) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isDraggingTouch]);
 
   useEffect(() => {
     if (isAnimating && localPlan.length > 0) {
@@ -63,7 +82,7 @@ export default function GraduationPlanModal({
     }
   }, [show, isAnimating, localPlan.length]);
 
-  // Funciones de drag & drop
+  // Funciones de drag & drop (mouse)
   const handleDragStart = (e: React.DragEvent, subject: Subject, fromSemester: string) => {
     setDraggedSubject({ subject, fromSemester });
     e.dataTransfer.effectAllowed = 'move';
@@ -82,8 +101,113 @@ export default function GraduationPlanModal({
     target.style.opacity = '1';
   };
 
+  // Funciones de touch (móvil)
+  const handleTouchStart = (e: React.TouchEvent, subject: Subject, fromSemester: string) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    setTouchStartPos({ x: touch.clientX, y: touch.clientY });
+    setDraggedSubject({ subject, fromSemester });
+    setIsDraggingTouch(true);
+    
+    // Añadir efecto visual
+    const target = e.target as HTMLElement;
+    target.style.opacity = '0.5';
+    target.style.transform = 'scale(1.05)';
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDraggingTouch || !touchStartPos) return;
+    
+    e.preventDefault();
+    const touch = e.touches[0];
+    const deltaX = Math.abs(touch.clientX - touchStartPos.x);
+    const deltaY = Math.abs(touch.clientY - touchStartPos.y);
+    
+    // Actualizar posición del indicador visual
+    setTouchPosition({ x: touch.clientX, y: touch.clientY });
+    
+    // Solo comenzar drag si se movió lo suficiente
+    if (deltaX > 10 || deltaY > 10) {
+      // Encontrar el elemento bajo el dedo
+      const elementUnderFinger = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (elementUnderFinger) {
+        const semesterContainer = elementUnderFinger.closest('[data-semester]');
+        if (semesterContainer) {
+          const semesterName = semesterContainer.getAttribute('data-semester');
+          
+          // Verificar si se puede soltar aquí
+          if (semesterName && draggedSubject) {
+            const targetSemester = localPlan.find(s => s.semester === semesterName);
+            const wouldExceedLimit = targetSemester && 
+              (targetSemester.credits + draggedSubject.subject.sctCredits > 35);
+            
+            if (!wouldExceedLimit) {
+              setDragOverSemester(semesterName);
+            } else {
+              setDragOverSemester(null);
+            }
+          }
+        } else {
+          setDragOverSemester(null);
+        }
+      }
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!isDraggingTouch || !draggedSubject) {
+      setIsDraggingTouch(false);
+      setTouchStartPos(null);
+      setTouchPosition(null);
+      setDraggedSubject(null);
+      setDragOverSemester(null);
+      return;
+    }
+
+    e.preventDefault();
+    const touch = e.changedTouches[0];
+    
+    // Encontrar el elemento de destino
+    const elementUnderFinger = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (elementUnderFinger) {
+      const semesterContainer = elementUnderFinger.closest('[data-semester]');
+      if (semesterContainer) {
+        const targetSemester = semesterContainer.getAttribute('data-semester');
+        if (targetSemester && targetSemester !== draggedSubject.fromSemester) {
+          // Ejecutar el drop
+          handleDropLogic(targetSemester);
+        }
+      }
+    }
+
+    // Limpiar estado
+    setIsDraggingTouch(false);
+    setTouchStartPos(null);
+    setTouchPosition(null);
+    setDraggedSubject(null);
+    setDragOverSemester(null);
+    
+    // Restaurar estilos
+    const target = e.target as HTMLElement;
+    target.style.opacity = '1';
+    target.style.transform = 'scale(1)';
+  };
+
   const handleDragOver = (e: React.DragEvent, semesterName: string) => {
     e.preventDefault();
+    
+    // Verificar si se puede soltar aquí (créditos y prerrequisitos)
+    if (draggedSubject) {
+      const targetSemester = localPlan.find(s => s.semester === semesterName);
+      const wouldExceedLimit = targetSemester && 
+        (targetSemester.credits + draggedSubject.subject.sctCredits > 35);
+      
+      if (wouldExceedLimit) {
+        e.dataTransfer.dropEffect = 'none';
+        return;
+      }
+    }
+    
     e.dataTransfer.dropEffect = 'move';
     setDragOverSemester(semesterName);
   };
@@ -93,11 +217,9 @@ export default function GraduationPlanModal({
     setDragOverSemester(null);
   };
 
-  const handleDrop = (e: React.DragEvent, toSemester: string) => {
-    e.preventDefault();
-    
+  // Lógica común para drop (tanto mouse como touch)
+  const handleDropLogic = (toSemester: string) => {
     if (!draggedSubject || draggedSubject.fromSemester === toSemester) {
-      setDragOverSemester(null);
       return;
     }
 
@@ -105,8 +227,17 @@ export default function GraduationPlanModal({
     const canMove = validateMove(draggedSubject.subject, toSemester);
     if (!canMove) {
       alert('No se puede mover esta asignatura aquí debido a prerrequisitos no cumplidos en semestres anteriores.');
-      setDragOverSemester(null);
       return;
+    }
+
+    // Verificar límite de créditos antes de mover
+    const targetSemester = localPlan.find(s => s.semester === toSemester);
+    if (targetSemester) {
+      const newCredits = targetSemester.credits + draggedSubject.subject.sctCredits;
+      if (newCredits > 35) {
+        alert(`No se puede mover esta asignatura. El semestre ${toSemester} tendría ${newCredits} créditos, pero el máximo permitido es 35 créditos.`);
+        return;
+      }
     }
 
     // Crear plan temporal con el movimiento
@@ -134,6 +265,11 @@ export default function GraduationPlanModal({
     // Recalcular todo el plan para manejar dependencias en cascada
     const recalculatedPlan = recalculatePlan(tempPlan);
     setLocalPlan(recalculatedPlan);
+  };
+
+  const handleDrop = (e: React.DragEvent, toSemester: string) => {
+    e.preventDefault();
+    handleDropLogic(toSemester);
     setDragOverSemester(null);
   };
 
@@ -335,6 +471,22 @@ export default function GraduationPlanModal({
         
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[60vh]">
+          {/* Indicador de drag en móvil - pequeño y que sigue el dedo */}
+          {isDraggingTouch && draggedSubject && touchPosition && (
+            <div 
+              className="fixed z-50 pointer-events-none transform -translate-x-1/2 -translate-y-1/2"
+              style={{ 
+                left: `${touchPosition.x}px`, 
+                top: `${touchPosition.y - 40}px` // Ligeramente arriba del dedo
+              }}
+            >
+              <div className="bg-blue-600 text-white text-xs px-2 py-1 rounded-lg shadow-lg flex items-center gap-1">
+                <FontAwesomeIcon icon={faGripVertical} className="text-xs" />
+                <span className="font-medium">{draggedSubject.subject.code}</span>
+              </div>
+            </div>
+          )}
+
           {localPlan.length === 0 ? (
             <div className="text-center py-12">
               <FontAwesomeIcon icon={faGraduationCap} className="text-6xl text-green-500 mb-4" />
@@ -349,27 +501,43 @@ export default function GraduationPlanModal({
                   <FontAwesomeIcon icon={faGripVertical} className="text-blue-600" />
                   <span className="font-semibold text-blue-800">Reorganiza tu plan</span>
                 </div>
-                <p className="text-sm text-blue-700">
-                  Arrastra las asignaturas entre semestres para reorganizar tu plan de graduación. 
-                  Los créditos se recalcularán automáticamente.
-                </p>
+                <div className="text-sm text-blue-700 space-y-1">
+                  <p className="hidden md:block">
+                    Arrastra las asignaturas entre semestres para reorganizar tu plan de graduación.
+                  </p>
+                  <p className="md:hidden">
+                    Mantén presionada una asignatura y arrástrala a otro semestre para reorganizar tu plan.
+                  </p>
+                  <p>Los créditos se recalcularán automáticamente.</p>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {localPlan.slice(0, visibleSemesters).map((semesterPlan, index) => (
-                  <div 
-                    key={semesterPlan.semester}
-                    className={`bg-white/50 backdrop-blur-sm rounded-2xl p-4 border transition-all duration-300 transform ${
-                      isAnimating && index === visibleSemesters - 1 
-                        ? 'scale-105 ring-2 ring-blue-400 shadow-lg border-blue-200' 
-                        : dragOverSemester === semesterPlan.semester
-                        ? 'scale-105 ring-2 ring-green-400 shadow-lg border-green-200 bg-green-50/50'
-                        : 'scale-100 border-gray-200'
-                    }`}
-                    onDragOver={(e) => handleDragOver(e, semesterPlan.semester)}
-                    onDragLeave={handleDragLeave}
-                    onDrop={(e) => handleDrop(e, semesterPlan.semester)}
-                  >
+                {localPlan.slice(0, visibleSemesters).map((semesterPlan, index) => {
+                  const isOverloaded = semesterPlan.credits > 30;
+                  const wouldExceedWithDrag = draggedSubject && 
+                    dragOverSemester === semesterPlan.semester &&
+                    (semesterPlan.credits + draggedSubject.subject.sctCredits > 35);
+                  
+                  return (
+                    <div 
+                      key={semesterPlan.semester}
+                      data-semester={semesterPlan.semester}
+                      className={`bg-white/50 backdrop-blur-sm rounded-2xl p-4 border transition-all duration-300 transform ${
+                        isAnimating && index === visibleSemesters - 1 
+                          ? 'scale-105 ring-2 ring-blue-400 shadow-lg border-blue-200' 
+                          : wouldExceedWithDrag
+                          ? 'scale-105 ring-2 ring-red-400 shadow-lg border-red-200 bg-red-50/50'
+                          : dragOverSemester === semesterPlan.semester
+                          ? 'scale-105 ring-2 ring-green-400 shadow-lg border-green-200 bg-green-50/50'
+                          : isOverloaded
+                          ? 'border-orange-300 bg-orange-50/30'
+                          : 'scale-100 border-gray-200'
+                      }`}
+                      onDragOver={(e) => handleDragOver(e, semesterPlan.semester)}
+                      onDragLeave={handleDragLeave}
+                      onDrop={(e) => handleDrop(e, semesterPlan.semester)}
+                    >
                     {/* Header del semestre */}
                     <div className="flex items-center gap-2 mb-4">
                       <FontAwesomeIcon icon={faCalendarAlt} className="text-blue-600" />
@@ -377,20 +545,53 @@ export default function GraduationPlanModal({
                         <h4 className="font-bold text-gray-800">
                           {semesterPlan.semester}
                         </h4>
-                        <p className="text-xs text-gray-600">
+                        <p className={`text-xs ${
+                          isOverloaded ? 'text-orange-600 font-medium' : 'text-gray-600'
+                        }`}>
                           {semesterPlan.subjects.length} asignaturas • {semesterPlan.credits} créditos
+                          {isOverloaded && (
+                            <span className="ml-1">
+                              <FontAwesomeIcon icon={faExclamationTriangle} className="text-xs" /> Sobrecarga
+                            </span>
+                          )}
                         </p>
                       </div>
-                      {dragOverSemester === semesterPlan.semester && (
+                      {dragOverSemester === semesterPlan.semester && !wouldExceedWithDrag && (
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      )}
+                      {wouldExceedWithDrag && (
+                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                       )}
                     </div>
 
-                    {/* Drop zone visual cuando está vacío */}
-                    {semesterPlan.subjects.length === 0 && dragOverSemester === semesterPlan.semester && (
-                      <div className="border-2 border-dashed border-green-400 rounded-lg p-4 text-center text-green-600 text-sm mb-2">
-                        <FontAwesomeIcon icon={faGripVertical} className="mb-2" />
-                        <div>Suelta aquí la asignatura</div>
+                    {/* Advertencia de límite de créditos */}
+                    {isOverloaded && (
+                      <div className="mb-3 p-2 bg-orange-100 border border-orange-300 rounded-lg">
+                        <div className="flex items-center gap-2 text-orange-700">
+                          <FontAwesomeIcon icon={faExclamationTriangle} className="text-sm" />
+                          <span className="text-sm font-medium">Sobrecarga Académica</span>
+                        </div>
+                        <p className="text-xs text-orange-600 mt-1">
+                          Este semestre tiene {semesterPlan.credits} créditos. La carga normal es de 30 créditos.
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Indicador de drop prohibido */}
+                    {wouldExceedWithDrag && (
+                      <div className="border-2 border-dashed border-red-400 rounded-lg p-2 text-center text-red-600 text-xs mb-2 bg-red-50/30">
+                        <FontAwesomeIcon icon={faBan} className="text-lg mb-1" />
+                        <div className="font-medium text-xs">Límite excedido</div>
+                        <div className="text-xs">Máximo 35 créditos</div>
+                      </div>
+                    )}
+
+                    {/* Drop zone visual cuando está vacío o durante drag móvil válido */}
+                    {!wouldExceedWithDrag && ((semesterPlan.subjects.length === 0 && dragOverSemester === semesterPlan.semester) || 
+                      (isDraggingTouch && dragOverSemester === semesterPlan.semester)) && (
+                      <div className="border-2 border-dashed border-green-400 rounded-lg p-2 text-center text-green-600 text-xs mb-2 bg-green-50/30">
+                        <FontAwesomeIcon icon={faGripVertical} className="mb-1" />
+                        <div className="font-medium text-xs">Soltar aquí</div>
                       </div>
                     )}
 
@@ -406,10 +607,16 @@ export default function GraduationPlanModal({
                             draggable={!isAnimating}
                             onDragStart={(e) => handleDragStart(e, subject, semesterPlan.semester)}
                             onDragEnd={handleDragEnd}
-                            className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 cursor-move hover:shadow-md hover:scale-105 ${
+                            onTouchStart={(e) => handleTouchStart(e, subject, semesterPlan.semester)}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                            className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 cursor-move hover:shadow-md hover:scale-105 select-none ${
                               isDragging ? 'opacity-50 scale-95' : 'opacity-100'
                             } ${!isAnimating ? 'hover:ring-2 hover:ring-white/30' : ''}`}
-                            style={{ backgroundColor: subjectColor }}
+                            style={{ 
+                              backgroundColor: subjectColor,
+                              touchAction: 'none' // Prevenir scroll en móvil durante drag
+                            }}
                             title={`Arrastra para mover a otro semestre`}
                           >
                             <div className="flex items-center gap-2">
@@ -432,12 +639,31 @@ export default function GraduationPlanModal({
                       })}
                     </div>
                   </div>
-                ))}
+                );
+              })}
               </div>
 
               {/* Resumen de cambios */}
               <div className="mt-6 p-4 bg-gray-50 rounded-2xl border border-gray-200">
                 <h5 className="font-semibold text-gray-800 mb-2">Resumen del Plan Modificado</h5>
+                
+                {/* Alertas de sobrecarga */}
+                {localPlan.some(s => s.credits > 30) && (
+                  <div className="mb-4 p-3 bg-orange-100 border border-orange-300 rounded-lg">
+                    <div className="flex items-center gap-2 text-orange-700 mb-2">
+                      <FontAwesomeIcon icon={faExclamationTriangle} className="text-sm" />
+                      <span className="text-sm font-medium">Advertencias de Carga Académica</span>
+                    </div>
+                    <div className="text-xs text-orange-600 space-y-1">
+                      {localPlan.filter(s => s.credits > 30).map(semester => (
+                        <div key={semester.semester}>
+                          • <strong>{semester.semester}</strong>: {semester.credits} créditos (carga normal: 30)
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-blue-600">{totalSemesters}</div>

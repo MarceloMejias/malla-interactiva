@@ -42,7 +42,7 @@ export default function SemesterGrid({
   const maxSemesters = getMaxSemesters();
 
   return (
-    <div className="md:overflow-x-auto md:pb-4">
+    <div className="w-full">
       {/* Indicador de scroll solo en desktop para carreras largas */}
       {maxSemesters > 4 && (
         <div className={`text-xs text-center mb-2 ${
@@ -52,14 +52,8 @@ export default function SemesterGrid({
         </div>
       )}
       
-      <div 
-        className="grid grid-cols-2 gap-1 justify-start md:flex md:flex-row md:gap-2 md:min-w-max md:justify-center"
-        style={{
-          gridTemplateColumns: 'repeat(2, minmax(0, 180px))',
-          width: '100%',
-          minWidth: `${maxSemesters * 168}px`
-        }}
-      >
+      {/* Móvil: Grid de 2 columnas que se adapta al contenido */}
+      <div className="grid grid-cols-2 gap-1 w-full md:hidden">
         {Array.from({ length: maxSemesters }, (_, i) => `s${i + 1}`).map((semester) => {
           const semesterSubjects = getSemesterSubjects(semester);
           
@@ -78,6 +72,33 @@ export default function SemesterGrid({
             />
           );
         })}
+      </div>
+
+      {/* Desktop: Flex horizontal con scroll */}
+      <div className="hidden md:block md:overflow-x-auto md:pb-4">
+        <div 
+          className={`flex flex-row gap-2 ${maxSemesters <= 8 ? 'justify-center' : 'justify-start'}`}
+          style={{ minWidth: maxSemesters <= 8 ? 'auto' : `${maxSemesters * 168}px` }}
+        >
+          {Array.from({ length: maxSemesters }, (_, i) => `s${i + 1}`).map((semester) => {
+            const semesterSubjects = getSemesterSubjects(semester);
+            
+            return (
+              <SemesterCard
+                key={semester}
+                semester={semester}
+                subjects={semesterSubjects}
+                subjectStates={subjectStates}
+                onStateChange={onStateChange}
+                colors={colors}
+                onPrerequisiteClick={onPrerequisiteClick}
+                findSubjectByCode={findSubjectByCode}
+                darkMode={darkMode}
+                subjectRefs={subjectRefs}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

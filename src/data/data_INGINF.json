@@ -34,7 +34,7 @@
     "s5": [
         ["Introducción a las Finanzas","HMN292T","1","3","IND",["HMN295T"],"A"],
         ["Gestión de la Innovación","EIN088B","1","3","IND",[],"I"],
-        ["Sistemas integrados de Gestión","EIN084B","1","4","IND",[],"I"],
+        ["Sistemas integrados de Gestión","EIN084B","1","4","IND",["MAT006B"],"I"],
         ["Redes de Computadores","EIN085B","1","6","FI",["EIN083B"],"I"],
         ["Ingeniería de Software","EIN086B","1","6","IS",["EIN082B"],"I"],
         ["Ciencias de Datos","EIN087B","1","6","FI",["MAT006B"],"I"]
@@ -52,13 +52,13 @@
         ["Electivo II","EIN096B","1","6","ELEC",[],"A"],
         ["Electivo III","EIN097B","1","6","ELEC",[],"A"],
         ["Proyecto de Software I","EIN098B","1","5","ELEC",["EIN093B","EIN088B"],"I"],
-        ["Seminario de Título","EIN099B","1","3","ELEC",[],"I"]
+        ["Seminario de Título","EIN099B","1","3","ELEC",["MAT006B","EIN082B", "EIN083B"],"I"]
     ],
     "s8": [
         ["Electivo IV","EIN100B","1","6","ELEC",[],"A"],
         ["Electivo V","EIN101B","1","6","ELEC",[],"A"],
         ["Electivo VI","EIN102B","1","6","ELEC",[],"A"],
         ["Proyecto de Software II","EIN103B","1","5","ELEC",["EIN098B"],"P"],
-        ["Proyecto de Título","EIN104B","1","6","ELEC",[],"P"]
+        ["Proyecto de Título","EIN104B","1","6","ELEC",["EIN099B"],"P"]
     ]
 }

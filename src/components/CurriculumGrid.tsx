@@ -70,12 +70,12 @@ export default function CurriculumGrid() {
   };
 
   return (
-    <div className={`min-h-screen p-2 pb-32 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="w-full mx-auto">
+    <div className={`min-h-screen pb-32 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <div className="w-full mx-auto overflow-x-hidden">
         {/* Contenido principal - solo mostrar si hay carrera seleccionada */}
         {selectedCareer && !showCareerSelector && (
           <>
-            <div className="p-2 md:p-4">
+            <div className="p-1 md:p-2 lg:p-4">
               <CareerHeader
                 careerName={careerName}
                 careerColor={careerColor}

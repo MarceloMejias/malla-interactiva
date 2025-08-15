@@ -49,8 +49,8 @@ export default function SemesterCard({
   return (
     <div 
       className={`
-        flex flex-col rounded-2xl shadow-md border 
-        max-w-[180px] md:w-40 md:flex-shrink-0
+        flex flex-col rounded-2xl shadow-md border w-full
+        md:max-w-[180px] md:w-40 md:flex-shrink-0
         ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'}
       `}
     >
