@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from '@/types/curriculum';
 
 interface SemesterPlan {
@@ -556,6 +556,17 @@ export default function GraduationPlanModal({
                           )}
                         </p>
                       </div>
+                      {semesterPlan.subjects.length === 0 && (
+                        <button
+                          className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 border border-red-200 transition-colors"
+                          title="Eliminar semestre en blanco"
+                          onClick={() => {
+                            setLocalPlan(prev => prev.filter((s, i) => i !== index));
+                          }}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                      )}
                       {dragOverSemester === semesterPlan.semester && !wouldExceedWithDrag && (
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                       )}

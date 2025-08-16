@@ -131,28 +131,21 @@ export const useGraduationPlan = (
     });
 
     let semesterPointer = 0;
+
     while (remainingSubjects.length > 0 && currentSemester <= 20 && semesterPointer < semesterLevels.length) { // Máximo 20 semestres
       const currentSemesterCode = semesterLevels[semesterPointer];
-      // Solo considerar materias del semestre actual (o anteriores si quedaron pendientes)
+      // Materias del semestre actual disponibles
       let availableSubjects = remainingSubjects.filter(subject => {
-        // Solo materias del semestre actual
         if (subject.semester !== currentSemesterCode) return false;
-        // Verificar prerrequisitos
         return isSubjectAvailable(subject, completedSubjects);
       });
-
-      if (availableSubjects.length === 0) {
-        // Si no hay materias disponibles, avanzar al siguiente semestre
-        currentSemester++;
-        semesterPointer++;
-        continue;
-      }
 
       // Seleccionar materias para este semestre
       const semesterSubjects: Subject[] = [];
       let semesterCredits = 0;
       const maxCreditsThisSemester = maxCreditsPerSemester;
 
+      // Primero, agregar materias del semestre actual
       for (const subject of availableSubjects) {
         if (semesterCredits + subject.sctCredits <= maxCreditsThisSemester) {
           semesterSubjects.push(subject);
@@ -163,6 +156,34 @@ export const useGraduationPlan = (
           if (index !== -1) {
             remainingSubjects.splice(index, 1);
           }
+        }
+      }
+
+      // Si quedan créditos disponibles, buscar ramos adelantables
+      if (semesterCredits < maxCreditsThisSemester) {
+        // Buscar materias de semestres futuros que estén habilitadas por prerrequisitos
+        // y que no estén ya en semesterSubjects
+        const futureSubjects = remainingSubjects.filter(subject => {
+          // Solo semestres posteriores
+          const subjectSemIndex = semesterLevels.indexOf(subject.semester);
+          if (subjectSemIndex <= semesterPointer) return false;
+          // Prerrequisitos cumplidos
+          if (!isSubjectAvailable(subject, completedSubjects)) return false;
+          return true;
+        });
+
+        for (const subject of futureSubjects) {
+          if (semesterCredits + subject.sctCredits <= maxCreditsThisSemester) {
+            semesterSubjects.push(subject);
+            semesterCredits += subject.sctCredits;
+            completedSubjects.add(subject.code);
+            // Remover de materias pendientes
+            const index = remainingSubjects.findIndex(s => s.code === subject.code);
+            if (index !== -1) {
+              remainingSubjects.splice(index, 1);
+            }
+          }
+          if (semesterCredits >= maxCreditsThisSemester) break;
         }
       }
 
