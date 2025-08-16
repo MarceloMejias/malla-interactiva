@@ -643,6 +643,45 @@ export default function GraduationPlanModal({
               })}
               </div>
 
+                {/* Botón para añadir semestre en blanco */}
+                <div className="flex justify-center mt-4 col-span-full">
+                  <button
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-xl border border-blue-200 shadow-sm transition-colors"
+                    onClick={() => {
+                      // Generar nombre de semestre siguiente
+                      const lastSemester = localPlan[localPlan.length - 1]?.semester;
+                      let newSemesterName = 'Nuevo';
+                      if (lastSemester) {
+                        const match = lastSemester.match(/(\d{4})-(\d)/);
+                        if (match) {
+                          let year = parseInt(match[1], 10);
+                          let sem = parseInt(match[2], 10);
+                          if (sem === 2) {
+                            year += 1;
+                            sem = 1;
+                          } else {
+                            sem = 2;
+                          }
+                          newSemesterName = `${year}-${sem}`;
+                        } else {
+                          newSemesterName = `${lastSemester}-nuevo`;
+                        }
+                      } else {
+                        // Si no hay semestres, usar año actual
+                        const now = new Date();
+                        newSemesterName = `${now.getFullYear()}-1`;
+                      }
+                      setLocalPlan(prev => ([
+                        ...prev,
+                        { semester: newSemesterName, subjects: [], credits: 0 }
+                      ]));
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faCalendarAlt} />
+                    Añadir semestre en blanco
+                  </button>
+                </div>
+
               {/* Resumen de cambios */}
               <div className="mt-6 p-4 bg-gray-50 rounded-2xl border border-gray-200">
                 <h5 className="font-semibold text-gray-800 mb-2">Resumen del Plan Modificado</h5>
