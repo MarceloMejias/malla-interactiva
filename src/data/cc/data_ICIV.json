@@ -1,0 +1,671 @@
+{
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Educacion Fisica I (damas y Varones)",
+      "DEW100",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Ingenieria",
+      "IWG101",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Matematica I",
+      "MAT021",
+      0,
+      8,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Programacion",
+      "IWI131",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s2": [
+    [
+      "Educacion Fisica II (damas y Varones)",
+      "DEW101",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW100"
+      ],
+      ""
+    ],
+    [
+      "Fisica General I",
+      "FIS110",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "MAT021",
+        "FIS100"
+      ],
+      ""
+    ],
+    [
+      "Humanistico I",
+      "HXW001",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Matematica II",
+      "MAT022",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT021"
+      ],
+      ""
+    ],
+    [
+      "Quimica y Sociedad",
+      "QUI010",
+      0,
+      5,
+      "QUÍMICA",
+      [],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Deportes",
+      "DEW  0",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW101"
+      ],
+      ""
+    ],
+    [
+      "Dibujo en Ingeniería Civil",
+      "CIV103",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "IWG101",
+        "MAT021"
+      ],
+      ""
+    ],
+    [
+      "Estatica de Estructuras",
+      "CIV131",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "MAT022",
+        "FIS110"
+      ],
+      ""
+    ],
+    [
+      "Fisica General II",
+      "FIS120",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "MAT022",
+        "FIS110"
+      ],
+      ""
+    ],
+    [
+      "Inglés a Y/o Humanístico II",
+      "HXW002",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HXW001"
+      ],
+      ""
+    ],
+    [
+      "Matematicas III",
+      "MAT023",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT022"
+      ],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Fisica General III",
+      "FIS130",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "MAT022",
+        "FIS110"
+      ],
+      ""
+    ],
+    [
+      "Inglés B Y/o Humanístico III",
+      "HXW003",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HXW002"
+      ],
+      ""
+    ],
+    [
+      "Matematicas IV",
+      "MAT024",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Mecánica de Materiales",
+      "CIV133",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "MAT023",
+        "CIV131"
+      ],
+      ""
+    ],
+    [
+      "Topografía",
+      "CIV206",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV103"
+      ],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Analisis Numerico",
+      "MAT270",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT024"
+      ],
+      ""
+    ],
+    [
+      "Geología",
+      "CIV205",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV206"
+      ],
+      ""
+    ],
+    [
+      "Inglés C Y/o Humanístico IV",
+      "HXW004",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HXW003"
+      ],
+      ""
+    ],
+    [
+      "Mecánica Racional",
+      "CIV202",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CIV131",
+        "MAT024"
+      ],
+      ""
+    ],
+    [
+      "Tecnologia de Materiales",
+      "CIV251",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "QUI010",
+        "CIV131"
+      ],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Fundamentos de Análisis Estructural",
+      "CIV233",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV202",
+        "CIV131",
+        "CIV133"
+      ],
+      ""
+    ],
+    [
+      "Fundamentos de Ingeniería de Construcción y Administración",
+      "CIV222",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV251"
+      ],
+      ""
+    ],
+    [
+      "Inglés D Y/o Humanístico V",
+      "HXW005",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Mecánica de Fluidos",
+      "CIV244",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CIV202"
+      ],
+      ""
+    ],
+    [
+      "Probabilidad y Estadística Para Ingeniería Civil",
+      "MAT044",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT023"
+      ],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Análisis Estructural",
+      "CIV234",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "MAT270",
+        "CIV233"
+      ],
+      ""
+    ],
+    [
+      "Economia I-a",
+      "ICS733",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Fund. de Inv. de Operaciones",
+      "ILI281",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "IWI131",
+        "MAT044",
+        "MAT022"
+      ],
+      ""
+    ],
+    [
+      "Hidraulica Teorica y Laboratorio",
+      "CIV242",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV244"
+      ],
+      ""
+    ],
+    [
+      "Optativo de Formación Transversal",
+      "OFT  1",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Dinamica de Estructuras",
+      "CIV235",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CIV234"
+      ],
+      ""
+    ],
+    [
+      "Hidrologia",
+      "CIV243",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV242",
+        "MAT044"
+      ],
+      ""
+    ],
+    [
+      "Ingeniería de Transporte",
+      "CIV386",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "ILI281",
+        "ICS733"
+      ],
+      ""
+    ],
+    [
+      "Mecanica de Suelos I",
+      "CIV261",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV242",
+        "CIV133"
+      ],
+      ""
+    ],
+    [
+      "Planificación y Control de Proyectos",
+      "CIV380",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV222",
+        "ICS733"
+      ],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Diseño Geométrico y Capacidad Vial",
+      "CIV370",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV386"
+      ],
+      ""
+    ],
+    [
+      "Gestión de la Calidad Total en la Cadena de Suministro",
+      "CIV381",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV380"
+      ],
+      ""
+    ],
+    [
+      "Hidraulica Aplicada",
+      "CIV346",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV243"
+      ],
+      ""
+    ],
+    [
+      "Hormigón Armado",
+      "CIV331",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CIV234",
+        "CIV251"
+      ],
+      ""
+    ],
+    [
+      "Mecanica de Suelos II",
+      "CIV366",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV261"
+      ],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Diseño en Acero",
+      "CIV336",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CIV234"
+      ],
+      ""
+    ],
+    [
+      "Diseño Estructural de Pavimentos",
+      "CIV371",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV366"
+      ],
+      ""
+    ],
+    [
+      "Ingeniería Sanitaria",
+      "CIV377",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV242"
+      ],
+      ""
+    ],
+    [
+      "Maquinas y Sistemas Hidraulicos",
+      "CIV347",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV346"
+      ],
+      ""
+    ],
+    [
+      "Optativo de Especialidad I",
+      "CIVOE1",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ]
+  ],
+  "s11": [
+    [
+      "Evaluación de Proyectos",
+      "CIV390",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CIV380",
+        "CIV381"
+      ],
+      ""
+    ],
+    [
+      "Ingenieria del Medio Ambiente",
+      "CIV378",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV381",
+        "CIV377"
+      ],
+      ""
+    ],
+    [
+      "Ingenieria Sismica",
+      "CIV338",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV336",
+        "CIV235"
+      ],
+      ""
+    ],
+    [
+      "Optativo de Especialidad II",
+      "CIVOE2",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ],
+    [
+      "Taller de Titulación I",
+      "CIV397",
+      0,
+      6,
+      "OBRAS CIVILES",
+      [
+        "CIV347",
+        "CIV377",
+        "CIV371",
+        "CIV331",
+        "CIV336",
+        "CIV366",
+        "CIV381"
+      ],
+      ""
+    ]
+  ],
+  "s12": [
+    [
+      "Proyecto de Ingeniería Civil",
+      "CIVOP1",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ],
+    [
+      "Taller de Titulación II",
+      "CIV398",
+      0,
+      22,
+      "OBRAS CIVILES",
+      [
+        "CIV397",
+        "CIV338",
+        "CIV378",
+        "CIV390"
+      ],
+      ""
+    ]
+  ]
+}

@@ -83,7 +83,7 @@ export const useGraduationPlan = (
     const plan: SemesterPlan[] = [];
     const remainingSubjects = [...pendingSubjects];
     let currentSemester = 1;
-    const maxCreditsPerSemester = 30; // Límite de créditos por semestre en UTFSM
+    const maxCreditsPerSemester = 32; // Límite de créditos por semestre en UTFSM
     const currentYear = new Date().getFullYear(); // Año actual
 
     const getSemesterName = (semesterNumber: number): string => {
@@ -121,49 +121,43 @@ export const useGraduationPlan = (
       return `${finalYear}-${finalSemester}`;
     };
 
-    while (remainingSubjects.length > 0 && currentSemester <= 20) { // Máximo 20 semestres
-      // Determinar el nivel académico actual del estudiante
-      const currentAcademicLevel = getCurrentAcademicLevel(completedSubjects);
-      
+    // Obtener todos los semestres posibles en orden
+    const semesterLevels = Array.from(new Set(subjects.map(s => s.semester))).filter(Boolean);
+    semesterLevels.sort((a, b) => {
+      // Extraer el número del semestre (ej: 's1' -> 1)
+      const numA = parseInt((a || '').replace('s', ''));
+      const numB = parseInt((b || '').replace('s', ''));
+      return numA - numB;
+    });
+
+    let semesterPointer = 0;
+    while (remainingSubjects.length > 0 && currentSemester <= 20 && semesterPointer < semesterLevels.length) { // Máximo 20 semestres
+      const currentSemesterCode = semesterLevels[semesterPointer];
+      // Solo considerar materias del semestre actual (o anteriores si quedaron pendientes)
       let availableSubjects = remainingSubjects.filter(subject => {
+        // Solo materias del semestre actual
+        if (subject.semester !== currentSemesterCode) return false;
         // Verificar prerrequisitos
-        const hasPrerequisites = isSubjectAvailable(subject, completedSubjects);
-        // Verificar si puede tomar materias de este semestre según su nivel académico
-        const canTakeBySemester = subject.semester ? 
-          canTakeSubjectFromSemester(subject.semester, currentAcademicLevel, completedSubjects) : 
-          false;
-        
-        return hasPrerequisites && canTakeBySemester;
+        return isSubjectAvailable(subject, completedSubjects);
       });
 
       if (availableSubjects.length === 0) {
         // Si no hay materias disponibles, avanzar al siguiente semestre
         currentSemester++;
+        semesterPointer++;
         continue;
       }
-
-      // Ordenar por prioridad: menos prerrequisitos pendientes primero
-      availableSubjects.sort((a, b) => {
-        const aPendingPrereqs = a.prerequisites.filter(prereq => 
-          !completedSubjects.has(prereq)
-        ).length;
-        const bPendingPrereqs = b.prerequisites.filter(prereq => 
-          !completedSubjects.has(prereq)
-        ).length;
-        return aPendingPrereqs - bPendingPrereqs;
-      });
 
       // Seleccionar materias para este semestre
       const semesterSubjects: Subject[] = [];
       let semesterCredits = 0;
-      const maxCreditsThisSemester = maxCreditsPerSemester; // Sin límite especial para primer año
+      const maxCreditsThisSemester = maxCreditsPerSemester;
 
       for (const subject of availableSubjects) {
         if (semesterCredits + subject.sctCredits <= maxCreditsThisSemester) {
           semesterSubjects.push(subject);
           semesterCredits += subject.sctCredits;
           completedSubjects.add(subject.code);
-          
           // Remover de materias pendientes
           const index = remainingSubjects.findIndex(s => s.code === subject.code);
           if (index !== -1) {
@@ -178,13 +172,10 @@ export const useGraduationPlan = (
           subjects: semesterSubjects,
           credits: semesterCredits
         });
-
-        // Verificar si el estudiante avanzó de nivel académico
-        const newAcademicLevel = getCurrentAcademicLevel(completedSubjects);
-        // El nivel académico se actualiza automáticamente en la siguiente iteración
       }
 
       currentSemester++;
+      semesterPointer++;
     }
 
     setGraduationPlan(plan);

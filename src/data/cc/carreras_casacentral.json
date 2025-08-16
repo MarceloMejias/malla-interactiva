@@ -6,8 +6,13 @@
   },
   {
     "Nombre": "Construcción Civil",
-    "Link": "CONSTRU",
+    "Link": "CTCIV",
     "Color": "#D2691E"
+  },
+    {
+    "Nombre": "Construcción Civil (Malla Antigua)",
+    "Link": "CONSTRU-0",
+    "Color": "#D5675F"
   },
   {
     "Nombre": "Ing. Diseño de Productos",
@@ -16,17 +21,32 @@
   },
   {
     "Nombre": "Ing. Civil",
-    "Link": "CIV",
+    "Link": "ICIV",
+    "Color": "#7070C0"
+  },
+  {
+    "Nombre": "Ing. Civil (Malla Antigua)",
+    "Link": "CIV-0",
     "Color": "#708090"
   },
   {
     "Nombre": "Ing. Civil Ambiental",
-    "Link": "ICA",
+    "Link": "AMB",
     "Color": "#228B22"
   },
   {
+    "Nombre": "Ing. Civil Ambiental (Malla Antigua)",
+    "Link": "ICA-0",
+    "Color": "#98FB98"
+  },
+  {
+    "Nombre": "Ing. Civil Biotecnología",
+    "Link": "ICBT",
+    "Color": "#8FBC8F"
+  },
+  {
     "Nombre": "Ing. Civil de Minas",
-    "Link": "ICM",
+    "Link": "ICM-0",
     "Color": "#A0522D"
   },
   {
@@ -35,9 +55,19 @@
     "Color": "#4169E1"
   },
   {
+    "Nombre": "Ing. Civil Electrónica (Malla Antigua)",
+    "Link": "ELO-0",
+    "Color": "#6495ED"
+  },
+  {
     "Nombre": "Ing. Civil Eléctrica",
     "Link": "ELI",
     "Color": "#FFD700"
+  },
+    {
+    "Nombre": "Ing. Civil Eléctrica (Malla Antigua)",
+    "Link": "ELI-0",
+    "Color": "#6495ED"
   },
   {
     "Nombre": "Ing. Comercial",
@@ -50,8 +80,8 @@
     "Color": "#90EE90"
   },
   {
-    "Nombre": "Lic. Física",
-    "Link": "FIS",
+    "Nombre": "Ing. Civil Física",
+    "Link": "ICFIS",
     "Color": "#9370DB"
   },
   {
@@ -61,7 +91,7 @@
   },
   {
     "Nombre": "Lic. en Química",
-    "Link": "QUI",
+    "Link": "LQUI",
     "Color": "#20B2AA"
   },
   {
@@ -80,9 +110,19 @@
     "Color": "#FF6347"
   },
   {
+    "Nombre": "Ing. Civil Industrial (Malla Antigua)",
+    "Link": "ICI-0",
+    "Color": "#FF7F80"
+  },
+  {
     "Nombre": "Ing. Civil Matemática",
     "Link": "MAT",
     "Color": "#DC143C"
+  },
+  {
+    "Nombre": "Ing. Civil Matemática (Malla Antigua)",
+    "Link": "MAT-0",
+    "Color": "#FFB6C1"
   },
   {
     "Nombre": "Ing. Civil Mecánica",
@@ -92,7 +132,12 @@
   {
     "Nombre": "Ing. Civil Metalúrgica",
     "Link": "MET",
-    "Color": "#C0C0C0"
+    "Color": "#B8860B"
+  },
+  {
+    "Nombre": "Ing. Civil Metalúrgica (Malla Antigua)",
+    "Link": "MET-0",
+    "Color": "#DAA520"
   },
   {
     "Nombre": "Ing. Civil Química",
@@ -100,8 +145,18 @@
     "Color": "#FF4500"
   },
   {
+    "Nombre": "Ing. Civil Química (Malla Antigua)",
+    "Link": "ICQ-0",
+    "Color": "#FF6347"
+  },
+  {
     "Nombre": "Ing. Civil Telemática",
     "Link": "TEL",
     "Color": "#9932CC"
+  },
+  {
+    "Nombre": "Ing. Civil Telemática (Malla Antigua)",
+    "Link": "TEL-0",
+    "Color": "#BA55D3"
   }
 ]

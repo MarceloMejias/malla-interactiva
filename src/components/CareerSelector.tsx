@@ -7,19 +7,32 @@ interface Career {
 interface CareerSelectorProps {
   show: boolean;
   casaCentralCareers: Career[];
-  vinaConcepcionCareers: Career[];
+  sanjoaquinCareers: Career[];
+  vitacuraCareers: Career[];
+  concepcionCareers: Career[];
+  vinaCareers: Career[];
   darkMode: boolean;
-  onCareerSelect: (careerLink: string) => void;
+  onCareerSelect: (campus: string, careerCode: string) => void;
 }
 
 export default function CareerSelector({
   show,
   casaCentralCareers,
-  vinaConcepcionCareers,
+  vinaCareers,
+  sanjoaquinCareers,
+  vitacuraCareers,
+  concepcionCareers,
   darkMode,
   onCareerSelect
 }: CareerSelectorProps) {
   if (!show) return null;
+
+  // Helper para extraer el código de carrera (sin campus) si es necesario
+  const getCareerCode = (careerLink: string) => {
+    // Si el careerLink tiene formato "campus/codigo", extrae solo el código
+    const parts = careerLink.split('/');
+    return parts.length > 1 ? parts[1] : parts[0];
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-70 flex items-center justify-center p-4">
@@ -44,16 +57,16 @@ export default function CareerSelector({
         
         {/* Contenido del popup */}
         <div className="p-6 overflow-y-auto max-h-[60vh]">
-          {/* Sección Viña del Mar / Concepción */}
+          {/* Sección Viña del Mar*/}
           <div className="mb-8">
             <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Viña del Mar / Concepción / Vitacura
+              Viña del Mar / Concepción
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {vinaConcepcionCareers.map((career) => (
+              {vinaCareers.map((career) => (
                 <button
                   key={career.Link}
-                  onClick={() => onCareerSelect(career.Link)}
+                  onClick={() => onCareerSelect('vm', getCareerCode(career.Link))}
                   className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
                     darkMode 
                       ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40' 
@@ -87,7 +100,7 @@ export default function CareerSelector({
             </div>
           </div>
 
-          {/* Sección Casa Central / San Joaquín */}
+          {/* Sección Casa Central */}
           <div>
             <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
               Casa Central / San Joaquín
@@ -96,7 +109,7 @@ export default function CareerSelector({
               {casaCentralCareers.map((career) => (
                 <button
                   key={career.Link}
-                  onClick={() => onCareerSelect(career.Link)}
+                  onClick={() => onCareerSelect('cc', getCareerCode(career.Link))}
                   className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
                     darkMode 
                       ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40' 
@@ -129,6 +142,52 @@ export default function CareerSelector({
               ))}
             </div>
           </div>
+
+
+          {/* Sección Vitacura */}
+          <div>
+            <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+              Vitacura
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {vitacuraCareers.map((career) => (
+                <button
+                  key={career.Link}
+                  onClick={() => onCareerSelect('vc', getCareerCode(career.Link))}
+                  className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
+                    darkMode
+                      ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40'
+                      : 'bg-white/40 border-white/50 hover:bg-white/60'
+                  }`}
+                  style={{
+                    borderColor: career.Color ? `${career.Color}40` : undefined,
+                    backgroundColor: career.Color ? `${career.Color}10` : undefined
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-4 h-4 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: career.Color || '#6B7280' }}
+                    />
+                    <div className="flex-1">
+                      <span className={`text-sm font-medium ${
+                        darkMode ? 'text-gray-200' : 'text-gray-800'
+                      }`}>
+                        {career.Nombre}
+                      </span>
+                      <div className={`text-xs mt-1 ${
+                        darkMode ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
+                        {career.Link}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

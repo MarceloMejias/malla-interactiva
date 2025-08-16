@@ -1,0 +1,507 @@
+{
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Educacion Fisica I (damas y Varones)",
+      "DEW100",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Ingenieria",
+      "IWG101",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Matematica I",
+      "MAT021",
+      0,
+      8,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Quimica y Sociedad",
+      "QUI010",
+      0,
+      5,
+      "QUÍMICA",
+      [],
+      ""
+    ]
+  ],
+  "s2": [
+    [
+      "Educacion Fisica II (damas y Varones)",
+      "DEW101",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW100"
+      ],
+      ""
+    ],
+    [
+      "Fisica General I",
+      "FIS110",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "MAT021",
+        "FIS100"
+      ],
+      ""
+    ],
+    [
+      "Matematica II",
+      "MAT022",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT021"
+      ],
+      ""
+    ],
+    [
+      "Programacion",
+      "IWI131",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Visión Trascendente del Quehacer Humano",
+      "HRW101",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Fisica General II",
+      "FIS120",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "MAT022",
+        "FIS110"
+      ],
+      ""
+    ],
+    [
+      "Inglés Científico y Tecnológico I",
+      "HCW310",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Matematicas III",
+      "MAT023",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT022"
+      ],
+      ""
+    ],
+    [
+      "Quimica General I",
+      "QUI106",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI010"
+      ],
+      ""
+    ],
+    [
+      "Quimica General II",
+      "QUI108",
+      0,
+      5,
+      "QUÍMICA",
+      [
+        "QUI106"
+      ],
+      ""
+    ],
+    [
+      "Visión Inmanente del Quehacer Humano",
+      "HRW102",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Fisica General III",
+      "FIS130",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "MAT022",
+        "FIS110"
+      ],
+      ""
+    ],
+    [
+      "Fisicoquímica I",
+      "QUI240",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI106",
+        "MAT022",
+        "QUI108",
+        "FIS120"
+      ],
+      ""
+    ],
+    [
+      "Inglés Científico y Tecnológico II",
+      "HCW311",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW310"
+      ],
+      ""
+    ],
+    [
+      "Laboratorio de Química General",
+      "QUI109",
+      0,
+      4,
+      "QUÍMICA",
+      [
+        "QUI106",
+        "QUI108"
+      ],
+      ""
+    ],
+    [
+      "Matematicas IV",
+      "MAT024",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Química Inorgánica I",
+      "QUI114",
+      0,
+      5,
+      "QUÍMICA",
+      [
+        "QUI010",
+        "QUI108"
+      ],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Deportes",
+      "DEW  0",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW101"
+      ],
+      ""
+    ],
+    [
+      "Fisica General IV",
+      "FIS140",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "FIS130",
+        "FIS120"
+      ],
+      ""
+    ],
+    [
+      "Fisicoquímica II",
+      "QUI242",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI240",
+        "FIS140"
+      ],
+      ""
+    ],
+    [
+      "Laboratorio de Química Inorgánica I",
+      "QUI117",
+      0,
+      4,
+      "QUÍMICA",
+      [
+        "QUI114",
+        "QUI109"
+      ],
+      ""
+    ],
+    [
+      "Química Analítica Cuantitativa I",
+      "QUI224",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI114",
+        "QUI109"
+      ],
+      ""
+    ],
+    [
+      "Química Orgánica I",
+      "QUI136",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI114",
+        "QUI108"
+      ],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Fisicoquímica III",
+      "QUI244",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI240"
+      ],
+      ""
+    ],
+    [
+      "Laboratorio de Química Orgánica I",
+      "QUI137",
+      0,
+      4,
+      "QUÍMICA",
+      [
+        "QUI109"
+      ],
+      ""
+    ],
+    [
+      "Química Analítica Cuantitativa II",
+      "QUI226",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI224"
+      ],
+      ""
+    ],
+    [
+      "Química Orgánica II",
+      "QUI238",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI136"
+      ],
+      ""
+    ],
+    [
+      "Visión Estética del Quehacer Humano",
+      "HRW103",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Análisis Químico Instrumental I",
+      "QUI375",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI136",
+        "QUI224"
+      ],
+      ""
+    ],
+    [
+      "Laboratorio de Química Inorgánica II",
+      "QUI217",
+      0,
+      4,
+      "QUÍMICA",
+      [
+        "QUI117"
+      ],
+      ""
+    ],
+    [
+      "Probabilidad y Estadistica",
+      "MAT041",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Química Inorgánica II",
+      "QUI216",
+      0,
+      5,
+      "QUÍMICA",
+      [
+        "QUI114"
+      ],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Análisis Químico Instrumental II",
+      "QUI376",
+      0,
+      6,
+      "QUÍMICA",
+      [
+        "QUI375",
+        "QUI226"
+      ],
+      ""
+    ],
+    [
+      "Electivo I",
+      "QUI  1",
+      0,
+      7,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Laboratorio de Fisicoquímica",
+      "QUI243",
+      0,
+      5,
+      "QUÍMICA",
+      [
+        "QUI240",
+        "QUI242"
+      ],
+      ""
+    ],
+    [
+      "Laboratorio de Química Orgánica II",
+      "QUI237",
+      0,
+      4,
+      "QUÍMICA",
+      [
+        "QUI137"
+      ],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Electivo II",
+      "QUI  2",
+      0,
+      7,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Electivo III",
+      "QUI  3",
+      0,
+      7,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Electivo IV",
+      "QUI  4",
+      0,
+      7,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Unidad de Investigacion",
+      "QUI390",
+      0,
+      9,
+      "QUÍMICA",
+      [
+        "QUI216",
+        "QUI242",
+        "QUI238",
+        "QUI375"
+      ],
+      ""
+    ]
+  ]
+}

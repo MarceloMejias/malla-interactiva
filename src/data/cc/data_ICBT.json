@@ -1,0 +1,530 @@
+{
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Comunicación Efectiva en Español / Inglés I",
+      "HXW006",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Educación Física I",
+      "EFI200",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Introducción Al Cálculo",
+      "MAT070",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Proyecto Inicial",
+      "IWG400",
+      0,
+      7,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Álgebra y Geometría",
+      "MAT060",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s2": [
+    [
+      "Comunicación Efectiva en Español / Ingles II",
+      "HXW007",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Cálculo en Una Variable",
+      "MAT071",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT070"
+      ],
+      ""
+    ],
+    [
+      "Educación Física II",
+      "EFI201",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "EFI200"
+      ],
+      ""
+    ],
+    [
+      "Física General Mecánica",
+      "FIS111",
+      0,
+      6,
+      "FÍSICA",
+      [
+        "FIS100"
+      ],
+      ""
+    ],
+    [
+      "Introducción a la Programación",
+      "INF129",
+      0,
+      7,
+      "INFORMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Álgebra Lineal",
+      "MAT061",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT060"
+      ],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Análisis Crítico de Texto",
+      "HXW008",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Biología Celular",
+      "IWG201",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Ecuaciones Diferenciales Elementales",
+      "MAT053",
+      0,
+      5,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Física General III",
+      "FIS131",
+      0,
+      6,
+      "FÍSICA",
+      [
+        "MAT061",
+        "FIS111",
+        "MAT071"
+      ],
+      ""
+    ],
+    [
+      "Introducción a la Biotecnología",
+      "IWG200",
+      0,
+      4,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Química Para Ingeniería",
+      "QUI400",
+      0,
+      6,
+      "QUÍMICA",
+      [],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Balance de Materia y Energía",
+      "IQA203",
+      0,
+      5,
+      "INGENIERÍA QUÍMICA Y AMBIENTAL",
+      [],
+      ""
+    ],
+    [
+      "Comunicación Efectiva en Español / Inglés III",
+      "HXW009",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Cálculo en Varias Variables",
+      "MAT081",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Electromagnetismo",
+      "FIS121",
+      0,
+      8,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Química Orgánica",
+      "QUI402",
+      0,
+      6,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Taller Aplicado en Biotecnología",
+      "IWG203",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Administración y Sostenibilidad Organizacional",
+      "AUX200",
+      0,
+      4,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Bioquímica",
+      "IWG205",
+      0,
+      7,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Operaciones Unitarias I",
+      "IWG204",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Química Análitica y Análisis Instrumental",
+      "IWG206",
+      0,
+      7,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Termodinámica de Procesos",
+      "IQA206",
+      0,
+      8,
+      "INGENIERÍA QUÍMICA Y AMBIENTAL",
+      [],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Biología Molecular",
+      "IWG207",
+      0,
+      8,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Comunicación Efectiva en Español / Inglés IV",
+      "HXW012",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Estadistíca y Diseño Experimentos Para Ing. de Procesos",
+      "IQA302",
+      0,
+      6,
+      "INGENIERÍA QUÍMICA Y AMBIENTAL",
+      [],
+      ""
+    ],
+    [
+      "Ingeniería Económica",
+      "AUX201",
+      0,
+      4,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Operaciones Unitarias II",
+      "IWG208",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Práctica en Acción Comunitaria",
+      "HXW011",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Biocatálisis y Biorreactores",
+      "IWG212",
+      0,
+      7,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Bioinformática",
+      "IWG209",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Evaluación de Proyectos",
+      "IWG213",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Inglés Disciplinar",
+      "AUX202",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Microbiología",
+      "IWG211",
+      0,
+      7,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Bioinformática y Métodos Computacionales",
+      "IWG217",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Electivo",
+      "AUX208",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Gestión de la Innovación Para Bionegocios",
+      "IWG214",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Microbiologia Industrial",
+      "IWG215",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Proyecto Biotecnología",
+      "IWG218",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Seminario de Biotecnología",
+      "IWG216",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Biología Computacional",
+      "IWG223",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Electivo",
+      "AUX209",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Electivo Disciplinar",
+      "IWG220",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Electivo Disciplinar",
+      "IWG221",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Gestión del Empendimiento Para Bionegocios",
+      "IWG219",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Gestión Integral de la Producción",
+      "IWG222",
+      0,
+      6,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Actividad de Titulación",
+      "IWG320",
+      0,
+      15,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Electivo Complementario de Titulación",
+      "IWG319",
+      0,
+      9,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Electivo Disciplinar",
+      "IWG318",
+      0,
+      5,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ]
+  ]
+}

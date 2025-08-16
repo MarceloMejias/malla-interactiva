@@ -1,0 +1,34 @@
+{
+  "MATEMÁTICA": [
+    "#FF5733",
+    "Matemática"
+  ],
+  "FÍSICA": [
+    "#D69F7E",
+    "Física"
+  ],
+  "INGENIERÍA COMERCIAL": [
+    "#335BFF",
+    "Ingeniería Comercial"
+  ],
+  "INFORMÁTICA": [
+    "#00CED1",
+    "Informática"
+  ],
+  "DEFIDER": [
+    "#a53f2b",
+    "Defider"
+  ],
+  "ESTUDIOS HUMANÍSTICOS": [
+    "#FF8811",
+    "Estudios Humanísticos"
+  ],
+  "ELECTRÓNICA": [
+    "#FF5964",
+    "Electrónica"
+  ],
+  "DIRECCION GENERAL DE DOCENCIA": [
+    "#3498DB",
+    "Direccion General de Docencia"
+  ]
+}

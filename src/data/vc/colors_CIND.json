@@ -1,0 +1,46 @@
+{
+  "FÍSICA": [
+    "#C70039",
+    "Física"
+  ],
+  "INDUSTRIAS": [
+    "#FF69B4",
+    "Industrias"
+  ],
+  "DIRECCION GENERAL DE DOCENCIA": [
+    "#FF5733",
+    "Direccion General de Docencia"
+  ],
+  "ESTUDIOS HUMANÍSTICOS": [
+    "#FF8811",
+    "Estudios Humanísticos"
+  ],
+  "INGENIERÍA COMERCIAL": [
+    "#3498DB",
+    "Ingeniería Comercial"
+  ],
+  "INFORMÁTICA": [
+    "#FF5964",
+    "Informática"
+  ],
+  "INGENIERÍA MECÁNICA": [
+    "#6A5ACD",
+    "Ingeniería Mecánica"
+  ],
+  "QUÍMICA": [
+    "#8E44AD",
+    "Química"
+  ],
+  "INGENIERÍA ELÉCTRICA": [
+    "#FF1493",
+    "Ingeniería Eléctrica"
+  ],
+  "DEFIDER": [
+    "#00CED1",
+    "Defider"
+  ],
+  "MATEMÁTICA": [
+    "#a53f2b",
+    "Matemática"
+  ]
+}

@@ -1,0 +1,27 @@
+[
+   {
+    "Nombre": "Ing. Aviación Comercial",
+    "Link": "IAC",
+    "Color": "#00CED1"
+  },
+  {
+    "Nombre": "Ing. Civil en Informática",
+    "Link": "CINF",
+    "Color": "#6366F1"
+  },
+  {
+    "Nombre": "Ing. Civil Industrial",
+    "Link": "CIND",
+    "Color": "#FF8C00"
+  },
+  {
+    "Nombre": "Ing. Eléctrica",
+    "Link": "ELI",
+    "Color": "#FFD708"
+  },
+  {
+    "Nombre": "Ing. Comercial",
+    "Link": "ICOM",
+    "Color": "#32CD32"
+  }
+]

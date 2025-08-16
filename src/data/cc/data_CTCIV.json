@@ -1,0 +1,634 @@
+{
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Educacion Fisica I (damas y Varones)",
+      "DEW100",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Ingenieria",
+      "IWG101",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Matematica I",
+      "MAT011",
+      0,
+      8,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Programacion",
+      "IWI131",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s2": [
+    [
+      "Educacion Fisica II (damas y Varones)",
+      "DEW101",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW100"
+      ],
+      ""
+    ],
+    [
+      "Fisica Basica I",
+      "FIS109",
+      0,
+      7,
+      "FÍSICA",
+      [
+        "MAT011",
+        "FIS100"
+      ],
+      ""
+    ],
+    [
+      "Humanistico I",
+      "HRW  1",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Matematica II",
+      "MAT012",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT011"
+      ],
+      ""
+    ],
+    [
+      "Quimica y Sociedad",
+      "QUI010",
+      0,
+      5,
+      "QUÍMICA",
+      [],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Deportes",
+      "DEW  0",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW101"
+      ],
+      ""
+    ],
+    [
+      "Estructuras I",
+      "CON130",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "FIS109",
+        "MAT012"
+      ],
+      ""
+    ],
+    [
+      "Fisica Basica II",
+      "FIS119",
+      0,
+      7,
+      "FÍSICA",
+      [
+        "FIS109",
+        "MAT012"
+      ],
+      ""
+    ],
+    [
+      "Geometria Descriptiva",
+      "CON100",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ],
+    [
+      "Humanistico II",
+      "HRW  2",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Matematica III",
+      "MAT013",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT012"
+      ],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Dibujo de Construccion",
+      "CON101",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON100"
+      ],
+      ""
+    ],
+    [
+      "Estructuras II",
+      "CON131",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON130"
+      ],
+      ""
+    ],
+    [
+      "Fisica Basica III",
+      "FIS129",
+      0,
+      7,
+      "FÍSICA",
+      [
+        "FIS119"
+      ],
+      ""
+    ],
+    [
+      "Humanistico III",
+      "HRW  3",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Inglés Científico y Tecnológico I",
+      "HCW310",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Matematica IV",
+      "MAT014",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT013"
+      ],
+      ""
+    ],
+    [
+      "Materiales de Construccion I",
+      "CON250",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "QUI010"
+      ],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Equipos de Construccion",
+      "CON201",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ],
+    [
+      "Estadistica",
+      "MAT031",
+      0,
+      5,
+      "MATEMÁTICA",
+      [
+        "MAT013"
+      ],
+      ""
+    ],
+    [
+      "Tecnologia de la Madera y Laboratorio",
+      "CON253",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON250"
+      ],
+      ""
+    ],
+    [
+      "Tecnologia del Hormigon y Laboratorio",
+      "CON252",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON130",
+        "CON250"
+      ],
+      ""
+    ],
+    [
+      "Topografia y Taller",
+      "CON200",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON101"
+      ],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Economia I",
+      "ILN270",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "MAT013"
+      ],
+      ""
+    ],
+    [
+      "Estructura de Madera y Acero",
+      "CON230",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON131"
+      ],
+      ""
+    ],
+    [
+      "Hidraulica",
+      "CON240",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON130"
+      ],
+      ""
+    ],
+    [
+      "Hormigon Armado",
+      "CON231",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "MAT031",
+        "MAT014",
+        "CON252"
+      ],
+      ""
+    ],
+    [
+      "Inglés Científico y Tecnológico II",
+      "HCW311",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW310"
+      ],
+      ""
+    ],
+    [
+      "Materiales de Construccion II y Laborat.",
+      "CON251",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON253",
+        "CON252",
+        "CON250"
+      ],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Construccion I",
+      "CON220",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON230",
+        "CON231"
+      ],
+      ""
+    ],
+    [
+      "Construcciones Sismorresistente",
+      "CON232",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "FIS129",
+        "CON230"
+      ],
+      ""
+    ],
+    [
+      "Economia II",
+      "ILN271",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "ILN270"
+      ],
+      ""
+    ],
+    [
+      "Ingenieria Hidraulica",
+      "CON241",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON240"
+      ],
+      ""
+    ],
+    [
+      "Mecanica de Suelos I y Laboratorio",
+      "CON260",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON240"
+      ],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Construccion II",
+      "CON221",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON220"
+      ],
+      ""
+    ],
+    [
+      "Construcciones Industriales",
+      "CON223",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON232"
+      ],
+      ""
+    ],
+    [
+      "Mecanica de Suelos II y Laboratorio",
+      "CON261",
+      0,
+      3,
+      "OBRAS CIVILES",
+      [
+        "CON260"
+      ],
+      ""
+    ],
+    [
+      "Obras Sanitarias",
+      "CON310",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON241"
+      ],
+      ""
+    ],
+    [
+      "Seminario de Seguridad Industrial",
+      "CON202",
+      0,
+      3,
+      "OBRAS CIVILES",
+      [
+        "MAT031"
+      ],
+      ""
+    ],
+    [
+      "Vialidad I y Laboratorio",
+      "CON280",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON260",
+        "CON200"
+      ],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Administracion de la Construccion",
+      "CON390",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "ILN271"
+      ],
+      ""
+    ],
+    [
+      "Construccion de Obras Civiles",
+      "CON222",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON261",
+        "CON280"
+      ],
+      ""
+    ],
+    [
+      "Historia de la Construcción",
+      "HRW203",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Instalaciones en Edificaciones",
+      "CON224",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON221"
+      ],
+      ""
+    ],
+    [
+      "Propuestas y Licitaciones",
+      "CON320",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON221"
+      ],
+      ""
+    ],
+    [
+      "Vialidad II y Laboratorio",
+      "CON281",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON280"
+      ],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Administracion de Obras",
+      "CON392",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "CON320",
+        "CON390"
+      ],
+      ""
+    ],
+    [
+      "Construccion y Medio Ambiente",
+      "CON311",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON310"
+      ],
+      ""
+    ],
+    [
+      "Gestion Financiera de Obras",
+      "CON393",
+      0,
+      5,
+      "OBRAS CIVILES",
+      [
+        "CON320",
+        "CON390"
+      ],
+      ""
+    ],
+    [
+      "Legislacion de la Construccion",
+      "CON300",
+      0,
+      3,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ],
+    [
+      "Proyectos Inmobiliarios",
+      "CON391",
+      0,
+      7,
+      "OBRAS CIVILES",
+      [
+        "ILN271"
+      ],
+      ""
+    ],
+    [
+      "Seminario de Tasaciones",
+      "CON321",
+      0,
+      3,
+      "OBRAS CIVILES",
+      [],
+      ""
+    ]
+  ]
+}

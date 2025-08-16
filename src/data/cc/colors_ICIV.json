@@ -1,0 +1,38 @@
+{
+  "MATEMÁTICA": [
+    "#FF1493",
+    "Matemática"
+  ],
+  "QUÍMICA": [
+    "#FF69B4",
+    "Química"
+  ],
+  "FÍSICA": [
+    "#00CED1",
+    "Física"
+  ],
+  "OBRAS CIVILES": [
+    "#6A5ACD",
+    "Obras Civiles"
+  ],
+  "INGENIERÍA COMERCIAL": [
+    "#a53f2b",
+    "Ingeniería Comercial"
+  ],
+  "INFORMÁTICA": [
+    "#FF5964",
+    "Informática"
+  ],
+  "DEFIDER": [
+    "#FF8811",
+    "Defider"
+  ],
+  "ESTUDIOS HUMANÍSTICOS": [
+    "#3498DB",
+    "Estudios Humanísticos"
+  ],
+  "DIRECCION GENERAL DE DOCENCIA": [
+    "#D69F7E",
+    "Direccion General de Docencia"
+  ]
+}

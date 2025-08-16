@@ -1,0 +1,577 @@
+{
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Educacion Fisica I (damas y Varones)",
+      "DEW100",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Introduccion a la Ingenieria",
+      "IWG101",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Matematica I",
+      "MAT021",
+      0,
+      8,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Programacion",
+      "IWI131",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s2": [
+    [
+      "Educacion Fisica II (damas y Varones)",
+      "DEW101",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW100"
+      ],
+      ""
+    ],
+    [
+      "Fisica Basica I",
+      "FIS109",
+      0,
+      7,
+      "FÍSICA",
+      [
+        "MAT021",
+        "FIS100"
+      ],
+      ""
+    ],
+    [
+      "Matematica II",
+      "MAT022",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT021"
+      ],
+      ""
+    ],
+    [
+      "Quimica y Sociedad",
+      "QUI010",
+      0,
+      5,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Visión Trascendente del Quehacer Humano",
+      "HRW101",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Deportes",
+      "DEW  0",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW101"
+      ],
+      ""
+    ],
+    [
+      "Fisica Basica II",
+      "FIS119",
+      0,
+      7,
+      "FÍSICA",
+      [
+        "MAT022",
+        "FIS109"
+      ],
+      ""
+    ],
+    [
+      "Inglés 1",
+      "HCW100",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Matematicas III",
+      "MAT023",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT022"
+      ],
+      ""
+    ],
+    [
+      "Materiales Para Ingenieria",
+      "IWC203",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "FIS109",
+        "QUI010"
+      ],
+      ""
+    ],
+    [
+      "Visión Inmanente del Quehacer Humano",
+      "HRW102",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Fisica Basica III",
+      "FIS129",
+      0,
+      7,
+      "FÍSICA",
+      [
+        "FIS119"
+      ],
+      ""
+    ],
+    [
+      "Introducción a la Electrotecnia",
+      "ELI110",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "MAT022",
+        "FIS109"
+      ],
+      ""
+    ],
+    [
+      "Matematicas IV",
+      "MAT024",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Mecanica General",
+      "IWM151",
+      0,
+      7,
+      "INGENIERÍA MECÁNICA",
+      [
+        "FIS109"
+      ],
+      ""
+    ],
+    [
+      "Visión Estética del Quehacer Humano",
+      "HRW103",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Crecimiento y Desarrollo Personal",
+      "HRW104",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Estadistica",
+      "MAT031",
+      0,
+      5,
+      "MATEMÁTICA",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Inglés 2",
+      "HCW101",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW100"
+      ],
+      ""
+    ],
+    [
+      "Redes Eléctricas I",
+      "ELI211",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI110"
+      ],
+      ""
+    ],
+    [
+      "Resistencia de Materiales Generales",
+      "IWM255",
+      0,
+      7,
+      "INGENIERÍA MECÁNICA",
+      [
+        "IWM151"
+      ],
+      ""
+    ],
+    [
+      "Simulacion en Ingenieria Electrica",
+      "ELI213",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI110",
+        "MAT023"
+      ],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Administracion General",
+      "IWN261",
+      0,
+      5,
+      "INDUSTRIAS",
+      [],
+      ""
+    ],
+    [
+      "Economia I-a",
+      "IWN170",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "MAT023"
+      ],
+      ""
+    ],
+    [
+      "Electronica General I",
+      "ELI216",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "MAT024",
+        "ELI211"
+      ],
+      ""
+    ],
+    [
+      "Formac.y Liderazgo Empresarial",
+      "HRW131",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Metrologia Electrica",
+      "ELI214",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI211",
+        "FIS119"
+      ],
+      ""
+    ],
+    [
+      "Redes Eléctricas II",
+      "ELI212",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI110",
+        "MAT023"
+      ],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Control Automático I",
+      "ELO270",
+      0,
+      5,
+      "ELECTRÓNICA",
+      [
+        "ELI212"
+      ],
+      ""
+    ],
+    [
+      "Electronica General II",
+      "ELI217",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI216"
+      ],
+      ""
+    ],
+    [
+      "Información y Control Financiero",
+      "IWN270",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "IWN170"
+      ],
+      ""
+    ],
+    [
+      "Maquinas Electricas a",
+      "ELI222",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI214",
+        "ELI212"
+      ],
+      ""
+    ],
+    [
+      "Sistemas Electricos de Potencia a",
+      "ELI240",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI214",
+        "ELI212"
+      ],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Electivo a 1",
+      "ELI A1",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Laboratorio de Electronica",
+      "ELI218",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI217"
+      ],
+      ""
+    ],
+    [
+      "Maquinas Electricas B",
+      "ELI223",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Sistemas Electricos de Potencia B",
+      "ELI241",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI240",
+        "ELI222"
+      ],
+      ""
+    ],
+    [
+      "Tecnicas de Alta Tension a",
+      "ELI358",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI214",
+        "ELI212"
+      ],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Electivo a 2",
+      "ELI A2",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Electivo B 1",
+      "ELI B1",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Electivo C 1",
+      "ELI C1",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Electivo D 1",
+      "ELI D1",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Laboratorio de Alta Tension a",
+      "ELI359",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI358"
+      ],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Electivo B 2",
+      "ELI B2",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Electivo C 2",
+      "ELI C2",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Memoria de Titulacion",
+      "ELI380",
+      0,
+      8,
+      "INGENIERÍA ELÉCTRICA",
+      [],
+      ""
+    ],
+    [
+      "Proyectos Electricos a",
+      "ELI377",
+      0,
+      7,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI358",
+        "ELI241"
+      ],
+      ""
+    ],
+    [
+      "Seminario Profesional",
+      "ELI375",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "ELI358",
+        "ELI223",
+        "ELI241"
+      ],
+      ""
+    ]
+  ]
+}
