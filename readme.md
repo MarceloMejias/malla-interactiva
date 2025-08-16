@@ -114,7 +114,7 @@ src/
 ```json
 {
   "s1": [
-    ["Nombre Materia", "CODIGO", "sem", "creditos", "categoria", ["prerequisitos"], "estado"]
+    ["Nombre", "CODIGO", "sem", "creditos_usm", "creditos_sct", "categoria", ["prerequisitos"], "semestre"]
   ]
 }
 ```
@@ -187,7 +187,3 @@ Este proyecto no habría sido posible sin la colaboración de estudiantes y ex-e
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## Universidad Técnica Federico Santa María
-
-Desarrollado con ❤️ para la comunidad estudiantil de la UTFSM.
