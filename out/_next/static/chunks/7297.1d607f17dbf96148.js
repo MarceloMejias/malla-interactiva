@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[7297],{7297:e=>{e.exports=JSON.parse('{"EI":["#F87171","Electronica e informatica"],"C":["#60A5FA","Ciencias"],"QMD":["#22D3EE","Qu\xedmica y medio ambiente"],"DGD":["#818CF8","Direcci\xf3n general de docencia "],"IC":["#FDE047","Ingenier\xeda comercial"],"EH":["#F472B6","Estudios Humanisticos"]}')}}]);

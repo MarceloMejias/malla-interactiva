@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[8387],{8387:e=>{e.exports=JSON.parse('[{"Nombre":"Ingenier\xeda en Inform\xe1tica","Link":"INGINF","Color":"#6366F1"},{"Nombre":"Ingenier\xeda en Biotecnolog\xeda","Link":"IBT","Color":"#FF1493"}]')}}]);

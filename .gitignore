@@ -1,15 +1,24 @@
 # MacOS and IDE related files
 *.DS_Store
 .idea/
-.next/
-.github/
 .vscode/
+
+# Next.js build artifacts
+.next/
+out/
 
 # npm modules
 **/node_modules/
+
 # Assets while developing / building
 /*.png
 /*.svg
 /*.ico
 /*.jpg
 /js/min*.js
+
+# Environment and logs
+.env
+.env.local
+.env.production.local
+*.log
