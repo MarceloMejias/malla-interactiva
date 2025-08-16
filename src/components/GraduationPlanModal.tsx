@@ -765,6 +765,10 @@ export default function GraduationPlanModal({
             </div>
           )}
         </div>
+        {/* Aviso de precisión */}
+        <div className="px-6 pb-4 pt-2 text-xs text-gray-600 text-center opacity-80">
+          <strong>Nota:</strong> El generador de planes es solo una referencia. La disponibilidad real de ramos puede variar cada semestre y depende de la oferta académica de la universidad.
+        </div>
       </div>
     </div>
   );
