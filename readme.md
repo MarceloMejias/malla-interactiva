@@ -72,35 +72,6 @@ npm run build
 npm start
 ```
 
-## Estructura del Proyecto
-
-```
-src/
-├── app/                    # App Router de Next.js
-│   ├── globals.css        # Estilos globales
-│   ├── layout.tsx         # Layout principal
-│   └── page.tsx           # Página de inicio
-├── components/            # Componentes React
-│   ├── CurriculumGrid.tsx # Componente principal
-│   ├── SemesterGrid.tsx   # Grid de semestres
-│   ├── SubjectCard.tsx    # Tarjetas de materias
-│   ├── StatsBar.tsx       # Barra de estadísticas
-│   ├── GraduationPlanModal.tsx # Modal del plan de graduación
-│   └── ...
-├── hooks/                 # Custom Hooks
-│   ├── useCalculator.ts   # Lógica de cálculos
-│   ├── useCareerData.ts   # Manejo de datos de carreras
-│   └── ...
-├── types/                 # Definiciones TypeScript
-│   └── curriculum.ts      # Tipos para materias y datos
-├── utils/                 # Utilidades
-│   └── calculator.ts      # Funciones de cálculo
-└── data/                  # Datos de carreras
-    ├── carreras.json      # Lista de carreras
-    ├── data_*.json        # Datos por carrera
-    └── colors_*.json      # Colores por carrera
-```
-
 ## Personalización
 
 ### Agregar Nueva Carrera
