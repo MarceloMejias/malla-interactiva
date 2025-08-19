@@ -2,11 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-interface Params {
-  params: { campus: string; code: string };
-}
-
-export async function GET(req: Request, { params }: Params) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(req: any, { params }: any) {
   const { campus, code } = params;
   const dataPath = path.join(process.cwd(), 'src', 'data', campus, `data_${code}.json`);
   const colorsPath = path.join(process.cwd(), 'src', 'data', campus, `colors_${code}.json`);
