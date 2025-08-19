@@ -68,14 +68,9 @@ export default function CareerSelector({
                   key={career.Link}
                   onClick={() => onCareerSelect('vm', getCareerCode(career.Link))}
                   className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
-                    darkMode 
-                      ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40' 
-                      : 'bg-white/40 border-white/50 hover:bg-white/60'
+                    darkMode ? 'border-gray-600' : 'border-white/50'
                   }`}
-                  style={{ 
-                    borderColor: career.Color ? `${career.Color}40` : undefined,
-                    backgroundColor: career.Color ? `${career.Color}10` : undefined
-                  }}
+                  style={{}}
                 >
                   <div className="flex items-center gap-3">
                     <div 
@@ -88,11 +83,6 @@ export default function CareerSelector({
                       }`}>
                         {career.Nombre}
                       </span>
-                      <div className={`text-xs mt-1 ${
-                        darkMode ? 'text-gray-400' : 'text-gray-600'
-                      }`}>
-                        {career.Link}
-                      </div>
                     </div>
                   </div>
                 </button>
@@ -106,40 +96,30 @@ export default function CareerSelector({
               Casa Central / San Joaquín
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {casaCentralCareers.map((career) => (
-                <button
-                  key={career.Link}
-                  onClick={() => onCareerSelect('cc', getCareerCode(career.Link))}
-                  className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
-                    darkMode 
-                      ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40' 
-                      : 'bg-white/40 border-white/50 hover:bg-white/60'
-                  }`}
-                  style={{ 
-                    borderColor: career.Color ? `${career.Color}40` : undefined,
-                    backgroundColor: career.Color ? `${career.Color}10` : undefined
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div 
-                      className="w-4 h-4 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: career.Color || '#6B7280' }}
-                    />
-                    <div className="flex-1">
-                      <span className={`text-sm font-medium ${
-                        darkMode ? 'text-gray-200' : 'text-gray-800'
-                      }`}>
-                        {career.Nombre}
-                      </span>
-                      <div className={`text-xs mt-1 ${
-                        darkMode ? 'text-gray-400' : 'text-gray-600'
-                      }`}>
-                        {career.Link}
+                  {casaCentralCareers.map((career) => (
+                    <button
+                      key={career.Link}
+                      onClick={() => onCareerSelect('cc', getCareerCode(career.Link))}
+                      className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
+                        darkMode ? 'border-gray-600' : 'border-white/50'
+                      }`}
+                      style={{}}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div 
+                          className="w-4 h-4 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: career.Color || '#6B7280' }}
+                        />
+                        <div className="flex-1">
+                          <span className={`text-sm font-medium ${
+                            darkMode ? 'text-gray-200' : 'text-gray-800'
+                          }`}>
+                            {career.Nombre}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </button>
-              ))}
+                    </button>
+                  ))}
             </div>
           </div>
 
@@ -150,40 +130,30 @@ export default function CareerSelector({
               Vitacura
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {vitacuraCareers.map((career) => (
-                <button
-                  key={career.Link}
-                  onClick={() => onCareerSelect('vc', getCareerCode(career.Link))}
-                  className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
-                    darkMode
-                      ? 'bg-gray-700/30 border-gray-600 hover:bg-gray-600/40'
-                      : 'bg-white/40 border-white/50 hover:bg-white/60'
-                  }`}
-                  style={{
-                    borderColor: career.Color ? `${career.Color}40` : undefined,
-                    backgroundColor: career.Color ? `${career.Color}10` : undefined
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-4 h-4 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: career.Color || '#6B7280' }}
-                    />
-                    <div className="flex-1">
-                      <span className={`text-sm font-medium ${
-                        darkMode ? 'text-gray-200' : 'text-gray-800'
-                      }`}>
-                        {career.Nombre}
-                      </span>
-                      <div className={`text-xs mt-1 ${
-                        darkMode ? 'text-gray-400' : 'text-gray-600'
-                      }`}>
-                        {career.Link}
+                  {vitacuraCareers.map((career) => (
+                    <button
+                      key={career.Link}
+                      onClick={() => onCareerSelect('vc', getCareerCode(career.Link))}
+                      className={`backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 border hover:shadow-lg hover:scale-105 text-left ${
+                        darkMode ? 'border-gray-600' : 'border-white/50'
+                      }`}
+                      style={{}}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="w-4 h-4 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: career.Color || '#6B7280' }}
+                        />
+                        <div className="flex-1">
+                          <span className={`text-sm font-medium ${
+                            darkMode ? 'text-gray-200' : 'text-gray-800'
+                          }`}>
+                            {career.Nombre}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </button>
-              ))}
+                    </button>
+                  ))}
             </div>
           </div>
 
