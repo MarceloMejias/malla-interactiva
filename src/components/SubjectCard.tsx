@@ -127,14 +127,14 @@ export default function SubjectCard({
         }
       >
         {/* Código como carátula en esquina superior izquierda */}
-        <div className={`absolute top-0 left-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-br-lg px-2 py-0.5`}>
+        <div className={`absolute top-0 left-0 ${darkMode ? 'bg-gray-800/85' : 'bg-white/85'} rounded-br-lg px-2 py-0.5`}>
           <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
             {subject.code}
           </span>
         </div>
         
         {/* Créditos como carátula en esquina superior derecha */}
-        <div className={`absolute top-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-bl-lg px-2 py-0.5`}>
+        <div className={`absolute top-0 right-0 ${darkMode ? 'bg-gray-800/85' : 'bg-white/85'} rounded-bl-lg px-2 py-0.5`}>
           <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
             {subject.sctCredits}
           </span>
@@ -142,7 +142,7 @@ export default function SubjectCard({
         
         {/* Icono de bloqueo como carátula en esquina inferior derecha */}
         {isBlocked && (
-          <div className={`absolute bottom-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-tl-lg px-2 py-0.5`}>
+          <div className={`absolute bottom-0 right-0 ${darkMode ? 'bg-gray-800/85' : 'bg-white/85'} rounded-tl-lg px-2 py-0.5`}>
             <FontAwesomeIcon icon={faLock} className="text-xs" style={{ color: getBackgroundColor() }} />
           </div>
         )}

@@ -1,620 +1,625 @@
 {
-  "sDuración en Semestres": [],
-  "s1": [
-    [
-      "Actividad Formativa I",
-      "ACF001",
-      0,
-      3,
-      "CIENCIAS",
-      [],
-      ""
-    ],
-    [
-      "Fisica I",
-      "FIS001",
-      0,
-      4,
-      "CIENCIAS",
-      [],
-      ""
-    ],
-    [
-      "Historia y Evolución de la Tecnología",
-      "HET000",
-      0,
-      2,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Introduc. a la Ingeniería en Diseño y Manufactura",
-      "IDM000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Matematica I",
-      "MAT001",
-      0,
-      6,
-      "CIENCIAS",
-      [],
-      ""
-    ],
-    [
-      "Materiales de Ingenieria",
-      "MDI000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Normalización y Dibujo de Ingeniería I",
-      "NDI001",
-      0,
-      6,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Tecnologia de la Informacion",
-      "TCI000",
-      0,
-      3,
-      "CIENCIAS",
-      [],
-      ""
-    ]
-  ],
-  "s2": [
-    [
-      "Actividad Formativa II",
-      "ACF002",
-      0,
-      3,
-      "CIENCIAS",
+  "nombre": "Ing. en Mantenimiento Industrial",
+  "codigo": "IMI",
+  "color": "#FF4500",
+  "plan": {
+    "sDuración en Semestres": [],
+    "s1": [
       [
-        "ACF001"
+        "Actividad Formativa I",
+        "ACF001",
+        0,
+        3,
+        "CIENCIAS",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Dibujo Asistido Por Computador I",
-      "DAC001",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "IDM000"
+        "Fisica I",
+        "FIS001",
+        0,
+        4,
+        "CIENCIAS",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Fisica II",
-      "FIS002",
-      0,
-      4,
-      "CIENCIAS",
       [
-        "FIS001"
+        "Historia y Evolución de la Tecnología",
+        "HET000",
+        0,
+        2,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Matematica II",
-      "MAT002",
-      0,
-      6,
-      "CIENCIAS",
       [
-        "MAT001"
+        "Introduc. a la Ingeniería en Diseño y Manufactura",
+        "IDM000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Normalización y Dibujo de Ingeniería II",
-      "NDI002",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "NDI001"
+        "Matematica I",
+        "MAT001",
+        0,
+        6,
+        "CIENCIAS",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Resistencia de Materiales",
-      "REM000",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "MDI000"
+        "Materiales de Ingenieria",
+        "MDI000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Sistemas Tecnológicos",
-      "STC000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "HET000"
+        "Normalización y Dibujo de Ingeniería I",
+        "NDI001",
+        0,
+        6,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s3": [
-    [
-      "Análisis de Esfuerzo I (cae)",
-      "ANE001",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "REM000"
+        "Tecnologia de la Informacion",
+        "TCI000",
+        0,
+        3,
+        "CIENCIAS",
+        [],
+        ""
+      ]
+    ],
+    "s2": [
+      [
+        "Actividad Formativa II",
+        "ACF002",
+        0,
+        3,
+        "CIENCIAS",
+        [
+          "ACF001"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Dibujo Asistido Por Computador II",
-      "DAC002",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "DAC001"
+        "Dibujo Asistido Por Computador I",
+        "DAC001",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "IDM000"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Matematicas de Ingenieria",
-      "MTI000",
-      0,
-      7,
-      "CIENCIAS",
       [
-        "MAT002"
+        "Fisica II",
+        "FIS002",
+        0,
+        4,
+        "CIENCIAS",
+        [
+          "FIS001"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Prevencion de Riesgos",
-      "PRR000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Procesos y Equipos Industriales I",
-      "PEI001",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Taller de Procesos I",
-      "TPR001",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "NDI002"
+        "Matematica II",
+        "MAT002",
+        0,
+        6,
+        "CIENCIAS",
+        [
+          "MAT001"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Termodinamica",
-      "TMT000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "FIS002"
+        "Normalización y Dibujo de Ingeniería II",
+        "NDI002",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "NDI001"
+        ],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s4": [
-    [
-      "Administracion de la Produccion",
-      "ADP000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Análisis de Esfuerzo II (cae)",
-      "ANE002",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ANE001"
+        "Resistencia de Materiales",
+        "REM000",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "MDI000"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Ergonomia",
-      "ERG000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Estadistica",
-      "EST000",
-      0,
-      2,
-      "CIENCIAS",
       [
-        "MTI000"
+        "Sistemas Tecnológicos",
+        "STC000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "HET000"
+        ],
+        ""
+      ]
+    ],
+    "s3": [
+      [
+        "Análisis de Esfuerzo I (cae)",
+        "ANE001",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "REM000"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Ingles I",
-      "ING001",
-      0,
-      2,
-      "CIENCIAS",
-      [],
-      ""
-    ],
-    [
-      "Mecanica de Fluidos",
-      "MDF000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TMT000"
+        "Dibujo Asistido Por Computador II",
+        "DAC002",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "DAC001"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Procesos y Equipos Industriales II",
-      "PEI002",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "PEI001"
+        "Matematicas de Ingenieria",
+        "MTI000",
+        0,
+        7,
+        "CIENCIAS",
+        [
+          "MAT002"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Taller de Diseño de Productos I",
-      "TDP001",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "DAC002"
+        "Prevencion de Riesgos",
+        "PRR000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Taller de Procesos II",
-      "TPR002",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TPR001"
+        "Procesos y Equipos Industriales I",
+        "PEI001",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s5": [
-    [
-      "Diseño de Plantas Industriales (ing. Básica)",
-      "DPI000",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "PEI002"
+        "Taller de Procesos I",
+        "TPR001",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "NDI002"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Gestion de Calidad",
-      "GCA000",
-      0,
-      2,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ADP000"
+        "Termodinamica",
+        "TMT000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "FIS002"
+        ],
+        ""
+      ]
+    ],
+    "s4": [
+      [
+        "Administracion de la Produccion",
+        "ADP000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Ingles II",
-      "ING002",
-      0,
-      3,
-      "CIENCIAS",
-      [],
-      ""
-    ],
-    [
-      "Innovacion y Emprendimiento",
-      "IEM000",
-      0,
-      2,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Software de Especialización",
-      "SDE000",
-      0,
-      6,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ANE002"
+        "Análisis de Esfuerzo II (cae)",
+        "ANE002",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ANE001"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Taller de Diseño de Productos II",
-      "TDP002",
-      0,
-      6,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TDP001"
+        "Ergonomia",
+        "ERG000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Taller de Procesos III",
-      "TPR003",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TPR002"
+        "Estadistica",
+        "EST000",
+        0,
+        2,
+        "CIENCIAS",
+        [
+          "MTI000"
+        ],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s6": [
-    [
-      "Diseño de Equipos Industriales (ing. Detalles)",
-      "DEI000",
-      0,
-      6,
-      "DISEÑO Y MANUFACTURA",
       [
-        "DPI000"
+        "Ingles I",
+        "ING001",
+        0,
+        2,
+        "CIENCIAS",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Economía y Finanzas",
-      "EYF000",
-      0,
-      2,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Gestión del Conocimiento",
-      "GDC000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Inglés III",
-      "ING003",
-      0,
-      2,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ING002"
+        "Mecanica de Fluidos",
+        "MDF000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TMT000"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Metodologia de la Investigacion",
-      "MIV000",
-      0,
-      2,
-      "DISEÑO Y MANUFACTURA",
       [
-        "GCA000"
+        "Procesos y Equipos Industriales II",
+        "PEI002",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "PEI001"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Taller de Diseño de Productos III",
-      "TDP003",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TDP002"
+        "Taller de Diseño de Productos I",
+        "TDP001",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "DAC002"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Taller de Procesos IV",
-      "TPR004",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TPR003"
+        "Taller de Procesos II",
+        "TPR002",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TPR001"
+        ],
+        ""
+      ]
+    ],
+    "s5": [
+      [
+        "Diseño de Plantas Industriales (ing. Básica)",
+        "DPI000",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "PEI002"
+        ],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s7": [
-    [
-      "Electricidad Aplicada",
-      "ELA000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Evaluacion de Proyectos",
-      "EVP000",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "EYF000"
+        "Gestion de Calidad",
+        "GCA000",
+        0,
+        2,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ADP000"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Gestion del Medio Ambiente",
-      "GMB000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
       [
-        "MIV000"
+        "Ingles II",
+        "ING002",
+        0,
+        3,
+        "CIENCIAS",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Inglés IV",
-      "ING004",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ING003"
+        "Innovacion y Emprendimiento",
+        "IEM000",
+        0,
+        2,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Innovación Acelerada",
-      "INN000",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "GDC000"
+        "Software de Especialización",
+        "SDE000",
+        0,
+        6,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ANE002"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Seminario de Título",
-      "SET000",
-      0,
-      0,
-      "DISEÑO Y MANUFACTURA",
-      [],
-      ""
-    ],
-    [
-      "Taller de Diseño de Productos Ecológicos",
-      "TDE000",
-      0,
-      5,
-      "DISEÑO Y MANUFACTURA",
       [
-        "TDP003"
+        "Taller de Diseño de Productos II",
+        "TDP002",
+        0,
+        6,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TDP001"
+        ],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s8": [
-    [
-      "Administración y Control de Proyectos",
-      "ACS000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
       [
-        "SET000"
-      ],
-      ""
+        "Taller de Procesos III",
+        "TPR003",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TPR002"
+        ],
+        ""
+      ]
     ],
-    [
-      "Desarrollo de Nuevos Productos",
-      "DNP000",
-      0,
-      4,
-      "DISEÑO Y MANUFACTURA",
+    "s6": [
       [
-        "INN000"
+        "Diseño de Equipos Industriales (ing. Detalles)",
+        "DEI000",
+        0,
+        6,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "DPI000"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Gestión del Capital Humano",
-      "GCH000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ING004"
+        "Economía y Finanzas",
+        "EYF000",
+        0,
+        2,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Gestion Estrategica",
-      "GER000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
       [
-        "GMB000"
+        "Gestión del Conocimiento",
+        "GDC000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Instrumentación y Control",
-      "IYC000",
-      0,
-      8,
-      "DISEÑO Y MANUFACTURA",
       [
-        "ELA000"
+        "Inglés III",
+        "ING003",
+        0,
+        2,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ING002"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Proyecto de Titulo",
-      "PRT000",
-      0,
-      3,
-      "DISEÑO Y MANUFACTURA",
       [
+        "Metodologia de la Investigacion",
+        "MIV000",
+        0,
+        2,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "GCA000"
+        ],
+        ""
+      ],
+      [
+        "Taller de Diseño de Productos III",
+        "TDP003",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TDP002"
+        ],
+        ""
+      ],
+      [
+        "Taller de Procesos IV",
+        "TPR004",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TPR003"
+        ],
+        ""
+      ]
+    ],
+    "s7": [
+      [
+        "Electricidad Aplicada",
+        "ELA000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
+      ],
+      [
+        "Evaluacion de Proyectos",
         "EVP000",
-        "SET000"
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "EYF000"
+        ],
+        ""
       ],
-      ""
+      [
+        "Gestion del Medio Ambiente",
+        "GMB000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "MIV000"
+        ],
+        ""
+      ],
+      [
+        "Inglés IV",
+        "ING004",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ING003"
+        ],
+        ""
+      ],
+      [
+        "Innovación Acelerada",
+        "INN000",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "GDC000"
+        ],
+        ""
+      ],
+      [
+        "Seminario de Título",
+        "SET000",
+        0,
+        0,
+        "DISEÑO Y MANUFACTURA",
+        [],
+        ""
+      ],
+      [
+        "Taller de Diseño de Productos Ecológicos",
+        "TDE000",
+        0,
+        5,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "TDP003"
+        ],
+        ""
+      ]
+    ],
+    "s8": [
+      [
+        "Administración y Control de Proyectos",
+        "ACS000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "SET000"
+        ],
+        ""
+      ],
+      [
+        "Desarrollo de Nuevos Productos",
+        "DNP000",
+        0,
+        4,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "INN000"
+        ],
+        ""
+      ],
+      [
+        "Gestión del Capital Humano",
+        "GCH000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ING004"
+        ],
+        ""
+      ],
+      [
+        "Gestion Estrategica",
+        "GER000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "GMB000"
+        ],
+        ""
+      ],
+      [
+        "Instrumentación y Control",
+        "IYC000",
+        0,
+        8,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "ELA000"
+        ],
+        ""
+      ],
+      [
+        "Proyecto de Titulo",
+        "PRT000",
+        0,
+        3,
+        "DISEÑO Y MANUFACTURA",
+        [
+          "EVP000",
+          "SET000"
+        ],
+        ""
+      ]
     ]
-  ]
+  }
 }

@@ -1,616 +1,621 @@
 {
-  "sDuración en Semestres": [],
-  "s1": [
-    [
-      "Comunicación Efectiva en Español / Inglés I",
-      "HXW006",
-      0,
-      3,
-      "ESTUDIOS HUMANÍSTICOS",
-      [],
-      ""
-    ],
-    [
-      "Educación Física I",
-      "EFI200",
-      0,
-      2,
-      "DEFIDER",
-      [],
-      ""
-    ],
-    [
-      "Introduccion a la Fisica",
-      "FIS100",
-      0,
-      6,
-      "FÍSICA",
-      [],
-      ""
-    ],
-    [
-      "Introducción a la Programación",
-      "INF129",
-      0,
-      7,
-      "INFORMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Introducción Al Cálculo",
-      "MAT070",
-      0,
-      6,
-      "MATEMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Álgebra y Geometría",
-      "MAT060",
-      0,
-      6,
-      "MATEMÁTICA",
-      [],
-      ""
-    ]
-  ],
-  "s2": [
-    [
-      "Comunicación Efectiva en Español / Ingles II",
-      "HXW007",
-      0,
-      3,
-      "ESTUDIOS HUMANÍSTICOS",
-      [],
-      ""
-    ],
-    [
-      "Cálculo en Una Variable",
-      "MAT071",
-      0,
-      6,
-      "MATEMÁTICA",
+  "nombre": "Ing. Civil Electrónica",
+  "codigo": "ELO",
+  "color": "#4169E1",
+  "plan": {
+    "sDuración en Semestres": [],
+    "s1": [
       [
-        "MAT070"
+        "Comunicación Efectiva en Español / Inglés I",
+        "HXW006",
+        0,
+        3,
+        "ESTUDIOS HUMANÍSTICOS",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Educación Física II",
-      "EFI201",
-      0,
-      2,
-      "DEFIDER",
       [
-        "EFI200"
+        "Educación Física I",
+        "EFI200",
+        0,
+        2,
+        "DEFIDER",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Física General Mecánica",
-      "FIS111",
-      0,
-      6,
-      "FÍSICA",
       [
-        "FIS100"
+        "Introduccion a la Fisica",
+        "FIS100",
+        0,
+        6,
+        "FÍSICA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Proyecto Inicial",
-      "IWG400",
-      0,
-      7,
-      "DIRECCION GENERAL DE DOCENCIA",
-      [],
-      ""
-    ],
-    [
-      "Álgebra Lineal",
-      "MAT061",
-      0,
-      6,
-      "MATEMÁTICA",
       [
-        "MAT060"
+        "Introducción a la Programación",
+        "INF129",
+        0,
+        7,
+        "INFORMÁTICA",
+        [],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s3": [
-    [
-      "Análisis Crítico de Texto",
-      "HXW008",
-      0,
-      3,
-      "ESTUDIOS HUMANÍSTICOS",
-      [],
-      ""
-    ],
-    [
-      "Cálculo en Varias Variables",
-      "MAT081",
-      0,
-      6,
-      "MATEMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Ecuaciones Diferenciales",
-      "MAT153",
-      0,
-      5,
-      "MATEMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Electromagnetismo",
-      "FIS121",
-      0,
-      8,
-      "FÍSICA",
-      [],
-      ""
-    ],
-    [
-      "Programación Procedural y Orientada a Objetos",
-      "ELO113",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "INF129"
+        "Introducción Al Cálculo",
+        "MAT070",
+        0,
+        6,
+        "MATEMÁTICA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Teoría de Redes Eléctricas",
-      "ELO112",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "MAT061",
+        "Álgebra y Geometría",
+        "MAT060",
+        0,
+        6,
+        "MATEMÁTICA",
+        [],
+        ""
+      ]
+    ],
+    "s2": [
+      [
+        "Comunicación Efectiva en Español / Ingles II",
+        "HXW007",
+        0,
+        3,
+        "ESTUDIOS HUMANÍSTICOS",
+        [],
+        ""
+      ],
+      [
+        "Cálculo en Una Variable",
+        "MAT071",
+        0,
+        6,
+        "MATEMÁTICA",
+        [
+          "MAT070"
+        ],
+        ""
+      ],
+      [
+        "Educación Física II",
+        "EFI201",
+        0,
+        2,
+        "DEFIDER",
+        [
+          "EFI200"
+        ],
+        ""
+      ],
+      [
+        "Física General Mecánica",
         "FIS111",
-        "MAT071"
+        0,
+        6,
+        "FÍSICA",
+        [
+          "FIS100"
+        ],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s4": [
-    [
-      "Análisis Numérico",
-      "MAT155",
-      0,
-      0,
-      "MATEMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Comunicación Efectiva en Español / Inglés III",
-      "HXW009",
-      0,
-      3,
-      "ESTUDIOS HUMANÍSTICOS",
-      [],
-      ""
-    ],
-    [
-      "Diseño Eléctronico Con Circuitos Discretos",
-      "ELO114",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "ELO112"
+        "Proyecto Inicial",
+        "IWG400",
+        0,
+        7,
+        "DIRECCION GENERAL DE DOCENCIA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Física General III",
-      "FIS131",
-      0,
-      6,
-      "FÍSICA",
       [
+        "Álgebra Lineal",
         "MAT061",
-        "FIS111",
-        "MAT071"
-      ],
-      ""
+        0,
+        6,
+        "MATEMÁTICA",
+        [
+          "MAT060"
+        ],
+        ""
+      ]
     ],
-    [
-      "Probabilidad y Estadística",
-      "MAT154",
-      0,
-      6,
-      "MATEMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Señales y Sistemas Dinámicos de Tiempo Continuo",
-      "ELO115",
-      0,
-      0,
-      "ELECTRÓNICA",
+    "s3": [
       [
+        "Análisis Crítico de Texto",
+        "HXW008",
+        0,
+        3,
+        "ESTUDIOS HUMANÍSTICOS",
+        [],
+        ""
+      ],
+      [
+        "Cálculo en Varias Variables",
+        "MAT081",
+        0,
+        6,
+        "MATEMÁTICA",
+        [],
+        ""
+      ],
+      [
+        "Ecuaciones Diferenciales",
         "MAT153",
-        "FIS111",
-        "MAT081"
+        0,
+        5,
+        "MATEMÁTICA",
+        [],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s5": [
-    [
-      "Análisis de Sistemas Lineales de Tiempo Discreto",
-      "ELO225",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
+        "Electromagnetismo",
+        "FIS121",
+        0,
+        8,
+        "FÍSICA",
+        [],
+        ""
+      ],
+      [
+        "Programación Procedural y Orientada a Objetos",
+        "ELO113",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "INF129"
+        ],
+        ""
+      ],
+      [
+        "Teoría de Redes Eléctricas",
+        "ELO112",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "MAT061",
+          "FIS111",
+          "MAT071"
+        ],
+        ""
+      ]
+    ],
+    "s4": [
+      [
+        "Análisis Numérico",
         "MAT155",
+        0,
+        0,
+        "MATEMÁTICA",
+        [],
+        ""
+      ],
+      [
+        "Comunicación Efectiva en Español / Inglés III",
+        "HXW009",
+        0,
+        3,
+        "ESTUDIOS HUMANÍSTICOS",
+        [],
+        ""
+      ],
+      [
+        "Diseño Eléctronico Con Circuitos Discretos",
+        "ELO114",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO112"
+        ],
+        ""
+      ],
+      [
+        "Física General III",
+        "FIS131",
+        0,
+        6,
+        "FÍSICA",
+        [
+          "MAT061",
+          "FIS111",
+          "MAT071"
+        ],
+        ""
+      ],
+      [
+        "Probabilidad y Estadística",
         "MAT154",
-        "ELO115"
+        0,
+        6,
+        "MATEMÁTICA",
+        [],
+        ""
       ],
-      ""
-    ],
-    [
-      "Comunicación Efectiva en Español / Inglés IV",
-      "HXW012",
-      0,
-      3,
-      "ESTUDIOS HUMANÍSTICOS",
-      [],
-      ""
-    ],
-    [
-      "Diseño de Sistemas Digitales",
-      "ELO227",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "ELO114",
-        "ELO115"
-      ],
-      ""
+        "Señales y Sistemas Dinámicos de Tiempo Continuo",
+        "ELO115",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "MAT153",
+          "FIS111",
+          "MAT081"
+        ],
+        ""
+      ]
     ],
-    [
-      "Diseño Eléctronico Con Circuitos Integrados",
-      "ELO224",
-      0,
-      0,
-      "ELECTRÓNICA",
+    "s5": [
       [
-        "ELO114"
-      ],
-      ""
-    ],
-    [
-      "Electromagnetismo Aplicado",
-      "ELO228",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [
-        "ELO112"
-      ],
-      ""
-    ],
-    [
-      "Laboratorio de Circuitos Eléctronicos",
-      "ELO226",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [
-        "ELO114",
-        "ELO224"
-      ],
-      ""
-    ]
-  ],
-  "s6": [
-    [
-      "Arquitectura de Computadores",
-      "ELO232",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [
-        "ELO113",
-        "ELO227"
-      ],
-      ""
-    ],
-    [
-      "Control Automático",
-      "ELO231",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [
-        "MAT155",
-        "ELO225"
-      ],
-      ""
-    ],
-    [
-      "Diseño de Circuitos de Eléctronica de Potencia",
-      "ELO230",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [
-        "ELO224"
-      ],
-      ""
-    ],
-    [
-      "Laboratorio de Sistemas Digitales",
-      "ELO233",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [
-        "ELO226",
-        "ELO227"
-      ],
-      ""
-    ],
-    [
-      "Principios de Comunicaciones",
-      "ELO234",
-      0,
-      5,
-      "ELECTRÓNICA",
-      [
+        "Análisis de Sistemas Lineales de Tiempo Discreto",
         "ELO225",
-        "ELO115"
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "MAT155",
+          "MAT154",
+          "ELO115"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Procesamiento Digital de Señales Con Aplicaciones",
-      "ELO229",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "MAT155",
-        "ELO225"
+        "Comunicación Efectiva en Español / Inglés IV",
+        "HXW012",
+        0,
+        3,
+        "ESTUDIOS HUMANÍSTICOS",
+        [],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s7": [
-    [
-      "Administración y Sostenibilidad Organizacional",
-      "AUX200",
-      0,
-      4,
-      "INGENIERÍA COMERCIAL",
-      [],
-      ""
-    ],
-    [
-      "Análisis de Sistemas de Conversión de Energía",
-      "ELO237",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "ELO230"
+        "Diseño de Sistemas Digitales",
+        "ELO227",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO114",
+          "ELO115"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Ingeniería Económica",
-      "AUX201",
-      0,
-      4,
-      "INGENIERÍA COMERCIAL",
-      [],
-      ""
-    ],
-    [
-      "Laboratorio de Comunicaciones",
-      "ELO238",
-      0,
-      5,
-      "ELECTRÓNICA",
       [
-        "ELO234"
+        "Diseño Eléctronico Con Circuitos Integrados",
+        "ELO224",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO114"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Laboratorio de Control Automático",
-      "ELO235",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
+        "Electromagnetismo Aplicado",
+        "ELO228",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO112"
+        ],
+        ""
+      ],
+      [
+        "Laboratorio de Circuitos Eléctronicos",
         "ELO226",
-        "ELO231"
-      ],
-      ""
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO114",
+          "ELO224"
+        ],
+        ""
+      ]
     ],
-    [
-      "Laboratorio de Microcontroladores",
-      "ELO236",
-      0,
-      0,
-      "ELECTRÓNICA",
+    "s6": [
       [
-        "ELO233",
-        "ELO113",
-        "ELO232"
+        "Arquitectura de Computadores",
+        "ELO232",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO113",
+          "ELO227"
+        ],
+        ""
       ],
-      ""
-    ],
-    [
-      "Responsabilidad Social y Ética Mediantes Aprendizaje y Servicio",
-      "ELO239",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ]
-  ],
-  "s8": [
-    [
-      "Asignatura de Especialidad I",
-      "ELO246",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Asignatura de Especialidad II",
-      "ELO247",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Borrador",
-      "AUX139",
-      0,
-      0,
-      "INFORMÁTICA",
-      [],
-      ""
-    ],
-    [
-      "Diseño de Equipos Eléctronicos",
-      "ELO245",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Gestión de Proyectos",
-      "AUX203",
-      0,
-      4,
-      "INGENIERÍA COMERCIAL",
-      [],
-      ""
-    ],
-    [
-      "Laboratorio Eléctronica de Potencia",
-      "ELO244",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
+        "Control Automático",
+        "ELO231",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "MAT155",
+          "ELO225"
+        ],
+        ""
+      ],
+      [
+        "Diseño de Circuitos de Eléctronica de Potencia",
         "ELO230",
-        "ELO226"
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO224"
+        ],
+        ""
       ],
-      ""
-    ]
-  ],
-  "s9": [
-    [
-      "Asignatura de la Especialidad III",
-      "ELO255",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Asignatura de la Especialidad IV",
-      "ELO256",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Asignatura de la Especialidad V",
-      "ELO257",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Electivo",
-      "AUX213",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ],
-    [
-      "Gestión de la Innovación",
-      "AUX217",
-      0,
-      3,
-      "INGENIERÍA COMERCIAL",
-      [],
-      ""
-    ],
-    [
-      "Pre-proyecto de Titulacion",
-      "ELO258",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
-    ]
-  ],
-  "s10": [
-    [
-      "Actividad de Titulación",
-      "ELO557",
-      0,
-      0,
-      "ELECTRÓNICA",
       [
-        "ELO258"
+        "Laboratorio de Sistemas Digitales",
+        "ELO233",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO226",
+          "ELO227"
+        ],
+        ""
       ],
-      ""
+      [
+        "Principios de Comunicaciones",
+        "ELO234",
+        0,
+        5,
+        "ELECTRÓNICA",
+        [
+          "ELO225",
+          "ELO115"
+        ],
+        ""
+      ],
+      [
+        "Procesamiento Digital de Señales Con Aplicaciones",
+        "ELO229",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "MAT155",
+          "ELO225"
+        ],
+        ""
+      ]
     ],
-    [
-      "Asignatura de Especialidad VI",
-      "ELO555",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
+    "s7": [
+      [
+        "Administración y Sostenibilidad Organizacional",
+        "AUX200",
+        0,
+        4,
+        "INGENIERÍA COMERCIAL",
+        [],
+        ""
+      ],
+      [
+        "Análisis de Sistemas de Conversión de Energía",
+        "ELO237",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO230"
+        ],
+        ""
+      ],
+      [
+        "Ingeniería Económica",
+        "AUX201",
+        0,
+        4,
+        "INGENIERÍA COMERCIAL",
+        [],
+        ""
+      ],
+      [
+        "Laboratorio de Comunicaciones",
+        "ELO238",
+        0,
+        5,
+        "ELECTRÓNICA",
+        [
+          "ELO234"
+        ],
+        ""
+      ],
+      [
+        "Laboratorio de Control Automático",
+        "ELO235",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO226",
+          "ELO231"
+        ],
+        ""
+      ],
+      [
+        "Laboratorio de Microcontroladores",
+        "ELO236",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO233",
+          "ELO113",
+          "ELO232"
+        ],
+        ""
+      ],
+      [
+        "Responsabilidad Social y Ética Mediantes Aprendizaje y Servicio",
+        "ELO239",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ]
     ],
-    [
-      "Asignatura de Especialidad VII",
-      "ELO556",
-      0,
-      0,
-      "ELECTRÓNICA",
-      [],
-      ""
+    "s8": [
+      [
+        "Asignatura de Especialidad I",
+        "ELO246",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Asignatura de Especialidad II",
+        "ELO247",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Borrador",
+        "AUX139",
+        0,
+        0,
+        "INFORMÁTICA",
+        [],
+        ""
+      ],
+      [
+        "Diseño de Equipos Eléctronicos",
+        "ELO245",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Gestión de Proyectos",
+        "AUX203",
+        0,
+        4,
+        "INGENIERÍA COMERCIAL",
+        [],
+        ""
+      ],
+      [
+        "Laboratorio Eléctronica de Potencia",
+        "ELO244",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO230",
+          "ELO226"
+        ],
+        ""
+      ]
+    ],
+    "s9": [
+      [
+        "Asignatura de la Especialidad III",
+        "ELO255",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Asignatura de la Especialidad IV",
+        "ELO256",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Asignatura de la Especialidad V",
+        "ELO257",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Electivo",
+        "AUX213",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Gestión de la Innovación",
+        "AUX217",
+        0,
+        3,
+        "INGENIERÍA COMERCIAL",
+        [],
+        ""
+      ],
+      [
+        "Pre-proyecto de Titulacion",
+        "ELO258",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ]
+    ],
+    "s10": [
+      [
+        "Actividad de Titulación",
+        "ELO557",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [
+          "ELO258"
+        ],
+        ""
+      ],
+      [
+        "Asignatura de Especialidad VI",
+        "ELO555",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ],
+      [
+        "Asignatura de Especialidad VII",
+        "ELO556",
+        0,
+        0,
+        "ELECTRÓNICA",
+        [],
+        ""
+      ]
     ]
-  ]
+  }
 }

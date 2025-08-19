@@ -30,11 +30,7 @@ export default function CurriculumGrid() {
     colors,
     careerName,
     careerColor,
-    casaCentralCareers,
-    vinaCareers,
-    sanJoaquinCareers,
-    vitacuraCareers,
-    concepcionCareers,
+    careersByCampus,
     showCareerSelector: showSelectorFromHook,
     handleBackToCareerSelector,
     findSubjectByCode
@@ -168,11 +164,7 @@ export default function CurriculumGrid() {
       {/* Selector de carreras */}
       <CareerSelector
         show={showCareerSelector}
-        casaCentralCareers={casaCentralCareers}
-        vinaCareers={vinaCareers}
-        sanjoaquinCareers={sanJoaquinCareers}
-        vitacuraCareers={vitacuraCareers}
-        concepcionCareers={concepcionCareers}
+        careersByCampus={careersByCampus}
         darkMode={darkMode}
         onCareerSelect={handleCareerSelection}
       />

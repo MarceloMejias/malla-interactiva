@@ -1,52 +1,38 @@
+
 import { useState, useEffect } from 'react';
 import { Subject, SubjectColors } from '@/types/curriculum';
 
-interface Career {
-  Nombre: string;
-  Link: string;
-  Color?: string;
+interface CareerMeta {
+  nombre: string;
+  codigo: string;
+  color?: string;
 }
 
-
 type Campus = 'cc' | 'vm' | 'sj' | 'vc' | 'cp';
+
 
 export const useCareerData = (campus: Campus | undefined, careerCode: string | undefined) => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [colors, setColors] = useState<SubjectColors>({});
   const [careerName, setCareerName] = useState<string>('');
   const [careerColor, setCareerColor] = useState<string | undefined>(undefined);
-
-  const [casaCentralCareers, setCasaCentralCareers] = useState<Career[]>([]);
-  const [sanJoaquinCareers, setSanJoaquinCareers] = useState<Career []>([]);
-  const [vitacuraCareers, setVitacuraCareers] = useState<Career[]>([]);
-  const [concepcionCareers, setConcepcionCareers] = useState<Career[]>([]);
-  const [vinaCareers, setVinaCareers] = useState<Career[]>([]);
-
+  const [careersByCampus, setCareersByCampus] = useState<Record<Campus, CareerMeta[]>>({ cc: [], vm: [], sj: [], vc: [], cp: [] });
   const [showCareerSelector, setShowCareerSelector] = useState(false);
 
-  // Cargar carreras disponibles y última carrera seleccionada al iniciar
   useEffect(() => {
-    const loadCareers = async () => {
+    const loadAllCareers = async () => {
       try {
-        const casaCentralModule = await import('@/data/cc/carreras_casacentral.json');
-        const vinaConcepcionModule = await import('@/data/vm/carreras_vina.json');
-        const sanJoaquinModule = await import('@/data/sj/carreras_sanjoaquin.json');
-        const vitacuraModule = await import('@/data/vc/carreras_vitacura.json');
-        const concepcionModule = await import('@/data/cp/carreras_concepcion.json');
-
-        setCasaCentralCareers(casaCentralModule.default as Career[]);
-        setVinaCareers(vinaConcepcionModule.default as Career[]);
-        setSanJoaquinCareers(sanJoaquinModule.default as Career[]);
-        setVitacuraCareers(vitacuraModule.default as Career[]);
-        setConcepcionCareers(concepcionModule.default as Career[]);
-      } catch (error) {
-        console.error('Error cargando carreras:', error);
+        const res = await fetch('/api/careers');
+        if (!res.ok) throw new Error('No se pudo cargar la lista de carreras');
+        const data = await res.json();
+        setCareersByCampus(data);
+      } catch (e) {
+        setCareersByCampus({ cc: [], vm: [], sj: [], vc: [], cp: [] });
       }
     };
-    loadCareers();
+    loadAllCareers();
   }, []);
 
-  // Cargar datos de la carrera específica
   useEffect(() => {
     const loadCareerData = async () => {
       if (!campus || !careerCode) {
@@ -58,38 +44,16 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
         return;
       }
       try {
-        const dataModule = await import(`@/data/${campus}/data_${careerCode}.json`);
-        const colorsModule = await import(`@/data/${campus}/colors_${careerCode}.json`);
-
-        // Buscar la carrera en todos los campus y sedes
-        const allCareers = [
-          ...casaCentralCareers,
-          ...vinaCareers,
-          ...sanJoaquinCareers,
-          ...vitacuraCareers,
-          ...concepcionCareers
-        ];
-        const career = allCareers.find(carrera => carrera.Link === careerCode);
-
-        if (!career) {
-          setShowCareerSelector(true);
-          setSubjects([]);
-          setColors({});
-          setCareerName('');
-          setCareerColor(undefined);
-          return;
-        }
-
-        const data = dataModule.default as Record<string, unknown[][]>;
-        const colorsData = colorsModule.default as Record<string, string[]>;
-
-        const careerNameFromJson = career?.Nombre || 'Carrera Desconocida';
-        setCareerName(careerNameFromJson);
-        setCareerColor(career?.Color);
-
+        // Cargar datos de la carrera y colores juntos desde la API
+        const dataRes = await fetch(`/api/careers/${campus}/${careerCode}`);
+        if (!dataRes.ok) throw new Error('No se pudo cargar el plan de la carrera');
+        const data = await dataRes.json();
+        setCareerName(data.nombre || 'Carrera Desconocida');
+        setCareerColor(data.color);
+        // Procesar subjects
         const processedSubjects: Subject[] = [];
-        Object.entries(data).forEach(([semester, semesterSubjects]) => {
-          semesterSubjects.forEach((subjectArray: unknown[]) => {
+        Object.entries(data.plan).forEach(([semester, semesterSubjects]) => {
+          (semesterSubjects as unknown[][]).forEach((subjectArray: unknown[]) => {
             const [name, code, usmCredits, sctCredits, type, prerequisites] = subjectArray;
             processedSubjects.push({
               name: name as string,
@@ -102,9 +66,8 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
             });
           });
         });
-
         setSubjects(processedSubjects);
-        setColors(colorsData);
+        setColors(data.colors || {});
         setShowCareerSelector(false);
       } catch (error) {
         setShowCareerSelector(true);
@@ -116,16 +79,14 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
       }
     };
     // Solo cargar si hay datos de carreras cargados y parámetros válidos
-    if (campus && careerCode && (casaCentralCareers.length > 0 || vinaCareers.length > 0)) {
+    if (campus && careerCode && careersByCampus[campus].length > 0) {
       loadCareerData();
     }
-  }, [campus, careerCode, casaCentralCareers, vinaCareers, sanJoaquinCareers, vitacuraCareers, concepcionCareers]);
-
+  }, [campus, careerCode, careersByCampus]);
 
   const handleBackToCareerSelector = () => {
     setShowCareerSelector(true);
   };
-
 
   const findSubjectByCode = (code: string): Subject | undefined => {
     return subjects.find(subject => subject.code === code);
@@ -136,11 +97,7 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
     colors,
     careerName,
     careerColor,
-    casaCentralCareers,
-    vinaCareers,
-    sanJoaquinCareers,
-    vitacuraCareers,
-    concepcionCareers,
+    careersByCampus,
     showCareerSelector,
     handleBackToCareerSelector,
     findSubjectByCode
