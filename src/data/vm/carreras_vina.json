@@ -1,0 +1,37 @@
+[
+  {
+    "Nombre": "Ingeniería en Informática",
+    "Link": "INGINF",
+    "Color": "#6366F1"
+  },
+  {
+    "Nombre": "Téc. Univ. en Informática",
+    "Link": "TUINF",
+    "Color": "#7344C9"
+  },
+  {
+    "Nombre": "Ingeniería en Biotecnología",
+    "Link": "IBT",
+    "Color": "#FF1493"
+  },
+  {
+    "Nombre": "Ing. en Fabricación y Diseño Industrial",
+    "Link": "FDI",
+    "Color": "#FF8C00"
+  },
+  {
+    "Nombre": "Ing. en Prevención de Riesgos Lab. y Amb.",
+    "Link": "PRLA",
+    "Color": "#32CD32"
+  },
+  {
+    "Nombre": "Ing. en Mantenimiento Industrial",
+    "Link": "IMI",
+    "Color": "#FF4500"
+  },
+  {
+    "Nombre": "Téc. Univ. en Construcción",
+    "Link": "TUCONST",
+    "Color": "#D2691E"
+  }
+]

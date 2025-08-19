@@ -1,730 +1,725 @@
 {
-  "nombre": "Ing. Civil en Informática",
-  "codigo": "CINF",
-  "color": "#6366F1",
-  "plan": {
-    "sDuración en Semestres": [],
-    "s1": [
-      [
-        "Algebra Elemental I",
-        "MAT111",
-        0,
-        7,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Calculo I",
-        "MAT121",
-        0,
-        7,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-  "Educacion Fisica I",
-        "DEW100",
-        0,
-        2,
-        "DEFIDER",
-        [],
-        ""
-      ],
-      [
-        "Inglés Científico y Tecnológico I",
-        "HCW310",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Introduccion a la Fisica",
-        "FIS100",
-        0,
-        6,
-        "FÍSICA",
-        [],
-        ""
-      ],
-      [
-        "Introduccion a la Ingenieria",
-        "IWG101",
-        0,
-        3,
-        "DIRECCION GENERAL DE DOCENCIA",
-        [],
-        ""
-      ]
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Algebra Elemental I",
+      "MAT111",
+      0,
+      7,
+      "MATEMÁTICA",
+      [],
+      ""
     ],
-    "s2": [
-      [
-        "Algebra Elemental II",
-        "MAT112",
-        0,
-        7,
-        "MATEMÁTICA",
-        [
-          "MAT111"
-        ],
-        ""
-      ],
-      [
-        "Calculo II",
-        "MAT122",
-        0,
-        7,
-        "MATEMÁTICA",
-        [
-          "MAT111",
-          "MAT121"
-        ],
-        ""
-      ],
-      [
-  "Educacion Fisica II",
-        "DEW101",
-        0,
-        2,
-        "DEFIDER",
-        [
-          "DEW100"
-        ],
-        ""
-      ],
-      [
-        "Fisica General I",
-        "FIS110",
-        0,
-        8,
-        "FÍSICA",
-        [
-          "FIS100",
-          "MAT121"
-        ],
-        ""
-      ],
-      [
-        "Programacion",
-        "IWI131",
-        0,
-        5,
-        "INFORMÁTICA",
-        [],
-        ""
-      ]
+    [
+      "Calculo I",
+      "MAT121",
+      0,
+      7,
+      "MATEMÁTICA",
+      [],
+      ""
     ],
-    "s3": [
-      [
-        "Arquitectura de Computadores I",
-        "ILI142",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "IWI131"
-        ],
-        ""
-      ],
-      [
-        "Calculo III",
-        "MAT123",
-        0,
-        7,
-        "MATEMÁTICA",
-        [
-          "MAT122",
-          "MAT112"
-        ],
-        ""
-      ],
-      [
-        "Deportes",
-        "DEW  0",
-        0,
-        2,
-        "DEFIDER",
-        [
-          "DEW101"
-        ],
-        ""
-      ],
-      [
-        "Fisica General II",
-        "FIS120",
-        0,
-        8,
-        "FÍSICA",
-        [
-          "FIS110",
-          "MAT122"
-        ],
-        ""
-      ],
-      [
-        "Humanistico I",
-        "H W  1",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Inglés Científico y Tecnológico II",
-        "HCW311",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HCW310"
-        ],
-        ""
-      ],
-      [
-        "Int.al Algebra Lineal y Ec Dif Ordinarias",
-        "MAT113",
-        0,
-        7,
-        "MATEMÁTICA",
-        [
-          "MAT122",
-          "MAT112"
-        ],
-        ""
-      ]
+    [
+      "Educacion Fisica I (damas y Varones)",
+      "DEW100",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
     ],
-    "s4": [
-      [
-        "Calculo IV",
-        "MAT124",
-        0,
-        6,
-        "MATEMÁTICA",
-        [
-          "MAT123",
-          "MAT113"
-        ],
-        ""
-      ],
-      [
-        "Estructura de Datos",
-        "ILI134",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "IWI131"
-        ],
-        ""
-      ],
-      [
-        "Fisica General III",
-        "FIS130",
-        0,
-        8,
-        "FÍSICA",
-        [
-          "FIS110",
-          "MAT122"
-        ],
-        ""
-      ],
-      [
-        "Grafica en Ingenieria",
-        "IWM185",
-        0,
-        5,
-        "INGENIERÍA MECÁNICA",
-        [
-          "IWI131"
-        ],
-        ""
-      ],
-      [
-        "Matematica Discreta",
-        "ILI151",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "MAT112"
-        ],
-        ""
-      ]
+    [
+      "Inglés Científico y Tecnológico I",
+      "HCW310",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
     ],
-    "s5": [
-      [
-  "Economía I-A",
-        "IWN170",
-        0,
-        5,
-        "INDUSTRIAS",
-        [],
-        ""
-      ],
-      [
-        "Fisica General IV",
-        "FIS140",
-        0,
-        8,
-        "FÍSICA",
-        [
-          "FIS130",
-          "FIS120"
-        ],
-        ""
-      ],
-      [
-        "Fundamentos de Electrotecnia",
-        "ILE260",
-        0,
-        5,
-        "INGENIERÍA ELÉCTRICA",
-        [
-          "FIS120",
-          "MAT123"
-        ],
-        ""
-      ],
-      [
-        "Humanistico II",
-        "H W  2",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Quimica General",
-        "QUI104",
-        0,
-        5,
-        "QUÍMICA",
-        [],
-        ""
-      ],
-      [
-        "Teoria de Sistemas",
-        "ILI260",
-        0,
-        5,
-        "INFORMÁTICA",
-        [],
-        ""
-      ]
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
     ],
-    "s6": [
-      [
-        "Algebra Lineal",
-        "MAT210",
-        0,
-        6,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Principios de Lenguajes de Programacion",
-        "ILI252",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "IWI131"
-        ],
-        ""
-      ],
-      [
-        "Probabilidades y Estadistica",
-        "MAT260",
-        0,
-        7,
-        "MATEMÁTICA",
-        [
-          "IWI131",
-          "MAT123",
-          "MAT113"
-        ],
-        ""
-      ],
-      [
-        "Sistemas de Informacion I",
-        "ILI273",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI260"
-        ],
-        ""
-      ],
-      [
-        "Sistemas Operativos",
-        "ILI243",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI242"
-        ],
-        ""
-      ],
-      [
-        "Teoria de Automatas y Lenguajes Formales",
-        "ILI231",
-        0,
-        5,
-        "INFORMÁTICA",
-        [],
-        ""
-      ]
-    ],
-    "s7": [
-      [
-        "Analisis Numerico",
-        "MAT270",
-        0,
-        7,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Diseño y Analisis de Algoritmos",
-        "ILI221",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "MAT260",
-          "ILI134",
-          "ILI231"
-        ],
-        ""
-      ],
-      [
-        "Fund. de Inv. de Operaciones",
-        "ILI281",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "MAT260",
-          "IWI131"
-        ],
-        ""
-      ],
-      [
-        "Fundamentos de Electronica",
-        "ILD208",
-        0,
-        5,
-        "ELECTRÓNICA",
-        [
-          "FIS120"
-        ],
-        ""
-      ],
-      [
-        "Información y Control Financiero",
-        "IWN270",
-        0,
-        5,
-        "INDUSTRIAS",
-        [
-          "IWN170"
-        ],
-        ""
-      ],
-      [
-        "Sistemas de Informacion II",
-        "ILI274",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI273"
-        ],
-        ""
-      ]
-    ],
-    "s8": [
-      [
-        "Arquitectura de Computadores II",
-        "ILI242",
-        0,
-        5,
-        "INFORMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Inteligencia Artificial",
-        "ILI355",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI221"
-        ],
-        ""
-      ],
-      [
-        "Organizacion y Manejo de Archivos",
-        "ILI238",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI134"
-        ],
-        ""
-      ],
-      [
-        "Proyecto de Sistemas de Informacion",
-        "ILI275",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI274"
-        ],
-        ""
-      ],
-      [
-        "Sociologia Industrial",
-        "HRW150",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ]
-    ],
-    "s9": [
-      [
-        "Administracion General",
-        "IWN261",
-        0,
-        5,
-        "INDUSTRIAS",
-        [],
-        ""
-      ],
-      [
-        "Compiladores",
-        "ILI237",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI252",
-          "ILI231"
-        ],
-        ""
-      ],
-      [
-        "Econometria",
-        "ICI393",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "MAT210",
-          "MAT260"
-        ],
-        ""
-      ],
-      [
-        "Psicología Industrial",
-        "HRW110",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Sistemas de Bases de Datos",
-        "ILI334",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI238"
-        ],
-        ""
-      ],
-      [
-        "Sistemas y Organizaciones",
-        "ILI363",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI273"
-        ],
-        ""
-      ]
-    ],
-    "s10": [
-      [
-        "Comportamiento Organizacional",
-        "HRW100",
-        0,
-        2,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Ingenieria de Software I",
-        "ILI331",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI274",
-          "ILI238"
-        ],
-        ""
-      ],
-      [
-        "Ingeniería Económica",
-        "ILN230",
-        0,
-        5,
-        "INDUSTRIAS",
-        [
-          "IWN270"
-        ],
-        ""
-      ],
-      [
-        "Optimizacion",
-        "ILI381",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI281",
-          "MAT210"
-        ],
-        ""
-      ],
-      [
-        "Simulacion",
-        "ICI382",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI381"
-        ],
-        ""
-      ],
-      [
-        "Sistemas de Gestion",
-        "ILI362",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI363"
-        ],
-        ""
-      ]
-    ],
-    "s11": [
-      [
-        "Evaluacion de Proyectos",
-        "ICN336",
-        0,
-        5,
-        "INDUSTRIAS",
-        [
-          "IWN270"
-        ],
-        ""
-      ],
-      [
-        "Ingenieria de Software II",
-        "ICI332",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "ILI331"
-        ],
-        ""
-      ],
-      [
-        "Redes de Computadores",
-        "ICI344",
-        0,
-        7,
-        "INFORMÁTICA",
-        [
-          "ILI243"
-        ],
-        ""
-      ],
-      [
-        "Seminario de Informatica I",
-        "ICI313",
-        0,
-        3,
-        "INFORMÁTICA",
-        [
-          "ILI331"
-        ],
-        ""
-      ],
-      [
-        "Seminario de Memoria",
-        "ICI315",
-        0,
-        3,
-        "INFORMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Seminario de Relaciones Humanas",
-        "IWI365",
-        0,
-        5,
-        "INFORMÁTICA",
-        [],
-        ""
-      ]
-    ],
-    "s12": [
-      [
-        "Seminario de Informatica II",
-        "ICI314",
-        0,
-        3,
-        "INFORMÁTICA",
-        [
-          "ICI313"
-        ],
-        ""
-      ],
-      [
-        "Seminario de Legislacion Laboral",
-        "ICI367",
-        0,
-        3,
-        "INFORMÁTICA",
-        [],
-        ""
-      ]
+    [
+      "Introduccion a la Ingenieria",
+      "IWG101",
+      0,
+      3,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
     ]
-  }
+  ],
+  "s2": [
+    [
+      "Algebra Elemental II",
+      "MAT112",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT111"
+      ],
+      ""
+    ],
+    [
+      "Calculo II",
+      "MAT122",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT111",
+        "MAT121"
+      ],
+      ""
+    ],
+    [
+      "Educacion Fisica II (damas y Varones)",
+      "DEW101",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW100"
+      ],
+      ""
+    ],
+    [
+      "Fisica General I",
+      "FIS110",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "FIS100",
+        "MAT121"
+      ],
+      ""
+    ],
+    [
+      "Programacion",
+      "IWI131",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Arquitectura de Computadores I",
+      "ILI142",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "IWI131"
+      ],
+      ""
+    ],
+    [
+      "Calculo III",
+      "MAT123",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT122",
+        "MAT112"
+      ],
+      ""
+    ],
+    [
+      "Deportes",
+      "DEW  0",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "DEW101"
+      ],
+      ""
+    ],
+    [
+      "Fisica General II",
+      "FIS120",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "FIS110",
+        "MAT122"
+      ],
+      ""
+    ],
+    [
+      "Humanistico I",
+      "H W  1",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Inglés Científico y Tecnológico II",
+      "HCW311",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW310"
+      ],
+      ""
+    ],
+    [
+      "Int.al Algebra Lineal y Ec Dif Ordinarias",
+      "MAT113",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "MAT122",
+        "MAT112"
+      ],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Calculo IV",
+      "MAT124",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT123",
+        "MAT113"
+      ],
+      ""
+    ],
+    [
+      "Estructura de Datos",
+      "ILI134",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "IWI131"
+      ],
+      ""
+    ],
+    [
+      "Fisica General III",
+      "FIS130",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "FIS110",
+        "MAT122"
+      ],
+      ""
+    ],
+    [
+      "Grafica en Ingenieria",
+      "IWM185",
+      0,
+      5,
+      "INGENIERÍA MECÁNICA",
+      [
+        "IWI131"
+      ],
+      ""
+    ],
+    [
+      "Matematica Discreta",
+      "ILI151",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "MAT112"
+      ],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Economia I-a",
+      "IWN170",
+      0,
+      5,
+      "INDUSTRIAS",
+      [],
+      ""
+    ],
+    [
+      "Fisica General IV",
+      "FIS140",
+      0,
+      8,
+      "FÍSICA",
+      [
+        "FIS130",
+        "FIS120"
+      ],
+      ""
+    ],
+    [
+      "Fundamentos de Electrotecnia",
+      "ILE260",
+      0,
+      5,
+      "INGENIERÍA ELÉCTRICA",
+      [
+        "FIS120",
+        "MAT123"
+      ],
+      ""
+    ],
+    [
+      "Humanistico II",
+      "H W  2",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Quimica General",
+      "QUI104",
+      0,
+      5,
+      "QUÍMICA",
+      [],
+      ""
+    ],
+    [
+      "Teoria de Sistemas",
+      "ILI260",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Algebra Lineal",
+      "MAT210",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Principios de Lenguajes de Programacion",
+      "ILI252",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "IWI131"
+      ],
+      ""
+    ],
+    [
+      "Probabilidades y Estadistica",
+      "MAT260",
+      0,
+      7,
+      "MATEMÁTICA",
+      [
+        "IWI131",
+        "MAT123",
+        "MAT113"
+      ],
+      ""
+    ],
+    [
+      "Sistemas de Informacion I",
+      "ILI273",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI260"
+      ],
+      ""
+    ],
+    [
+      "Sistemas Operativos",
+      "ILI243",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI242"
+      ],
+      ""
+    ],
+    [
+      "Teoria de Automatas y Lenguajes Formales",
+      "ILI231",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Analisis Numerico",
+      "MAT270",
+      0,
+      7,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Diseño y Analisis de Algoritmos",
+      "ILI221",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "MAT260",
+        "ILI134",
+        "ILI231"
+      ],
+      ""
+    ],
+    [
+      "Fund. de Inv. de Operaciones",
+      "ILI281",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "MAT260",
+        "IWI131"
+      ],
+      ""
+    ],
+    [
+      "Fundamentos de Electronica",
+      "ILD208",
+      0,
+      5,
+      "ELECTRÓNICA",
+      [
+        "FIS120"
+      ],
+      ""
+    ],
+    [
+      "Información y Control Financiero",
+      "IWN270",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "IWN170"
+      ],
+      ""
+    ],
+    [
+      "Sistemas de Informacion II",
+      "ILI274",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI273"
+      ],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Arquitectura de Computadores II",
+      "ILI242",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Inteligencia Artificial",
+      "ILI355",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI221"
+      ],
+      ""
+    ],
+    [
+      "Organizacion y Manejo de Archivos",
+      "ILI238",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI134"
+      ],
+      ""
+    ],
+    [
+      "Proyecto de Sistemas de Informacion",
+      "ILI275",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI274"
+      ],
+      ""
+    ],
+    [
+      "Sociologia Industrial",
+      "HRW150",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Administracion General",
+      "IWN261",
+      0,
+      5,
+      "INDUSTRIAS",
+      [],
+      ""
+    ],
+    [
+      "Compiladores",
+      "ILI237",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI252",
+        "ILI231"
+      ],
+      ""
+    ],
+    [
+      "Econometria",
+      "ICI393",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "MAT210",
+        "MAT260"
+      ],
+      ""
+    ],
+    [
+      "Psicología Industrial",
+      "HRW110",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Sistemas de Bases de Datos",
+      "ILI334",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI238"
+      ],
+      ""
+    ],
+    [
+      "Sistemas y Organizaciones",
+      "ILI363",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI273"
+      ],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Comportamiento Organizacional",
+      "HRW100",
+      0,
+      2,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Ingenieria de Software I",
+      "ILI331",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI274",
+        "ILI238"
+      ],
+      ""
+    ],
+    [
+      "Ingeniería Económica",
+      "ILN230",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "IWN270"
+      ],
+      ""
+    ],
+    [
+      "Optimizacion",
+      "ILI381",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI281",
+        "MAT210"
+      ],
+      ""
+    ],
+    [
+      "Simulacion",
+      "ICI382",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI381"
+      ],
+      ""
+    ],
+    [
+      "Sistemas de Gestion",
+      "ILI362",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI363"
+      ],
+      ""
+    ]
+  ],
+  "s11": [
+    [
+      "Evaluacion de Proyectos",
+      "ICN336",
+      0,
+      5,
+      "INDUSTRIAS",
+      [
+        "IWN270"
+      ],
+      ""
+    ],
+    [
+      "Ingenieria de Software II",
+      "ICI332",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "ILI331"
+      ],
+      ""
+    ],
+    [
+      "Redes de Computadores",
+      "ICI344",
+      0,
+      7,
+      "INFORMÁTICA",
+      [
+        "ILI243"
+      ],
+      ""
+    ],
+    [
+      "Seminario de Informatica I",
+      "ICI313",
+      0,
+      3,
+      "INFORMÁTICA",
+      [
+        "ILI331"
+      ],
+      ""
+    ],
+    [
+      "Seminario de Memoria",
+      "ICI315",
+      0,
+      3,
+      "INFORMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Seminario de Relaciones Humanas",
+      "IWI365",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s12": [
+    [
+      "Seminario de Informatica II",
+      "ICI314",
+      0,
+      3,
+      "INFORMÁTICA",
+      [
+        "ICI313"
+      ],
+      ""
+    ],
+    [
+      "Seminario de Legislacion Laboral",
+      "ICI367",
+      0,
+      3,
+      "INFORMÁTICA",
+      [],
+      ""
+    ]
+  ]
 }

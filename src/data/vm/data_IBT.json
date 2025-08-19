@@ -1,536 +1,68 @@
 {
-  "nombre": "Ingeniería en Biotecnología",
-  "codigo": "IBT",
-  "color": "#FF1493",
-  "plan": {
-    "s1": [
-      [
-        "Computación Aplicada",
-        "EIN512B",
-        "5",
-        "5",
-        "EI",
-        [],
-        "A"
-      ],
-      [
-        "Educación Física I",
-        "EFI138-T",
-        "2",
-        "2",
-        "C",
-        [],
-        "I"
-      ],
-      [
-        "Fundamento de la Matemática",
-        "MAT100-B",
-        "6",
-        "6",
-        "C",
-        [],
-        "A"
-      ],
-      [
-        "Inglés I",
-        "HCW100-T",
-        "2",
-        "2",
-        "C",
-        [],
-        "A"
-      ],
-      [
-        "Laboratorio de Química General",
-        "QMA002-B",
-        "6",
-        "6",
-        "QMD",
-        [],
-        "I"
-      ],
-      [
-        "Química General",
-        "QMA003-B",
-        "6",
-        "6",
-        "QMD",
-        [],
-        "I"
-      ]
-    ],
-    "s2": [
-      [
-        "Biología Celular",
-        "QMA006-B",
-        "6",
-        "6",
-        "QMD",
-        [],
-        "P"
-      ],
-      [
-        "Inglés II",
-        "HCW101-T",
-        "2",
-        "2",
-        "C",
-        [
-          "HCW100-T"
-        ],
-        "A"
-      ],
-      [
-        "Introducción a la Ingeniería",
-        "ING001-B",
-        "5",
-        "5",
-        "DGD",
-        [],
-        "A"
-      ],
-      [
-        "Introducción al Cálculo",
-        "MAT009-B",
-        "6",
-        "6",
-        "C",
-        [
-          "MAT100-B"
-        ],
-        "A"
-      ],
-      [
-        "Laboratorio de Química Cuantitativa",
-        "QMA005-B",
-        "6",
-        "6",
-        "QMD",
-        [
-          "QMA002-B"
-        ],
-        "P"
-      ],
-      [
-        "Química Cuantitativa",
-        "QMA004-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA003-B"
-        ],
-        "P"
-      ]
-    ],
-    "s3": [
-      [
-        "Análisis Instrumental",
-        "QMA007-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA005-B"
-        ],
-        "I"
-      ],
-      [
-        "Bioquímica",
-        "QMA010B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA006-B"
-        ],
-        "I"
-      ],
-      [
-        "Elementos de Fisicoquímica",
-        "QMA009-B",
-        "4",
-        "4",
-        "QMD",
-        [
-          "ING001-B"
-        ],
-        "I"
-      ],
-      [
-        "Inglés III",
-        "HCW102-T",
-        "2",
-        "2",
-        "C",
-        [
-          "HCW101-T"
-        ],
-        "A"
-      ],
-      [
-        "Introducción a la Física",
-        "FIS009B",
-        "5",
-        "5",
-        "C",
-        [],
-        "A"
-      ],
-      [
-        "Matemática de la Ingeniería",
-        "MAT030B",
-        "6",
-        "6",
-        "C",
-        [
-          "MAT009-B"
-        ],
-        "A"
-      ]
-    ],
-    "s4": [
-      [
-        "Administración de Empresas",
-        "GDEOO6-B",
-        "5",
-        "5",
-        "IC",
-        [],
-        "A"
-      ],
-      [
-        "Biología Molecular",
-        "QMA012-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA010B"
-        ],
-        "P"
-      ],
-      [
-        "Ciencias de la Ingeniería I: Termodinámica",
-        "QMA013-B",
-        "5",
-        "5",
-        "QMD",
-        [],
-        "P"
-      ],
-      [
-        "Física Mecánica",
-        "FIS007B",
-        "5",
-        "5",
-        "C",
-        [
-          "MAT100-B",
-          "FIS009B"
-        ],
-        "A"
-      ],
-      [
-        "Introducción a las Operaciones Unitarias en Bioprocesos",
-        "QMA011-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA009-B"
-        ],
-        "P"
-      ],
-      [
-        "Tecnologías de la Información y Comunicaciones",
-        "GDE005-B",
-        "4",
-        "4",
-        "EI",
-        [],
-        "A"
-      ]
-    ],
-    "s5": [
-      [
-        "Bioinformática",
-        "QMA015-B",
-        "4",
-        "4",
-        "QMD",
-        [],
-        "I"
-      ],
-      [
-        "Ciencias de la Ingeniería II: Balance de Materia y Energía",
-        "QMA014-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA013-B"
-        ],
-        "I"
-      ],
-      [
-        "Estadística",
-        "MAT006-B",
-        "5",
-        "5",
-        "C",
-        [
-          "MAT030B"
-        ],
-        "A"
-      ],
-      [
-        "Gestión de la Innovación",
-        "GDE002-B",
-        "3",
-        "3",
-        "DGD",
-        [],
-        "I"
-      ],
-      [
-        "Introducción a las Finanzas",
-        "GDE008-B",
-        "3",
-        "3",
-        "DGD",
-        [
-          "GDEOO6-B"
-        ],
-        "A"
-      ],
-      [
-        "Laboratorio de Microbiología",
-        "QMA018-B",
-        "4",
-        "4",
-        "QMD",
-        [
-          "QMA010B"
-        ],
-        "I"
-      ],
-      [
-        "Microbiología y Virología",
-        "QMA016-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA010B"
-        ],
-        "I"
-      ]
-    ],
-    "s6": [
-      [
-        "Buenas Prácticas de Laboratorio de Ensayo (BPL)",
-        "QMA022-B",
-        "3",
-        "3",
-        "QMD",
-        [],
-        "P"
-      ],
-      [
-        "Ciencias de la Ingeniería III: Procesos de Transporte",
-        "QMA019-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA014-B"
-        ],
-        "P"
-      ],
-      [
-        "Gestión del Emprendimiento",
-        "GDE003-B",
-        "3",
-        "3",
-        "DGD",
-        [
-          "GDE008-B",
-          "GDE002-B"
-        ],
-        "P"
-      ],
-      [
-        "Responsabilidad Social Empresarial y Ética Laboral",
-        "GDE007-B",
-        "3",
-        "3",
-        "EH",
-        [],
-        "A"
-      ],
-      [
-        "Sistemas Integrados de Gestión",
-        "GDE004-B",
-        "4",
-        "4",
-        "DGD",
-        [
-          "MAT006-B",
-          "GDEOO6-B"
-        ],
-        "P"
-      ],
-      [
-        "Técnicas Biomédicas y Farmacéuticas",
-        "QMA021-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA018-B",
-          "QMA016-B"
-        ],
-        "P"
-      ],
-      [
-        "Técnicas Inmunológicas y Moleculares",
-        "QMA020-B",
-        "6",
-        "6",
-        "QMD",
-        [
-          "QMA015-B",
-          "QMA012-B"
-        ],
-        "P"
-      ]
-    ],
-    "s7": [
-      [
-        "Buenas Prácticas de Manufactura y HACCP",
-        "QMA024-B",
-        "3",
-        "3",
-        "QMD",
-        [],
-        "I"
-      ],
-      [
-        "Educación Física II",
-        "EFI101T",
-        "2",
-        "2",
-        "C",
-        [
-          "EFI138-T"
-        ],
-        "I"
-      ],
-      [
-        "Gestión de Proyectos",
-        "GDE001-B",
-        "5",
-        "5",
-        "DGD",
-        [],
-        "A"
-      ],
-      [
-        "Humanidades I: Taller de Ideación y Creatividad",
-        "QMA023-B",
-        "3",
-        "3",
-        "QMD",
-        [
-          "GDE002-B"
-        ],
-        "I"
-      ],
-      [
-        "Instrumentación en Bioprocesos",
-        "QMA025-B",
-        "4",
-        "4",
-        "QMD",
-        [],
-        "I"
-      ],
-      [
-        "Laboratorio de PCR I",
-        "QMA026-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA020-B"
-        ],
-        "I"
-      ],
-      [
-        "Seminario de Título",
-        "QMA027-B",
-        "3",
-        "3",
-        "QMD",
-        [],
-        "I"
-      ]
-    ],
-    "s8": [
-      [
-        "Humanidades II: Liderazgo y Trabajo en Equipo",
-        "QMA034-B",
-        "3",
-        "3",
-        "QMD",
-        [],
-        "P"
-      ],
-      [
-        "Laboratorio de PCR II",
-        "QMA030-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA026-B"
-        ],
-        "P"
-      ],
-      [
-        "Proyecto de Título",
-        "QMA031-B",
-        "5",
-        "5",
-        "QMD",
-        [
-          "QMA027-B"
-        ],
-        "P"
-      ],
-      [
-        "Taller de Biorreactores",
-        "QMA029-B",
-        "6",
-        "6",
-        "QMD",
-        [
-          "QMA025-B"
-        ],
-        "P"
-      ],
-      [
-        "Taller Integrado de Ingeniería",
-        "QMA028-B",
-        "6",
-        "6",
-        "QMD",
-        [
-          "QMA023-B"
-        ],
-        "P"
-      ]
-    ]
-  }
+	"s1": [
+		["Computación Aplicada","EIN512B","5","5","EI",[],"A"],
+		["Educación Física I","EFI138-T","2","2","C",[],"I"],
+		["Fundamento de la Matemática","MAT100-B","6","6","C",[],"A"],
+		["Inglés I","HCW100-T","2","2","C",[],"A"],
+		["Laboratorio de Química General","QMA002-B","6","6","QMD",[],"I"],
+		["Química General","QMA003-B","6","6","QMD",[],"I"]
+	],
+	"s2": [
+		["Biología Celular","QMA006-B","6","6","QMD",[],"P"],
+		["Inglés II","HCW101-T","2","2","C",["HCW100-T"],"A"],
+		["Introducción a la Ingeniería","ING001-B","5","5","DGD",[],"A"],
+		["Introducción al Cálculo","MAT009-B","6","6","C",["MAT100-B"],"A"],
+		["Laboratorio de Química Cuantitativa","QMA005-B","6","6","QMD",["QMA002-B"],"P"],
+		["Química Cuantitativa","QMA004-B","5","5","QMD",["QMA003-B"],"P"]
+	],
+	"s3": [
+		["Análisis Instrumental","QMA007-B","5","5","QMD",["QMA005-B"],"I"],
+		["Bioquímica","QMA010B","5","5","QMD",["QMA006-B"],"I"],
+		["Elementos de Fisicoquímica","QMA009-B","4","4","QMD",["ING001-B"],"I"],
+		["Inglés III","HCW102-T","2","2","C",["HCW101-T"],"A"],
+		["Introducción a la Física","FIS009B","5","5","C",[],"A"],
+		["Matemática de la Ingeniería","MAT030B","6","6","C",["MAT009-B"],"A"]
+	],
+	"s4": [
+		["Administración de Empresas","GDEOO6-B","5","5","IC",[],"A"],
+		["Biología Molecular","QMA012-B","5","5","QMD",["QMA010B"],"P"],
+		["Ciencias de la Ingeniería I: Termodinámica","QMA013-B","5","5","QMD",[],"P"],
+		["Física Mecánica","FIS007B","5","5","C",["MAT100-B","FIS009B"],"A"],
+		["Introducción a las Operaciones Unitarias en Bioprocesos","QMA011-B","5","5","QMD",["QMA009-B"],"P"],
+		["Tecnologías de la Información y Comunicaciones","GDE005-B","4","4","EI",[],"A"]
+	],
+	"s5": [
+		["Bioinformática","QMA015-B","4","4","QMD",[],"I"],
+		["Ciencias de la Ingeniería II: Balance de Materia y Energía","QMA014-B","5","5","QMD",["QMA013-B"],"I"],
+		["Estadística","MAT006-B","5","5","C",["MAT030B"],"A"],
+		["Gestión de la Innovación","GDE002-B","3","3","DGD",[],"I"],
+		["Introducción a las Finanzas","GDE008-B","3","3","DGD",["GDEOO6-B"],"A"],
+		["Laboratorio de Microbiología","QMA018-B","4","4","QMD",["QMA010B"],"I"],
+		["Microbiología y Virología","QMA016-B","5","5","QMD",["QMA010B"],"I"]
+	],
+	"s6": [
+		["Buenas Prácticas de Laboratorio de Ensayo (BPL)","QMA022-B","3","3","QMD",[],"P"],
+		["Ciencias de la Ingeniería III: Procesos de Transporte","QMA019-B","5","5","QMD",["QMA014-B"],"P"],
+		["Gestión del Emprendimiento","GDE003-B","3","3","DGD",["GDE008-B","GDE002-B"],"P"],
+		["Responsabilidad Social Empresarial y Ética Laboral","GDE007-B","3","3","EH",[],"A"],
+		["Sistemas Integrados de Gestión","GDE004-B","4","4","DGD",["MAT006-B","GDEOO6-B"],"P"],
+		["Técnicas Biomédicas y Farmacéuticas","QMA021-B","5","5","QMD",["QMA018-B","QMA016-B"],"P"],
+		["Técnicas Inmunológicas y Moleculares","QMA020-B","6","6","QMD",["QMA015-B","QMA012-B"],"P"]
+	],
+	"s7": [
+		["Buenas Prácticas de Manufactura y HACCP","QMA024-B","3","3","QMD",[],"I"],
+		["Educación Física II","EFI101T","2","2","C",["EFI138-T"],"I"],
+		["Gestión de Proyectos","GDE001-B","5","5","DGD",[],"A"],
+		["Humanidades I: Taller de Ideación y Creatividad","QMA023-B","3","3","QMD",["GDE002-B"],"I"],
+		["Instrumentación en Bioprocesos","QMA025-B","4","4","QMD",[],"I"],
+		["Laboratorio de PCR I","QMA026-B","5","5","QMD",["QMA020-B"],"I"],
+		["Seminario de Título","QMA027-B","3","3","QMD",[],"I"]
+	],
+	"s8": [
+		["Humanidades II: Liderazgo y Trabajo en Equipo","QMA034-B","3","3","QMD",[],"P"],
+		["Laboratorio de PCR II","QMA030-B","5","5","QMD",["QMA026-B"],"P"],
+		["Proyecto de Título","QMA031-B","5","5","QMD",["QMA027-B"],"P"],
+		["Taller de Biorreactores","QMA029-B","6","6","QMD",["QMA025-B"],"P"],
+		["Taller Integrado de Ingeniería","QMA028-B","6","6","QMD",["QMA023-B"],"P"]
+	]
 }

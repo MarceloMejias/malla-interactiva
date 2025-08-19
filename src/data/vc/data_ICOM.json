@@ -1,606 +1,601 @@
 {
-  "nombre": "Ing. Comercial",
-  "codigo": "ICOM",
-  "color": "#32CD32",
-  "plan": {
-    "sDuración en Semestres": [],
-    "s1": [
-      [
-        "Administración de Empresas",
-        "ICS111",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Álgebra y Geometría",
-        "MATE10",
-        0,
-        6,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Comunicación Escrita: Lectoescritura a Partir de Grandes Obras",
-        "HAC100",
-        0,
-        5,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-  "Educación Física I",
-        "EFI100",
-        0,
-        2,
-        "DEFIDER",
-        [],
-        ""
-      ],
-      [
-        "Inglés 1",
-        "HCW100",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Introducción a la Economía",
-        "ICS161",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Programación y Tratamiento de Datos Para la Gestión",
-        "INF130",
-        0,
-        5,
-        "INFORMÁTICA",
-        [],
-        ""
-      ]
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Administración de Empresas",
+      "ICS111",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
     ],
-    "s2": [
-      [
-        "Álgebra Lineal",
-        "MATE20",
-        0,
-        5,
-        "MATEMÁTICA",
-        [
-          "MATE10"
-        ],
-        ""
-      ],
-      [
-        "Bases de Datos Para la Gestión",
-        "INF303",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "INF130"
-        ],
-        ""
-      ],
-      [
-        "Comunicación Oral: Retórica y Puesta en Escena",
-        "HAA102",
-        0,
-        5,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HAC100"
-        ],
-        ""
-      ],
-      [
-        "Contabilidad I",
-        "ICS140",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-  "Educación Física II",
-        "EFI101",
-        0,
-        2,
-        "DEFIDER",
-        [
-          "EFI100"
-        ],
-        ""
-      ],
-      [
-        "Inglés 2",
-        "HCW101",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HCW100"
-        ],
-        ""
-      ],
-      [
-        "Pre-cálculo",
-        "MATE11",
-        0,
-        5,
-        "MATEMÁTICA",
-        [
-          "MATE10"
-        ],
-        ""
-      ]
+    [
+      "Álgebra y Geometría",
+      "MATE10",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
     ],
-    "s3": [
-      [
-        "Cálculo Diferencial",
-        "MATE25",
-        0,
-        5,
-        "MATEMÁTICA",
-        [
-          "MATE20",
-          "MATE11"
-        ],
-        ""
-      ],
-      [
-        "Contabilidad II",
-        "ICS144",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "ICS140"
-        ],
-        ""
-      ],
-      [
-        "Inglés 3",
-        "HCW102",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HCW101"
-        ],
-        ""
-      ],
-      [
-        "Legislación Empresarial",
-        "ICS112",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "ICS111"
-        ],
-        ""
-      ],
-      [
-        "Programación Para la Analítica de Gestión",
-        "INF316",
-        0,
-        5,
-        "INFORMÁTICA",
-        [
-          "INF303"
-        ],
-        ""
-      ],
-      [
-        "Taller de Creatividad Para el Emprendimiento",
-        "IDP107",
-        0,
-        5,
-        "INGENIERÍA EN DISEÑO",
-        [
-          "HAC100",
-          "MATE10"
-        ],
-        ""
-      ]
+    [
+      "Comunicación Escrita: Lectoescritura a Partir de Grandes Obras",
+      "HAC100",
+      0,
+      5,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
     ],
-    "s4": [
-      [
-        "Cálculo Integral",
-        "MATE26",
-        0,
-        5,
-        "MATEMÁTICA",
-        [
-          "MATE25"
-        ],
-        ""
-      ],
-      [
-        "Deportes",
-        "DEW  0",
-        0,
-        2,
-        "DEFIDER",
-        [],
-        ""
-      ],
-      [
-        "Ingeniería Económica",
-        "ICS142",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "INF130",
-          "MATE20"
-        ],
-        ""
-      ],
-      [
-        "Inglés 4",
-        "HCW200",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HCW102"
-        ],
-        ""
-      ],
-      [
-        "Introducción a la Ingeniería Sostenible",
-        "IQA161",
-        0,
-        5,
-        "INGENIERÍA QUÍMICA Y AMBIENTAL",
-        [
-          "ICS161"
-        ],
-        ""
-      ],
-      [
-        "Microeconomía I",
-        "ICS162",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "MATE25",
-          "ICS161"
-        ],
-        ""
-      ],
-      [
-        "Taller de Pensamiento de Diseño Para el Emprendimiento",
-        "IDP108",
-        0,
-        5,
-        "INGENIERÍA EN DISEÑO",
-        [
-          "IDP107"
-        ],
-        ""
-      ]
+    [
+      "Educación Física I (damas y Varones)",
+      "EFI100",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
     ],
-    "s5": [
-      [
-        "Dirección Tributaria",
-        "ICS244",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Historia Económica",
-        "HAH101",
-        0,
-        5,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Inglés 5",
-        "HCW201",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HCW200"
-        ],
-        ""
-      ],
-      [
-        "Macroeconomía",
-        "ICS263",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "ICS162"
-        ],
-        ""
-      ],
-      [
-        "Marketing I",
-        "ICS230",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Personas y Organizaciones I",
-        "ICS214",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Probabilidad y Estadística",
-        "MAT034",
-        0,
-        0,
-        "MATEMÁTICA",
-        [],
-        ""
-      ]
+    [
+      "Inglés 1",
+      "HCW100",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
     ],
-    "s6": [
-      [
-        "Econometría",
-        "ICS294",
-        0,
-        7,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Inglés 6",
-        "HCW202",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [
-          "HCW201"
-        ],
-        ""
-      ],
-      [
-        "Macroeconomía II",
-        "ICS363",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Microeconomía II",
-        "ICS264",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "MATE26",
-          "ICS162"
-        ],
-        ""
-      ],
-      [
-        "Optimización Para la Gestión",
-        "ICS297",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Personas y Organizaciones II",
-        "ICS316",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ]
+    [
+      "Introducción a la Economía",
+      "ICS161",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
     ],
-    "s7": [
-      [
-        "Análisis de Datos Para los Negocios I",
-        "ICS165",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Entorno Legal de la Empresa",
-        "ICS315",
-        0,
-        7,
-        "INGENIERÍA COMERCIAL",
-        [
-          "ICS244"
-        ],
-        ""
-      ],
-      [
-        "Evaluación Privada y Social de Proyectos",
-        "ICS164",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Finanzas I",
-        "ICS247",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Gestión Estratégica I",
-        "ICS221",
-        0,
-        6,
-        "INGENIERÍA COMERCIAL",
-        [
-          "ICS244"
-        ],
-        ""
-      ],
-      [
-        "Organización Industrial",
-        "ICS265",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [
-          "ICS264",
-          "ICS263"
-        ],
-        ""
-      ]
-    ],
-    "s8": [
-      [
-        "Análisis de Datos Para los Negocios II",
-        "ICS175",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Dirección Estratégica II",
-        "ICS223",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Finanzas Corporativas",
-        "ICS246",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Gestión de Operaciones",
-        "ICS296",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Marketing II",
-        "ICS233",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Preparación y Presentación de Proyectos",
-        "ICS166",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ]
-    ],
-    "s9": [
-      [
-        "Electivo I",
-        "ICS801",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Electivo II",
-        "ICS802",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Optativo de Profundización I",
-        "ICS700",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Optativo de Profundización II",
-        "ICS701",
-        0,
-        0,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ]
-    ],
-    "s10": [
-      [
-        "Electivo III",
-        "ICS803",
-        0,
-        5,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Seminario de Título",
-        "ICS399",
-        0,
-        17,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ]
+    [
+      "Programación y Tratamiento de Datos Para la Gestión",
+      "INF130",
+      0,
+      5,
+      "INFORMÁTICA",
+      [],
+      ""
     ]
-  }
+  ],
+  "s2": [
+    [
+      "Álgebra Lineal",
+      "MATE20",
+      0,
+      5,
+      "MATEMÁTICA",
+      [
+        "MATE10"
+      ],
+      ""
+    ],
+    [
+      "Bases de Datos Para la Gestión",
+      "INF303",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "INF130"
+      ],
+      ""
+    ],
+    [
+      "Comunicación Oral: Retórica y Puesta en Escena",
+      "HAA102",
+      0,
+      5,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HAC100"
+      ],
+      ""
+    ],
+    [
+      "Contabilidad I",
+      "ICS140",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Educación Física II (damas y Varones)",
+      "EFI101",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "EFI100"
+      ],
+      ""
+    ],
+    [
+      "Inglés 2",
+      "HCW101",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW100"
+      ],
+      ""
+    ],
+    [
+      "Pre-cálculo",
+      "MATE11",
+      0,
+      5,
+      "MATEMÁTICA",
+      [
+        "MATE10"
+      ],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Cálculo Diferencial",
+      "MATE25",
+      0,
+      5,
+      "MATEMÁTICA",
+      [
+        "MATE20",
+        "MATE11"
+      ],
+      ""
+    ],
+    [
+      "Contabilidad II",
+      "ICS144",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "ICS140"
+      ],
+      ""
+    ],
+    [
+      "Inglés 3",
+      "HCW102",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW101"
+      ],
+      ""
+    ],
+    [
+      "Legislación Empresarial",
+      "ICS112",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "ICS111"
+      ],
+      ""
+    ],
+    [
+      "Programación Para la Analítica de Gestión",
+      "INF316",
+      0,
+      5,
+      "INFORMÁTICA",
+      [
+        "INF303"
+      ],
+      ""
+    ],
+    [
+      "Taller de Creatividad Para el Emprendimiento",
+      "IDP107",
+      0,
+      5,
+      "INGENIERÍA EN DISEÑO",
+      [
+        "HAC100",
+        "MATE10"
+      ],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Cálculo Integral",
+      "MATE26",
+      0,
+      5,
+      "MATEMÁTICA",
+      [
+        "MATE25"
+      ],
+      ""
+    ],
+    [
+      "Deportes",
+      "DEW  0",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
+    ],
+    [
+      "Ingeniería Económica",
+      "ICS142",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "INF130",
+        "MATE20"
+      ],
+      ""
+    ],
+    [
+      "Inglés 4",
+      "HCW200",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW102"
+      ],
+      ""
+    ],
+    [
+      "Introducción a la Ingeniería Sostenible",
+      "IQA161",
+      0,
+      5,
+      "INGENIERÍA QUÍMICA Y AMBIENTAL",
+      [
+        "ICS161"
+      ],
+      ""
+    ],
+    [
+      "Microeconomía I",
+      "ICS162",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "MATE25",
+        "ICS161"
+      ],
+      ""
+    ],
+    [
+      "Taller de Pensamiento de Diseño Para el Emprendimiento",
+      "IDP108",
+      0,
+      5,
+      "INGENIERÍA EN DISEÑO",
+      [
+        "IDP107"
+      ],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Dirección Tributaria",
+      "ICS244",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Historia Económica",
+      "HAH101",
+      0,
+      5,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Inglés 5",
+      "HCW201",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW200"
+      ],
+      ""
+    ],
+    [
+      "Macroeconomía",
+      "ICS263",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "ICS162"
+      ],
+      ""
+    ],
+    [
+      "Marketing I",
+      "ICS230",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Personas y Organizaciones I",
+      "ICS214",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Probabilidad y Estadística",
+      "MAT034",
+      0,
+      0,
+      "MATEMÁTICA",
+      [],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Econometría",
+      "ICS294",
+      0,
+      7,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Inglés 6",
+      "HCW202",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [
+        "HCW201"
+      ],
+      ""
+    ],
+    [
+      "Macroeconomía II",
+      "ICS363",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Microeconomía II",
+      "ICS264",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "MATE26",
+        "ICS162"
+      ],
+      ""
+    ],
+    [
+      "Optimización Para la Gestión",
+      "ICS297",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Personas y Organizaciones II",
+      "ICS316",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Análisis de Datos Para los Negocios I",
+      "ICS165",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Entorno Legal de la Empresa",
+      "ICS315",
+      0,
+      7,
+      "INGENIERÍA COMERCIAL",
+      [
+        "ICS244"
+      ],
+      ""
+    ],
+    [
+      "Evaluación Privada y Social de Proyectos",
+      "ICS164",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Finanzas I",
+      "ICS247",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Gestión Estratégica I",
+      "ICS221",
+      0,
+      6,
+      "INGENIERÍA COMERCIAL",
+      [
+        "ICS244"
+      ],
+      ""
+    ],
+    [
+      "Organización Industrial",
+      "ICS265",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [
+        "ICS264",
+        "ICS263"
+      ],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Análisis de Datos Para los Negocios II",
+      "ICS175",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Dirección Estratégica II",
+      "ICS223",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Finanzas Corporativas",
+      "ICS246",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Gestión de Operaciones",
+      "ICS296",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Marketing II",
+      "ICS233",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Preparación y Presentación de Proyectos",
+      "ICS166",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Electivo I",
+      "ICS801",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Electivo II",
+      "ICS802",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Optativo de Profundización I",
+      "ICS700",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Optativo de Profundización II",
+      "ICS701",
+      0,
+      0,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Electivo III",
+      "ICS803",
+      0,
+      5,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Seminario de Título",
+      "ICS399",
+      0,
+      17,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ]
+  ]
 }

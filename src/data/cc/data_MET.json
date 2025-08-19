@@ -1,633 +1,628 @@
 {
-  "nombre": "Ing. Civil Metalúrgica",
-  "codigo": "MET",
-  "color": "#B8860B",
-  "plan": {
-    "sDuración en Semestres": [],
-    "s1": [
-      [
-        "Comunicación Efectiva en Español / Inglés I",
-        "HXW006",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Educación Física I",
-        "EFI200",
-        0,
-        2,
-        "DEFIDER",
-        [],
-        ""
-      ],
-      [
-        "Introduccion a la Fisica",
-        "FIS100",
-        0,
-        6,
-        "FÍSICA",
-        [],
-        ""
-      ],
-      [
-        "Introducción a la Programación",
-        "INF129",
-        0,
-        7,
-        "INFORMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Introducción Al Cálculo",
-        "MAT070",
-        0,
-        6,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Álgebra y Geometría",
-        "MAT060",
-        0,
-        6,
-        "MATEMÁTICA",
-        [],
-        ""
-      ]
+  "sDuración en Semestres": [],
+  "s1": [
+    [
+      "Comunicación Efectiva en Español / Inglés I",
+      "HXW006",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
     ],
-    "s2": [
-      [
-        "Comunicación Efectiva en Español / Ingles II",
-        "HXW007",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Cálculo en Una Variable",
-        "MAT071",
-        0,
-        6,
-        "MATEMÁTICA",
-        [
-          "MAT070"
-        ],
-        ""
-      ],
-      [
-        "Educación Física II",
-        "EFI201",
-        0,
-        2,
-        "DEFIDER",
-        [
-          "EFI200"
-        ],
-        ""
-      ],
-      [
-        "Física General Mecánica",
-        "FIS111",
-        0,
-        6,
-        "FÍSICA",
-        [
-          "FIS100"
-        ],
-        ""
-      ],
-      [
-        "Proyecto Inicial",
-        "IWG400",
-        0,
-        7,
-        "DIRECCION GENERAL DE DOCENCIA",
-        [],
-        ""
-      ],
-      [
-        "Álgebra Lineal",
-        "MAT061",
-        0,
-        6,
-        "MATEMÁTICA",
-        [
-          "MAT060"
-        ],
-        ""
-      ]
+    [
+      "Educación Física I",
+      "EFI200",
+      0,
+      2,
+      "DEFIDER",
+      [],
+      ""
     ],
-    "s3": [
-      [
-        "Análisis Crítico de Texto",
-        "HXW008",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Cálculo en Varias Variables",
-        "MAT081",
-        0,
-        6,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Física General III",
-        "FIS131",
-        0,
-        6,
-        "FÍSICA",
-        [
-          "MAT061",
-          "FIS111",
-          "MAT071"
-        ],
-        ""
-      ],
-      [
-        "Geología y Minerología",
-        "MET139",
-        0,
-        4,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "IWG400",
-          "FIS111"
-        ],
-        ""
-      ],
-      [
-        "Procesos Metalúrgicos Sustentables",
-        "MET138",
-        0,
-        4,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "IWG400",
-          "FIS111"
-        ],
-        ""
-      ],
-      [
-        "Química Para Ingeniería",
-        "QUI400",
-        0,
-        6,
-        "QUÍMICA",
-        [],
-        ""
-      ]
+    [
+      "Introduccion a la Fisica",
+      "FIS100",
+      0,
+      6,
+      "FÍSICA",
+      [],
+      ""
     ],
-    "s4": [
-      [
-        "Análisis de Procesos Metalúrgicos",
-        "MET200",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET138",
-          "QUI400",
-          "MET139"
-        ],
-        ""
-      ],
-      [
-        "Comunicación Efectiva en Español / Inglés III",
-        "HXW009",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Ecuaciones Diferenciales",
-        "MAT153",
-        0,
-        5,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Electromagnetismo",
-        "FIS121",
-        0,
-        8,
-        "FÍSICA",
-        [],
-        ""
-      ],
-      [
-        "Probabilidad y Estadística",
-        "MAT154",
-        0,
-        6,
-        "MATEMÁTICA",
-        [],
-        ""
-      ],
-      [
-        "Química Inorgánica",
-        "QUI410",
-        0,
-        6,
-        "QUÍMICA",
-        [],
-        ""
-      ]
+    [
+      "Introducción a la Programación",
+      "INF129",
+      0,
+      7,
+      "INFORMÁTICA",
+      [],
+      ""
     ],
-    "s5": [
-      [
-        "Administración y Sostenibilidad Organizacional",
-        "AUX200",
-        0,
-        4,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Ciencia de Datos",
-        "TEL500",
-        0,
-        6,
-        "ELECTRÓNICA",
-        [
-          "MAT154",
-          "INF129"
-        ],
-        ""
-      ],
-      [
-        "Ciencia E Ingeniería de los Materiales",
-        "MET202",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "QUI410"
-        ],
-        ""
-      ],
-      [
-        "Cinética y Diseño de Reactores Metaúrgicos",
-        "MET201",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [],
-        ""
-      ],
-      [
-        "Mecánica de Fluidos",
-        "IQA301",
-        0,
-        6,
-        "INGENIERÍA QUÍMICA Y AMBIENTAL",
-        [
-          "MAT153",
-          "FIS111"
-        ],
-        ""
-      ],
-      [
-        "Práctica en Acción Comunitaria",
-        "HXW011",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ]
+    [
+      "Introducción Al Cálculo",
+      "MAT070",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
     ],
-    "s6": [
-      [
-        "Comunicación Efectiva en Español / Inglés IV",
-        "HXW012",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Ingeniería Económica",
-        "AUX201",
-        0,
-        4,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Metalurgia de Minerales Industriales",
-        "MET297",
-        0,
-        4,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "QUI410"
-        ],
-        ""
-      ],
-      [
-        "Reducción de Tamaño y Clasificación de Minerales",
-        "MET298",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET200",
-          "TEL500"
-        ],
-        ""
-      ],
-      [
-        "Termodinámica Metalúrgica",
-        "MET299",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET200",
-          "MAT081"
-        ],
-        ""
-      ],
-      [
-        "Transferencia de Calor",
-        "IQA304",
-        0,
-        6,
-        "INGENIERÍA QUÍMICA Y AMBIENTAL",
-        [
-          "IQA301"
-        ],
-        ""
-      ]
-    ],
-    "s7": [
-      [
-        "Concentración de Minerales",
-        "MET313",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET298"
-        ],
-        ""
-      ],
-      [
-        "Gestión de Proyectos",
-        "AUX203",
-        0,
-        4,
-        "INGENIERÍA COMERCIAL",
-        [],
-        ""
-      ],
-      [
-        "Hidrometalurgia",
-        "MET315",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET201"
-        ],
-        ""
-      ],
-      [
-        "Inglés Disciplinar",
-        "AUX202",
-        0,
-        3,
-        "ESTUDIOS HUMANÍSTICOS",
-        [],
-        ""
-      ],
-      [
-        "Mecánica de Sólidos",
-        "MET314",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MAT153",
-          "FIS111"
-        ],
-        ""
-      ],
-      [
-        "Termodinámica de Materiales",
-        "MET312",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET299"
-        ],
-        ""
-      ]
-    ],
-    "s8": [
-      [
-        "Comportamiento Mecánico de Materiales",
-        "MET319",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET202",
-          "MET314"
-        ],
-        ""
-      ],
-      [
-        "Electrometalúrgia y Corrosión",
-        "MET316",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET315"
-        ],
-        ""
-      ],
-      [
-        "Metalurgia Física",
-        "MET322",
-        0,
-        6,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET312",
-          "MET202"
-        ],
-        ""
-      ],
-      [
-        "Procesos Metalúrgicos de Alta Temperatura",
-        "MET318",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "IQA304",
-          "MET201"
-        ],
-        ""
-      ],
-      [
-        "Seguridad y Legislación Minero-metalúrgica",
-        "MET321",
-        0,
-        4,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "AUX200"
-        ],
-        ""
-      ],
-      [
-        "Taller de Ingeniería",
-        "MET317",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET312",
-          "IQA304",
-          "AUX202",
-          "AUX203",
-          "MET314"
-        ],
-        ""
-      ]
-    ],
-    "s9": [
-      [
-        "Aleaciones en Ingeniería",
-        "MET458",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET322",
-          "MET319"
-        ],
-        ""
-      ],
-      [
-        "Electivo",
-        "AUX204",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [],
-        ""
-      ],
-      [
-        "Fundición y Manufactura",
-        "MET459",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "IQA304",
-          "MET322"
-        ],
-        ""
-      ],
-      [
-        "Gestión y Optimización de Operaciones",
-        "MET457",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET317",
-          "TEL500"
-        ],
-        ""
-      ],
-      [
-        "Instrumentación y Control de Procesos",
-        "MET460",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET317",
-          "TEL500"
-        ],
-        ""
-      ],
-      [
-        "Taller de Diseños de Procesos Metalúrgicos",
-        "MET456",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET318",
-          "MET319",
-          "MET313",
-          "MET315"
-        ],
-        ""
-      ]
-    ],
-    "s10": [
-      [
-        "Actividad de Titulación",
-        "MET512",
-        0,
-        17,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET460",
-          "MET317",
-          "MET456"
-        ],
-        ""
-      ],
-      [
-        "Electivo",
-        "AUX205",
-        0,
-        5,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [],
-        ""
-      ],
-      [
-        "Proyecto de Ingeniería Metalúrgica",
-        "MET513",
-        0,
-        8,
-        "ING. DE MINAS, METALURGIA Y MATERIALES",
-        [
-          "MET457",
-          "MET456"
-        ],
-        ""
-      ]
+    [
+      "Álgebra y Geometría",
+      "MAT060",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
     ]
-  }
+  ],
+  "s2": [
+    [
+      "Comunicación Efectiva en Español / Ingles II",
+      "HXW007",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Cálculo en Una Variable",
+      "MAT071",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT070"
+      ],
+      ""
+    ],
+    [
+      "Educación Física II",
+      "EFI201",
+      0,
+      2,
+      "DEFIDER",
+      [
+        "EFI200"
+      ],
+      ""
+    ],
+    [
+      "Física General Mecánica",
+      "FIS111",
+      0,
+      6,
+      "FÍSICA",
+      [
+        "FIS100"
+      ],
+      ""
+    ],
+    [
+      "Proyecto Inicial",
+      "IWG400",
+      0,
+      7,
+      "DIRECCION GENERAL DE DOCENCIA",
+      [],
+      ""
+    ],
+    [
+      "Álgebra Lineal",
+      "MAT061",
+      0,
+      6,
+      "MATEMÁTICA",
+      [
+        "MAT060"
+      ],
+      ""
+    ]
+  ],
+  "s3": [
+    [
+      "Análisis Crítico de Texto",
+      "HXW008",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Cálculo en Varias Variables",
+      "MAT081",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Física General III",
+      "FIS131",
+      0,
+      6,
+      "FÍSICA",
+      [
+        "MAT061",
+        "FIS111",
+        "MAT071"
+      ],
+      ""
+    ],
+    [
+      "Geología y Minerología",
+      "MET139",
+      0,
+      4,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "IWG400",
+        "FIS111"
+      ],
+      ""
+    ],
+    [
+      "Procesos Metalúrgicos Sustentables",
+      "MET138",
+      0,
+      4,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "IWG400",
+        "FIS111"
+      ],
+      ""
+    ],
+    [
+      "Química Para Ingeniería",
+      "QUI400",
+      0,
+      6,
+      "QUÍMICA",
+      [],
+      ""
+    ]
+  ],
+  "s4": [
+    [
+      "Análisis de Procesos Metalúrgicos",
+      "MET200",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET138",
+        "QUI400",
+        "MET139"
+      ],
+      ""
+    ],
+    [
+      "Comunicación Efectiva en Español / Inglés III",
+      "HXW009",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Ecuaciones Diferenciales",
+      "MAT153",
+      0,
+      5,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Electromagnetismo",
+      "FIS121",
+      0,
+      8,
+      "FÍSICA",
+      [],
+      ""
+    ],
+    [
+      "Probabilidad y Estadística",
+      "MAT154",
+      0,
+      6,
+      "MATEMÁTICA",
+      [],
+      ""
+    ],
+    [
+      "Química Inorgánica",
+      "QUI410",
+      0,
+      6,
+      "QUÍMICA",
+      [],
+      ""
+    ]
+  ],
+  "s5": [
+    [
+      "Administración y Sostenibilidad Organizacional",
+      "AUX200",
+      0,
+      4,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Ciencia de Datos",
+      "TEL500",
+      0,
+      6,
+      "ELECTRÓNICA",
+      [
+        "MAT154",
+        "INF129"
+      ],
+      ""
+    ],
+    [
+      "Ciencia E Ingeniería de los Materiales",
+      "MET202",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "QUI410"
+      ],
+      ""
+    ],
+    [
+      "Cinética y Diseño de Reactores Metaúrgicos",
+      "MET201",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [],
+      ""
+    ],
+    [
+      "Mecánica de Fluidos",
+      "IQA301",
+      0,
+      6,
+      "INGENIERÍA QUÍMICA Y AMBIENTAL",
+      [
+        "MAT153",
+        "FIS111"
+      ],
+      ""
+    ],
+    [
+      "Práctica en Acción Comunitaria",
+      "HXW011",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ]
+  ],
+  "s6": [
+    [
+      "Comunicación Efectiva en Español / Inglés IV",
+      "HXW012",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Ingeniería Económica",
+      "AUX201",
+      0,
+      4,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Metalurgia de Minerales Industriales",
+      "MET297",
+      0,
+      4,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "QUI410"
+      ],
+      ""
+    ],
+    [
+      "Reducción de Tamaño y Clasificación de Minerales",
+      "MET298",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET200",
+        "TEL500"
+      ],
+      ""
+    ],
+    [
+      "Termodinámica Metalúrgica",
+      "MET299",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET200",
+        "MAT081"
+      ],
+      ""
+    ],
+    [
+      "Transferencia de Calor",
+      "IQA304",
+      0,
+      6,
+      "INGENIERÍA QUÍMICA Y AMBIENTAL",
+      [
+        "IQA301"
+      ],
+      ""
+    ]
+  ],
+  "s7": [
+    [
+      "Concentración de Minerales",
+      "MET313",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET298"
+      ],
+      ""
+    ],
+    [
+      "Gestión de Proyectos",
+      "AUX203",
+      0,
+      4,
+      "INGENIERÍA COMERCIAL",
+      [],
+      ""
+    ],
+    [
+      "Hidrometalurgia",
+      "MET315",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET201"
+      ],
+      ""
+    ],
+    [
+      "Inglés Disciplinar",
+      "AUX202",
+      0,
+      3,
+      "ESTUDIOS HUMANÍSTICOS",
+      [],
+      ""
+    ],
+    [
+      "Mecánica de Sólidos",
+      "MET314",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MAT153",
+        "FIS111"
+      ],
+      ""
+    ],
+    [
+      "Termodinámica de Materiales",
+      "MET312",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET299"
+      ],
+      ""
+    ]
+  ],
+  "s8": [
+    [
+      "Comportamiento Mecánico de Materiales",
+      "MET319",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET202",
+        "MET314"
+      ],
+      ""
+    ],
+    [
+      "Electrometalúrgia y Corrosión",
+      "MET316",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET315"
+      ],
+      ""
+    ],
+    [
+      "Metalurgia Física",
+      "MET322",
+      0,
+      6,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET312",
+        "MET202"
+      ],
+      ""
+    ],
+    [
+      "Procesos Metalúrgicos de Alta Temperatura",
+      "MET318",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "IQA304",
+        "MET201"
+      ],
+      ""
+    ],
+    [
+      "Seguridad y Legislación Minero-metalúrgica",
+      "MET321",
+      0,
+      4,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "AUX200"
+      ],
+      ""
+    ],
+    [
+      "Taller de Ingeniería",
+      "MET317",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET312",
+        "IQA304",
+        "AUX202",
+        "AUX203",
+        "MET314"
+      ],
+      ""
+    ]
+  ],
+  "s9": [
+    [
+      "Aleaciones en Ingeniería",
+      "MET458",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET322",
+        "MET319"
+      ],
+      ""
+    ],
+    [
+      "Electivo",
+      "AUX204",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [],
+      ""
+    ],
+    [
+      "Fundición y Manufactura",
+      "MET459",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "IQA304",
+        "MET322"
+      ],
+      ""
+    ],
+    [
+      "Gestión y Optimización de Operaciones",
+      "MET457",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET317",
+        "TEL500"
+      ],
+      ""
+    ],
+    [
+      "Instrumentación y Control de Procesos",
+      "MET460",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET317",
+        "TEL500"
+      ],
+      ""
+    ],
+    [
+      "Taller de Diseños de Procesos Metalúrgicos",
+      "MET456",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET318",
+        "MET319",
+        "MET313",
+        "MET315"
+      ],
+      ""
+    ]
+  ],
+  "s10": [
+    [
+      "Actividad de Titulación",
+      "MET512",
+      0,
+      17,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET460",
+        "MET317",
+        "MET456"
+      ],
+      ""
+    ],
+    [
+      "Electivo",
+      "AUX205",
+      0,
+      5,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [],
+      ""
+    ],
+    [
+      "Proyecto de Ingeniería Metalúrgica",
+      "MET513",
+      0,
+      8,
+      "ING. DE MINAS, METALURGIA Y MATERIALES",
+      [
+        "MET457",
+        "MET456"
+      ],
+      ""
+    ]
+  ]
 }
