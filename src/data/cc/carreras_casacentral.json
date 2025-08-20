@@ -90,6 +90,11 @@
     "Color": "#191970"
   },
   {
+    "Nombre": "Lic. en Física",
+    "Link": "FIS-0",
+    "Color": "#3CB371"
+  },
+  {
     "Nombre": "Lic. en Química",
     "Link": "LQUI",
     "Color": "#20B2AA"

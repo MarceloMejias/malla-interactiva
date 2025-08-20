@@ -34,11 +34,11 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
         const vitacuraModule = await import('@/data/vc/carreras_vitacura.json');
         const concepcionModule = await import('@/data/cp/carreras_concepcion.json');
 
-        setCasaCentralCareers(casaCentralModule.default as Career[]);
-        setVinaCareers(vinaConcepcionModule.default as Career[]);
-        setSanJoaquinCareers(sanJoaquinModule.default as Career[]);
-        setVitacuraCareers(vitacuraModule.default as Career[]);
-        setConcepcionCareers(concepcionModule.default as Career[]);
+  setCasaCentralCareers((casaCentralModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
+  setVinaCareers((vinaConcepcionModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
+  setSanJoaquinCareers((sanJoaquinModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
+  setVitacuraCareers((vitacuraModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
+  setConcepcionCareers((concepcionModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
       } catch (error) {
         console.error('Error cargando carreras:', error);
       }

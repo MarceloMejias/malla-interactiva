@@ -29,15 +29,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_CL',
     url: 'https://marcelomejias.github.io/malla-interactiva/',
-    title: 'Malla Interactiva UTFSM',
+    title: 'Malla Interactiva USM',
     description: 'Calculadora de progreso académico para carreras de la Universidad Técnica Federico Santa María. Drag & drop, plan de graduación y más de 20 carreras disponibles.',
-    siteName: 'Malla Interactiva UTFSM',
+    siteName: 'Malla Interactiva USM',
     images: [
       {
         url: 'https://marcelomejias.github.io/malla-interactiva/thumbnail.png',
         width: 1200,
         height: 630,
-        alt: 'Malla Interactiva UTFSM - Calculadora de progreso académico',
+        alt: 'Malla Interactiva USM - Calculadora de progreso académico',
         type: 'image/png'
       }
     ]
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     'theme-color': '#f9fafb',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
-    'apple-mobile-web-app-title': 'Malla UTFSM',
+    'apple-mobile-web-app-title': 'Malla USM',
     'format-detection': 'telephone=no',
     'mobile-web-app-capable': 'yes',
     'msapplication-navbutton-color': '#f9fafb',
