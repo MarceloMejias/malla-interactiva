@@ -132,8 +132,8 @@ export default function GraduationPlanModal({
     setTouchPosition({ x: touch.clientX, y: touch.clientY });
 
     // --- Auto-scroll en móvil ---
-    const SCROLL_EDGE_THRESHOLD = 60; // px desde el borde
-    const SCROLL_SPEED = 18; // px por evento
+  const SCROLL_EDGE_THRESHOLD = 60; // px desde el borde
+  const SCROLL_SPEED = 48; // px por evento (más rápido)
     if (scrollContainerRef.current) {
       const rect = scrollContainerRef.current.getBoundingClientRect();
       // Si el dedo está cerca del borde superior
@@ -245,8 +245,8 @@ export default function GraduationPlanModal({
   // Auto-scroll global durante drag, incluso fuera del área scrollable
   useEffect(() => {
     if (!draggedSubject) return;
-    const SCROLL_EDGE_THRESHOLD = 60;
-    const SCROLL_SPEED = 18;
+  const SCROLL_EDGE_THRESHOLD = 60;
+  const SCROLL_SPEED = 48;
     let raf: number;
     function checkScroll() {
       if (scrollContainerRef.current && lastDragY.current != null) {
@@ -681,13 +681,7 @@ export default function GraduationPlanModal({
                           return (
                             <div 
                               key={subject.code}
-                              draggable={!isAnimating}
-                              onDragStart={(e) => handleDragStart(e, subject, semesterPlan.semester)}
-                              onDragEnd={handleDragEnd}
-                              onTouchStart={(e) => handleTouchStart(e, subject, semesterPlan.semester)}
-                              onTouchMove={handleTouchMove}
-                              onTouchEnd={handleTouchEnd}
-                              className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 cursor-move hover:shadow-md hover:scale-105 select-none ${
+                              className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 hover:shadow-md hover:scale-105 select-none ${
                                 isDragging ? 'opacity-50 scale-95' : 'opacity-100'
                               } ${!isAnimating ? 'hover:ring-2 hover:ring-white/30' : ''}`}
                               style={{ 
@@ -697,10 +691,23 @@ export default function GraduationPlanModal({
                               title={`Arrastra para mover a otro semestre`}
                             >
                               <div className="flex items-center gap-2">
-                                <FontAwesomeIcon 
-                                  icon={faGripVertical} 
-                                  className="text-white/60 text-xs flex-shrink-0" 
-                                />
+                                <span
+                                  draggable={!isAnimating}
+                                  onDragStart={(e) => handleDragStart(e, subject, semesterPlan.semester)}
+                                  onDragEnd={handleDragEnd}
+                                  onTouchStart={(e) => handleTouchStart(e, subject, semesterPlan.semester)}
+                                  onTouchMove={handleTouchMove}
+                                  onTouchEnd={handleTouchEnd}
+                                  className="cursor-grab active:cursor-grabbing"
+                                  style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
+                                  tabIndex={0}
+                                  aria-label="Mover asignatura"
+                                >
+                                  <FontAwesomeIcon 
+                                    icon={faGripVertical} 
+                                    className="text-white/60 text-xs flex-shrink-0" 
+                                  />
+                                </span>
                                 <div className="flex-1 min-w-0">
                                   <div className="font-bold">{subject.code}</div>
                                   <div className="text-white/90 text-xs truncate" title={subject.name}>
