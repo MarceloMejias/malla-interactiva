@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from '@/types/curriculum';
 
 interface SemesterPlan {
@@ -579,13 +579,14 @@ export default function GraduationPlanModal({
                 </div>
               </div>
 
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {localPlan.slice(0, visibleSemesters).map((semesterPlan, index) => {
+                  // ...existing code for each semester card...
                   const isOverloaded = semesterPlan.credits > 30;
                   const wouldExceedWithDrag = draggedSubject && 
                     dragOverSemester === semesterPlan.semester &&
                     (semesterPlan.credits + draggedSubject.subject.sctCredits > 35);
-                  
                   return (
                     <div 
                       key={semesterPlan.semester}
@@ -605,160 +606,164 @@ export default function GraduationPlanModal({
                       onDragLeave={handleDragLeave}
                       onDrop={(e) => handleDrop(e, semesterPlan.semester)}
                     >
-                    {/* Header del semestre */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <FontAwesomeIcon icon={faCalendarAlt} className="text-blue-600" />
-                      <div className="flex-1">
-                        <h4 className="font-bold text-gray-800">
-                          {semesterPlan.semester}
-                        </h4>
-                        <p className={`text-xs ${
-                          isOverloaded ? 'text-orange-600 font-medium' : 'text-gray-600'
-                        }`}>
-                          {semesterPlan.subjects.length} asignaturas • {semesterPlan.credits} créditos
-                          {isOverloaded && (
-                            <span className="ml-1">
-                              <FontAwesomeIcon icon={faExclamationTriangle} className="text-xs" /> Sobrecarga
-                            </span>
-                          )}
-                        </p>
-                      </div>
-                      {semesterPlan.subjects.length === 0 && (
-                        <button
-                          className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 border border-red-200 transition-colors"
-                          title="Eliminar semestre en blanco"
-                          onClick={() => {
-                            setLocalPlan(prev => prev.filter((s, i) => i !== index));
-                          }}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                      )}
-                      {dragOverSemester === semesterPlan.semester && !wouldExceedWithDrag && (
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      )}
-                      {wouldExceedWithDrag && (
-                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                      )}
-                    </div>
-
-                    {/* Advertencia de límite de créditos */}
-                    {isOverloaded && (
-                      <div className="mb-3 p-2 bg-orange-100 border border-orange-300 rounded-lg">
-                        <div className="flex items-center gap-2 text-orange-700">
-                          <FontAwesomeIcon icon={faExclamationTriangle} className="text-sm" />
-                          <span className="text-sm font-medium">Sobrecarga Académica</span>
+                      {/* Header del semestre */}
+                      <div className="flex items-center gap-2 mb-4">
+                        <FontAwesomeIcon icon={faCalendarAlt} className="text-blue-600" />
+                        <div className="flex-1">
+                          <h4 className="font-bold text-gray-800">
+                            {semesterPlan.semester}
+                          </h4>
+                          <p className={`text-xs ${
+                            isOverloaded ? 'text-orange-600 font-medium' : 'text-gray-600'
+                          }`}>
+                            {semesterPlan.subjects.length} asignaturas • {semesterPlan.credits} créditos
+                            {isOverloaded && (
+                              <span className="ml-1">
+                                <FontAwesomeIcon icon={faExclamationTriangle} className="text-xs" /> Sobrecarga
+                              </span>
+                            )}
+                          </p>
                         </div>
-                        <p className="text-xs text-orange-600 mt-1">
-                          Este semestre tiene {semesterPlan.credits} créditos. La carga normal es de 30 créditos.
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Indicador de drop prohibido */}
-                    {wouldExceedWithDrag && (
-                      <div className="border-2 border-dashed border-red-400 rounded-lg p-2 text-center text-red-600 text-xs mb-2 bg-red-50/30">
-                        <FontAwesomeIcon icon={faBan} className="text-lg mb-1" />
-                        <div className="font-medium text-xs">Límite excedido</div>
-                        <div className="text-xs">Máximo 35 créditos</div>
-                      </div>
-                    )}
-
-                    {/* Drop zone visual cuando está vacío o durante drag móvil válido */}
-                    {!wouldExceedWithDrag && ((semesterPlan.subjects.length === 0 && dragOverSemester === semesterPlan.semester) || 
-                      (isDraggingTouch && dragOverSemester === semesterPlan.semester)) && (
-                      <div className="border-2 border-dashed border-green-400 rounded-lg p-2 text-center text-green-600 text-xs mb-2 bg-green-50/30">
-                        <FontAwesomeIcon icon={faGripVertical} className="mb-1" />
-                        <div className="font-medium text-xs">Soltar aquí</div>
-                      </div>
-                    )}
-
-                    {/* Asignaturas */}
-                    <div className="space-y-2 min-h-[60px]">
-                      {semesterPlan.subjects.map((subject) => {
-                        const subjectColor = colors[subject.type]?.[0] || '#6b7280';
-                        const isDragging = draggedSubject?.subject.code === subject.code;
-                        
-                        return (
-                          <div 
-                            key={subject.code}
-                            draggable={!isAnimating}
-                            onDragStart={(e) => handleDragStart(e, subject, semesterPlan.semester)}
-                            onDragEnd={handleDragEnd}
-                            onTouchStart={(e) => handleTouchStart(e, subject, semesterPlan.semester)}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
-                            className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 cursor-move hover:shadow-md hover:scale-105 select-none ${
-                              isDragging ? 'opacity-50 scale-95' : 'opacity-100'
-                            } ${!isAnimating ? 'hover:ring-2 hover:ring-white/30' : ''}`}
-                            style={{ 
-                              backgroundColor: subjectColor,
-                              touchAction: 'none' // Prevenir scroll en móvil durante drag
+                        {semesterPlan.subjects.length === 0 && (
+                          <button
+                            className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 border border-red-200 transition-colors"
+                            title="Eliminar semestre en blanco"
+                            onClick={() => {
+                              setLocalPlan(prev => prev.filter((s, i) => i !== index));
                             }}
-                            title={`Arrastra para mover a otro semestre`}
                           >
-                            <div className="flex items-center gap-2">
-                              <FontAwesomeIcon 
-                                icon={faGripVertical} 
-                                className="text-white/60 text-xs flex-shrink-0" 
-                              />
-                              <div className="flex-1 min-w-0">
-                                <div className="font-bold">{subject.code}</div>
-                                <div className="text-white/90 text-xs truncate" title={subject.name}>
-                                  {subject.name}
-                                </div>
-                                <div className="text-white/80 text-xs">
-                                  {subject.sctCredits} créditos
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
+                        )}
+                        {dragOverSemester === semesterPlan.semester && !wouldExceedWithDrag && (
+                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        )}
+                        {wouldExceedWithDrag && (
+                          <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                        )}
+                      </div>
+
+                      {/* Advertencia de límite de créditos */}
+                      {isOverloaded && (
+                        <div className="mb-3 p-2 bg-orange-100 border border-orange-300 rounded-lg">
+                          <div className="flex items-center gap-2 text-orange-700">
+                            <FontAwesomeIcon icon={faExclamationTriangle} className="text-sm" />
+                            <span className="text-sm font-medium">Sobrecarga Académica</span>
+                          </div>
+                          <p className="text-xs text-orange-600 mt-1">
+                            Este semestre tiene {semesterPlan.credits} créditos. La carga normal es de 30 créditos.
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Indicador de drop prohibido */}
+                      {wouldExceedWithDrag && (
+                        <div className="border-2 border-dashed border-red-400 rounded-lg p-2 text-center text-red-600 text-xs mb-2 bg-red-50/30">
+                          <FontAwesomeIcon icon={faBan} className="text-lg mb-1" />
+                          <div className="font-medium text-xs">Límite excedido</div>
+                          <div className="text-xs">Máximo 35 créditos</div>
+                        </div>
+                      )}
+
+                      {/* Drop zone visual cuando está vacío o durante drag móvil válido */}
+                      {!wouldExceedWithDrag && ((semesterPlan.subjects.length === 0 && dragOverSemester === semesterPlan.semester) || 
+                        (isDraggingTouch && dragOverSemester === semesterPlan.semester)) && (
+                        <div className="border-2 border-dashed border-green-400 rounded-lg p-2 text-center text-green-600 text-xs mb-2 bg-green-50/30">
+                          <FontAwesomeIcon icon={faGripVertical} className="mb-1" />
+                          <div className="font-medium text-xs">Soltar aquí</div>
+                        </div>
+                      )}
+
+                      {/* Asignaturas */}
+                      <div className="space-y-2 min-h-[60px]">
+                        {semesterPlan.subjects.map((subject) => {
+                          const subjectColor = colors[subject.type]?.[0] || '#6b7280';
+                          const isDragging = draggedSubject?.subject.code === subject.code;
+                          return (
+                            <div 
+                              key={subject.code}
+                              draggable={!isAnimating}
+                              onDragStart={(e) => handleDragStart(e, subject, semesterPlan.semester)}
+                              onDragEnd={handleDragEnd}
+                              onTouchStart={(e) => handleTouchStart(e, subject, semesterPlan.semester)}
+                              onTouchMove={handleTouchMove}
+                              onTouchEnd={handleTouchEnd}
+                              className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 cursor-move hover:shadow-md hover:scale-105 select-none ${
+                                isDragging ? 'opacity-50 scale-95' : 'opacity-100'
+                              } ${!isAnimating ? 'hover:ring-2 hover:ring-white/30' : ''}`}
+                              style={{ 
+                                backgroundColor: subjectColor,
+                                touchAction: 'none' // Prevenir scroll en móvil durante drag
+                              }}
+                              title={`Arrastra para mover a otro semestre`}
+                            >
+                              <div className="flex items-center gap-2">
+                                <FontAwesomeIcon 
+                                  icon={faGripVertical} 
+                                  className="text-white/60 text-xs flex-shrink-0" 
+                                />
+                                <div className="flex-1 min-w-0">
+                                  <div className="font-bold">{subject.code}</div>
+                                  <div className="text-white/90 text-xs truncate" title={subject.name}>
+                                    {subject.name}
+                                  </div>
+                                  <div className="text-white/80 text-xs">
+                                    {subject.sctCredits} créditos
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
                     </div>
+                  );
+                })}
+                {/* Tarjeta para añadir semestre */}
+                <button
+                  className="h-full min-h-[180px] flex flex-col items-center justify-center border-2 border-dashed border-blue-300 bg-white/60 rounded-2xl shadow-sm hover:bg-blue-50 hover:border-blue-400 transition-all focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  onClick={() => {
+                    // Generar nombre de semestre siguiente
+                    const lastSemester = localPlan[localPlan.length - 1]?.semester;
+                    let newSemesterName = 'Nuevo';
+                    if (lastSemester) {
+                      const match = lastSemester.match(/(\d{4})-(\d)/);
+                      if (match) {
+                        let year = parseInt(match[1], 10);
+                        let sem = parseInt(match[2], 10);
+                        if (sem === 2) {
+                          year += 1;
+                          sem = 1;
+                        } else {
+                          sem = 2;
+                        }
+                        newSemesterName = `${year}-${sem}`;
+                      } else {
+                        newSemesterName = `${lastSemester}-nuevo`;
+                      }
+                    } else {
+                      // Si no hay semestres, usar año actual
+                      const now = new Date();
+                      newSemesterName = `${now.getFullYear()}-1`;
+                    }
+                    setLocalPlan(prev => ([
+                      ...prev,
+                      { semester: newSemesterName, subjects: [], credits: 0 }
+                    ]));
+                  }}
+                  title="Añadir semestre en blanco"
+                  type="button"
+                >
+                  <div className="flex flex-col items-center justify-center h-full w-full">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-2">
+                      <FontAwesomeIcon icon={faPlus} className="text-blue-500 text-2xl" />
+                    </div>
+                    <span className="text-blue-700 font-semibold text-base">Añadir semestre</span>
                   </div>
-                );
-              })}
+                </button>
               </div>
 
-                {/* Botón para añadir semestre en blanco */}
-                <div className="flex justify-center mt-4 col-span-full">
-                  <button
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 rounded-xl border border-blue-200 shadow-sm transition-colors"
-                    onClick={() => {
-                      // Generar nombre de semestre siguiente
-                      const lastSemester = localPlan[localPlan.length - 1]?.semester;
-                      let newSemesterName = 'Nuevo';
-                      if (lastSemester) {
-                        const match = lastSemester.match(/(\d{4})-(\d)/);
-                        if (match) {
-                          let year = parseInt(match[1], 10);
-                          let sem = parseInt(match[2], 10);
-                          if (sem === 2) {
-                            year += 1;
-                            sem = 1;
-                          } else {
-                            sem = 2;
-                          }
-                          newSemesterName = `${year}-${sem}`;
-                        } else {
-                          newSemesterName = `${lastSemester}-nuevo`;
-                        }
-                      } else {
-                        // Si no hay semestres, usar año actual
-                        const now = new Date();
-                        newSemesterName = `${now.getFullYear()}-1`;
-                      }
-                      setLocalPlan(prev => ([
-                        ...prev,
-                        { semester: newSemesterName, subjects: [], credits: 0 }
-                      ]));
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faCalendarAlt} />
-                    Añadir semestre en blanco
-                  </button>
-                </div>
+
 
               {/* Resumen de cambios */}
               <div className="mt-6 p-4 bg-gray-50 rounded-2xl border border-gray-200">
