@@ -21,6 +21,8 @@ interface GraduationPlanModalProps {
   subjectStates?: Record<string, any>; // Estados de asignaturas para validación
 }
 
+import { useRef } from 'react';
+
 export default function GraduationPlanModal({ 
   show, 
   graduationPlan, 
@@ -37,6 +39,8 @@ export default function GraduationPlanModal({
   const [touchStartPos, setTouchStartPos] = useState<{x: number, y: number} | null>(null);
   const [isDraggingTouch, setIsDraggingTouch] = useState(false);
   const [touchPosition, setTouchPosition] = useState<{x: number, y: number} | null>(null);
+  // Ref para el contenedor scrollable principal
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Sincronizar con el plan externo
   useEffect(() => {
@@ -82,11 +86,15 @@ export default function GraduationPlanModal({
     }
   }, [show, isAnimating, localPlan.length]);
 
+
+  // Guardar la última posición Y del mouse durante drag
+  const lastDragY = useRef<number | null>(null);
+
   // Funciones de drag & drop (mouse)
   const handleDragStart = (e: React.DragEvent, subject: Subject, fromSemester: string) => {
     setDraggedSubject({ subject, fromSemester });
     e.dataTransfer.effectAllowed = 'move';
-    
+    lastDragY.current = e.clientY;
     // Añadir efecto visual al elemento siendo arrastrado
     const target = e.target as HTMLElement;
     target.style.opacity = '0.5';
@@ -117,30 +125,38 @@ export default function GraduationPlanModal({
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDraggingTouch || !touchStartPos) return;
-    
     e.preventDefault();
     const touch = e.touches[0];
     const deltaX = Math.abs(touch.clientX - touchStartPos.x);
     const deltaY = Math.abs(touch.clientY - touchStartPos.y);
-    
-    // Actualizar posición del indicador visual
     setTouchPosition({ x: touch.clientX, y: touch.clientY });
-    
+
+    // --- Auto-scroll en móvil ---
+    const SCROLL_EDGE_THRESHOLD = 60; // px desde el borde
+    const SCROLL_SPEED = 18; // px por evento
+    if (scrollContainerRef.current) {
+      const rect = scrollContainerRef.current.getBoundingClientRect();
+      // Si el dedo está cerca del borde superior
+      if (touch.clientY - rect.top < SCROLL_EDGE_THRESHOLD) {
+        scrollContainerRef.current.scrollBy({ top: -SCROLL_SPEED, behavior: 'smooth' });
+      }
+      // Si el dedo está cerca del borde inferior
+      if (rect.bottom - touch.clientY < SCROLL_EDGE_THRESHOLD) {
+        scrollContainerRef.current.scrollBy({ top: SCROLL_SPEED, behavior: 'smooth' });
+      }
+    }
+
     // Solo comenzar drag si se movió lo suficiente
     if (deltaX > 10 || deltaY > 10) {
-      // Encontrar el elemento bajo el dedo
       const elementUnderFinger = document.elementFromPoint(touch.clientX, touch.clientY);
       if (elementUnderFinger) {
         const semesterContainer = elementUnderFinger.closest('[data-semester]');
         if (semesterContainer) {
           const semesterName = semesterContainer.getAttribute('data-semester');
-          
-          // Verificar si se puede soltar aquí
           if (semesterName && draggedSubject) {
             const targetSemester = localPlan.find(s => s.semester === semesterName);
             const wouldExceedLimit = targetSemester && 
               (targetSemester.credits + draggedSubject.subject.sctCredits > 35);
-            
             if (!wouldExceedLimit) {
               setDragOverSemester(semesterName);
             } else {
@@ -195,22 +211,58 @@ export default function GraduationPlanModal({
 
   const handleDragOver = (e: React.DragEvent, semesterName: string) => {
     e.preventDefault();
-    
+    lastDragY.current = e.clientY;
+
+    // --- Auto-scroll en escritorio ---
+    const SCROLL_EDGE_THRESHOLD = 60; // px desde el borde
+    const SCROLL_SPEED = 18; // px por evento
+    if (scrollContainerRef.current) {
+      const rect = scrollContainerRef.current.getBoundingClientRect();
+      // Si el mouse está cerca del borde superior
+      if (e.clientY - rect.top < SCROLL_EDGE_THRESHOLD) {
+        scrollContainerRef.current.scrollBy({ top: -SCROLL_SPEED, behavior: 'smooth' });
+      }
+      // Si el mouse está cerca del borde inferior
+      if (rect.bottom - e.clientY < SCROLL_EDGE_THRESHOLD) {
+        scrollContainerRef.current.scrollBy({ top: SCROLL_SPEED, behavior: 'smooth' });
+      }
+    }
+
     // Verificar si se puede soltar aquí (créditos y prerrequisitos)
     if (draggedSubject) {
       const targetSemester = localPlan.find(s => s.semester === semesterName);
       const wouldExceedLimit = targetSemester && 
         (targetSemester.credits + draggedSubject.subject.sctCredits > 35);
-      
       if (wouldExceedLimit) {
         e.dataTransfer.dropEffect = 'none';
         return;
       }
     }
-    
     e.dataTransfer.dropEffect = 'move';
     setDragOverSemester(semesterName);
   };
+
+  // Auto-scroll global durante drag, incluso fuera del área scrollable
+  useEffect(() => {
+    if (!draggedSubject) return;
+    const SCROLL_EDGE_THRESHOLD = 60;
+    const SCROLL_SPEED = 18;
+    let raf: number;
+    function checkScroll() {
+      if (scrollContainerRef.current && lastDragY.current != null) {
+        const rect = scrollContainerRef.current.getBoundingClientRect();
+        if (lastDragY.current - rect.top < SCROLL_EDGE_THRESHOLD) {
+          scrollContainerRef.current.scrollBy({ top: -SCROLL_SPEED, behavior: 'smooth' });
+        }
+        if (rect.bottom - lastDragY.current < SCROLL_EDGE_THRESHOLD) {
+          scrollContainerRef.current.scrollBy({ top: SCROLL_SPEED, behavior: 'smooth' });
+        }
+      }
+      raf = requestAnimationFrame(checkScroll);
+    }
+    raf = requestAnimationFrame(checkScroll);
+    return () => cancelAnimationFrame(raf);
+  }, [draggedSubject]);
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
@@ -446,8 +498,8 @@ export default function GraduationPlanModal({
   const { totalSemesters, totalCredits, totalSubjects, yearsRemaining } = recalculateTotals();
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-4">
-      <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 max-w-6xl w-full max-h-[80vh] overflow-hidden">
+    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4">
+      <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 max-w-6xl w-full max-h-[98vh] md:max-h-[80vh] overflow-hidden flex flex-col">
         {/* Header */}
         <div className="bg-gradient-to-r from-green-600/80 to-blue-600/80 backdrop-blur-lg text-white p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -470,7 +522,22 @@ export default function GraduationPlanModal({
         </div>
         
         {/* Content */}
-        <div className="p-6 overflow-y-auto max-h-[60vh]">
+  <div className="p-3 md:p-6 overflow-y-auto max-h-[70vh] md:max-h-[60vh]" ref={scrollContainerRef}>
+        {/* Mini tarjeta flotante abajo cuando hay drag activo */}
+        {(draggedSubject || (isDraggingTouch && draggedSubject)) && (
+          <div className="fixed left-0 right-0 bottom-2 z-50 flex justify-center pointer-events-none md:hidden">
+            <div className="bg-blue-600 text-white text-xs px-4 py-2 rounded-xl shadow-lg flex flex-col items-center gap-1 pointer-events-auto animate-fade-in-up max-w-xs w-full">
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faGripVertical} className="text-xs" />
+                <span className="font-bold">{draggedSubject?.subject.code}</span>
+                <span className="truncate max-w-[90px]">{draggedSubject?.subject.name}</span>
+              </div>
+              <div className="text-[11px] text-blue-100 mt-1 text-center">
+                Arrastra hacia arriba o abajo para ver los demás semestres
+              </div>
+            </div>
+          </div>
+        )}
           {/* Indicador de drag en móvil - pequeño y que sigue el dedo */}
           {isDraggingTouch && draggedSubject && touchPosition && (
             <div 
@@ -696,7 +763,6 @@ export default function GraduationPlanModal({
               {/* Resumen de cambios */}
               <div className="mt-6 p-4 bg-gray-50 rounded-2xl border border-gray-200">
                 <h5 className="font-semibold text-gray-800 mb-2">Resumen del Plan Modificado</h5>
-                
                 {/* Alertas de sobrecarga */}
                 {localPlan.some(s => s.credits > 30) && (
                   <div className="mb-4 p-3 bg-orange-100 border border-orange-300 rounded-lg">
@@ -736,7 +802,7 @@ export default function GraduationPlanModal({
                     <div className="text-gray-600">Asignaturas</div>
                   </div>
                 </div>
-                
+
                 {/* Información adicional */}
                 <div className="mt-4 text-xs text-gray-500 text-center">
                   <p>
@@ -748,6 +814,13 @@ export default function GraduationPlanModal({
                   <p className="mt-1">
                     Promedio de {totalSemesters > 0 ? Math.round(totalCredits / totalSemesters) : 0} créditos por semestre
                   </p>
+                </div>
+
+                {/* Disclaimer dentro del resumen */}
+                <div className="flex justify-center w-full mt-4">
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-2xl shadow-sm p-4 text-xs text-yellow-900 text-center max-w-xl w-full">
+                    <strong>Nota:</strong> El generador de planes es solo una referencia. La disponibilidad real de ramos puede variar cada semestre y depende de la oferta académica de la universidad.
+                  </div>
                 </div>
               </div>
             </>
@@ -765,10 +838,7 @@ export default function GraduationPlanModal({
             </div>
           )}
         </div>
-        {/* Aviso de precisión */}
-        <div className="px-6 pb-4 pt-2 text-xs text-gray-600 text-center opacity-80">
-          <strong>Nota:</strong> El generador de planes es solo una referencia. La disponibilidad real de ramos puede variar cada semestre y depende de la oferta académica de la universidad.
-        </div>
+
       </div>
     </div>
   );

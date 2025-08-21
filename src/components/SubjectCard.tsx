@@ -98,7 +98,7 @@ export default function SubjectCard({
           e.stopPropagation();
           onPrerequisiteClick(prereqCode);
         }}
-        className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded font-bold text-white hover:brightness-110 transition-all border border-white`}
+        className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded-xl font-bold text-white hover:brightness-110 transition-all border border-white`}
         style={{ backgroundColor: prereqColor }}
         title={`${prereqSubject.name} (${prereqCode}) - Click para ir al ramo`}
       >
