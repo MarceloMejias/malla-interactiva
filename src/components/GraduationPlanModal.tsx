@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan, faTrash, faPlus, faCheck, faCoins, faBook } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from '@/types/curriculum';
 
 interface SemesterPlan {
@@ -575,7 +575,6 @@ export default function GraduationPlanModal({
                   <p className="md:hidden">
                     Mantén presionada una asignatura y arrástrala a otro semestre para reorganizar tu plan.
                   </p>
-                  <p>Los créditos se recalcularán automáticamente.</p>
                 </div>
               </div>
 
@@ -766,65 +765,85 @@ export default function GraduationPlanModal({
 
 
               {/* Resumen de cambios */}
-              <div className="mt-6 p-4 bg-gray-50 rounded-2xl border border-gray-200">
-                <h5 className="font-semibold text-gray-800 mb-2">Resumen del Plan Modificado</h5>
-                {/* Alertas de sobrecarga */}
-                {localPlan.some(s => s.credits > 30) && (
-                  <div className="mb-4 p-3 bg-orange-100 border border-orange-300 rounded-lg">
-                    <div className="flex items-center gap-2 text-orange-700 mb-2">
-                      <FontAwesomeIcon icon={faExclamationTriangle} className="text-sm" />
-                      <span className="text-sm font-medium">Advertencias de Carga Académica</span>
-                    </div>
-                    <div className="text-xs text-orange-600 space-y-1">
-                      {localPlan.filter(s => s.credits > 30).map(semester => (
-                        <div key={semester.semester}>
-                          • <strong>{semester.semester}</strong>: {semester.credits} créditos (carga normal: 30)
+              <div className="mt-6 p-1 md:p-2 rounded-3xl shadow-xl border border-blue-100 bg-gradient-to-br from-blue-50/80 via-white/90 to-green-50/80">
+                <div className="p-5 md:p-8">
+                  <h5 className="font-extrabold text-lg md:text-2xl text-blue-700 mb-4 flex items-center gap-2">
+                    <FontAwesomeIcon icon={faGraduationCap} className="text-blue-500 text-xl md:text-2xl" />
+                    Resumen del Plan
+                  </h5>
+                  {/* Alertas de sobrecarga */}
+                  {localPlan.some(s => s.credits > 30) && (
+                    <div className="mb-4 flex rounded-xl shadow border border-orange-300 bg-gradient-to-r from-orange-100/90 via-orange-50/90 to-white/90 relative overflow-hidden">
+                      <div className="w-2 bg-gradient-to-b from-orange-400 to-orange-600 rounded-l-xl" />
+                      <div className="flex-1 p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <FontAwesomeIcon icon={faExclamationTriangle} className="text-orange-500 text-lg animate-pulse" />
+                          <span className="text-base font-extrabold text-orange-800 tracking-wide">¡Sobrecarga Académica!</span>
                         </div>
-                      ))}
+                        <div className="text-xs text-orange-700 space-y-1 font-medium">
+                          {localPlan.filter(s => s.credits > 30).map(semester => (
+                            <div key={semester.semester}>
+                              <span className="inline-block font-bold text-orange-900">{semester.semester}</span>: {semester.credits} créditos (carga normal: 30)
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-2 text-xs text-orange-700/80">
+                          Considera equilibrar tu carga académica para evitar sobreexigencia y mejorar tu rendimiento.
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-4">
+                    <div className="text-center flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                        <FontAwesomeIcon icon={faCalendarAlt} className="text-blue-500 text-xl" />
+                      </div>
+                      <div className="text-2xl font-extrabold text-blue-700">{totalSemesters}</div>
+                      <div className="text-blue-900/80 font-medium">Semestres</div>
+                    </div>
+                    <div className="text-center flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                        <FontAwesomeIcon icon={faCoins} className="text-green-500 text-xl" />
+                      </div>
+                      <div className="text-2xl font-extrabold text-green-700">{totalCredits}</div>
+                      <div className="text-green-900/80 font-medium">Créditos Restantes</div>
+                    </div>
+                    <div className="text-center flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                        <FontAwesomeIcon icon={faGraduationCap} className="text-purple-500 text-xl" />
+                      </div>
+                      <div className="text-2xl font-extrabold text-purple-700">{yearsRemaining % 1 === 0 ? yearsRemaining : yearsRemaining.toFixed(1)}</div>
+                      <div className="text-purple-900/80 font-medium">Años Restantes</div>
+                    </div>
+                    <div className="text-center flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-1">
+                        <FontAwesomeIcon icon={faBook} className="text-orange-500 text-xl" />
+                      </div>
+                      <div className="text-2xl font-extrabold text-orange-700">{totalSubjects}</div>
+                      <div className="text-orange-900/80 font-medium">Asignaturas</div>
                     </div>
                   </div>
-                )}
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">{totalSemesters}</div>
-                    <div className="text-gray-600">Semestres</div>
+                  {/* Información adicional */}
+                  <div className="mt-2 text-sm text-blue-900/80 text-center font-medium">
+                    <p>
+                      {yearsRemaining === 0.5 ? 'Medio año restante' : 
+                        yearsRemaining === 1 ? 'Un año restante' :
+                        yearsRemaining < 1 ? `${totalSemesters} semestre${totalSemesters > 1 ? 's' : ''} restante${totalSemesters > 1 ? 's' : ''}` :
+                        `Aproximadamente ${yearsRemaining % 1 === 0 ? yearsRemaining : yearsRemaining.toFixed(1)} años para graduarte`}
+                    </p>
+                    <p className="mt-1 text-xs text-blue-700/80">
+                      Promedio de {totalSemesters > 0 ? Math.round(totalCredits / totalSemesters) : 0} créditos por semestre
+                    </p>
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">{totalCredits}</div>
-                    <div className="text-gray-600">Créditos Restantes</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">
-                      {yearsRemaining % 1 === 0 ? yearsRemaining : yearsRemaining.toFixed(1)}
+
+                  {/* Disclaimer dentro del resumen */}
+                  <div className="flex justify-center w-full mt-6">
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-2xl shadow-sm p-4 text-xs text-yellow-900 text-center max-w-xl w-full flex items-center gap-2">
+                      <FontAwesomeIcon icon={faExclamationTriangle} className="text-yellow-500 text-base" />
+                      <span><strong>Nota:</strong> El generador de planes es solo una referencia. La disponibilidad real de ramos puede variar cada semestre y depende de la oferta académica de la universidad.</span>
                     </div>
-                    <div className="text-gray-600">Años Restantes</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-orange-600">
-                      {totalSubjects}
-                    </div>
-                    <div className="text-gray-600">Asignaturas</div>
-                  </div>
-                </div>
-
-                {/* Información adicional */}
-                <div className="mt-4 text-xs text-gray-500 text-center">
-                  <p>
-                    {yearsRemaining === 0.5 ? 'Medio año restante' : 
-                     yearsRemaining === 1 ? 'Un año restante' :
-                     yearsRemaining < 1 ? `${totalSemesters} semestre${totalSemesters > 1 ? 's' : ''} restante${totalSemesters > 1 ? 's' : ''}` :
-                     `Aproximadamente ${yearsRemaining % 1 === 0 ? yearsRemaining : yearsRemaining.toFixed(1)} años para graduarte`}
-                  </p>
-                  <p className="mt-1">
-                    Promedio de {totalSemesters > 0 ? Math.round(totalCredits / totalSemesters) : 0} créditos por semestre
-                  </p>
-                </div>
-
-                {/* Disclaimer dentro del resumen */}
-                <div className="flex justify-center w-full mt-4">
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-2xl shadow-sm p-4 text-xs text-yellow-900 text-center max-w-xl w-full">
-                    <strong>Nota:</strong> El generador de planes es solo una referencia. La disponibilidad real de ramos puede variar cada semestre y depende de la oferta académica de la universidad.
                   </div>
                 </div>
               </div>
