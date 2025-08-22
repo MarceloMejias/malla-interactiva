@@ -42,6 +42,13 @@ export default function GraduationPlanModal({
   // Ref para el contenedor scrollable principal
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Mini alerta flotante
+  const [miniAlert, setMiniAlert] = useState<{ message: string, visible: boolean }>({ message: '', visible: false });
+  const showMiniAlert = (message: string) => {
+    setMiniAlert({ message, visible: true });
+    setTimeout(() => setMiniAlert({ message: '', visible: false }), 3200);
+  };
+
   // Sincronizar con el plan externo
   useEffect(() => {
     setLocalPlan(graduationPlan);
@@ -278,7 +285,7 @@ export default function GraduationPlanModal({
     // Verificar prerrequisitos antes de mover
     const canMove = validateMove(draggedSubject.subject, toSemester);
     if (!canMove) {
-      alert('No se puede mover esta asignatura aquí debido a prerrequisitos no cumplidos en semestres anteriores.');
+      showMiniAlert('No se puede mover esta asignatura aquí debido a prerrequisitos no cumplidos en semestres anteriores.');
       return;
     }
 
@@ -287,7 +294,7 @@ export default function GraduationPlanModal({
     if (targetSemester) {
       const newCredits = targetSemester.credits + draggedSubject.subject.sctCredits;
       if (newCredits > 35) {
-        alert(`No se puede mover esta asignatura. El semestre ${toSemester} tendría ${newCredits} créditos, pero el máximo permitido es 35 créditos.`);
+        showMiniAlert(`No se puede mover esta asignatura. El semestre ${toSemester} tendría ${newCredits} créditos, pero el máximo permitido es 35 créditos.`);
         return;
       }
     }
@@ -499,6 +506,13 @@ export default function GraduationPlanModal({
 
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4">
+      {/* Mini alerta flotante */}
+      {miniAlert.visible && (
+        <div className="fixed z-70 left-1/2 bottom-8 md:bottom-12 -translate-x-1/2 bg-white/95 border border-red-200 shadow-xl rounded-2xl px-6 py-4 flex items-center gap-3 animate-fade-in-up" style={{ minWidth: 260, maxWidth: 340 }}>
+          <FontAwesomeIcon icon={faExclamationTriangle} className="text-red-400 text-lg" />
+          <span className="text-sm text-red-800 font-semibold">{miniAlert.message}</span>
+        </div>
+      )}
       <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 max-w-6xl w-full max-h-[98vh] md:max-h-[80vh] overflow-hidden flex flex-col">
         {/* Header */}
         <div className="bg-gradient-to-r from-green-600/80 to-blue-600/80 backdrop-blur-lg text-white p-6 flex items-center justify-between">
@@ -515,9 +529,11 @@ export default function GraduationPlanModal({
           </div>
           <button
             onClick={onClose}
-            className="text-white/80 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-2xl backdrop-blur-sm"
+            className={`group text-white/80 hover:text-white transition-colors p-2 rounded-full backdrop-blur-sm hover:bg-white/10`}
+            style={{ aspectRatio: '1/1', minWidth: '40px', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            aria-label="Cerrar"
           >
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150 group-hover:scale-125" />
           </button>
         </div>
         
@@ -563,18 +579,24 @@ export default function GraduationPlanModal({
           ) : (
             <>
               {/* Instrucciones de uso */}
-              <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-2xl">
-                <div className="flex items-center gap-2 mb-2">
-                  <FontAwesomeIcon icon={faGripVertical} className="text-blue-600" />
-                  <span className="font-semibold text-blue-800">Reorganiza tu plan</span>
-                </div>
-                <div className="text-sm text-blue-700 space-y-1">
-                  <p className="hidden md:block">
-                    Arrastra las asignaturas entre semestres para reorganizar tu plan de graduación.
-                  </p>
-                  <p className="md:hidden">
-                    Mantén presionada una asignatura y arrástrala a otro semestre para reorganizar tu plan.
-                  </p>
+              <div className="mb-4 p-0.5 md:p-1 rounded-2xl shadow border border-blue-100 bg-gradient-to-br from-blue-50/70 via-white/90 to-green-50/70">
+                <div className="p-3 md:p-4 flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shadow">
+                    <FontAwesomeIcon icon={faGripVertical} className="text-blue-500 text-base" />
+                  </div>
+                  <div className="flex-1">
+                    <h5 className="font-bold text-base md:text-lg text-blue-700 mb-0.5 flex items-center gap-2">
+                      Reorganiza tu plan
+                    </h5>
+                    <div className="text-xs text-blue-900/80 font-medium space-y-0.5">
+                      <p className="hidden md:block">
+                        Arrastra las asignaturas entre semestres para reorganizar tu plan de graduación.
+                      </p>
+                      <p className="md:hidden">
+                        Mantén presionada una asignatura y arrástrala a otro semestre para reorganizar tu plan.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -679,40 +701,52 @@ export default function GraduationPlanModal({
                           const subjectColor = colors[subject.type]?.[0] || '#6b7280';
                           const isDragging = draggedSubject?.subject.code === subject.code;
                           return (
-                            <div 
+                            <div
                               key={subject.code}
                               className={`p-2 rounded-lg text-white text-xs font-medium shadow-sm transition-all duration-200 hover:shadow-md hover:scale-105 select-none ${
                                 isDragging ? 'opacity-50 scale-95' : 'opacity-100'
                               } ${!isAnimating ? 'hover:ring-2 hover:ring-white/30' : ''}`}
-                              style={{ 
+                              style={{
                                 backgroundColor: subjectColor,
-                                touchAction: 'none' // Prevenir scroll en móvil durante drag
+                                touchAction: 'none',
                               }}
                               title={`Arrastra para mover a otro semestre`}
+                              draggable={!isAnimating}
+                              onDragStart={(e) => {
+                                // Solo permitir drag global en escritorio
+                                if (window.innerWidth >= 768) handleDragStart(e, subject, semesterPlan.semester);
+                              }}
+                              onDragEnd={(e) => {
+                                if (window.innerWidth >= 768) handleDragEnd(e);
+                              }}
                             >
                               <div className="flex items-center gap-2">
                                 <span
-                                  draggable={!isAnimating}
-                                  onDragStart={(e) => handleDragStart(e, subject, semesterPlan.semester)}
-                                  onDragEnd={handleDragEnd}
-                                  onTouchStart={(e) => handleTouchStart(e, subject, semesterPlan.semester)}
-                                  onTouchMove={handleTouchMove}
-                                  onTouchEnd={handleTouchEnd}
+                                  // Solo permitir drag/touch en móvil desde el ícono
+                                  onTouchStart={(e) => {
+                                    if (window.innerWidth < 768) handleTouchStart(e, subject, semesterPlan.semester);
+                                  }}
+                                  onTouchMove={(e) => {
+                                    if (window.innerWidth < 768) handleTouchMove(e);
+                                  }}
+                                  onTouchEnd={(e) => {
+                                    if (window.innerWidth < 768) handleTouchEnd(e);
+                                  }}
                                   className="cursor-grab active:cursor-grabbing"
                                   style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none', userSelect: 'none' }}
                                   tabIndex={0}
                                   aria-label="Mover asignatura"
                                 >
-                                  <FontAwesomeIcon 
-                                    icon={faGripVertical} 
-                                    className="text-white/60 text-xs flex-shrink-0" 
+                                  <FontAwesomeIcon
+                                    icon={faGripVertical}
+                                    className="text-white/60 text-xs flex-shrink-0"
                                   />
                                 </span>
                                 <div className="flex-1 min-w-0">
-                                  <div className="font-bold">{subject.code}</div>
-                                  <div className="text-white/90 text-xs truncate" title={subject.name}>
+                                  <div className="text-white font-bold text-xs truncate" title={subject.name}>
                                     {subject.name}
                                   </div>
+                                  <div className="text-white/70 text-[11px]">{subject.code}</div>
                                   <div className="text-white/80 text-xs">
                                     {subject.sctCredits} créditos
                                   </div>

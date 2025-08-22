@@ -170,11 +170,12 @@ export default function CurriculumGrid() {
         show={showCareerSelector}
         casaCentralCareers={casaCentralCareers}
         vinaCareers={vinaCareers}
-        sanjoaquinCareers={sanJoaquinCareers}
+        sanJoaquinCareers={sanJoaquinCareers}
         vitacuraCareers={vitacuraCareers}
         concepcionCareers={concepcionCareers}
         darkMode={darkMode}
         onCareerSelect={handleCareerSelection}
+        onClose={handleBackToCareerSelectorLocal}
       />
 
       {/* Modal del plan de graduación */}

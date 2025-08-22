@@ -22,7 +22,7 @@ export default function CategoriesPopup({ show, colors, darkMode, onClose }: Cat
           darkMode ? 'bg-gray-700/80' : 'bg-gradient-to-r from-blue-600/80 to-indigo-600/80'
         }`}>
           <div className="flex items-center gap-3">
-            <div className={`w-8 h-8 backdrop-blur-sm rounded-2xl flex items-center justify-center ${
+            <div className={`w-8 h-8 backdrop-blur-sm rounded-full flex items-center justify-center ${
               darkMode ? 'bg-gray-600/50' : 'bg-white/20'
             }`}>
               <FontAwesomeIcon icon={faInfoCircle} className="text-white" />
@@ -36,11 +36,13 @@ export default function CategoriesPopup({ show, colors, darkMode, onClose }: Cat
           </div>
           <button
             onClick={onClose}
-            className={`text-white/80 hover:text-white transition-colors p-2 rounded-2xl backdrop-blur-sm ${
+            className={`group text-white/80 hover:text-white transition-colors p-2 rounded-full backdrop-blur-sm ${
               darkMode ? 'hover:bg-gray-600/30' : 'hover:bg-white/10'
             }`}
+            style={{ aspectRatio: '1/1', minWidth: '40px', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            aria-label="Cerrar"
           >
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150 group-hover:scale-125" />
           </button>
         </div>
         

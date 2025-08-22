@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface Career {
   Nombre: string;
   Link: string;
@@ -7,61 +9,79 @@ interface Career {
 interface CareerSelectorProps {
   show: boolean;
   casaCentralCareers: Career[];
-  sanjoaquinCareers: Career[];
+  sanJoaquinCareers: Career[];
   vitacuraCareers: Career[];
   concepcionCareers: Career[];
   vinaCareers: Career[];
   darkMode: boolean;
   onCareerSelect: (campus: string, careerCode: string) => void;
+  onClose: () => void;
 }
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default function CareerSelector({
   show,
   casaCentralCareers,
   vinaCareers,
-  sanjoaquinCareers,
+  sanJoaquinCareers,
   vitacuraCareers,
   concepcionCareers,
   darkMode,
-  onCareerSelect
-}: CareerSelectorProps) {
+  onCareerSelect,
+  onClose,
+  canClose = false,
+  campus,
+  careerCode
+}: CareerSelectorProps & { canClose?: boolean; campus?: string; careerCode?: string }) {
+  const [isClosing, setIsClosing] = useState(false);
   if (!show) return null;
 
-  // Helper para extraer el código de carrera (sin campus) si es necesario
   const getCareerCode = (careerLink: string) => {
-    // Si el careerLink tiene formato "campus/codigo", extrae solo el código
     const parts = careerLink.split('/');
     return parts.length > 1 ? parts[1] : parts[0];
   };
 
+  // Determinar fondo: blanco sólido si no hay carrera, translúcido si hay una activa
+  const modalBg = !campus || !careerCode
+    ? (darkMode ? 'bg-gray-900' : 'bg-white')
+    : 'bg-white/40 dark:bg-gray-800/60 backdrop-blur-lg';
+
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-70 flex items-center justify-center p-4">
-      <div className={`backdrop-blur-lg rounded-3xl shadow-2xl border max-w-5xl w-full max-h-[80vh] overflow-hidden ${
-        darkMode ? 'bg-gray-800/95 border-gray-600' : 'bg-white/95 border-white/30'
-      }`}>
-        {/* Header */}
-        <div className={`backdrop-blur-sm border-b p-6 ${
-          darkMode ? 'bg-gray-700/50 border-gray-600' : 'bg-gray-50/80 border-gray-200'
+    <div className="fixed inset-0 z-60 flex items-start justify-center pt-12 md:pt-24 p-2 md:p-4" style={{backdropFilter: 'blur(6px)'}}>
+      <div className={`${modalBg} rounded-3xl shadow-2xl border border-white/30 dark:border-gray-600 max-w-5xl w-full max-h-[98vh] md:max-h-[80vh] overflow-hidden flex flex-col animate-fade-in-up`}>
+        {/* Header con gradiente y botón cerrar */}
+        <div className={`backdrop-blur-lg text-white p-6 flex items-center justify-between ${
+          darkMode ? 'bg-gradient-to-r from-gray-700/80 to-blue-700/80' : 'bg-gradient-to-r from-blue-600/80 to-indigo-600/80'
         }`}>
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                Selecciona tu Carrera
-              </h2>
-              <p className={`text-sm mt-1 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Elige la carrera para ver su malla curricular interactiva
-              </p>
-            </div>
+          <div>
+            <h2 className="text-2xl font-bold">Selecciona tu Carrera</h2>
+            <p className="text-sm text-white/80 mt-1">Elige la carrera para ver su malla curricular interactiva</p>
           </div>
+          <button
+            onClick={() => {
+              if (!canClose) return;
+              setIsClosing(true);
+              setTimeout(() => { setIsClosing(false); onClose(); }, 120);
+            }}
+            className={`group text-white/80 hover:text-white transition-colors p-2 rounded-full backdrop-blur-sm ${!canClose ? 'opacity-40 cursor-not-allowed' : ''}`}
+            style={{ aspectRatio: '1/1', minWidth: '40px', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.15s', transform: isClosing ? 'scale(0.9)' : undefined }}
+            aria-label="Cerrar"
+            tabIndex={canClose ? 0 : -1}
+            disabled={!canClose}
+            onMouseEnter={e => { if (canClose) (e.currentTarget as HTMLElement).style.transform = 'scale(1.15)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = isClosing ? 'scale(0.9)' : 'scale(1)'; }}
+          >
+            <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150" />
+          </button>
         </div>
-        
-        {/* Contenido del popup */}
-        <div className="p-6 overflow-y-auto max-h-[60vh]">
+
+        {/* Contenido del modal */}
+        <div className="p-6 overflow-y-auto max-h-[70vh] md:max-h-[60vh]">
           {/* Sección Viña del Mar*/}
           <div className="mb-8">
-            <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Viña del Mar / Concepción
-            </h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Viña del Mar / Concepción</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {vinaCareers.map((career) => (
                 <button
@@ -92,9 +112,7 @@ export default function CareerSelector({
 
           {/* Sección Casa Central */}
           <div>
-            <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Casa Central / San Joaquín
-            </h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Casa Central / San Joaquín</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {casaCentralCareers.map((career) => (
                     <button
@@ -123,12 +141,9 @@ export default function CareerSelector({
             </div>
           </div>
 
-
           {/* Sección Vitacura */}
           <div>
-            <h3 className={`text-lg font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-              Vitacura
-            </h3>
+            <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Vitacura</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {vitacuraCareers.map((career) => (
                     <button
@@ -156,7 +171,6 @@ export default function CareerSelector({
                   ))}
             </div>
           </div>
-
 
         </div>
       </div>
