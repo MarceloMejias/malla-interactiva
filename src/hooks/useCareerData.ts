@@ -7,8 +7,16 @@ interface Career {
   Color?: string;
 }
 
-
 type Campus = 'cc' | 'vm' | 'sj' | 'vc' | 'cp';
+
+interface CareerData {
+  codigo: string;
+  nombre: string;
+  campus: string;
+  color: string;
+  categorias: Array<{ id: string; nombre: string; color: string }>;
+  asignaturas: Subject[];
+}
 
 export const useCareerData = (campus: Campus | undefined, careerCode: string | undefined) => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
@@ -17,28 +25,25 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
   const [careerColor, setCareerColor] = useState<string | undefined>(undefined);
 
   const [casaCentralCareers, setCasaCentralCareers] = useState<Career[]>([]);
-  const [sanJoaquinCareers, setSanJoaquinCareers] = useState<Career []>([]);
+  const [sanJoaquinCareers, setSanJoaquinCareers] = useState<Career[]>([]);
   const [vitacuraCareers, setVitacuraCareers] = useState<Career[]>([]);
   const [concepcionCareers, setConcepcionCareers] = useState<Career[]>([]);
   const [vinaCareers, setVinaCareers] = useState<Career[]>([]);
 
   const [showCareerSelector, setShowCareerSelector] = useState(false);
 
-  // Cargar carreras disponibles y última carrera seleccionada al iniciar
+  // Cargar carreras disponibles desde la API
   useEffect(() => {
     const loadCareers = async () => {
       try {
-        const casaCentralModule = await import('@/data/cc/carreras_casacentral.json');
-        const vinaConcepcionModule = await import('@/data/vm/carreras_vina.json');
-        const sanJoaquinModule = await import('@/data/sj/carreras_sanjoaquin.json');
-        const vitacuraModule = await import('@/data/vc/carreras_vitacura.json');
-        const concepcionModule = await import('@/data/cp/carreras_concepcion.json');
-
-  setCasaCentralCareers((casaCentralModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
-  setVinaCareers((vinaConcepcionModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
-  setSanJoaquinCareers((sanJoaquinModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
-  setVitacuraCareers((vitacuraModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
-  setConcepcionCareers((concepcionModule.default as Career[]).sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es', { sensitivity: 'base' })));
+        const response = await fetch('/api/careers');
+        const data = await response.json();
+        
+        setCasaCentralCareers(data.cc || []);
+        setVinaCareers(data.vm || []);
+        setSanJoaquinCareers(data.sj || []);
+        setVitacuraCareers(data.vc || []);
+        setConcepcionCareers(data.cp || []);
       } catch (error) {
         console.error('Error cargando carreras:', error);
       }
@@ -46,7 +51,7 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
     loadCareers();
   }, []);
 
-  // Cargar datos de la carrera específica
+  // Cargar datos de la carrera específica desde la API
   useEffect(() => {
     const loadCareerData = async () => {
       if (!campus || !careerCode) {
@@ -57,75 +62,49 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
         setCareerColor(undefined);
         return;
       }
+
       try {
-        const dataModule = await import(`@/data/${campus}/data_${careerCode}.json`);
-        const colorsModule = await import(`@/data/${campus}/colors_${careerCode}.json`);
-
-        // Buscar la carrera en todos los campus y sedes
-        const allCareers = [
-          ...casaCentralCareers,
-          ...vinaCareers,
-          ...sanJoaquinCareers,
-          ...vitacuraCareers,
-          ...concepcionCareers
-        ];
-        const career = allCareers.find(carrera => carrera.Link === careerCode);
-
-        if (!career) {
+        const response = await fetch(`/api/careers/${careerCode}`);
+        
+        if (!response.ok) {
+          console.error(`Carrera no encontrada: ${careerCode}`);
           setShowCareerSelector(true);
-          setSubjects([]);
-          setColors({});
-          setCareerName('');
-          setCareerColor(undefined);
           return;
         }
 
-        const data = dataModule.default as Record<string, unknown[][]>;
-        const colorsData = colorsModule.default as Record<string, string[]>;
+        const carrera: CareerData = await response.json();
 
-        const careerNameFromJson = career?.Nombre || 'Carrera Desconocida';
-        setCareerName(careerNameFromJson);
-        setCareerColor(career?.Color);
+        // Remover "(Malla Antigua)" del nombre si existe
+        const cleanName = carrera.nombre.replaceAll(/\s*\(Malla Antigua\)\s*/gi, '').trim();
+        setCareerName(cleanName);
+        setCareerColor(carrera.color);
 
-        const processedSubjects: Subject[] = [];
-        Object.entries(data).forEach(([semester, semesterSubjects]) => {
-          semesterSubjects.forEach((subjectArray: unknown[]) => {
-            const [name, code, usmCredits, sctCredits, type, prerequisites] = subjectArray;
-            processedSubjects.push({
-              name: name as string,
-              code: code as string,
-              usmCredits: usmCredits as string,
-              sctCredits: Number(sctCredits),
-              type: type as string,
-              prerequisites: (prerequisites || []) as string[],
-              semester
-            });
-          });
-        });
+        // Usar asignaturas directamente
+        setSubjects(carrera.asignaturas);
 
-        setSubjects(processedSubjects);
-        setColors(colorsData);
+        // Transformar categorías al formato esperado
+        const processedColors: SubjectColors = {};
+        for (const categoria of carrera.categorias) {
+          processedColors[categoria.id] = [categoria.color, categoria.nombre];
+        }
+        setColors(processedColors);
         setShowCareerSelector(false);
       } catch (error) {
+        console.error('Error loading career data:', error);
         setShowCareerSelector(true);
         setSubjects([]);
         setColors({});
         setCareerName('');
         setCareerColor(undefined);
-        console.error('Error loading career data:', error);
       }
     };
-    // Solo cargar si hay datos de carreras cargados y parámetros válidos
-    if (campus && careerCode && (casaCentralCareers.length > 0 || vinaCareers.length > 0)) {
-      loadCareerData();
-    }
-  }, [campus, careerCode, casaCentralCareers, vinaCareers, sanJoaquinCareers, vitacuraCareers, concepcionCareers]);
 
+    loadCareerData();
+  }, [campus, careerCode]);
 
   const handleBackToCareerSelector = () => {
     setShowCareerSelector(true);
   };
-
 
   const findSubjectByCode = (code: string): Subject | undefined => {
     return subjects.find(subject => subject.code === code);

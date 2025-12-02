@@ -19,14 +19,14 @@ interface StatsBarProps {
   darkMode?: boolean;
 }
 
-export default function StatsBar({ stats, onShowCategories, onReset, onPlayGraduationPlan, darkMode = false }: StatsBarProps) {
+export default function StatsBar({ stats, onShowCategories, onReset, onPlayGraduationPlan, darkMode = false }: Readonly<StatsBarProps>) {
   const handleReset = () => {
     onReset();
   };
 
   return (
     <div className="fixed bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 z-50">
-  <div className={`${darkMode ? 'bg-gray-800/70 border-gray-700' : 'bg-white/60 border-gray-100'} rounded-2xl shadow-2xl border p-2 md:p-4 mx-auto max-w-3xl backdrop-blur-md`}>
+  <div className={`${darkMode ? 'bg-gray-800/70 border-gray-700' : 'bg-white/60 border-gray-100'} rounded-2xl shadow-2xl border p-2 md:p-4 mx-auto max-w-3xl md:max-w-5xl backdrop-blur-md`}>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-6">
           {/* Stats y progreso */}
           <div className="flex flex-row items-center justify-between gap-2 md:gap-6 flex-1">
@@ -70,24 +70,27 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
           <div className="flex items-center justify-center gap-3 md:gap-2 md:justify-end mt-2 md:mt-0">
             <button
               onClick={onPlayGraduationPlan}
-              className="w-12 h-12 md:w-10 md:h-10 bg-green-500 hover:bg-green-600 text-white rounded-full transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300"
+              className="w-12 h-12 md:w-auto md:h-10 md:px-4 bg-green-500 hover:bg-green-600 text-white rounded-full transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300"
               title="Ver plan de graduación"
             >
-              <FontAwesomeIcon icon={faPlay} className="text-lg" />
+              <FontAwesomeIcon icon={faPlay} className="text-lg md:text-base" />
+              <span className="hidden md:inline text-sm font-medium">Plan</span>
             </button>
             <button
               onClick={onShowCategories}
-              className="w-12 h-12 md:w-10 md:h-10 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              className="w-12 h-12 md:w-auto md:h-10 md:px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-300"
               title="Ver categorías de asignaturas"
             >
-              <FontAwesomeIcon icon={faInfoCircle} className="text-lg" />
+              <FontAwesomeIcon icon={faInfoCircle} className="text-lg md:text-base" />
+              <span className="hidden md:inline text-sm font-medium">Categorías</span>
             </button>
             <button
               onClick={handleReset}
-              className="w-12 h-12 md:w-10 md:h-10 bg-red-500 hover:bg-red-600 text-white rounded-full transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300"
+              className="w-12 h-12 md:w-auto md:h-10 md:px-4 bg-red-500 hover:bg-red-600 text-white rounded-full transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300"
               title="Reiniciar progreso"
             >
-              <FontAwesomeIcon icon={faRotateLeft} className="text-lg" />
+              <FontAwesomeIcon icon={faRotateLeft} className="text-lg md:text-base" />
+              <span className="hidden md:inline text-sm font-medium">Reiniciar</span>
             </button>
           </div>
         </div>

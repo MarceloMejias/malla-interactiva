@@ -148,9 +148,9 @@ export const useGraduationPlan = (
           return subject.semester === currentSemesterCode && isSubjectAvailable(subject, completedSubjects);
         });
         for (const subject of available) {
-          if (semesterCredits + subject.sctCredits <= maxCreditsPerSemester) {
+          if (semesterCredits + Number(subject.sctCredits) <= maxCreditsPerSemester) {
             semesterSubjects.push(subject);
-            semesterCredits += subject.sctCredits;
+            semesterCredits += Number(subject.sctCredits);
             completedSubjects.add(subject.code);
             const index = remainingSubjects.findIndex(s => s.code === subject.code);
             if (index !== -1) {
@@ -164,9 +164,9 @@ export const useGraduationPlan = (
           return subject.semester === 's1' && isSubjectAvailable(subject, completedSubjects);
         });
         for (const subject of availableFirst) {
-          if (semesterCredits + subject.sctCredits <= maxCreditsPerSemester) {
+          if (semesterCredits + Number(subject.sctCredits) <= maxCreditsPerSemester) {
             semesterSubjects.push(subject);
-            semesterCredits += subject.sctCredits;
+            semesterCredits += Number(subject.sctCredits);
             completedSubjects.add(subject.code);
             const index = remainingSubjects.findIndex(s => s.code === subject.code);
             if (index !== -1) {
@@ -186,9 +186,9 @@ export const useGraduationPlan = (
           return bN - aN;
         });
         for (const subject of availableFirstSecond) {
-          if (semesterCredits + subject.sctCredits <= maxCreditsPerSemester) {
+          if (semesterCredits + Number(subject.sctCredits) <= maxCreditsPerSemester) {
             semesterSubjects.push(subject);
-            semesterCredits += subject.sctCredits;
+            semesterCredits += Number(subject.sctCredits);
             completedSubjects.add(subject.code);
             const index = remainingSubjects.findIndex(s => s.code === subject.code);
             if (index !== -1) {
@@ -207,9 +207,9 @@ export const useGraduationPlan = (
           return aIdx - bIdx;
         });
         for (const subject of adelantables) {
-          if (semesterCredits + subject.sctCredits <= maxCreditsPerSemester) {
+          if (semesterCredits + Number(subject.sctCredits) <= maxCreditsPerSemester) {
             semesterSubjects.push(subject);
-            semesterCredits += subject.sctCredits;
+            semesterCredits += Number(subject.sctCredits);
             completedSubjects.add(subject.code);
             const index = remainingSubjects.findIndex(s => s.code === subject.code);
             if (index !== -1) {

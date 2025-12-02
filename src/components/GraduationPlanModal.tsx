@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faGraduationCap, faCalendarAlt, faGripVertical, faExclamationTriangle, faBolt, faBan, faTrash, faPlus, faCheck, faCoins, faBook } from '@fortawesome/free-solid-svg-icons';
 import { Subject } from '@/types/curriculum';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SemesterPlan {
   semester: string; // Cambio de number a string para formato "2025-1"
@@ -163,7 +164,7 @@ export default function GraduationPlanModal({
           if (semesterName && draggedSubject) {
             const targetSemester = localPlan.find(s => s.semester === semesterName);
             const wouldExceedLimit = targetSemester && 
-              (targetSemester.credits + draggedSubject.subject.sctCredits > 35);
+              (targetSemester.credits + Number(draggedSubject.subject.sctCredits) > 35);
             if (!wouldExceedLimit) {
               setDragOverSemester(semesterName);
             } else {
@@ -239,7 +240,7 @@ export default function GraduationPlanModal({
     if (draggedSubject) {
       const targetSemester = localPlan.find(s => s.semester === semesterName);
       const wouldExceedLimit = targetSemester && 
-        (targetSemester.credits + draggedSubject.subject.sctCredits > 35);
+        (targetSemester.credits + Number(draggedSubject.subject.sctCredits) > 35);
       if (wouldExceedLimit) {
         e.dataTransfer.dropEffect = 'none';
         return;
@@ -292,7 +293,7 @@ export default function GraduationPlanModal({
     // Verificar límite de créditos antes de mover
     const targetSemester = localPlan.find(s => s.semester === toSemester);
     if (targetSemester) {
-      const newCredits = targetSemester.credits + draggedSubject.subject.sctCredits;
+      const newCredits = targetSemester.credits + Number(draggedSubject.subject.sctCredits);
       if (newCredits > 35) {
         showMiniAlert(`No se puede mover esta asignatura. El semestre ${toSemester} tendría ${newCredits} créditos, pero el máximo permitido es 35 créditos.`);
         return;
@@ -307,7 +308,7 @@ export default function GraduationPlanModal({
         return {
           ...semester,
           subjects: newSubjects,
-          credits: newSubjects.reduce((sum, s) => sum + s.sctCredits, 0)
+          credits: newSubjects.reduce((sum, s) => sum + Number(s.sctCredits), 0)
         };
       } else if (semester.semester === toSemester) {
         // Agregar al semestre destino
@@ -315,7 +316,7 @@ export default function GraduationPlanModal({
         return {
           ...semester,
           subjects: newSubjects,
-          credits: newSubjects.reduce((sum, s) => sum + s.sctCredits, 0)
+          credits: newSubjects.reduce((sum, s) => sum + Number(s.sctCredits), 0)
         };
       }
       return semester;
@@ -402,7 +403,7 @@ export default function GraduationPlanModal({
           subjectsToMove.forEach(subject => {
             // Remover del semestre actual
             semester.subjects = semester.subjects.filter(s => s.code !== subject.code);
-            semester.credits = semester.subjects.reduce((sum, s) => sum + s.sctCredits, 0);
+            semester.credits = semester.subjects.reduce((sum, s) => sum + Number(s.sctCredits), 0);
             
             // Encontrar el primer semestre posterior donde pueda ir
             let placed = false;
@@ -428,7 +429,7 @@ export default function GraduationPlanModal({
 
               if (canPlace) {
                 updatedPlan[futureIndex].subjects.push(subject);
-                updatedPlan[futureIndex].credits += subject.sctCredits;
+                updatedPlan[futureIndex].credits += Number(subject.sctCredits);
                 placed = true;
                 break;
               }
@@ -442,7 +443,7 @@ export default function GraduationPlanModal({
               updatedPlan.push({
                 semester: newSemesterName,
                 subjects: [subject],
-                credits: subject.sctCredits
+                credits: Number(subject.sctCredits)
               });
             }
           });
@@ -500,20 +501,38 @@ export default function GraduationPlanModal({
     };
   };
 
-  if (!show) return null;
-
   const { totalSemesters, totalCredits, totalSubjects, yearsRemaining } = recalculateTotals();
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4">
-      {/* Mini alerta flotante */}
-      {miniAlert.visible && (
-        <div className="fixed z-70 left-1/2 bottom-8 md:bottom-12 -translate-x-1/2 bg-white/95 border border-red-200 shadow-xl rounded-2xl px-6 py-4 flex items-center gap-3 animate-fade-in-up" style={{ minWidth: 260, maxWidth: 340 }}>
-          <FontAwesomeIcon icon={faExclamationTriangle} className="text-red-400 text-lg" />
-          <span className="text-sm text-red-800 font-semibold">{miniAlert.message}</span>
-        </div>
-      )}
-      <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 max-w-6xl w-full max-h-[98vh] md:max-h-[80vh] overflow-hidden flex flex-col">
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4"
+        >
+          {/* Mini alerta flotante */}
+          {miniAlert.visible && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed z-70 left-1/2 bottom-8 md:bottom-12 -translate-x-1/2 bg-white/95 border border-red-200 shadow-xl rounded-2xl px-6 py-4 flex items-center gap-3"
+              style={{ minWidth: 260, maxWidth: 340 }}
+            >
+              <FontAwesomeIcon icon={faExclamationTriangle} className="text-red-400 text-lg" />
+              <span className="text-sm text-red-800 font-semibold">{miniAlert.message}</span>
+            </motion.div>
+          )}
+          <motion.div
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3, type: "spring", damping: 25, stiffness: 300 }}
+            className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/30 max-w-6xl w-full max-h-[98vh] md:max-h-[80vh] overflow-hidden flex flex-col"
+          >
         {/* Header */}
         <div className="bg-gradient-to-r from-green-600/80 to-blue-600/80 backdrop-blur-lg text-white p-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -607,7 +626,7 @@ export default function GraduationPlanModal({
                   const isOverloaded = semesterPlan.credits > 30;
                   const wouldExceedWithDrag = draggedSubject && 
                     dragOverSemester === semesterPlan.semester &&
-                    (semesterPlan.credits + draggedSubject.subject.sctCredits > 35);
+                    (semesterPlan.credits + Number(draggedSubject.subject.sctCredits) > 35);
                   return (
                     <div 
                       key={semesterPlan.semester}
@@ -904,7 +923,9 @@ export default function GraduationPlanModal({
           )}
         </div>
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

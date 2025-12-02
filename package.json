@@ -1,22 +1,25 @@
 {
   "name": "malla-interactiva",
-  "version": "0.2",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export"
+    "migrate": "tsx scripts/migrate.ts",
+    "gbpages": "next build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-brands-svg-icons": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/react-fontawesome": "^0.2.3",
+    "@supabase/supabase-js": "^2.86.0",
     "@types/canvas-confetti": "^1.9.0",
     "canvas-confetti": "^1.9.3",
-    "next": "15.4.6",
+    "framer-motion": "^12.23.24",
+    "next": "^16.0.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
@@ -26,9 +29,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "baseline-browser-mapping": "^2.8.32",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "tailwindcss": "^4",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }

@@ -3,6 +3,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import type { Subject, SubjectState, CalculatorState, SubjectColors } from '@/types/curriculum';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SubjectCardProps {
   subject: Subject;
@@ -114,11 +115,15 @@ export default function SubjectCard({
 
   return (
     <div className="relative group">
-      <div
-        className={`relative rounded-xl cursor-pointer transition-all duration-300 overflow-hidden shadow-md hover:shadow-lg transform hover:scale-[1.02] min-h-[90px] md:min-h-[100px] flex flex-col`}
-        style={{ 
-          backgroundColor: getBackgroundColor()
+      <motion.div
+        animate={{ 
+          backgroundColor: getBackgroundColor(),
+          scale: 1
         }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.3, type: "spring", damping: 20, stiffness: 300 }}
+        className={`relative rounded-xl cursor-pointer overflow-hidden shadow-md hover:shadow-lg min-h-[90px] md:min-h-[100px] flex flex-col`}
         onClick={handleClick}
         title={
           isBlocked
@@ -141,11 +146,19 @@ export default function SubjectCard({
         </div>
         
         {/* Icono de bloqueo como carátula en esquina inferior derecha */}
-        {isBlocked && (
-          <div className={`absolute bottom-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-tl-lg px-2 py-0.5`}>
-            <FontAwesomeIcon icon={faLock} className="text-xs" style={{ color: getBackgroundColor() }} />
-          </div>
-        )}
+        <AnimatePresence>
+          {isBlocked && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`absolute bottom-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-tl-lg px-2 py-0.5`}
+            >
+              <FontAwesomeIcon icon={faLock} className="text-xs" style={{ color: getBackgroundColor() }} />
+            </motion.div>
+          )}
+        </AnimatePresence>
         
         {/* Contenido principal */}
         <div className="flex-1 px-2 md:px-3 pt-8 md:pt-10 pb-1 md:pb-2">
@@ -166,7 +179,7 @@ export default function SubjectCard({
         </div>
         
         {/* Indicador de estado visual removido */}
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -8,6 +8,8 @@ import StatsBar from './StatsBar';
 import CategoriesPopup from './CategoriesPopup';
 import CareerSelector from './CareerSelector';
 import GraduationPlanModal from './GraduationPlanModal';
+import GuideModal from './GuideModal';
+import ContributeModal from './ContributeModal';
 import { useCalculator } from '@/hooks/useCalculator';
 import { useConfetti } from '@/hooks/useConfetti';
 import { useGraduationPlan } from '@/hooks/useGraduationPlan';
@@ -18,6 +20,8 @@ import { useState } from 'react';
 
 export default function CurriculumGrid() {
   const [showCategoriesPopup, setShowCategoriesPopup] = useState(false);
+  const [showGuideModal, setShowGuideModal] = useState(false);
+  const [showContributeModal, setShowContributeModal] = useState(false);
   const [campus, setCampus] = useState<string | undefined>(undefined);
   const [careerCode, setCareerCode] = useState<string | undefined>(undefined);
   const [showCareerSelector, setShowCareerSelector] = useState(true);
@@ -127,6 +131,8 @@ export default function CurriculumGrid() {
                 careerColor={careerColor}
                 darkMode={darkMode}
                 onBackToCareerSelector={handleBackToCareerSelectorLocal}
+                onShowGuide={() => setShowGuideModal(true)}
+                onShowContribute={() => setShowContributeModal(true)}
               />
 
               <SemesterGrid
@@ -187,6 +193,20 @@ export default function CurriculumGrid() {
         colors={colors}
         allSubjects={subjects}
         subjectStates={subjectStates}
+      />
+
+      {/* Modal de guía */}
+      <GuideModal
+        show={showGuideModal}
+        onClose={() => setShowGuideModal(false)}
+        darkMode={darkMode}
+      />
+
+      {/* Modal de contribución */}
+      <ContributeModal
+        show={showContributeModal}
+        onClose={() => setShowContributeModal(false)}
+        darkMode={darkMode}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { SubjectColors } from '@/types/curriculum';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface CategoriesPopupProps {
   show: boolean;
@@ -10,13 +11,25 @@ interface CategoriesPopupProps {
 }
 
 export default function CategoriesPopup({ show, colors, darkMode, onClose }: CategoriesPopupProps) {
-  if (!show) return null;
-
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-4">
-      <div className={`backdrop-blur-lg rounded-3xl shadow-2xl border max-w-4xl w-full max-h-[80vh] overflow-hidden ${
-        darkMode ? 'bg-gray-800/95 border-gray-600' : 'bg-white/95 border-white/30'
-      }`}>
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-4"
+        >
+          <motion.div
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3, type: "spring", damping: 25, stiffness: 300 }}
+            className={`backdrop-blur-lg rounded-3xl shadow-2xl border max-w-4xl w-full max-h-[80vh] overflow-hidden ${
+              darkMode ? 'bg-gray-800/95 border-gray-600' : 'bg-white/95 border-white/30'
+            }`}
+          >
         {/* Header del popup */}
         <div className={`backdrop-blur-lg text-white p-6 flex items-center justify-between ${
           darkMode ? 'bg-gray-700/80' : 'bg-gradient-to-r from-blue-600/80 to-indigo-600/80'
@@ -73,7 +86,9 @@ export default function CategoriesPopup({ show, colors, darkMode, onClose }: Cat
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
