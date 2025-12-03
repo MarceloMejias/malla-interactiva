@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faHandsHelping, faCode, faBug, faLightbulb } from '@fortawesome/free-solid-svg-icons';
-import { faGithub as faGithubBrand } from '@fortawesome/free-brands-svg-icons';
+import { faTimes, faHandsHelping, faCode, faBug, faLightbulb, faBolt, faPalette, faMobile, faSave, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faGithub as faGithubBrand, faPython, faReact } from '@fortawesome/free-brands-svg-icons';
 
 interface ContributeModalProps {
   show: boolean;
@@ -43,6 +43,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                     <p className="modal-subtitle">Ayuda a mejorar la malla interactiva</p>
                   </div>
                 </div>
+                <div style={{ flex: 1 }}></div>
                 <button
                   onClick={onClose}
                   className="modal-close-button"
@@ -72,100 +73,162 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                 <div className="space-y-4">
                   {/* Reportar errores */}
                   <div className={`modal-card ${darkMode ? 'dark' : 'red-light'}`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center">
-                        <FontAwesomeIcon icon={faBug} className="text-white text-sm" />
+                    <div className="flex items-start gap-3">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center flex-shrink-0">
+                          <FontAwesomeIcon icon={faBug} className="text-white text-sm" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-base mb-1">Reportar Errores</h5>
+                          <p className="text-sm opacity-80">
+                            ¿Encontraste un problema? ¿Información incorrecta? ¿Un ramo que falta?
+                          </p>
+                        </div>
                       </div>
-                      <h5 className="font-semibold text-base">Reportar Errores</h5>
+                      <a
+                        href="https://github.com/MarceloMejias/malla-interactiva/issues"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="modal-action-button red flex-shrink-0"
+                      >
+                        <FontAwesomeIcon icon={faBug} />
+                        Reportar Problema
+                      </a>
                     </div>
-                    <p className="text-sm opacity-80 mb-3">
-                      ¿Encontraste un problema? ¿Información incorrecta? ¿Un ramo que falta?
-                    </p>
-                    <a
-                      href="https://github.com/MarceloMejias/malla-interactiva/discussions/new?category=bugs"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="modal-action-button red"
-                    >
-                      <FontAwesomeIcon icon={faBug} />
-                      Reportar Problema
-                    </a>
                   </div>
 
                   {/* Sugerir mejoras */}
                   <div className={`modal-card ${darkMode ? 'dark' : 'yellow-light'}`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center">
-                        <FontAwesomeIcon icon={faLightbulb} className="text-white text-sm" />
+                    <div className="flex items-start gap-3">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center flex-shrink-0">
+                          <FontAwesomeIcon icon={faLightbulb} className="text-white text-sm" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-base mb-1">Sugerir Mejoras</h5>
+                          <p className="text-sm opacity-80">
+                            ¿Tienes una idea para mejorar la aplicación? ¿Una nueva funcionalidad?
+                          </p>
+                        </div>
                       </div>
-                      <h5 className="font-semibold text-base">Sugerir Mejoras</h5>
+                      <a
+                        href="https://github.com/MarceloMejias/malla-interactiva/discussions"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="modal-action-button yellow flex-shrink-0"
+                      >
+                        <FontAwesomeIcon icon={faLightbulb} />
+                        Compartir Idea
+                      </a>
                     </div>
-                    <p className="text-sm opacity-80 mb-3">
-                      ¿Tienes una idea para mejorar la aplicación? ¿Una nueva funcionalidad?
-                    </p>
-                    <a
-                      href="https://github.com/MarceloMejias/malla-interactiva/discussions"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="modal-action-button yellow"
-                    >
-                      <FontAwesomeIcon icon={faLightbulb} />
-                      Compartir Idea
-                    </a>
                   </div>
 
                   {/* Contribuir código */}
                   <div className={`modal-card ${darkMode ? 'dark' : 'blue-light'}`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center">
-                        <FontAwesomeIcon icon={faCode} className="text-white text-sm" />
+                    <div className="flex items-start gap-3">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
+                          <FontAwesomeIcon icon={faCode} className="text-white text-sm" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-semibold text-base mb-1">Contribuir Código</h5>
+                          <p className="text-sm opacity-80">
+                            ¿Eres desarrollador? Puedes contribuir directamente al código del proyecto.
+                          </p>
+                        </div>
                       </div>
-                      <h5 className="font-semibold text-base">Contribuir Código</h5>
+                      <a
+                        href="https://github.com/MarceloMejias/malla-interactiva"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="modal-action-button blue flex-shrink-0"
+                      >
+                        <FontAwesomeIcon icon={faGithubBrand} />
+                        Ver en GitHub
+                      </a>
                     </div>
-                    <p className="text-sm opacity-80 mb-3">
-                      ¿Eres desarrollador? Puedes contribuir directamente al código del proyecto.
-                    </p>
-                    <a
-                      href="https://github.com/MarceloMejias/malla-interactiva"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="modal-action-button blue"
-                    >
-                      <FontAwesomeIcon icon={faGithubBrand} />
-                      Ver en GitHub
-                    </a>
                   </div>
                 </div>
               </div>
 
               {/* Stack tecnológico */}
               <div className="modal-section">
-                <h4 className="modal-section-title">Stack Tecnológico</h4>
-                <div className={`modal-card ${darkMode ? 'dark' : 'light'}`}>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-blue-500">⚛️</span>
-                      <span>Next.js 16</span>
+                <h4 className="modal-section-title">
+                  <FontAwesomeIcon icon={faCode} className="text-blue-500" />
+                  Stack Tecnológico
+                </h4>
+                <div className={`modal-card ${darkMode ? 'dark' : 'light'} p-4`}>
+                  <div className="space-y-4">
+                    {/* Frontend Framework */}
+                    <div>
+                      <h5 className="text-xs font-semibold opacity-60 mb-2 uppercase tracking-wide">Framework & Runtime</h5>
+                      <div className="flex flex-wrap gap-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black dark:bg-white/10 border border-gray-200 dark:border-gray-700">
+                          <FontAwesomeIcon icon={faReact} className="text-white dark:text-gray-300" />
+                          <span className="text-sm font-medium">Next.js 16</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600/10 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-800">
+                          <FontAwesomeIcon icon={faReact} className="text-blue-600 dark:text-blue-400" />
+                          <span className="text-sm font-medium text-blue-700 dark:text-blue-300">React 19</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-orange-600/10 dark:bg-orange-500/20 border border-orange-200 dark:border-orange-800">
+                          <FontAwesomeIcon icon={faBolt} className="text-orange-600 dark:text-orange-400" />
+                          <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Turbopack</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-blue-400">📘</span>
-                      <span>TypeScript</span>
+
+                    {/* Languages & Styling */}
+                    <div>
+                      <h5 className="text-xs font-semibold opacity-60 mb-2 uppercase tracking-wide">Lenguajes & Estilos</h5>
+                      <div className="flex flex-wrap gap-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600/10 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-800">
+                          <FontAwesomeIcon icon={faCode} className="text-blue-600 dark:text-blue-400" />
+                          <span className="text-sm font-medium text-blue-700 dark:text-blue-300">TypeScript</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-600/10 dark:bg-cyan-500/20 border border-cyan-200 dark:border-cyan-800">
+                          <FontAwesomeIcon icon={faPalette} className="text-cyan-600 dark:text-cyan-400" />
+                          <span className="text-sm font-medium text-cyan-700 dark:text-cyan-300">Tailwind CSS 4</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-600/10 dark:bg-green-500/20 border border-green-200 dark:border-green-800">
+                          <FontAwesomeIcon icon={faPython} className="text-green-600 dark:text-green-400" />
+                          <span className="text-sm font-medium text-green-700 dark:text-green-300">Python</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-cyan-400">🎨</span>
-                      <span>Tailwind CSS</span>
+
+                    {/* Animation & Icons */}
+                    <div>
+                      <h5 className="text-xs font-semibold opacity-60 mb-2 uppercase tracking-wide">UI & Animaciones</h5>
+                      <div className="flex flex-wrap gap-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-600/10 dark:bg-purple-500/20 border border-purple-200 dark:border-purple-800">
+                          <FontAwesomeIcon icon={faBolt} className="text-purple-600 dark:text-purple-400" />
+                          <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Framer Motion</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-600/10 dark:bg-indigo-500/20 border border-indigo-200 dark:border-indigo-800">
+                          <FontAwesomeIcon icon={faLightbulb} className="text-indigo-600 dark:text-indigo-400" />
+                          <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">Font Awesome</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-purple-500">🎭</span>
-                      <span>Framer Motion</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-orange-500">⚡</span>
-                      <span>Turbopack</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-green-500">🐍</span>
-                      <span>Python (scripts)</span>
+
+                    {/* Data & PWA */}
+                    <div>
+                      <h5 className="text-xs font-semibold opacity-60 mb-2 uppercase tracking-wide">Características</h5>
+                      <div className="flex flex-wrap gap-2">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-600/10 dark:bg-gray-500/20 border border-gray-200 dark:border-gray-700">
+                          <FontAwesomeIcon icon={faMobile} className="text-gray-600 dark:text-gray-400" />
+                          <span className="text-sm font-medium">PWA</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-600/10 dark:bg-gray-500/20 border border-gray-200 dark:border-gray-700">
+                          <FontAwesomeIcon icon={faSave} className="text-gray-600 dark:text-gray-400" />
+                          <span className="text-sm font-medium">Local Storage</span>
+                        </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-600/10 dark:bg-gray-500/20 border border-gray-200 dark:border-gray-700">
+                          <FontAwesomeIcon icon={faMoon} className="text-gray-600 dark:text-gray-400" />
+                          <span className="text-sm font-medium">Modo Oscuro</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

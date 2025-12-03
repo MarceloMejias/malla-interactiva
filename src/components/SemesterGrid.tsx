@@ -75,10 +75,12 @@ export default function SemesterGrid({
       </div>
 
       {/* Desktop: Flex horizontal con scroll */}
-      <div className="hidden md:block md:overflow-x-auto md:pb-4">
+      <div className="hidden md:flex md:justify-center md:overflow-x-auto md:pb-4 scrollbar-hide">
         <div 
-          className={`flex flex-row gap-2 ${maxSemesters <= 8 ? 'justify-center' : 'justify-start'}`}
-          style={{ minWidth: maxSemesters <= 8 ? 'auto' : `${maxSemesters * 168}px` }}
+          className="flex flex-row gap-2"
+          style={{ 
+            minWidth: `${maxSemesters * 168}px`
+          }}
         >
           {Array.from({ length: maxSemesters }, (_, i) => `s${i + 1}`).map((semester) => {
             const semesterSubjects = getSemesterSubjects(semester);

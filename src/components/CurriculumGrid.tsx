@@ -48,8 +48,7 @@ export default function CurriculumGrid() {
   useEffect(() => {
     if (showSelectorFromHook) {
       setShowCareerSelector(true);
-      setCampus(undefined);
-      setCareerCode(undefined);
+      // NO limpiar campus ni careerCode - mantener los datos de la carrera actual
     }
   }, [showSelectorFromHook]);
 
@@ -64,11 +63,7 @@ export default function CurriculumGrid() {
 
   const handleBackToCareerSelectorLocal = () => {
     setShowCareerSelector(true);
-    setCampus(undefined);
-    setCareerCode(undefined);
-    // Limpiar localStorage si se desea
-    localStorage.removeItem('last-selected-career-campus');
-    localStorage.removeItem('last-selected-career-code');
+    // NO limpiar campus ni careerCode aquí - mantener los datos hasta que se seleccione otra carrera
     if (handleBackToCareerSelector) handleBackToCareerSelector();
   };
 
@@ -123,7 +118,7 @@ export default function CurriculumGrid() {
     <div className={`min-h-screen pb-32 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="w-full mx-auto overflow-x-hidden">
         {/* Contenido principal - solo mostrar si hay carrera seleccionada */}
-        {campus && careerCode && !showCareerSelector && (
+        {campus && careerCode && (
           <>
             <div className="p-1 md:p-2 lg:p-4">
               <CareerHeader
@@ -134,7 +129,9 @@ export default function CurriculumGrid() {
                 onShowGuide={() => setShowGuideModal(true)}
                 onShowContribute={() => setShowContributeModal(true)}
               />
-
+            </div>
+            
+            <div>
               <SemesterGrid
                 subjects={subjects}
                 subjectStates={subjectStates}
@@ -146,14 +143,17 @@ export default function CurriculumGrid() {
                 subjectRefs={subjectRefs}
               />
             </div>
+            
+            <div className="p-1 md:p-2 lg:p-4">
 
-            <Footer darkMode={darkMode} />
+              <Footer darkMode={darkMode} />
+            </div>
           </>
         )}
       </div>
 
       {/* Barra flotante de estadísticas */}
-      {campus && careerCode && !showCareerSelector && (
+      {campus && careerCode && (
         <StatsBar
           stats={stats}
           onShowCategories={() => setShowCategoriesPopup(true)}
@@ -165,7 +165,7 @@ export default function CurriculumGrid() {
 
       {/* Popup de categorías */}
       <CategoriesPopup
-        show={showCategoriesPopup && !!campus && !!careerCode && !showCareerSelector}
+        show={showCategoriesPopup && !!campus && !!careerCode}
         colors={colors}
         darkMode={darkMode}
         onClose={() => setShowCategoriesPopup(false)}
@@ -181,7 +181,10 @@ export default function CurriculumGrid() {
         concepcionCareers={concepcionCareers}
         darkMode={darkMode}
         onCareerSelect={handleCareerSelection}
-        onClose={handleBackToCareerSelectorLocal}
+        onClose={() => setShowCareerSelector(false)}
+        canClose={!!campus && !!careerCode}
+        campus={campus}
+        careerCode={careerCode}
       />
 
       {/* Modal del plan de graduación */}

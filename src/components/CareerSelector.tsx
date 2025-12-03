@@ -19,6 +19,9 @@ interface CareerSelectorProps {
   darkMode: boolean;
   onCareerSelect: (campus: string, careerCode: string) => void;
   onClose: () => void;
+  canClose?: boolean;
+  campus?: string;
+  careerCode?: string;
 }
 
 export default function CareerSelector({
@@ -34,7 +37,7 @@ export default function CareerSelector({
   canClose = false,
   campus,
   careerCode
-}: CareerSelectorProps & { canClose?: boolean; campus?: string; careerCode?: string }) {
+}: CareerSelectorProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedVersions, setSelectedVersions] = useState<Record<string, 'new' | 'old'>>({});
   
@@ -94,46 +97,44 @@ export default function CareerSelector({
   const totalResults = groupedVinaCareers.length + groupedCasaCentralCareers.length + groupedVitacuraCareers.length;
 
   // Determinar fondo: blanco sólido si no hay carrera, translúcido si hay una activa
-  const modalBg = !campus || !careerCode
-    ? (darkMode ? 'bg-gray-900' : 'bg-white')
-    : 'bg-white/40 dark:bg-gray-800/60 backdrop-blur-lg';
-
   return (
     <AnimatePresence>
       {show && (
         <motion.div 
-          className="fixed inset-0 z-60 flex items-start justify-center pt-12 md:pt-24 p-2 md:p-4" 
-          style={{backdropFilter: 'blur(6px)'}}
+          className="modal-overlay pt-12 md:pt-24"
+          onClick={() => canClose && onClose()}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
           <motion.div 
-            className={`${modalBg} rounded-3xl shadow-2xl border border-white/30 dark:border-gray-600 max-w-5xl w-full max-h-[98vh] md:max-h-[80vh] overflow-hidden flex flex-col`}
+            className={`modal-container ${darkMode ? 'dark' : ''} max-w-5xl`}
+            onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 10 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
         {/* Header con gradiente y botón cerrar */}
-        <div className={`backdrop-blur-lg text-white p-6 flex items-center justify-between ${
-          darkMode ? 'bg-gradient-to-r from-gray-700/80 to-blue-700/80' : 'bg-gradient-to-r from-blue-600/80 to-indigo-600/80'
-        }`}>
-          <div>
-            <h2 className="text-2xl font-bold">Selecciona tu Carrera</h2>
-            <p className="text-sm text-white/80 mt-1">Elige la carrera para ver su malla curricular interactiva</p>
+        <div className="modal-header blue">
+          <div className="modal-header-content">
+            <div>
+              <h2 className="modal-title text-2xl">Selecciona tu Carrera</h2>
+              <p className="modal-subtitle mt-1">Elige la carrera para ver su malla curricular interactiva</p>
+            </div>
+            <button
+              onClick={() => canClose && onClose()}
+              className={`modal-close-button ${
+                canClose ? '' : 'opacity-40 cursor-not-allowed'
+              }`}
+              aria-label="Cerrar"
+              tabIndex={canClose ? 0 : -1}
+              disabled={!canClose}
+            >
+              <FontAwesomeIcon icon={faTimes} className="modal-close-icon" />
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            className={`group text-white/80 hover:text-white transition-all p-2 rounded-full backdrop-blur-sm hover:scale-110 ${!canClose ? 'opacity-40 cursor-not-allowed' : ''}`}
-            style={{ aspectRatio: '1/1', minWidth: '40px', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            aria-label="Cerrar"
-            tabIndex={canClose ? 0 : -1}
-            disabled={!canClose}
-          >
-            <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150" />
-          </button>
         </div>
 
         {/* Contenido del modal */}

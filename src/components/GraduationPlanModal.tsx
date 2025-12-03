@@ -42,6 +42,8 @@ export default function GraduationPlanModal({
   const [touchPosition, setTouchPosition] = useState<{x: number, y: number} | null>(null);
   // Ref para el contenedor scrollable principal
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // Ref para el contenido del plan (para exportar)
+  const planContentRef = useRef<HTMLDivElement>(null);
 
   // Mini alerta flotante
   const [miniAlert, setMiniAlert] = useState<{ message: string, visible: boolean }>({ message: '', visible: false });
@@ -548,7 +550,7 @@ export default function GraduationPlanModal({
           </div>
           <button
             onClick={onClose}
-            className={`group text-white/80 hover:text-white transition-colors p-2 rounded-full backdrop-blur-sm hover:bg-white/10`}
+            className={`no-print group text-white/80 hover:text-white transition-colors p-2 rounded-full backdrop-blur-sm hover:bg-white/10`}
             style={{ aspectRatio: '1/1', minWidth: '40px', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             aria-label="Cerrar"
           >
@@ -666,7 +668,7 @@ export default function GraduationPlanModal({
                         </div>
                         {semesterPlan.subjects.length === 0 && (
                           <button
-                            className="ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 border border-red-200 transition-colors"
+                            className="no-print ml-2 p-1 rounded-full bg-red-100 hover:bg-red-200 text-red-600 border border-red-200 transition-colors"
                             title="Eliminar semestre en blanco"
                             onClick={() => {
                               setLocalPlan(prev => prev.filter((s, i) => i !== index));
@@ -758,7 +760,7 @@ export default function GraduationPlanModal({
                                 >
                                   <FontAwesomeIcon
                                     icon={faGripVertical}
-                                    className="text-white/60 text-xs flex-shrink-0"
+                                    className="no-print text-white/60 text-xs flex-shrink-0"
                                   />
                                 </span>
                                 <div className="flex-1 min-w-0">
@@ -780,7 +782,7 @@ export default function GraduationPlanModal({
                 })}
                 {/* Tarjeta para añadir semestre */}
                 <button
-                  className="h-full min-h-[180px] flex flex-col items-center justify-center border-2 border-dashed border-blue-300 bg-white/60 rounded-2xl shadow-sm hover:bg-blue-50 hover:border-blue-400 transition-all focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  className="no-print h-full min-h-[180px] flex flex-col items-center justify-center border-2 border-dashed border-blue-300 bg-white/60 rounded-2xl shadow-sm hover:bg-blue-50 hover:border-blue-400 transition-all focus:outline-none focus:ring-2 focus:ring-blue-300"
                   onClick={() => {
                     // Generar nombre de semestre siguiente
                     const lastSemester = localPlan[localPlan.length - 1]?.semester;

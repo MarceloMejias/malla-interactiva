@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import type { Subject, SubjectState, CalculatorState, SubjectColors } from '@/types/curriculum';
 import { motion, AnimatePresence } from 'framer-motion';
+import Tooltip from './Tooltip';
 
 interface SubjectCardProps {
   subject: Subject;
@@ -93,44 +94,72 @@ export default function SubjectCard({
     }
     // Color de la categoría del prerrequisito
     const prereqColor = colors[prereqSubject.type]?.[0] || '#6b7280';
+    
+    const prereqTooltip = (
+      <div className="space-y-1">
+        <div className="font-bold">{prereqSubject.name}</div>
+        <div className="text-xs opacity-70">{prereqCode} • {prereqSubject.sctCredits} créditos</div>
+        <div className="text-xs pt-1 border-t border-gray-300 dark:border-gray-600">
+          {prereqState?.status === 'approved' ? '✓ Aprobada' : '⚠️ Pendiente de aprobar'}
+        </div>
+        <div className="text-xs opacity-70">Click para ir al ramo</div>
+      </div>
+    );
+    
     return (
-      <button
-        onClick={e => {
-          e.stopPropagation();
-          onPrerequisiteClick(prereqCode);
-        }}
-        className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded-xl font-bold text-white hover:brightness-110 transition-all border border-white`}
-        style={{ backgroundColor: prereqColor }}
-        title={`${prereqSubject.name} (${prereqCode}) - Click para ir al ramo`}
-      >
-        <span>{prereqCode}</span>
-        <div 
-          className={`w-2 h-2 rounded-full border border-white ${
-            prereqState?.status === 'approved' ? 'bg-green-400' : 'bg-red-400'
-          }`}
-        />
-      </button>
+      <Tooltip content={prereqTooltip}>
+        <button
+          onClick={e => {
+            e.stopPropagation();
+            onPrerequisiteClick(prereqCode);
+          }}
+          className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded-xl font-bold text-white hover:brightness-110 transition-all border border-white`}
+          style={{ backgroundColor: prereqColor }}
+        >
+          <span>{prereqCode}</span>
+          <div 
+            className={`w-2 h-2 rounded-full border border-white ${
+              prereqState?.status === 'approved' ? 'bg-green-400' : 'bg-red-400'
+            }`}
+          />
+        </button>
+      </Tooltip>
     );
   };
 
+  const tooltipContent = (
+    <div className="space-y-1">
+      <div className="font-bold">{subject.name}</div>
+      <div className="text-xs opacity-70">{subject.code} • {subject.sctCredits} créditos</div>
+      {subject.prerequisites.length > 0 && (
+        <div className="text-xs opacity-70 pt-1 border-t border-gray-300 dark:border-gray-600">
+          Prerrequisitos: {subject.prerequisites.map(code => findSubjectByCode(code)?.name || code).join(', ')}
+        </div>
+      )}
+      {isBlocked ? (
+        <div className="text-xs text-red-500 dark:text-red-400 pt-1">⚠️ Bloqueada: completa los prerrequisitos</div>
+      ) : (
+        <div className="text-xs text-green-600 dark:text-green-400 pt-1">
+          {state?.status === 'approved' ? '✓ Aprobada' : 'Click para marcar como aprobada'}
+        </div>
+      )}
+    </div>
+  );
+
   return (
-    <div className="relative group">
-      <motion.div
-        animate={{ 
-          backgroundColor: getBackgroundColor(),
-          scale: 1
-        }}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ duration: 0.3, type: "spring", damping: 20, stiffness: 300 }}
-        className={`relative rounded-xl cursor-pointer overflow-hidden shadow-md hover:shadow-lg min-h-[90px] md:min-h-[100px] flex flex-col`}
-        onClick={handleClick}
-        title={
-          isBlocked
-            ? `${subject.name} - Bloqueada: completa los prerrequisitos primero`
-            : `${subject.name} - Click para ${state?.status === 'approved' ? 'marcar como pendiente' : 'marcar como aprobada'}`
-        }
-      >
+    <Tooltip content={tooltipContent}>
+      <div className="relative group">
+        <motion.div
+          animate={{ 
+            backgroundColor: getBackgroundColor(),
+            scale: 1
+          }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.3, type: "spring", damping: 20, stiffness: 300 }}
+          className={`relative rounded-xl cursor-pointer overflow-hidden shadow-md hover:shadow-lg min-h-[90px] md:min-h-[100px] flex flex-col`}
+          onClick={handleClick}
+        >
         {/* Código como carátula en esquina superior izquierda */}
         <div className={`absolute top-0 left-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-br-lg px-2 py-0.5`}>
           <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
@@ -180,6 +209,7 @@ export default function SubjectCard({
         
         {/* Indicador de estado visual removido */}
       </motion.div>
-    </div>
+      </div>
+    </Tooltip>
   );
 }
