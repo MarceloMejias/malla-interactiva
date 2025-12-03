@@ -43,7 +43,7 @@ export const ibt: Carrera = {
     {
         "name": "Computación Aplicada",
         "code": "EIN512B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "EI",
         "prerequisites": [],
         "semester": "s1"
@@ -51,7 +51,7 @@ export const ibt: Carrera = {
     {
         "name": "Educación Física I",
         "code": "EFI138-T",
-        "sctCredits": "2",
+        "sctCredits": 2,
         "type": "C",
         "prerequisites": [],
         "semester": "s1"
@@ -59,7 +59,7 @@ export const ibt: Carrera = {
     {
         "name": "Fundamento de la Matemática",
         "code": "MAT100-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "C",
         "prerequisites": [],
         "semester": "s1"
@@ -67,7 +67,7 @@ export const ibt: Carrera = {
     {
         "name": "Inglés I",
         "code": "HCW100-T",
-        "sctCredits": "2",
+        "sctCredits": 2,
         "type": "C",
         "prerequisites": [],
         "semester": "s1"
@@ -75,7 +75,7 @@ export const ibt: Carrera = {
     {
         "name": "Laboratorio de Química General",
         "code": "QMA002-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s1"
@@ -83,7 +83,7 @@ export const ibt: Carrera = {
     {
         "name": "Química General",
         "code": "QMA003-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s1"
@@ -91,7 +91,7 @@ export const ibt: Carrera = {
     {
         "name": "Biología Celular",
         "code": "QMA006-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s2"
@@ -99,7 +99,7 @@ export const ibt: Carrera = {
     {
         "name": "Inglés II",
         "code": "HCW101-T",
-        "sctCredits": "2",
+        "sctCredits": 2,
         "type": "C",
         "prerequisites": [
             "HCW100-T"
@@ -109,7 +109,7 @@ export const ibt: Carrera = {
     {
         "name": "Introducción a la Ingeniería",
         "code": "ING001-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "DGD",
         "prerequisites": [],
         "semester": "s2"
@@ -117,7 +117,7 @@ export const ibt: Carrera = {
     {
         "name": "Introducción al Cálculo",
         "code": "MAT009-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "C",
         "prerequisites": [
             "MAT100-B"
@@ -127,7 +127,7 @@ export const ibt: Carrera = {
     {
         "name": "Laboratorio de Química Cuantitativa",
         "code": "QMA005-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [
             "QMA002-B"
@@ -137,7 +137,7 @@ export const ibt: Carrera = {
     {
         "name": "Química Cuantitativa",
         "code": "QMA004-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA003-B"
@@ -147,7 +147,7 @@ export const ibt: Carrera = {
     {
         "name": "Análisis Instrumental",
         "code": "QMA007-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA005-B"
@@ -157,7 +157,7 @@ export const ibt: Carrera = {
     {
         "name": "Bioquímica",
         "code": "QMA010B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA006-B"
@@ -167,7 +167,7 @@ export const ibt: Carrera = {
     {
         "name": "Elementos de Fisicoquímica",
         "code": "QMA009-B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "QMD",
         "prerequisites": [
             "ING001-B"
@@ -177,7 +177,7 @@ export const ibt: Carrera = {
     {
         "name": "Inglés III",
         "code": "HCW102-T",
-        "sctCredits": "2",
+        "sctCredits": 2,
         "type": "C",
         "prerequisites": [
             "HCW101-T"
@@ -187,7 +187,7 @@ export const ibt: Carrera = {
     {
         "name": "Introducción a la Física",
         "code": "FIS009B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "C",
         "prerequisites": [],
         "semester": "s3"
@@ -195,7 +195,7 @@ export const ibt: Carrera = {
     {
         "name": "Matemática de la Ingeniería",
         "code": "MAT030B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "C",
         "prerequisites": [
             "MAT009-B"
@@ -205,7 +205,7 @@ export const ibt: Carrera = {
     {
         "name": "Administración de Empresas",
         "code": "GDEOO6-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "IC",
         "prerequisites": [],
         "semester": "s4"
@@ -213,7 +213,7 @@ export const ibt: Carrera = {
     {
         "name": "Biología Molecular",
         "code": "QMA012-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA010B"
@@ -223,7 +223,7 @@ export const ibt: Carrera = {
     {
         "name": "Ciencias de la Ingeniería I: Termodinámica",
         "code": "QMA013-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s4"
@@ -231,7 +231,7 @@ export const ibt: Carrera = {
     {
         "name": "Física Mecánica",
         "code": "FIS007B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "C",
         "prerequisites": [
             "MAT100-B",
@@ -242,7 +242,7 @@ export const ibt: Carrera = {
     {
         "name": "Introducción a las Operaciones Unitarias en Bioprocesos",
         "code": "QMA011-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA009-B"
@@ -252,7 +252,7 @@ export const ibt: Carrera = {
     {
         "name": "Tecnologías de la Información y Comunicaciones",
         "code": "GDE005-B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "EI",
         "prerequisites": [],
         "semester": "s4"
@@ -260,7 +260,7 @@ export const ibt: Carrera = {
     {
         "name": "Bioinformática",
         "code": "QMA015-B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s5"
@@ -268,7 +268,7 @@ export const ibt: Carrera = {
     {
         "name": "Ciencias de la Ingeniería II: Balance de Materia y Energía",
         "code": "QMA014-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA013-B"
@@ -278,7 +278,7 @@ export const ibt: Carrera = {
     {
         "name": "Estadística",
         "code": "MAT006-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "C",
         "prerequisites": [
             "MAT030B"
@@ -288,7 +288,7 @@ export const ibt: Carrera = {
     {
         "name": "Gestión de la Innovación",
         "code": "GDE002-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "DGD",
         "prerequisites": [],
         "semester": "s5"
@@ -296,7 +296,7 @@ export const ibt: Carrera = {
     {
         "name": "Introducción a las Finanzas",
         "code": "GDE008-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "DGD",
         "prerequisites": [
             "GDEOO6-B"
@@ -306,7 +306,7 @@ export const ibt: Carrera = {
     {
         "name": "Laboratorio de Microbiología",
         "code": "QMA018-B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "QMD",
         "prerequisites": [
             "QMA010B"
@@ -316,7 +316,7 @@ export const ibt: Carrera = {
     {
         "name": "Microbiología y Virología",
         "code": "QMA016-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA010B"
@@ -326,7 +326,7 @@ export const ibt: Carrera = {
     {
         "name": "Buenas Prácticas de Laboratorio de Ensayo (BPL)",
         "code": "QMA022-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s6"
@@ -334,7 +334,7 @@ export const ibt: Carrera = {
     {
         "name": "Ciencias de la Ingeniería III: Procesos de Transporte",
         "code": "QMA019-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA014-B"
@@ -344,7 +344,7 @@ export const ibt: Carrera = {
     {
         "name": "Gestión del Emprendimiento",
         "code": "GDE003-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "DGD",
         "prerequisites": [
             "GDE008-B",
@@ -355,7 +355,7 @@ export const ibt: Carrera = {
     {
         "name": "Responsabilidad Social Empresarial y Ética Laboral",
         "code": "GDE007-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "EH",
         "prerequisites": [],
         "semester": "s6"
@@ -363,7 +363,7 @@ export const ibt: Carrera = {
     {
         "name": "Sistemas Integrados de Gestión",
         "code": "GDE004-B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "DGD",
         "prerequisites": [
             "MAT006-B",
@@ -374,7 +374,7 @@ export const ibt: Carrera = {
     {
         "name": "Técnicas Biomédicas y Farmacéuticas",
         "code": "QMA021-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA018-B",
@@ -385,7 +385,7 @@ export const ibt: Carrera = {
     {
         "name": "Técnicas Inmunológicas y Moleculares",
         "code": "QMA020-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [
             "QMA015-B",
@@ -396,7 +396,7 @@ export const ibt: Carrera = {
     {
         "name": "Buenas Prácticas de Manufactura y HACCP",
         "code": "QMA024-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s7"
@@ -404,7 +404,7 @@ export const ibt: Carrera = {
     {
         "name": "Educación Física II",
         "code": "EFI101T",
-        "sctCredits": "2",
+        "sctCredits": 2,
         "type": "C",
         "prerequisites": [
             "EFI138-T"
@@ -414,7 +414,7 @@ export const ibt: Carrera = {
     {
         "name": "Gestión de Proyectos",
         "code": "GDE001-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "DGD",
         "prerequisites": [],
         "semester": "s7"
@@ -422,7 +422,7 @@ export const ibt: Carrera = {
     {
         "name": "Humanidades I: Taller de Ideación y Creatividad",
         "code": "QMA023-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "QMD",
         "prerequisites": [
             "GDE002-B"
@@ -432,7 +432,7 @@ export const ibt: Carrera = {
     {
         "name": "Instrumentación en Bioprocesos",
         "code": "QMA025-B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s7"
@@ -440,7 +440,7 @@ export const ibt: Carrera = {
     {
         "name": "Laboratorio de PCR I",
         "code": "QMA026-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA020-B"
@@ -450,7 +450,7 @@ export const ibt: Carrera = {
     {
         "name": "Seminario de Título",
         "code": "QMA027-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s7"
@@ -458,7 +458,7 @@ export const ibt: Carrera = {
     {
         "name": "Humanidades II: Liderazgo y Trabajo en Equipo",
         "code": "QMA034-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "QMD",
         "prerequisites": [],
         "semester": "s8"
@@ -466,7 +466,7 @@ export const ibt: Carrera = {
     {
         "name": "Laboratorio de PCR II",
         "code": "QMA030-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA026-B"
@@ -476,7 +476,7 @@ export const ibt: Carrera = {
     {
         "name": "Proyecto de Título",
         "code": "QMA031-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "QMD",
         "prerequisites": [
             "QMA027-B"
@@ -486,7 +486,7 @@ export const ibt: Carrera = {
     {
         "name": "Taller de Biorreactores",
         "code": "QMA029-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [
             "QMA025-B"
@@ -496,7 +496,7 @@ export const ibt: Carrera = {
     {
         "name": "Taller Integrado de Ingeniería",
         "code": "QMA028-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "QMD",
         "prerequisites": [
             "QMA023-B"

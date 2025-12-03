@@ -48,7 +48,7 @@ export const inginf: Carrera = {
     {
         "name": "Fundamento de la Matemática",
         "code": "MAT100-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "PC",
         "prerequisites": [],
         "semester": "s1"
@@ -56,7 +56,7 @@ export const inginf: Carrera = {
     {
         "name": "Introducción a la Ingeniería",
         "code": "EIN412-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "PC",
         "prerequisites": [],
         "semester": "s1"
@@ -64,7 +64,7 @@ export const inginf: Carrera = {
     {
         "name": "Programación",
         "code": "EIN413-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "PC",
         "prerequisites": [],
         "semester": "s1"
@@ -80,7 +80,7 @@ export const inginf: Carrera = {
     {
         "name": "Competencias claves para el desarrollo personal",
         "code": "HRW101-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "HUM",
         "prerequisites": [],
         "semester": "s1"
@@ -96,7 +96,7 @@ export const inginf: Carrera = {
     {
         "name": "Introducción al calculo",
         "code": "MAT001_B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "PC",
         "prerequisites": [
             "MAT100-B"
@@ -106,7 +106,7 @@ export const inginf: Carrera = {
     {
         "name": "Química y Sociedad",
         "code": "QMA001-B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "PC",
         "prerequisites": [],
         "semester": "s2"
@@ -114,7 +114,7 @@ export const inginf: Carrera = {
     {
         "name": "Ciencias de la Ingeniería I: Estructura de Datos",
         "code": "EIN423-B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "FI",
         "prerequisites": [
             "EIN413-B"
@@ -134,7 +134,7 @@ export const inginf: Carrera = {
     {
         "name": "Competencias para el desarrollo profesional",
         "code": "HRW102-B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "HUM",
         "prerequisites": [
             "HRW101-B"
@@ -154,7 +154,7 @@ export const inginf: Carrera = {
     {
         "name": "Matemática de Ingeniería",
         "code": "MAT021B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "PC",
         "prerequisites": [
             "MAT001_B"
@@ -164,7 +164,7 @@ export const inginf: Carrera = {
     {
         "name": "Introducción a la Física",
         "code": "FIS009B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "PC",
         "prerequisites": [],
         "semester": "s3"
@@ -172,7 +172,7 @@ export const inginf: Carrera = {
     {
         "name": "Ciencias de la Ingeniería II: Lenguajes de Programación",
         "code": "EIN080B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "FI",
         "prerequisites": [
             "EIN423-B"
@@ -182,7 +182,7 @@ export const inginf: Carrera = {
     {
         "name": "Arquitectura y Organización de Computadores",
         "code": "EIN079B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "FI",
         "prerequisites": [],
         "semester": "s3"
@@ -190,7 +190,7 @@ export const inginf: Carrera = {
     {
         "name": "Bases de datos",
         "code": "EIN-009B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "IS",
         "prerequisites": [
             "EIN423-B"
@@ -210,7 +210,7 @@ export const inginf: Carrera = {
     {
         "name": "Administración de Empresas",
         "code": "HMN295T",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "IND",
         "prerequisites": [],
         "semester": "s4"
@@ -218,7 +218,7 @@ export const inginf: Carrera = {
     {
         "name": "Física Mecánica",
         "code": "FIS007B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "PC",
         "prerequisites": [
             "MAT100-B",
@@ -229,7 +229,7 @@ export const inginf: Carrera = {
     {
         "name": "Ciencias de la Ingeniería III: Análisis y Diseño de Software",
         "code": "EIN081B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "FI",
         "prerequisites": [],
         "semester": "s4"
@@ -237,7 +237,7 @@ export const inginf: Carrera = {
     {
         "name": "Sistemas Operativos",
         "code": "EIN083B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "IS",
         "prerequisites": [
             "EIN079B"
@@ -247,7 +247,7 @@ export const inginf: Carrera = {
     {
         "name": "Taller Lenguaje de Programación",
         "code": "EIN082B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "IS",
         "prerequisites": [
             "EIN080B",
@@ -258,7 +258,7 @@ export const inginf: Carrera = {
     {
         "name": "Estadística",
         "code": "MAT006B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "PC",
         "prerequisites": [
             "MAT021B"
@@ -268,7 +268,7 @@ export const inginf: Carrera = {
     {
         "name": "Introducción a las Finanzas",
         "code": "HMN292T",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "IND",
         "prerequisites": [
             "HMN295T"
@@ -278,7 +278,7 @@ export const inginf: Carrera = {
     {
         "name": "Gestión de la Innovación",
         "code": "EIN088B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "IND",
         "prerequisites": [],
         "semester": "s5"
@@ -286,7 +286,7 @@ export const inginf: Carrera = {
     {
         "name": "Sistemas integrados de Gestión",
         "code": "EIN084B",
-        "sctCredits": "4",
+        "sctCredits": 4,
         "type": "IND",
         "prerequisites": [
             "MAT006B"
@@ -296,7 +296,7 @@ export const inginf: Carrera = {
     {
         "name": "Redes de Computadores",
         "code": "EIN085B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "FI",
         "prerequisites": [
             "EIN083B"
@@ -306,7 +306,7 @@ export const inginf: Carrera = {
     {
         "name": "Ingeniería de Software",
         "code": "EIN086B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "IS",
         "prerequisites": [
             "EIN082B"
@@ -316,7 +316,7 @@ export const inginf: Carrera = {
     {
         "name": "Ciencias de Datos",
         "code": "EIN087B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "FI",
         "prerequisites": [
             "MAT006B"
@@ -326,7 +326,7 @@ export const inginf: Carrera = {
     {
         "name": "Responsabilidad Social Empresarial y Ética Laboral",
         "code": "HMN293T",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "TIN",
         "prerequisites": [],
         "semester": "s6"
@@ -334,7 +334,7 @@ export const inginf: Carrera = {
     {
         "name": "Gestión del Emprendimiento",
         "code": "EIN089B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "TIN",
         "prerequisites": [
             "HMN292T",
@@ -345,7 +345,7 @@ export const inginf: Carrera = {
     {
         "name": "Gestión de Proyectos",
         "code": "EIN093B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "IND",
         "prerequisites": [],
         "semester": "s6"
@@ -353,7 +353,7 @@ export const inginf: Carrera = {
     {
         "name": "Taller de Administración de Sistemas",
         "code": "EIN090B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "IS",
         "prerequisites": [
             "EIN085B"
@@ -363,7 +363,7 @@ export const inginf: Carrera = {
     {
         "name": "Inteligencia de Negocios",
         "code": "EIN091B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "IND",
         "prerequisites": [
             "EIN-009B",
@@ -374,7 +374,7 @@ export const inginf: Carrera = {
     {
         "name": "Visualización",
         "code": "EIN092B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "FI",
         "prerequisites": [
             "EIN087B"
@@ -384,7 +384,7 @@ export const inginf: Carrera = {
     {
         "name": "Electivo I",
         "code": "EIN095B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [],
         "semester": "s7"
@@ -392,7 +392,7 @@ export const inginf: Carrera = {
     {
         "name": "Electivo II",
         "code": "EIN096B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [],
         "semester": "s7"
@@ -400,7 +400,7 @@ export const inginf: Carrera = {
     {
         "name": "Electivo III",
         "code": "EIN097B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [],
         "semester": "s7"
@@ -408,7 +408,7 @@ export const inginf: Carrera = {
     {
         "name": "Proyecto de Software I",
         "code": "EIN098B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "ELEC",
         "prerequisites": [
             "EIN093B",
@@ -419,7 +419,7 @@ export const inginf: Carrera = {
     {
         "name": "Seminario de Título",
         "code": "EIN099B",
-        "sctCredits": "3",
+        "sctCredits": 3,
         "type": "ELEC",
         "prerequisites": [
             "MAT006B",
@@ -431,7 +431,7 @@ export const inginf: Carrera = {
     {
         "name": "Electivo IV",
         "code": "EIN100B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [],
         "semester": "s8"
@@ -439,7 +439,7 @@ export const inginf: Carrera = {
     {
         "name": "Electivo V",
         "code": "EIN101B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [],
         "semester": "s8"
@@ -447,7 +447,7 @@ export const inginf: Carrera = {
     {
         "name": "Electivo VI",
         "code": "EIN102B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [],
         "semester": "s8"
@@ -455,7 +455,7 @@ export const inginf: Carrera = {
     {
         "name": "Proyecto de Software II",
         "code": "EIN103B",
-        "sctCredits": "5",
+        "sctCredits": 5,
         "type": "ELEC",
         "prerequisites": [
             "EIN098B"
@@ -465,7 +465,7 @@ export const inginf: Carrera = {
     {
         "name": "Proyecto de Título",
         "code": "EIN104B",
-        "sctCredits": "6",
+        "sctCredits": 6,
         "type": "ELEC",
         "prerequisites": [
             "EIN099B"
