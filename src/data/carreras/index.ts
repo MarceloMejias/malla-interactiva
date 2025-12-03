@@ -8,7 +8,7 @@ import { civ_0 } from './cc/civ_0';
 import { constru_0 } from './cc/constru_0';
 import { ctciv } from './cc/ctciv';
 import { eli_0 } from './cc/eli_0';
-import { eli } from './cc/eli';
+import { eli as eli_cc } from './cc/eli';
 import { elo_0 } from './cc/elo_0';
 import { elo } from './cc/elo';
 import { fis_0 } from './cc/fis_0';
@@ -20,7 +20,7 @@ import { ici } from './cc/ici';
 import { iciv } from './cc/iciv';
 import { icm_0 } from './cc/icm_0';
 import { icom_0 } from './cc/icom_0';
-import { icom } from './cc/icom';
+import { icom as icom_cc } from './cc/icom';
 import { icq_0 } from './cc/icq_0';
 import { icq } from './cc/icq';
 import { idp } from './cc/idp';
@@ -53,8 +53,7 @@ import { iac } from './vc/iac';
 import { icom as icom_vc } from './vc/icom';
 
 // Mapa de todas las carreras
-export const allCareers: Record<string, Carrera> = {
-  // Casa Central
+const allCareers: Record<string, Carrera> = {
   'AFI': afi,
   'AMB': amb,
   'ARQ': arq,
@@ -62,7 +61,7 @@ export const allCareers: Record<string, Carrera> = {
   'CONSTRU-0': constru_0,
   'CTCIV': ctciv,
   'ELI-0': eli_0,
-  'ELI': eli,
+  'ELI': eli_cc,
   'ELO-0': elo_0,
   'ELO': elo,
   'FIS-0': fis_0,
@@ -74,7 +73,7 @@ export const allCareers: Record<string, Carrera> = {
   'ICIV': iciv,
   'ICM-0': icm_0,
   'ICOM-0': icom_0,
-  'ICOM': icom,
+  'ICOM': icom_cc,
   'ICQ-0': icq_0,
   'ICQ': icq,
   'IDP': idp,
@@ -89,8 +88,6 @@ export const allCareers: Record<string, Carrera> = {
   'QUI-0': qui_0,
   'TEL-0': tel_0,
   'TEL': tel,
-  
-  // Viña del Mar
   'FDI': fdi,
   'IBT': ibt,
   'IMI': imi,
@@ -98,14 +95,17 @@ export const allCareers: Record<string, Carrera> = {
   'PRLA': prla,
   'TUCONST': tuconst,
   'TUINF': tuinf,
-  
-  // Vitacura
   'CIND': cind,
   'CINF': cinf,
   'ELI-VC': eli_vc,
   'IAC': iac,
   'ICOM-VC': icom_vc,
 };
+
+// Función para obtener una carrera
+export function getCareer(code: string): Carrera | undefined {
+  return allCareers[code.toUpperCase()];
+}
 
 // Índices por campus
 export const careersByCampus = {
@@ -117,7 +117,7 @@ export const careersByCampus = {
     { Nombre: constru_0.nombre, Link: 'CONSTRU-0', Color: constru_0.color },
     { Nombre: ctciv.nombre, Link: 'CTCIV', Color: ctciv.color },
     { Nombre: eli_0.nombre, Link: 'ELI-0', Color: eli_0.color },
-    { Nombre: eli.nombre, Link: 'ELI', Color: eli.color },
+    { Nombre: eli_cc.nombre, Link: 'ELI', Color: eli_cc.color },
     { Nombre: elo_0.nombre, Link: 'ELO-0', Color: elo_0.color },
     { Nombre: elo.nombre, Link: 'ELO', Color: elo.color },
     { Nombre: fis_0.nombre, Link: 'FIS-0', Color: fis_0.color },
@@ -129,7 +129,7 @@ export const careersByCampus = {
     { Nombre: iciv.nombre, Link: 'ICIV', Color: iciv.color },
     { Nombre: icm_0.nombre, Link: 'ICM-0', Color: icm_0.color },
     { Nombre: icom_0.nombre, Link: 'ICOM-0', Color: icom_0.color },
-    { Nombre: icom.nombre, Link: 'ICOM', Color: icom.color },
+    { Nombre: icom_cc.nombre, Link: 'ICOM', Color: icom_cc.color },
     { Nombre: icq_0.nombre, Link: 'ICQ-0', Color: icq_0.color },
     { Nombre: icq.nombre, Link: 'ICQ', Color: icq.color },
     { Nombre: idp.nombre, Link: 'IDP', Color: idp.color },
@@ -164,8 +164,3 @@ export const careersByCampus = {
   ],
   cp: [],
 };
-
-// Función helper para obtener una carrera
-export function getCareer(code: string): Carrera | undefined {
-  return allCareers[code.toUpperCase()];
-}
