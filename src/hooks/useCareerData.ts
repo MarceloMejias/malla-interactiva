@@ -36,7 +36,7 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
   // Cargar datos de la carrera específica
   useEffect(() => {
     if (!campus || !careerCode) {
-      setShowCareerSelector(true);
+      // NO forzar el selector aquí, dejamos que el componente lo maneje
       setSubjects([]);
       setColors({});
       setCareerName('');

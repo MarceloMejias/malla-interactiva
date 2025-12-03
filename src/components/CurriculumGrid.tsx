@@ -24,10 +24,25 @@ export default function CurriculumGrid() {
   const [showContributeModal, setShowContributeModal] = useState(false);
   const [campus, setCampus] = useState<string | undefined>(undefined);
   const [careerCode, setCareerCode] = useState<string | undefined>(undefined);
-  const [showCareerSelector, setShowCareerSelector] = useState(true);
+  const [showCareerSelector, setShowCareerSelector] = useState(false);
   const subjectRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const darkMode = useDarkMode();
+
+  // Cargar última carrera seleccionada al iniciar (antes de cualquier otra cosa)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const lastCampus = localStorage.getItem('last-selected-career-campus');
+      const lastCode = localStorage.getItem('last-selected-career-code');
+      if (lastCampus && lastCode) {
+        setCampus(lastCampus);
+        setCareerCode(lastCode);
+        setShowCareerSelector(false);
+      } else {
+        setShowCareerSelector(true);
+      }
+    }
+  }, []);
 
   const {
     subjects,
@@ -66,19 +81,6 @@ export default function CurriculumGrid() {
     // NO limpiar campus ni careerCode aquí - mantener los datos hasta que se seleccione otra carrera
     if (handleBackToCareerSelector) handleBackToCareerSelector();
   };
-
-  // Cargar última carrera seleccionada al iniciar
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const lastCampus = localStorage.getItem('last-selected-career-campus');
-      const lastCode = localStorage.getItem('last-selected-career-code');
-      if (lastCampus && lastCode) {
-        setCampus(lastCampus);
-        setCareerCode(lastCode);
-        setShowCareerSelector(false);
-      }
-    }
-  }, []);
 
   const { subjectStates, updateSubjectState, resetCalculator, calculateCredits, isLoaded } = useCalculator(subjects, careerCode || '');
   const { checkAndTriggerConfetti } = useConfetti();
