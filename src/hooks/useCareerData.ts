@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Subject, SubjectColors } from '@/types/curriculum';
+import { careersByCampus, getCareer } from '@/data/carreras';
 
 interface Career {
   Nombre: string;
@@ -8,15 +9,6 @@ interface Career {
 }
 
 type Campus = 'cc' | 'vm' | 'sj' | 'vc' | 'cp';
-
-interface CareerData {
-  codigo: string;
-  nombre: string;
-  campus: string;
-  color: string;
-  categorias: Array<{ id: string; nombre: string; color: string }>;
-  asignaturas: Subject[];
-}
 
 export const useCareerData = (campus: Campus | undefined, careerCode: string | undefined) => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
@@ -32,74 +24,58 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
 
   const [showCareerSelector, setShowCareerSelector] = useState(false);
 
-  // Cargar carreras disponibles desde la API
+  // Cargar carreras disponibles
   useEffect(() => {
-    const loadCareers = async () => {
-      try {
-        const response = await fetch('/api/careers');
-        const data = await response.json();
-        
-        setCasaCentralCareers(data.cc || []);
-        setVinaCareers(data.vm || []);
-        setSanJoaquinCareers(data.sj || []);
-        setVitacuraCareers(data.vc || []);
-        setConcepcionCareers(data.cp || []);
-      } catch (error) {
-        console.error('Error cargando carreras:', error);
-      }
-    };
-    loadCareers();
+    setCasaCentralCareers(careersByCampus.cc);
+    setVinaCareers(careersByCampus.vm);
+    setSanJoaquinCareers(careersByCampus.sj);
+    setVitacuraCareers(careersByCampus.vc);
+    setConcepcionCareers(careersByCampus.cp);
   }, []);
 
-  // Cargar datos de la carrera específica desde la API
+  // Cargar datos de la carrera específica
   useEffect(() => {
-    const loadCareerData = async () => {
-      if (!campus || !careerCode) {
+    if (!campus || !careerCode) {
+      setShowCareerSelector(true);
+      setSubjects([]);
+      setColors({});
+      setCareerName('');
+      setCareerColor(undefined);
+      return;
+    }
+
+    try {
+      const carrera = getCareer(careerCode);
+
+      if (!carrera) {
+        console.error(`Carrera no encontrada: ${careerCode}`);
         setShowCareerSelector(true);
-        setSubjects([]);
-        setColors({});
-        setCareerName('');
-        setCareerColor(undefined);
         return;
       }
 
-      try {
-        const response = await fetch(`/api/careers/${careerCode}`);
-        
-        if (!response.ok) {
-          console.error(`Carrera no encontrada: ${careerCode}`);
-          setShowCareerSelector(true);
-          return;
-        }
+      // Remover "(Malla Antigua)" del nombre si existe
+      const cleanName = carrera.nombre.replaceAll(/\s*\(Malla Antigua\)\s*/gi, '').trim();
+      setCareerName(cleanName);
+      setCareerColor(carrera.color);
 
-        const carrera: CareerData = await response.json();
+      // Usar asignaturas directamente
+      setSubjects(carrera.asignaturas);
 
-        // Remover "(Malla Antigua)" del nombre si existe
-        const cleanName = carrera.nombre.replaceAll(/\s*\(Malla Antigua\)\s*/gi, '').trim();
-        setCareerName(cleanName);
-        setCareerColor(carrera.color);
-
-        // Usar asignaturas directamente
-        setSubjects(carrera.asignaturas);
-
-        // Transformar categorías al formato esperado
-        const processedColors: SubjectColors = {};
-        for (const categoria of carrera.categorias) {
-          processedColors[categoria.id] = [categoria.color, categoria.nombre];
-        }
-        setColors(processedColors);
-        setShowCareerSelector(false);
-      } catch (error) {
-        console.error('Error loading career data:', error);
-        setShowCareerSelector(true);
-        setSubjects([]);
-        setColors({});
-        setCareerName('');
-        setCareerColor(undefined);
+      // Transformar categorías al formato esperado
+      const processedColors: SubjectColors = {};
+      for (const categoria of carrera.categorias) {
+        processedColors[categoria.id] = [categoria.color, categoria.nombre];
       }
-    };
-
-    loadCareerData();
+      setColors(processedColors);
+      setShowCareerSelector(false);
+    } catch (error) {
+      console.error('Error loading career data:', error);
+      setShowCareerSelector(true);
+      setSubjects([]);
+      setColors({});
+      setCareerName('');
+      setCareerColor(undefined);
+    }
   }, [campus, careerCode]);
 
   const handleBackToCareerSelector = () => {

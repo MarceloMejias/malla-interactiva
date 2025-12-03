@@ -2,7 +2,6 @@
 export interface Subject {
 	name: string;
 	code: string;
-	usmCredits: string;
 	sctCredits: number;
 	type: string;
 	prerequisites: string[];
