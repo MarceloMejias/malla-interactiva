@@ -73,7 +73,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                 <div className="space-y-4">
                   {/* Reportar errores */}
                   <div className={`modal-card ${darkMode ? 'dark' : 'red-light'}`}>
-                    <div className="flex items-start gap-3">
+                    <div className="flex flex-col md:flex-row md:items-start gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center flex-shrink-0">
                           <FontAwesomeIcon icon={faBug} className="text-white text-sm" />
@@ -89,7 +89,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                         href="https://github.com/MarceloMejias/malla-interactiva/issues"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="modal-action-button red flex-shrink-0"
+                        className="modal-action-button red flex-shrink-0 w-full md:w-auto"
                       >
                         <FontAwesomeIcon icon={faBug} />
                         Reportar Problema
@@ -99,7 +99,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
 
                   {/* Sugerir mejoras */}
                   <div className={`modal-card ${darkMode ? 'dark' : 'yellow-light'}`}>
-                    <div className="flex items-start gap-3">
+                    <div className="flex flex-col md:flex-row md:items-start gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center flex-shrink-0">
                           <FontAwesomeIcon icon={faLightbulb} className="text-white text-sm" />
@@ -115,7 +115,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                         href="https://github.com/MarceloMejias/malla-interactiva/discussions"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="modal-action-button yellow flex-shrink-0"
+                        className="modal-action-button yellow flex-shrink-0 w-full md:w-auto"
                       >
                         <FontAwesomeIcon icon={faLightbulb} />
                         Compartir Idea
@@ -125,7 +125,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
 
                   {/* Contribuir código */}
                   <div className={`modal-card ${darkMode ? 'dark' : 'blue-light'}`}>
-                    <div className="flex items-start gap-3">
+                    <div className="flex flex-col md:flex-row md:items-start gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
                           <FontAwesomeIcon icon={faCode} className="text-white text-sm" />
@@ -141,7 +141,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                         href="https://github.com/MarceloMejias/malla-interactiva"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="modal-action-button blue flex-shrink-0"
+                        className="modal-action-button blue flex-shrink-0 w-full md:w-auto"
                       >
                         <FontAwesomeIcon icon={faGithubBrand} />
                         Ver en GitHub
@@ -163,9 +163,9 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                     <div>
                       <h5 className="text-xs font-semibold opacity-60 mb-2 uppercase tracking-wide">Framework & Runtime</h5>
                       <div className="flex flex-wrap gap-2">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black dark:bg-white/10 border border-gray-200 dark:border-gray-700">
-                          <FontAwesomeIcon icon={faReact} className="text-white dark:text-gray-300" />
-                          <span className="text-sm font-medium">Next.js 16</span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-800/10 dark:bg-white/10 border border-gray-300 dark:border-gray-700">
+                          <FontAwesomeIcon icon={faReact} className="text-gray-800 dark:text-gray-300" />
+                          <span className="text-sm font-medium text-gray-800 dark:text-gray-300">Next.js 16</span>
                         </div>
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600/10 dark:bg-blue-500/20 border border-blue-200 dark:border-blue-800">
                           <FontAwesomeIcon icon={faReact} className="text-blue-600 dark:text-blue-400" />
