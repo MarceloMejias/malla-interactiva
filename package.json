@@ -1,13 +1,12 @@
 {
   "name": "malla-interactiva",
-  "version": "1.2",
+  "version": "1.2.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "tsx scripts/migrate.ts",
     "gbpages": "next build"
   },
   "dependencies": {
@@ -28,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "tailwindcss": "^4",
