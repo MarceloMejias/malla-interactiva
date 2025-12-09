@@ -1,4 +1,4 @@
-import { Carrera } from '../../types';
+import { Carrera } from '@/types/curriculum';
 
 export const constru_0: Carrera = {
   codigo: 'CONSTRU-0',

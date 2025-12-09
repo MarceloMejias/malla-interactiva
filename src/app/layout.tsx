@@ -1,19 +1,35 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ThemeColor from "@/components/ThemeColor";
-import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
-import AppleSplashScreens from "@/components/AppleSplashScreens";
+import BodyWrapper from "@/components/utils/BodyWrapper";
+import ServiceWorkerRegister from "@/components/utils/ServiceWorkerRegister";
+import AppleSplashScreens from "@/components/utils/AppleSplashScreens";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  weight: ['500', '600', '700', '800'],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  weight: ['500', '600', '700'],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111827' }
+  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Malla Interactiva",
@@ -64,7 +80,6 @@ export const metadata: Metadata = {
     ]
   },
   other: {
-    'theme-color': '#f9fafb',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'apple-mobile-web-app-title': 'Malla USM',
@@ -90,14 +105,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="overflow-x-hidden">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden max-w-full`}
-      >
-        <ThemeColor />
+      <BodyWrapper className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden max-w-full`}>
         <ServiceWorkerRegister />
         <AppleSplashScreens />
         {children}
-      </body>
+      </BodyWrapper>
     </html>
   );
 }

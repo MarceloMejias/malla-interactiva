@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import type { Subject, SubjectState, CalculatorState, SubjectColors } from '@/types/curriculum';
 import { motion, AnimatePresence } from 'framer-motion';
-import Tooltip from './Tooltip';
+import Tooltip from '../ui/Tooltip';
 
 interface SubjectCardProps {
   subject: Subject;
@@ -162,14 +162,14 @@ export default function SubjectCard({
         >
         {/* Código como carátula en esquina superior izquierda */}
         <div className={`absolute top-0 left-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-br-lg px-2 py-0.5`}>
-          <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
+          <span className="subject-code text-xs" style={{ color: getBackgroundColor() }}>
             {subject.code}
           </span>
         </div>
         
         {/* Créditos como carátula en esquina superior derecha */}
         <div className={`absolute top-0 right-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-bl-lg px-2 py-0.5`}>
-          <span className="text-xs font-bold" style={{ color: getBackgroundColor() }}>
+          <span className="credits text-xs" style={{ color: getBackgroundColor() }}>
             {subject.sctCredits}
           </span>
         </div>
@@ -191,7 +191,7 @@ export default function SubjectCard({
         
         {/* Contenido principal */}
         <div className="flex-1 px-2 md:px-3 pt-8 md:pt-10 pb-1 md:pb-2">
-          <h3 className="font-bold text-xs leading-tight text-white mb-1 flex items-center gap-1">
+          <h3 className="subject-name text-xs leading-tight text-white mb-1 flex items-center gap-1">
             {subject.name}
           </h3>
           

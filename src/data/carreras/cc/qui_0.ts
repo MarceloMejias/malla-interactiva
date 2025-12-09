@@ -1,8 +1,8 @@
-import { Carrera } from '../../types';
+import { Carrera } from '@/types/curriculum';
 
 export const qui_0: Carrera = {
   codigo: 'QUI-0',
-  nombre: 'QUI (Malla Antigua)',
+  nombre: "Lic. en Química (Malla Antigua)",
   campus: 'cc',
   color: '#F59E0B',
   

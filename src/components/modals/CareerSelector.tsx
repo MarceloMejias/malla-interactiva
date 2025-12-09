@@ -140,7 +140,7 @@ export default function CareerSelector({
         {/* Contenido del modal */}
         <div className="overflow-y-auto max-h-[70vh] md:max-h-[60vh]">
           {/* Barra de búsqueda y toggle */}
-          <div className={`sticky top-0 z-10 px-6 pt-6 pb-8 mb-6 space-y-4 ${
+          <div className={`sticky top-0 z-10 px-6 pt-6 pb-8 pointer-events-none ${
             darkMode 
               ? 'bg-gradient-to-b from-gray-800 from-70% via-gray-800/90 to-transparent' 
               : 'bg-gradient-to-b from-white from-70% via-white/90 to-transparent'
@@ -188,7 +188,7 @@ export default function CareerSelector({
                   ({groupedVinaCareers.length})
                 </span>
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {groupedVinaCareers.map((group) => {
                   const baseCode = getBaseCareerCode(group.base.Link);
                   const currentVersion = selectedVersions[baseCode] || 'new';
@@ -298,7 +298,7 @@ export default function CareerSelector({
                 ({groupedCasaCentralCareers.length})
               </span>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {groupedCasaCentralCareers.map((group) => {
                     const baseCode = getBaseCareerCode(group.base.Link);
                     const currentVersion = selectedVersions[baseCode] || 'new';
@@ -404,7 +404,7 @@ export default function CareerSelector({
                 ({groupedVitacuraCareers.length})
               </span>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {groupedVitacuraCareers.map((group) => {
                     const baseCode = getBaseCareerCode(group.base.Link);
                     const currentVersion = selectedVersions[baseCode] || 'new';

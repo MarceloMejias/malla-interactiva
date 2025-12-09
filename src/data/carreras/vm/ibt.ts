@@ -1,4 +1,4 @@
-import { Carrera } from '../../types';
+import { Carrera } from '@/types/curriculum';
 
 export const ibt: Carrera = {
   codigo: 'IBT',
@@ -10,32 +10,32 @@ export const ibt: Carrera = {
     {
         "id": "EI",
         "nombre": "Electronica e informatica",
-        "color": "#F87171"
+        "color": "#EF4444"
     },
     {
         "id": "C",
         "nombre": "Ciencias",
-        "color": "#60A5FA"
+        "color": "#3B82F6"
     },
     {
         "id": "QMD",
         "nombre": "Química y medio ambiente",
-        "color": "#22D3EE"
+        "color": "#06B6D4"
     },
     {
         "id": "DGD",
         "nombre": "Dirección general de docencia ",
-        "color": "#818CF8"
+        "color": "#6366F1"
     },
     {
         "id": "IC",
         "nombre": "Ingeniería comercial",
-        "color": "#FDE047"
+        "color": "#F59E0B"
     },
     {
         "id": "EH",
         "nombre": "Estudios Humanisticos",
-        "color": "#F472B6"
+        "color": "#EC4899"
     }
 ],
 

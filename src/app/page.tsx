@@ -1,4 +1,4 @@
-import CurriculumGrid from "@/components/CurriculumGrid";
+import CurriculumGrid from "@/components/career/CurriculumGrid";
 
 export default function Home() {
   return <CurriculumGrid />;

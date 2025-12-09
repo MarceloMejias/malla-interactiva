@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Subject, SubjectColors } from '@/types/curriculum';
 import { careersByCampus, getCareer } from '@/data/carreras';
+import { logger } from '@/utils/logger';
 
 interface Career {
   Nombre: string;
@@ -48,7 +49,7 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
       const carrera = getCareer(careerCode);
 
       if (!carrera) {
-        console.error(`Carrera no encontrada: ${careerCode}`);
+        logger.error(`Carrera no encontrada: ${careerCode}`);
         setShowCareerSelector(true);
         return;
       }
@@ -69,7 +70,7 @@ export const useCareerData = (campus: Campus | undefined, careerCode: string | u
       setColors(processedColors);
       setShowCareerSelector(false);
     } catch (error) {
-      console.error('Error loading career data:', error);
+      logger.error('Error loading career data:', error);
       setShowCareerSelector(true);
       setSubjects([]);
       setColors({});

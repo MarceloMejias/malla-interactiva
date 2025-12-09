@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { logger } from '@/utils/logger';
 
 export default function ServiceWorkerRegister() {
   useEffect(() => {
@@ -11,7 +12,7 @@ export default function ServiceWorkerRegister() {
             scope: '/'
           });
           
-          console.log('[SW] Service Worker registered successfully:', registration);
+          logger.log('[SW] Service Worker registered successfully:', registration);
           
           // Escuchar actualizaciones del service worker
           registration.addEventListener('updatefound', () => {
@@ -19,7 +20,7 @@ export default function ServiceWorkerRegister() {
             if (newWorker) {
               newWorker.addEventListener('statechange', () => {
                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  console.log('[SW] New service worker available');
+                  logger.log('[SW] New service worker available');
                   // Aquí podrías mostrar una notificación al usuario para recargar
                 }
               });
@@ -32,7 +33,7 @@ export default function ServiceWorkerRegister() {
           }
           
         } catch (error) {
-          console.error('[SW] Service Worker registration failed:', error);
+          logger.error('[SW] Service Worker registration failed:', error);
         }
       };
       

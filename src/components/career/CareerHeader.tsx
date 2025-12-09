@@ -19,7 +19,7 @@ export default function CareerHeader({
   onShowContribute
 }: Readonly<CareerHeaderProps>) {
   return (
-    <div className="flex items-center justify-between mb-3 md:mb-6 gap-2 md:gap-4">
+    <div className="relative flex items-center justify-between mb-2 md:mb-4 gap-2 md:gap-4">
       <button
         onClick={onBackToCareerSelector}
         className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1 md:py-2 rounded-lg md:rounded-xl transition-all duration-300 hover:scale-105 ${
@@ -30,12 +30,12 @@ export default function CareerHeader({
         title="Cambiar carrera"
       >
         <FontAwesomeIcon icon={faArrowLeft} className="text-xs md:text-sm" />
-        <span className="text-xs md:text-sm font-medium hidden sm:inline">Cambiar carrera</span>
-        <span className="text-xs md:text-sm font-medium sm:hidden">Cambiar</span>
+        <span className="button-text text-xs md:text-sm hidden sm:inline">Cambiar carrera</span>
+        <span className="button-text text-xs md:text-sm sm:hidden">Cambiar</span>
       </button>
       
       <h2
-        className="text-xl md:text-3xl font-black text-center flex-1 leading-tight"
+        className="heading text-xl md:text-3xl absolute left-1/2 -translate-x-1/2 leading-tight text-center max-w-[50%] md:max-w-[60%]"
         style={careerColor ? { color: careerColor } : {}}
       >
         {careerName}

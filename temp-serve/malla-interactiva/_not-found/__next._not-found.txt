@@ -1,0 +1,4 @@
+1:"$Sreact.fragment"
+2:I[39756,["/malla-interactiva/_next/static/chunks/289c4fd7d1cbc68b.js","/malla-interactiva/_next/static/chunks/42879de7b8087bc9.js"],"default"]
+3:I[37457,["/malla-interactiva/_next/static/chunks/289c4fd7d1cbc68b.js","/malla-interactiva/_next/static/chunks/42879de7b8087bc9.js"],"default"]
+0:{"buildId":"Qqj1PIMOZHsWmpOO-rJmW","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}

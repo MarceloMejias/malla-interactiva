@@ -1,7 +1,7 @@
-import { Carrera } from '../../types';
+import { Carrera } from '@/types/curriculum';
 
-export const lqui: Carrera = {
-  codigo: 'LQUI',
+export const qui: Carrera = {
+  codigo: 'QUI',
   nombre: 'Lic. en Química',
   campus: 'cc',
   color: '#20B2AA',

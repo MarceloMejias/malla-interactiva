@@ -1,15 +1,25 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import CareerHeader from './CareerHeader';
-import SemesterGrid from './SemesterGrid';
-import Footer from './Footer';
-import StatsBar from './StatsBar';
-import CategoriesPopup from './CategoriesPopup';
-import CareerSelector from './CareerSelector';
-import GraduationPlanModal from './GraduationPlanModal';
-import GuideModal from './GuideModal';
-import ContributeModal from './ContributeModal';
+import SemesterGrid from '../semester/SemesterGrid';
+import Footer from '../layout/Footer';
+import StatsBar from '../layout/StatsBar';
+import CategoriesPopup from '../modals/CategoriesModal';
+import CareerSelector from '../modals/CareerSelector';
+
+// Lazy load modales pesados
+const GraduationPlanModal = dynamic(() => import('../modals/GraduationPlanModal'), {
+  ssr: false,
+});
+const GuideModal = dynamic(() => import('../modals/GuideModal'), {
+  ssr: false,
+});
+const ContributeModal = dynamic(() => import('../modals/ContributeModal'), {
+  ssr: false,
+});
+
 import { useCalculator } from '@/hooks/useCalculator';
 import { useConfetti } from '@/hooks/useConfetti';
 import { useGraduationPlan } from '@/hooks/useGraduationPlan';

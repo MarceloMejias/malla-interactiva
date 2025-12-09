@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import type { Subject, SubjectState, CalculatorState } from '@/types/curriculum';
+import { logger } from '@/utils/logger';
 
 const STORAGE_KEY_PREFIX = 'curriculum-progress';
 
@@ -29,7 +30,7 @@ export function useCalculator(subjects?: Subject[], careerKey?: string) {
         setSubjectStates({});
       }
     } catch (error) {
-      console.error('Error loading saved progress:', error);
+      logger.error('Error loading saved progress:', error);
       setSubjectStates({});
     } finally {
       setIsLoaded(true);
@@ -43,7 +44,7 @@ export function useCalculator(subjects?: Subject[], careerKey?: string) {
         const storageKey = getStorageKey(careerKey);
         localStorage.setItem(storageKey, JSON.stringify(subjectStates));
       } catch (error) {
-        console.error('Error saving progress:', error);
+        logger.error('Error saving progress:', error);
       }
     }
   }, [subjectStates, isLoaded, careerKey]);
@@ -59,7 +60,7 @@ export function useCalculator(subjects?: Subject[], careerKey?: string) {
         const storageKey = getStorageKey(careerKey);
         localStorage.removeItem(storageKey);
       } catch (error) {
-        console.error('Error clearing saved progress:', error);
+        logger.error('Error clearing saved progress:', error);
       }
     }
   };

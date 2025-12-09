@@ -1,4 +1,4 @@
-import { Carrera } from '../types';
+import { Carrera } from '@/types/curriculum';
 
 // Casa Central
 import { afi } from './cc/afi';
@@ -26,7 +26,7 @@ import { icq } from './cc/icq';
 import { idp } from './cc/idp';
 import { inf_0 } from './cc/inf_0';
 import { inf } from './cc/inf';
-import { lqui } from './cc/lqui';
+import { qui } from './cc/qui';
 import { mat_0 } from './cc/mat_0';
 import { mat } from './cc/mat';
 import { mec } from './cc/mec';
@@ -79,7 +79,7 @@ const allCareers: Record<string, Carrera> = {
   'IDP': idp,
   'INF-0': inf_0,
   'INF': inf,
-  'LQUI': lqui,
+  'QUI': qui,
   'MAT-0': mat_0,
   'MAT': mat,
   'MEC': mec,
@@ -135,7 +135,7 @@ export const careersByCampus = {
     { Nombre: idp.nombre, Link: 'IDP', Color: idp.color },
     { Nombre: inf_0.nombre, Link: 'INF-0', Color: inf_0.color },
     { Nombre: inf.nombre, Link: 'INF', Color: inf.color },
-    { Nombre: lqui.nombre, Link: 'LQUI', Color: lqui.color },
+    { Nombre: qui.nombre, Link: 'QUI', Color: qui.color },
     { Nombre: mat_0.nombre, Link: 'MAT-0', Color: mat_0.color },
     { Nombre: mat.nombre, Link: 'MAT', Color: mat.color },
     { Nombre: mec.nombre, Link: 'MEC', Color: mec.color },
