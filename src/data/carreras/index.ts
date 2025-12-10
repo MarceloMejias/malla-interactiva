@@ -29,10 +29,10 @@ import { inf } from './cc/inf';
 import { qui } from './cc/qui';
 import { mat_0 } from './cc/mat_0';
 import { mat } from './cc/mat';
+import { lmat } from './cc/lmat';
 import { mec } from './cc/mec';
 import { met_0 } from './cc/met_0';
 import { met } from './cc/met';
-import { qui_0 } from './cc/qui_0';
 import { tel_0 } from './cc/tel_0';
 import { tel } from './cc/tel';
 
@@ -85,7 +85,6 @@ const allCareers: Record<string, Carrera> = {
   'MEC': mec,
   'MET-0': met_0,
   'MET': met,
-  'QUI-0': qui_0,
   'TEL-0': tel_0,
   'TEL': tel,
   'FDI': fdi,
@@ -100,6 +99,7 @@ const allCareers: Record<string, Carrera> = {
   'ELI-VC': eli_vc,
   'IAC': iac,
   'ICOM-VC': icom_vc,
+  'LMAT': lmat,
 };
 
 // Función para obtener una carrera
@@ -141,10 +141,10 @@ export const careersByCampus = {
     { Nombre: mec.nombre, Link: 'MEC', Color: mec.color },
     { Nombre: met_0.nombre, Link: 'MET-0', Color: met_0.color },
     { Nombre: met.nombre, Link: 'MET', Color: met.color },
-    { Nombre: qui_0.nombre, Link: 'QUI-0', Color: qui_0.color },
     { Nombre: tel_0.nombre, Link: 'TEL-0', Color: tel_0.color },
     { Nombre: tel.nombre, Link: 'TEL', Color: tel.color },
-  ],
+    { Nombre: lmat.nombre, Link: 'LMAT', Color: lmat.color },
+  ].sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es')),
   vm: [
     { Nombre: fdi.nombre, Link: 'FDI', Color: fdi.color },
     { Nombre: ibt.nombre, Link: 'IBT', Color: ibt.color },
@@ -153,7 +153,7 @@ export const careersByCampus = {
     { Nombre: prla.nombre, Link: 'PRLA', Color: prla.color },
     { Nombre: tuconst.nombre, Link: 'TUCONST', Color: tuconst.color },
     { Nombre: tuinf.nombre, Link: 'TUINF', Color: tuinf.color },
-  ],
+  ].sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es')),
   sj: [],
   vc: [
     { Nombre: cind.nombre, Link: 'CIND', Color: cind.color },
@@ -161,6 +161,6 @@ export const careersByCampus = {
     { Nombre: eli_vc.nombre, Link: 'ELI-VC', Color: eli_vc.color },
     { Nombre: iac.nombre, Link: 'IAC', Color: iac.color },
     { Nombre: icom_vc.nombre, Link: 'ICOM-VC', Color: icom_vc.color },
-  ],
+  ].sort((a, b) => a.Nombre.localeCompare(b.Nombre, 'es')),
   cp: [],
 };
