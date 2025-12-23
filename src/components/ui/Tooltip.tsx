@@ -13,8 +13,20 @@ export default function Tooltip({ content, children, delay = 5000 }: TooltipProp
   const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDark, setIsDark] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Detectar si es un dispositivo táctil
+    const checkTouchDevice = () => {
+      const hasCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+      const hasTouchSupport = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      setIsTouchDevice(hasCoarsePointer || hasTouchSupport);
+    };
+    
+    checkTouchDevice();
+  }, []);
 
   useEffect(() => {
     // Detectar modo oscuro
@@ -35,6 +47,9 @@ export default function Tooltip({ content, children, delay = 5000 }: TooltipProp
   }, []);
 
   const handleMouseEnter = () => {
+    // No mostrar tooltip en dispositivos táctiles
+    if (isTouchDevice) return;
+    
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       setPosition({

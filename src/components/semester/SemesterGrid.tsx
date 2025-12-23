@@ -75,7 +75,7 @@ export default function SemesterGrid({
       </div>
 
       {/* Desktop: Flex horizontal con scroll */}
-      <div className="hidden md:flex md:justify-center md:overflow-x-auto md:pb-4 scrollbar-hide">
+      <div className="hidden md:flex md:justify-center md:overflow-x-auto md:pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div 
           className="flex flex-row gap-2"
           style={{ 

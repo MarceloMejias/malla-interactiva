@@ -101,7 +101,7 @@ export default function CareerSelector({
     <AnimatePresence>
       {show && (
         <motion.div 
-          className="modal-overlay pt-12 md:pt-24"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4 pt-12 md:pt-24"
           onClick={() => canClose && onClose()}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -109,7 +109,7 @@ export default function CareerSelector({
           transition={{ duration: 0.2 }}
         >
           <motion.div 
-            className={`modal-container ${darkMode ? 'dark' : ''} max-w-5xl`}
+            className={`bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 dark:border-gray-600 max-w-5xl w-full max-h-[95vh] md:max-h-[85vh] overflow-hidden flex flex-col ${darkMode ? 'dark' : ''}`}
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -117,22 +117,22 @@ export default function CareerSelector({
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
         {/* Header con gradiente y botón cerrar */}
-        <div className="modal-header blue">
-          <div className="modal-header-content">
+        <div className="bg-gradient-to-r from-blue-600/80 to-indigo-600/80 text-white p-6 backdrop-blur-lg">
+          <div className="flex items-center justify-between">
             <div>
-              <h2 className="modal-title text-2xl">Selecciona tu Carrera</h2>
-              <p className="modal-subtitle mt-1">Elige la carrera para ver su malla curricular interactiva</p>
+              <h2 className="text-xl font-bold text-2xl">Selecciona tu Carrera</h2>
+              <p className="text-sm text-white/80 mt-1">Elige la carrera para ver su malla curricular interactiva</p>
             </div>
             <button
               onClick={() => canClose && onClose()}
-              className={`modal-close-button ${
+              className={`text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 aspect-square min-w-[40px] min-h-[40px] flex items-center justify-center group/close ${
                 canClose ? '' : 'opacity-40 cursor-not-allowed'
               }`}
               aria-label="Cerrar"
               tabIndex={canClose ? 0 : -1}
               disabled={!canClose}
             >
-              <FontAwesomeIcon icon={faTimes} className="modal-close-icon" />
+              <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150 group-hover/close:scale-125" />
             </button>
           </div>
         </div>

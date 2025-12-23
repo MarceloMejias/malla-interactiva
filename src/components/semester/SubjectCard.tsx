@@ -157,9 +157,41 @@ export default function SubjectCard({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ duration: 0.3, type: "spring", damping: 20, stiffness: 300 }}
-          className={`relative rounded-xl cursor-pointer overflow-hidden shadow-md hover:shadow-lg min-h-[90px] md:min-h-[100px] flex flex-col`}
+          className={`relative rounded-xl cursor-pointer overflow-hidden min-h-[90px] md:min-h-[100px] flex flex-col ${
+            state?.status === 'approved' 
+              ? 'shadow-lg shadow-green-500/30 ring-2 ring-green-400/50' 
+              : 'shadow-md hover:shadow-lg'
+          }`}
           onClick={handleClick}
         >
+        {/* Efecto de brillo para asignaturas aprobadas */}
+        {state?.status === 'approved' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.1, 0.25, 0.1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-transparent pointer-events-none"
+          />
+        )}
+        
+        {/* Ícono de check para asignaturas aprobadas */}
+        <AnimatePresence>
+          {state?.status === 'approved' && (
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none"
+            >
+              <FontAwesomeIcon 
+                icon={faCheck} 
+                className="text-white drop-shadow-md"
+                style={{ fontSize: '2rem', opacity: 0.5 }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
         {/* Código como carátula en esquina superior izquierda */}
         <div className={`absolute top-0 left-0 ${darkMode ? 'bg-gray-800/90' : 'bg-white/85'} rounded-br-lg px-2 py-0.5`}>
           <span className="subject-code text-xs" style={{ color: getBackgroundColor() }}>

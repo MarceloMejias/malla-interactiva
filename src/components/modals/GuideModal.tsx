@@ -22,7 +22,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="modal-overlay"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4"
           onClick={onClose}
         >
           <motion.div
@@ -30,27 +30,27 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, type: "spring", damping: 25, stiffness: 300 }}
-            className={`modal-container ${darkMode ? 'dark' : ''}`}
+            className={`bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 dark:border-gray-600 max-w-4xl w-full max-h-[95vh] md:max-h-[85vh] overflow-hidden flex flex-col ${darkMode ? 'dark' : ''}`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="modal-header blue">
-              <div className="modal-header-content">
-                <div className="modal-header-title">
-                  <div className="modal-icon-container">
+            <div className="bg-gradient-to-r from-blue-600/80 to-indigo-600/80 text-white p-6 backdrop-blur-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                     <FontAwesomeIcon icon={faBookOpen} className="text-white" />
                   </div>
                   <div>
-                    <h3 className="modal-title">Guía</h3>
-                    <p className="modal-subtitle">Todo lo que necesitas saber</p>
+                    <h3 className="text-xl font-bold">Guía</h3>
+                    <p className="text-sm text-white/80">Todo lo que necesitas saber</p>
                   </div>
                 </div>
                 <button
                   onClick={onClose}
-                  className="modal-close-button"
+                  className="group/close text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 aspect-square min-w-[40px] min-h-[40px] flex items-center justify-center"
                   aria-label="Cerrar"
                 >
-                  <FontAwesomeIcon icon={faTimes} className="modal-close-icon" />
+                  <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150 group-hover/close:scale-125" />
                 </button>
               </div>
             </div>
@@ -128,15 +128,15 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                 <div className={`px-6 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
                   {/* Sección: Estados de asignaturas */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faCheckCircle} className="text-green-500" />
                       Estados de Asignaturas
                     </h4>
                     <div className="grid md:grid-cols-3 gap-3">
-                      <div className={`modal-card ${darkMode ? 'dark' : 'blue-light'} border-2 ${darkMode ? 'border-blue-800' : 'border-blue-200'}`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-blue-50'} border-2 ${darkMode ? 'border-blue-800' : 'border-blue-200'}`}>
                         <div className="flex flex-col items-center text-center gap-3">
-                          <div className="guide-icon-badge blue large">
-                            <FontAwesomeIcon icon={faClock} className="guide-icon-badge-icon text-lg" />
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faClock} className="text-white text-lg" />
                           </div>
                           <div>
                             <h5 className="font-bold text-base mb-1">Pendiente</h5>
@@ -145,10 +145,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                         </div>
                       </div>
                       
-                      <div className={`modal-card ${darkMode ? 'green-dark' : 'green-light'} border-2 ${darkMode ? 'border-green-700' : 'border-green-300'}`}>
+                      <div className={`p-4 rounded-xl border-2 ${darkMode ? 'bg-green-900/30 border-green-900' : 'bg-green-50 border-green-200'}`}>
                         <div className="flex flex-col items-center text-center gap-3">
-                          <div className="guide-icon-badge green large">
-                            <FontAwesomeIcon icon={faCheckCircle} className="guide-icon-badge-icon text-lg" />
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faCheckCircle} className="text-white text-lg" />
                           </div>
                           <div>
                             <h5 className="font-bold text-base mb-1">Aprobada</h5>
@@ -157,10 +157,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                         </div>
                       </div>
                       
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-2 ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-2 ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
                         <div className="flex flex-col items-center text-center gap-3">
-                          <div className="guide-icon-badge gray large">
-                            <FontAwesomeIcon icon={faLock} className="guide-icon-badge-icon text-lg" />
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faLock} className="text-white text-lg" />
                           </div>
                           <div>
                             <h5 className="font-bold text-base mb-1">Bloqueada</h5>
@@ -173,15 +173,15 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Prerrequisitos */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faRoute} className="text-blue-500" />
                       Navegación por Prerrequisitos
                     </h4>
-                    <div className={`modal-card ${darkMode ? 'dark' : 'blue-light'} border-2 ${darkMode ? 'border-blue-800' : 'border-blue-200'}`}>
+                    <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-blue-50'} border-2 ${darkMode ? 'border-blue-800' : 'border-blue-200'}`}>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3">
-                          <div className="guide-icon-badge blue">
-                            <FontAwesomeIcon icon={faLightbulb} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faLightbulb} className="text-white" />
                           </div>
                           <div>
                             <p className="text-sm font-semibold mb-1">Chips Interactivos</p>
@@ -191,8 +191,8 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
                         </div>
                         <div className="flex items-start gap-3">
-                          <div className="guide-icon-badge purple">
-                            <FontAwesomeIcon icon={faRoute} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faRoute} className="text-white" />
                           </div>
                           <div>
                             <p className="text-sm font-semibold mb-1">Navegación Rápida</p>
@@ -202,8 +202,8 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
                         </div>
                         <div className="flex items-start gap-3">
-                          <div className="guide-icon-badge red">
-                            <FontAwesomeIcon icon={faLock} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faLock} className="text-white" />
                           </div>
                           <div>
                             <p className="text-sm font-semibold mb-1">Indicador Visual</p>
@@ -218,15 +218,15 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Calculadora */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faChartLine} className="text-purple-500" />
                       Barra de Progreso
                     </h4>
                     <div className="grid md:grid-cols-2 gap-3">
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-2 ${darkMode ? 'border-purple-800' : 'border-purple-200'}`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-2 ${darkMode ? 'border-purple-800' : 'border-purple-200'}`}>
                         <div className="flex items-start gap-3">
-                          <div className="guide-icon-badge purple">
-                            <FontAwesomeIcon icon={faCheckCircle} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faCheckCircle} className="text-white" />
                           </div>
                           <div>
                             <h5 className="font-semibold mb-2">Estadísticas en Vivo</h5>
@@ -238,10 +238,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
                         </div>
                       </div>
-                      <div className={`modal-card ${darkMode ? 'green-dark' : 'green-light'} border-2 ${darkMode ? 'border-green-800' : 'border-green-200'}`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-green-900/30 border border-green-900' : 'bg-green-50 border border-green-200'} border-2 ${darkMode ? 'border-green-800' : 'border-green-200'}`}>
                         <div className="flex items-start gap-3">
-                          <div className="guide-icon-badge green">
-                            <FontAwesomeIcon icon={faGraduationCap} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faGraduationCap} className="text-white" />
                           </div>
                           <div>
                             <h5 className="font-semibold mb-2">Plan de Graduación</h5>
@@ -256,11 +256,11 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Plan de Graduación Interactivo */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faGraduationCap} className="text-green-500" />
                       Plan de Graduación Interactivo
                     </h4>
-                    <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-2 ${darkMode ? 'border-green-800' : 'border-green-200'}`}>
+                    <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-2 ${darkMode ? 'border-green-800' : 'border-green-200'}`}>
                       <div className="space-y-4">
                         <div>
                           <p className="text-sm font-semibold mb-2">Generación Automática</p>
@@ -275,7 +275,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-3">
-                          <div className={`nested-card ${darkMode ? 'blue-dark' : 'blue-light'} border ${darkMode ? 'border-blue-800' : 'border-blue-200'}`}>
+                          <div className={`p-3 rounded-lg ${darkMode ? 'bg-blue-900/30 border border-blue-800' : 'bg-blue-50 border border-blue-200'}`}>
                             <div className="flex items-start gap-2 mb-2">
                               <FontAwesomeIcon icon={faGripVertical} className="text-blue-500 flex-shrink-0 mt-0.5" />
                               <p className="text-sm font-semibold">Arrastra y Suelta</p>
@@ -285,7 +285,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                             </p>
                           </div>
 
-                          <div className={`nested-card ${darkMode ? 'purple-dark' : 'purple-light'} border ${darkMode ? 'border-purple-800' : 'border-purple-200'}`}>
+                          <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30 border border-purple-800' : 'bg-purple-50 border border-purple-200'}`}>
                             <div className="flex items-start gap-2 mb-2">
                               <FontAwesomeIcon icon={faExclamationTriangle} className="text-purple-500 flex-shrink-0 mt-0.5" />
                               <p className="text-sm font-semibold">Validación Automática</p>
@@ -295,7 +295,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                             </p>
                           </div>
 
-                          <div className={`nested-card ${darkMode ? 'orange-dark' : 'orange-light'} border ${darkMode ? 'border-orange-800' : 'border-orange-200'}`}>
+                          <div className={`p-3 rounded-lg ${darkMode ? 'bg-orange-900/30 border border-orange-800' : 'bg-orange-50 border border-orange-200'}`}>
                             <div className="flex items-start gap-2 mb-2">
                               <FontAwesomeIcon icon={faBan} className="text-orange-500 flex-shrink-0 mt-0.5" />
                               <p className="text-sm font-semibold">Límite de Créditos</p>
@@ -305,7 +305,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                             </p>
                           </div>
 
-                          <div className={`nested-card ${darkMode ? 'teal-dark' : 'teal-light'} border ${darkMode ? 'border-teal-800' : 'border-teal-200'}`}>
+                          <div className={`p-3 rounded-lg ${darkMode ? 'bg-teal-900/30 border border-teal-800' : 'bg-teal-50 border border-teal-200'}`}>
                             <div className="flex items-start gap-2 mb-2">
                               <FontAwesomeIcon icon={faSave} className="text-teal-500 flex-shrink-0 mt-0.5" />
                               <p className="text-sm font-semibold">Guardado Local</p>
@@ -321,12 +321,12 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Consejos de Uso */}
                   <div>
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faStar} className="text-orange-500" />
                       Consejos Rápidos
                     </h4>
                     <div className="grid md:grid-cols-2 gap-3">
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-green-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-green-500`}>
                         <div className="flex items-center gap-2">
                           <FontAwesomeIcon icon={faSave} className="text-green-500 flex-shrink-0" />
                           <div>
@@ -335,7 +335,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
                         </div>
                       </div>
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-blue-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-blue-500`}>
                         <div className="flex items-center gap-2">
                           <FontAwesomeIcon icon={faBullseye} className="text-blue-500 flex-shrink-0" />
                           <div>
@@ -344,7 +344,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
                         </div>
                       </div>
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-purple-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-purple-500`}>
                         <div className="flex items-center gap-2">
                           <FontAwesomeIcon icon={faSync} className="text-purple-500 flex-shrink-0" />
                           <div>
@@ -353,7 +353,7 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
                         </div>
                       </div>
-                      <div className={`modal-card ${darkMode ? 'dark' : 'red-light'} border-l-4 border-red-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-red-50'} border-l-4 border-red-500`}>
                         <div className="flex items-center gap-2">
                           <FontAwesomeIcon icon={faTrash} className="text-red-500 flex-shrink-0" />
                           <div>
@@ -372,11 +372,11 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                 <div className={`px-6 ${darkMode ? 'dark' : 'light'}`}>
                   {/* Sección: ¿Qué son los Créditos SCT? */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faCoins} className="text-indigo-500" />
                       ¿Qué son los Créditos SCT?
                     </h4>
-                    <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-2 ${darkMode ? 'border-indigo-800' : 'border-indigo-200'}`}>
+                    <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-2 ${darkMode ? 'border-indigo-800' : 'border-indigo-200'}`}>
                       <div className="space-y-4">
                         <div>
                           <h5 className="text-sm font-semibold mb-2">
@@ -397,13 +397,13 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                           </div>
 
                           <div className="space-y-2">
-                            <div className={`nested-card ${darkMode ? 'blue-dark' : 'blue-light'}`}>
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-blue-900/30' : 'bg-blue-50'}`}>
                               <p className="text-xs font-semibold">5 SCT: ~135-150 horas/semestre</p>
                             </div>
-                            <div className={`nested-card ${darkMode ? 'purple-dark' : 'purple-light'}`}>
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-purple-900/30' : 'bg-purple-50'}`}>
                               <p className="text-xs font-semibold">10 SCT: ~270-300 horas/semestre</p>
                             </div>
-                            <div className={`nested-card ${darkMode ? 'pink-dark' : 'pink-light'}`}>
+                            <div className={`p-3 rounded-lg ${darkMode ? 'bg-pink-900/30' : 'bg-pink-50'}`}>
                               <p className="text-xs font-semibold">30 SCT: ~810-900 horas/semestre</p>
                             </div>
                           </div>
@@ -414,17 +414,17 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Cómo Elegir Tus Asignaturas */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faRoute} className="text-blue-500" />
                       Guía de Selección de Asignaturas
                     </h4>
                     <div className="space-y-3">
                       
                       {/* Paso 1: Carga académica */}
-                      <div className={`modal-card ${darkMode ? 'dark' : 'blue-light'} border-l-4 border-blue-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-blue-50'} border-l-4 border-blue-500`}>
                         <div className="flex items-start gap-3">
-                          <div className="guide-number-badge blue">
-                            <span className="guide-number-badge-text">1</span>
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                            <span className="text-white text-lg font-bold">1</span>
                           </div>
                           <div className="flex-1">
                             <h5 className="font-bold text-base mb-2 flex items-center gap-2">
@@ -433,22 +433,22 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                             <p className="text-sm mb-2"><strong>Carga recomendada:</strong> 25-30 créditos SCT por semestre</p>
                             <div className="grid grid-cols-2 gap-2 text-xs">
                               {/* Carga Reducida */}
-                              <div className={`nested-card ${darkMode ? 'green-dark' : 'green-light'}`}>
+                              <div className={`p-3 rounded-lg ${darkMode ? 'bg-green-900/30' : 'bg-green-50'}`}>
                                 <p className="font-semibold">20-24 SCT</p>
                                 <p className="opacity-70">Carga reducida</p>
                               </div>
                               {/* Carga Normal */}
-                              <div className={`nested-card ${darkMode ? 'yellow-dark' : 'yellow-light'}`}>
+                              <div className={`p-3 rounded-lg ${darkMode ? 'bg-yellow-900/30' : 'bg-yellow-50'}`}>
                                 <p className="font-semibold">25-28 SCT</p>
                                 <p className="opacity-70">Carga normal</p>
                               </div>
                               {/* Carga Completa */}
-                              <div className={`nested-card ${darkMode ? 'orange-dark' : 'orange-light'}`}>
+                              <div className={`p-3 rounded-lg ${darkMode ? 'bg-orange-900/30' : 'bg-orange-50'}`}>
                                 <p className="font-semibold">30-32 SCT</p>
                                 <p className="opacity-70">Tiempo completo</p>
                               </div>
                               {/* Sobrecarga */}
-                              <div className={`nested-card ${darkMode ? 'red-dark' : 'red-light'}`}>
+                              <div className={`p-3 rounded-lg ${darkMode ? 'bg-red-900/30' : 'bg-red-50'}`}>
                                 <p className="font-semibold">33+ SCT</p>
                                 <p className="opacity-70">Sobrecarga</p>
                               </div>
@@ -459,10 +459,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                       </div>
 
                       {/* Paso 2: Prerrequisitos */}
-                      <div className={`modal-card ${darkMode ? 'dark' : 'pink-light'} border-l-4 border-pink-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-pink-50'} border-l-4 border-pink-500`}>
                         <div className="flex items-start gap-3">
-                          <div className="guide-number-badge pink">
-                            <span className="guide-number-badge-text">2</span>
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                            <span className="text-white text-lg font-bold">2</span>
                           </div>
                           <div className="flex-1">
                             <h5 className="font-bold text-base mb-2 flex items-center gap-2">
@@ -475,10 +475,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                       </div>
 
                       {/* Paso 3: Balance */}
-                      <div className={`modal-card ${darkMode ? 'dark' : 'yellow-light'} border-l-4 border-yellow-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-yellow-50'} border-l-4 border-yellow-500`}>
                         <div className="flex items-start gap-3">
-                          <div className="guide-number-badge yellow">
-                            <span className="guide-number-badge-text">3</span>
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                            <span className="text-white text-lg font-bold">3</span>
                           </div>
                           <div className="flex-1">
                             <h5 className="font-bold text-base mb-2 flex items-center gap-2">
@@ -497,10 +497,11 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                       </div>
 
                       {/* Paso 4: Progresión */}
-                      <div className={`modal-card ${darkMode ? 'dark' : 'purple-light'} border-l-4 border-purple-500`}>
+                      {/* Paso 4: Progresión */}
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-purple-50'} border-l-4 border-purple-500`}>
                         <div className="flex items-start gap-3">
-                          <div className="guide-number-badge purple">
-                            <span className="guide-number-badge-text">4</span>
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-md">
+                            <span className="text-white text-lg font-bold">4</span>
                           </div>
                           <div className="flex-1">
                             <h5 className="font-bold text-base mb-2 flex items-center gap-2">
@@ -522,16 +523,16 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Estrategias de Planificación */}
                   <div className="mb-6">
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faLightbulb} className="text-teal-500" />
                       Estrategias de Planificación
                     </h4>
                     <div className="grid md:grid-cols-2 gap-3">
                       
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-teal-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-teal-500`}>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="guide-icon-badge teal">
-                            <FontAwesomeIcon icon={faChartLine} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faChartLine} className="text-white" />
                           </div>
                           <h5 className="font-bold text-base">Visión a Largo Plazo</h5>
                         </div>
@@ -540,10 +541,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                         </p>
                       </div>
 
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-blue-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-blue-500`}>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="guide-icon-badge blue">
-                            <FontAwesomeIcon icon={faBullseye} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faBullseye} className="text-white" />
                           </div>
                           <h5 className="font-bold text-base">Asignaturas Críticas</h5>
                         </div>
@@ -552,10 +553,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                         </p>
                       </div>
 
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-green-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-green-500`}>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="guide-icon-badge green">
-                            <FontAwesomeIcon icon={faCheckCircle} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faCheckCircle} className="text-white" />
                           </div>
                           <h5 className="font-bold text-base">Actualiza tu Progreso</h5>
                         </div>
@@ -564,10 +565,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                         </p>
                       </div>
 
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-purple-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-purple-500`}>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="guide-icon-badge purple">
-                            <FontAwesomeIcon icon={faSync} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faSync} className="text-white" />
                           </div>
                           <h5 className="font-bold text-base">Ajusta Sobre la Marcha</h5>
                         </div>
@@ -581,16 +582,16 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
 
                   {/* Sección: Consejos */}
                   <div>
-                    <h4 className="modal-section-title">
+                    <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                       <FontAwesomeIcon icon={faStar} className="text-orange-500" />
                       Consejos Importantes
                     </h4>
                     <div className="grid md:grid-cols-2 gap-3">
                       
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-orange-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-orange-500`}>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="guide-icon-badge orange">
-                            <FontAwesomeIcon icon={faExclamationCircle} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faExclamationCircle} className="text-white" />
                           </div>
                           <h5 className="font-bold text-base">Disponibilidad</h5>
                         </div>
@@ -600,10 +601,10 @@ export default function GuideModal({ show, onClose, darkMode }: GuideModalProps)
                       </div>
 
 
-                      <div className={`modal-card ${darkMode ? 'dark' : 'light'} border-l-4 border-red-500`}>
+                      <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} border-l-4 border-red-500`}>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="guide-icon-badge red">
-                            <FontAwesomeIcon icon={faLock} className="guide-icon-badge-icon" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-md flex-shrink-0">
+                            <FontAwesomeIcon icon={faLock} className="text-white" />
                           </div>
                           <h5 className="font-bold text-base">Cadenas Críticas</h5>
                         </div>

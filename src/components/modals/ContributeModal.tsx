@@ -20,7 +20,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="modal-overlay"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-60 flex items-center justify-center p-2 md:p-4"
           onClick={onClose}
         >
           <motion.div
@@ -28,34 +28,34 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, type: "spring", damping: 25, stiffness: 300 }}
-            className={`modal-container ${darkMode ? 'dark' : ''}`}
+            className={`bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 dark:border-gray-600 max-w-4xl w-full max-h-[95vh] md:max-h-[85vh] overflow-hidden flex flex-col ${darkMode ? 'dark' : ''}`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="modal-header green">
-              <div className="modal-header-content">
-                <div className="modal-header-title">
-                  <div className="modal-icon-container">
+            <div className="bg-gradient-to-r from-green-600/80 to-emerald-600/80 text-white p-6 backdrop-blur-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                     <FontAwesomeIcon icon={faHandsHelping} className="text-white text-lg" />
                   </div>
                   <div>
-                    <h3 className="modal-title">Contribuir al Proyecto</h3>
-                    <p className="modal-subtitle">Ayuda a mejorar la malla interactiva</p>
+                    <h3 className="text-xl font-bold">Contribuir al Proyecto</h3>
+                    <p className="text-sm text-white/80">Ayuda a mejorar la malla interactiva</p>
                   </div>
                 </div>
                 <div style={{ flex: 1 }}></div>
                 <button
                   onClick={onClose}
-                  className="modal-close-button"
+                  className="group/close text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10 aspect-square min-w-[40px] min-h-[40px] flex items-center justify-center"
                   aria-label="Cerrar"
                 >
-                  <FontAwesomeIcon icon={faTimes} className="modal-close-icon" />
+                  <FontAwesomeIcon icon={faTimes} className="transition-transform duration-150 group-hover/close:scale-125" />
                 </button>
               </div>
             </div>
 
             {/* Content */}
-            <div className={`modal-content ${darkMode ? 'dark' : 'light'}`}>
+            <div className={`p-6 overflow-y-auto flex-1 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
               {/* Introducción */}
               <div className="mb-6">
                 <p className="text-base mb-4">
@@ -72,7 +72,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                 
                 <div className="space-y-4">
                   {/* Reportar errores */}
-                  <div className={`modal-card ${darkMode ? 'dark' : 'red-light'}`}>
+                  <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-red-50'}`}>
                     <div className="flex flex-col md:flex-row md:items-start gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="w-8 h-8 rounded-lg bg-red-500 flex items-center justify-center flex-shrink-0">
@@ -89,7 +89,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                         href="https://github.com/MarceloMejias/malla-interactiva/issues"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="modal-action-button red flex-shrink-0 w-full md:w-auto"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all hover:scale-105 text-white bg-red-600 hover:bg-red-700 flex-shrink-0 w-full md:w-auto"
                       >
                         <FontAwesomeIcon icon={faBug} />
                         Reportar Problema
@@ -98,7 +98,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                   </div>
 
                   {/* Sugerir mejoras */}
-                  <div className={`modal-card ${darkMode ? 'dark' : 'yellow-light'}`}>
+                  <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-yellow-50'}`}>
                     <div className="flex flex-col md:flex-row md:items-start gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center flex-shrink-0">
@@ -115,7 +115,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                         href="https://github.com/MarceloMejias/malla-interactiva/discussions"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="modal-action-button yellow flex-shrink-0 w-full md:w-auto"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all hover:scale-105 text-white bg-yellow-600 hover:bg-yellow-700 flex-shrink-0 w-full md:w-auto"
                       >
                         <FontAwesomeIcon icon={faLightbulb} />
                         Compartir Idea
@@ -124,7 +124,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                   </div>
 
                   {/* Contribuir código */}
-                  <div className={`modal-card ${darkMode ? 'dark' : 'blue-light'}`}>
+                  <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-blue-50'}`}>
                     <div className="flex flex-col md:flex-row md:items-start gap-3">
                       <div className="flex items-center gap-3 flex-1">
                         <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0">
@@ -141,7 +141,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
                         href="https://github.com/MarceloMejias/malla-interactiva"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="modal-action-button blue flex-shrink-0 w-full md:w-auto"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all hover:scale-105 text-white bg-blue-600 hover:bg-blue-700 flex-shrink-0 w-full md:w-auto"
                       >
                         <FontAwesomeIcon icon={faGithubBrand} />
                         Ver en GitHub
@@ -152,12 +152,12 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
               </div>
 
               {/* Stack tecnológico */}
-              <div className="modal-section">
-                <h4 className="modal-section-title">
+              <div className="mb-6">
+                <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
                   <FontAwesomeIcon icon={faCode} className="text-blue-500" />
                   Stack Tecnológico
                 </h4>
-                <div className={`modal-card ${darkMode ? 'dark' : 'light'} p-4`}>
+                <div className={`p-4 rounded-xl ${darkMode ? 'bg-gray-700/50' : 'bg-gray-50'} p-4`}>
                   <div className="space-y-4">
                     {/* Frontend Framework */}
                     <div>
@@ -235,7 +235,7 @@ export default function ContributeModal({ show, onClose, darkMode }: ContributeM
               </div>
 
               {/* Nota final */}
-              <div className={`modal-card ${darkMode ? 'green-dark' : 'green-light'}`}>
+              <div className={`p-4 rounded-xl ${darkMode ? 'bg-green-900/30 border border-green-900' : 'bg-green-50 border border-green-200'}`}>
                 <p className="text-sm text-center">
                   <strong>¡Gracias por tu interés!</strong> Toda contribución, por pequeña que sea, hace una gran diferencia. 💚
                 </p>

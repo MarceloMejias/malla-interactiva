@@ -25,8 +25,8 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 md:bottom-4 md:left-4 md:right-4 z-50">
-      <div className={`${darkMode ? 'bg-gray-800/70 border-gray-700' : 'bg-white/60 border-gray-100'} md:rounded-2xl rounded-t-2xl shadow-2xl border-t md:border p-2 md:p-4 mx-auto max-w-3xl md:max-w-5xl backdrop-blur-md`}>
+    <div className="fixed bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4 z-50 mb-0 md:mb-0">
+      <div className={`${darkMode ? 'bg-gray-800/70 border-gray-700' : 'bg-white/60 border-gray-100'} rounded-2xl md:shadow-2xl border p-4 mx-auto max-w-3xl md:max-w-5xl backdrop-blur-md`}>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-6">
           {/* Stats y progreso */}
           <div className="flex flex-row items-center justify-between gap-2 md:gap-6 flex-1">
@@ -35,25 +35,25 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
               <div className="flex flex-col items-center flex-1 min-w-0">
                 <div className="flex items-center gap-1">
                   <FontAwesomeIcon icon={faCoins} className="text-green-500 text-base md:text-lg" />
-                  <span className="stats-number text-base md:text-lg text-green-700">{stats.approvedCredits}</span>
+                  <span className="font-semibold tabular-nums text-base md:text-lg text-green-700">{stats.approvedCredits}</span>
                   <span className={`text-xs md:text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>/ {stats.totalCredits}</span>
                 </div>
-                <div className={`label-text text-xs md:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Créditos</div>
+                <div className={`font-light text-xs md:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Créditos</div>
               </div>
               <div className="flex flex-col items-center flex-1 min-w-0">
                 <div className="flex items-center gap-1">
                   <FontAwesomeIcon icon={faBookOpen} className="text-blue-500 text-base md:text-lg" />
-                  <span className="stats-number text-base md:text-lg text-blue-700">{stats.approvedSubjects}</span>
+                  <span className="font-semibold tabular-nums text-base md:text-lg text-blue-700">{stats.approvedSubjects}</span>
                   <span className={`text-xs md:text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>/ {stats.totalSubjects}</span>
                 </div>
-                <div className={`label-text text-xs md:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Asignaturas</div>
+                <div className={`font-light text-xs md:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Asignaturas</div>
               </div>
             </div>
             {/* Progreso */}
             <div className="flex flex-col items-center flex-1 min-w-0">
               <div className="flex items-center gap-1">
                 <FontAwesomeIcon icon={faChartPie} className="text-purple-500 text-base md:text-lg" />
-                <span className="stats-number text-base md:text-lg text-purple-700">{stats.percentage.toFixed(1)}%</span>
+                <span className="font-semibold tabular-nums text-base md:text-lg text-purple-700">{stats.percentage.toFixed(1)}%</span>
               </div>
               <div className={`w-full md:max-w-xs mt-1`}>
                 <div className={`w-full ${darkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-2 overflow-hidden`}>
@@ -63,7 +63,7 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
                   />
                 </div>
               </div>
-              <div className={`label-text text-xs md:text-sm ${darkMode ? 'text-gray-300' : 'text-gray-700'} mt-1`}>Progreso</div>
+              <div className={`font-light text-xs md:text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'} mt-1`}>Progreso</div>
             </div>
           </div>
           {/* Acciones */}
@@ -74,7 +74,7 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
               title="Ver plan de graduación"
             >
               <FontAwesomeIcon icon={faPlay} className="text-lg md:text-base" />
-              <span className="button-text text-sm">Plan</span>
+              <span className="font-extralight tracking-tight text-sm">Plan</span>
             </button>
             <button
               onClick={onShowCategories}
@@ -82,15 +82,15 @@ export default function StatsBar({ stats, onShowCategories, onReset, onPlayGradu
               title="Ver categorías de asignaturas"
             >
               <FontAwesomeIcon icon={faInfoCircle} className="text-lg md:text-base" />
-              <span className="button-text text-sm">Categorías</span>
+              <span className="font-extralight tracking-tight text-sm">Categorías</span>
             </button>
             <button
               onClick={handleReset}
-              className="flex-1 md:flex-none h-11 md:h-10 md:w-auto md:px-4 bg-red-500 hover:bg-red-600 text-white rounded-full transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300"
+              className="h-11 w-11 md:h-10 md:w-auto md:px-4 bg-red-500 hover:bg-red-600 text-white rounded-full transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-300"
               title="Reiniciar progreso"
             >
               <FontAwesomeIcon icon={faRotateLeft} className="text-lg md:text-base" />
-              <span className="button-text text-sm">Reiniciar</span>
+              <span className="font-extralight tracking-tight text-sm hidden md:inline">Reiniciar</span>
             </button>
           </div>
         </div>
