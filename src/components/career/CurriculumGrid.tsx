@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import CareerHeader from './CareerHeader';
 import SemesterGrid from '../semester/SemesterGrid';
 import Footer from '../layout/Footer';
@@ -32,6 +33,7 @@ interface CurriculumGridProps {
 }
 
 export default function CurriculumGrid({ initialCareer }: CurriculumGridProps = {}) {
+  const router = useRouter();
   const [showCategoriesPopup, setShowCategoriesPopup] = useState(false);
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [showContributeModal, setShowContributeModal] = useState(false);
@@ -106,6 +108,10 @@ export default function CurriculumGrid({ initialCareer }: CurriculumGridProps = 
   }, [showSelectorFromHook]);
 
   const handleCareerSelection = (campus: string, code: string) => {
+    // Navegar a la nueva ruta
+    router.push(`/${code}`);
+    
+    // Actualizar estado local también
     setCampus(campus);
     setCareerCode(code);
     setShowCareerSelector(false);
