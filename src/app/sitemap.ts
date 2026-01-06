@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Página principal
   const routes: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 1.0,
@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Agregar todas las páginas de carreras
   allCareerIds.forEach((careerId) => {
     routes.push({
-      url: `${baseUrl}/${careerId}`,
+      url: `${baseUrl}/${careerId}/`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
