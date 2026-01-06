@@ -86,7 +86,7 @@ function generateIndex() {
   // Generar función getCareer
   let getCareerCode = `// Función para obtener una carrera
 export function getCareer(code: string): Carrera | undefined {
-  return allCareers[code.toUpperCase()];
+  return allCareers[code.toLowerCase()];
 }\n\n`;
 
   // Generar careersByCampus

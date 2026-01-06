@@ -64,7 +64,7 @@ export default function CurriculumGrid({ initialCareer }: CurriculumGridProps = 
         const detectedCampus = campusMap[normalizedCareer];
         if (detectedCampus) {
           setCampus(detectedCampus);
-          setCareerCode(initialCareer.toUpperCase());
+          setCareerCode(normalizedCareer);
           setShowCareerSelector(false);
           return;
         }
