@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${carrera.nombre} - Malla Interactiva USM`;
+  const title = carrera.nombre;
   const description = `Malla curricular interactiva de ${carrera.nombre} (${carreraId}) - UTFSM. Calcula tu progreso académico, planifica tu graduación y visualiza requisitos de cada asignatura.`;
   const url = `https://marcelomejias.github.io/malla-interactiva/${carreraId}`;
   const imageUrl = 'https://marcelomejias.github.io/malla-interactiva/thumbnail.png';
