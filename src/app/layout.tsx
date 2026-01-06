@@ -94,13 +94,13 @@ export const metadata: Metadata = {
   
   icons: {
     icon: [
-      { url: 'favicon.svg', type: 'image/svg+xml' },
-      { url: 'icon.png', type: 'image/png', sizes: '192x192' },
-      { url: 'android-chrome-512x512.png', type: 'image/png', sizes: '512x512' }
+      { url: '/malla-interactiva/favicon.svg', type: 'image/svg+xml' },
+      { url: '/malla-interactiva/icon.png', type: 'image/png', sizes: '192x192' },
+      { url: '/malla-interactiva/android-chrome-512x512.png', type: 'image/png', sizes: '512x512' }
     ],
-    shortcut: 'favicon.svg',
+    shortcut: '/malla-interactiva/favicon.svg',
     apple: [
-      { url: 'apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+      { url: '/malla-interactiva/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ]
   },
   other: {
