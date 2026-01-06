@@ -12,6 +12,3 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 Disallow: /*.json$
-
-# Crawl delay (opcional - reduce carga del servidor)
-Crawl-delay: 1
