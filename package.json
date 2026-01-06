@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "tsx scripts/generate-careers-index.ts && next build",
     "start": "next start",
     "lint": "next lint",
-    "gbpages": "next build"
+    "gbpages": "tsx scripts/generate-careers-index.ts && next build",
+    "generate:careers": "tsx scripts/generate-careers-index.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",

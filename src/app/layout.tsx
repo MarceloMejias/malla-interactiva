@@ -32,11 +32,35 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Malla Interactiva",
-  description: "Calculadora de progreso académico para la carrera de Ingeniería en Informática de la Universidad Técnica Federico Santa María",
+  title: {
+    default: "Malla Interactiva USM - Calculadora de Progreso Académico",
+    template: "%s | Malla Interactiva USM"
+  },
+  description: "Calculadora interactiva de progreso académico para todas las carreras de la Universidad Técnica Federico Santa María (UTFSM). Visualiza tu malla curricular, planifica tu graduación, gestiona requisitos y calcula tu avance académico con sistema drag & drop. Más de 40 carreras disponibles.",
   manifest: "site.webmanifest",
-  keywords: ["UTFSM", "malla curricular", "ingeniería", "progreso académico", "universidad", "calculadora"],
-  authors: [{ name: "Marcelo Mejías" }],
+  keywords: [
+    "UTFSM",
+    "Universidad Técnica Federico Santa María",
+    "malla curricular",
+    "calculadora académica",
+    "progreso académico",
+    "ingeniería",
+    "carreras universitarias",
+    "plan de estudios",
+    "requisitos de asignaturas",
+    "graduación",
+    "Casa Central",
+    "Viña del Mar",
+    "Vitacura",
+    "San Joaquín",
+    "Concepción",
+    "informática",
+    "civil",
+    "industrial",
+    "mecánica",
+    "electrónica"
+  ],
+  authors: [{ name: "Marcelo Mejías", url: "https://github.com/marcelomejias" }],
   creator: "Marcelo Mejías",
   publisher: "UTFSM Community",
   
@@ -45,15 +69,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_CL',
     url: 'https://marcelomejias.github.io/malla-interactiva/',
-    title: 'Malla Interactiva USM',
-    description: 'Calculadora de progreso académico para carreras de la Universidad Técnica Federico Santa María. Drag & drop, plan de graduación y más de 20 carreras disponibles.',
+    title: 'Malla Interactiva USM - Calculadora de Progreso Académico UTFSM',
+    description: 'Herramienta interactiva para visualizar y calcular tu progreso en carreras de la UTFSM. Planifica tu graduación, gestiona requisitos y calcula tu avance académico. Más de 40 carreras de Casa Central, Viña del Mar, Vitacura y más campus.',
     siteName: 'Malla Interactiva USM',
     images: [
       {
         url: 'https://marcelomejias.github.io/malla-interactiva/thumbnail.png',
         width: 1200,
         height: 630,
-        alt: 'Malla Interactiva USM - Calculadora de progreso académico',
+        alt: 'Malla Interactiva USM - Calculadora de progreso académico para carreras UTFSM',
         type: 'image/png'
       }
     ]
@@ -62,8 +86,8 @@ export const metadata: Metadata = {
   // Twitter Cards
   twitter: {
     card: 'summary_large_image',
-    title: 'Malla Interactiva UTFSM',
-    description: 'Calculadora de progreso académico para carreras UTFSM. Drag & drop, plan de graduación y más de 20 carreras.',
+    title: 'Malla Interactiva USM - Calculadora Académica UTFSM',
+    description: 'Calcula tu progreso académico, visualiza requisitos y planifica tu graduación en carreras UTFSM. Drag & drop, plan de graduación y más de 40 carreras.',
     images: ['https://marcelomejias.github.io/malla-interactiva/thumbnail.png'],
     creator: '@marcelomejias'
   },

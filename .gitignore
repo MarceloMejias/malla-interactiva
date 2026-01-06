@@ -22,3 +22,5 @@ out/
 .env.local
 .env.production.local
 *.log
+# Generated files
+src/data/carreras/index.ts

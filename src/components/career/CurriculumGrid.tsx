@@ -27,8 +27,11 @@ import { useCareerData } from '@/hooks/useCareerData';
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { useState } from 'react';
 
+interface CurriculumGridProps {
+  initialCareer?: string;
+}
 
-export default function CurriculumGrid() {
+export default function CurriculumGrid({ initialCareer }: CurriculumGridProps = {}) {
   const [showCategoriesPopup, setShowCategoriesPopup] = useState(false);
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [showContributeModal, setShowContributeModal] = useState(false);
@@ -42,6 +45,31 @@ export default function CurriculumGrid() {
   // Cargar última carrera seleccionada al iniciar (antes de cualquier otra cosa)
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      // Si hay initialCareer desde la URL, úsalo
+      if (initialCareer) {
+        // Determinar campus basado en el código de carrera (normalizar a minúsculas)
+        const normalizedCareer = initialCareer.toLowerCase();
+        const campusMap: Record<string, string> = {
+          'afi': 'cc', 'amb': 'cc', 'arq': 'cc', 'civ-0': 'cc', 'constru-0': 'cc',
+          'ctciv': 'cc', 'eli-0': 'cc', 'eli': 'cc', 'elo-0': 'cc', 'elo': 'cc',
+          'fis-0': 'cc', 'ica-0': 'cc', 'icbt': 'cc', 'icfis': 'cc', 'ici-0': 'cc',
+          'ici': 'cc', 'iciv': 'cc', 'icm-0': 'cc', 'icom-0': 'cc', 'icom': 'cc',
+          'icq-0': 'cc', 'icq': 'cc', 'idp': 'cc', 'inf-0': 'cc', 'inf': 'cc',
+          'qui': 'cc', 'mat-0': 'cc', 'mat': 'cc', 'lmat': 'cc', 'mec': 'cc',
+          'met-0': 'cc', 'met': 'cc', 'tel-0': 'cc', 'tel': 'cc',
+          'fdi': 'vm', 'ibt': 'vm', 'imi': 'vm', 'inginf': 'vm', 'prla': 'vm',
+          'tuconst': 'vm', 'tuinf': 'vm',
+          'cind': 'vc', 'cinf': 'vc', 'eli-vc': 'vc', 'iac': 'vc', 'icom-vc': 'vc'
+        };
+        const detectedCampus = campusMap[normalizedCareer];
+        if (detectedCampus) {
+          setCampus(detectedCampus);
+          setCareerCode(initialCareer.toUpperCase());
+          setShowCareerSelector(false);
+          return;
+        }
+      }
+      
       const lastCampus = localStorage.getItem('last-selected-career-campus');
       const lastCode = localStorage.getItem('last-selected-career-code');
       if (lastCampus && lastCode) {
@@ -52,7 +80,7 @@ export default function CurriculumGrid() {
         setShowCareerSelector(true);
       }
     }
-  }, []);
+  }, [initialCareer]);
 
   const {
     subjects,
