@@ -70,6 +70,10 @@ export default function CurriculumGrid({ initialCareer }: CurriculumGridProps = 
           setShowCareerSelector(false);
           return;
         }
+      } else {
+        // Si no hay initialCareer (estamos en la página principal), siempre mostrar el selector
+        setShowCareerSelector(true);
+        return;
       }
       
       const lastCampus = localStorage.getItem('last-selected-career-campus');
