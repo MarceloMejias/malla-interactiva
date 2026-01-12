@@ -1,13 +1,13 @@
 import { MetadataRoute } from 'next';
+import { careersByCampus } from '@/data/carreras';
 
 export const dynamic = 'force-static';
 
+// Obtener todos los IDs de carreras automáticamente desde el índice
 const allCareerIds = [
-  'afi', 'amb', 'arq', 'civ-0', 'constru-0', 'ctciv', 'eli-0', 'eli', 'elo-0', 'elo',
-  'fis-0', 'ica-0', 'icbt', 'icfis', 'ici-0', 'ici', 'iciv', 'icm-0', 'icom-0', 'icom',
-  'icq-0', 'icq', 'idp', 'inf-0', 'inf', 'qui', 'mat-0', 'mat', 'lmat', 'mec', 'met-0', 'met',
-  'tel-0', 'tel', 'fdi', 'ibt', 'imi', 'inginf', 'prla', 'tuconst', 'tuinf',
-  'cind', 'cinf', 'eli-vc', 'iac', 'icom-vc'
+  ...careersByCampus.cc.map(c => c.Link),
+  ...careersByCampus.vm.map(c => c.Link),
+  ...careersByCampus.vc.map(c => c.Link),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
